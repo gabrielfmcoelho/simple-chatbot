@@ -1,21 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  rewrites() {
+  /* rewrites() {
     return {
       beforeFiles: [
         {
-          source: "/:path*",
+          source: "/dashboard",
           has: [
             {
               type: "host",
               value: "dashboard.shadcnuikit.com",
             },
           ],
-          destination: "/app/:path*",
+          destination: "https://dashboard.shadcnuikit.com",
         },
       ],
     };
-  },
+  }, */
 };
 
 export default nextConfig;
