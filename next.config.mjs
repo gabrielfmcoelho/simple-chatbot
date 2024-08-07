@@ -1,6 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: "",
+  rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: "/dashboard",
+          has: [
+            {
+              type: "host",
+              value: "dashboard.shadcnuikit.com",
+            },
+          ],
+          destination: "https://dashboard.shadcnuikit.com",
+        },
+      ],
+    };
+  },
 };
 
 export default nextConfig;
