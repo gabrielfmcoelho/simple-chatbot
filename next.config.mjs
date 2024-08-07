@@ -4,14 +4,14 @@ const nextConfig = {
     return {
       beforeFiles: [
         {
-          source: "/dashboard",
+          source: "/:path*",
           has: [
             {
               type: "host",
               value: "dashboard.shadcnuikit.com",
             },
           ],
-          destination: "https://dashboard.shadcnuikit.com",
+          destination: "/app/:path*",
         },
       ],
     };
