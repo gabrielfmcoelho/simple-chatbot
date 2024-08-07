@@ -15,6 +15,7 @@ type SidebarNavLinkProps = {
 
 export default function Sidebar() {
   const SidebarNavLink: React.FC<SidebarNavLinkProps> = ({ item }) => {
+    // @ts-expect-error
     const LucideIcon = icons[item.icon];
 
     return (
@@ -23,20 +24,20 @@ export default function Sidebar() {
         key={item.title + item.href}
         activeClassName="!bg-primary text-primary-foreground"
       >
-        {item.icon && <LucideIcon className="w-4 h-4" />}
+        {item.icon && <LucideIcon className="h-4 w-4" />}
         {item.title}
       </Anchor>
     );
   };
 
   return (
-    <div className="h-screen fixed">
-      <Logo/>
+    <div className="fixed h-screen">
+      <Logo />
       <ScrollArea className="h-full w-[280px] border-r px-4">
         {page_routes.map((route) => (
           <>
-            <div className="text-sm px-2 py-4 font-medium">{route.title}</div>
-            <nav className="*:flex *:items-center *:gap-3 *:text-sm *:rounded-lg *:px-3 *:py-2 *:transition-all hover:*:bg-muted">
+            <div className="px-2 py-4 text-sm font-medium">{route.title}</div>
+            <nav className="*:flex *:items-center *:gap-3 *:rounded-lg *:px-3 *:py-2 *:text-sm *:transition-all hover:*:bg-muted">
               {route.items.map((item, key) => (
                 <SidebarNavLink key={key} item={item} />
               ))}

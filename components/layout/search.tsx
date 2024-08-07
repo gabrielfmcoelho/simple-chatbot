@@ -41,6 +41,7 @@ export default function Search() {
   }, []);
 
   const CommandItemComponent: React.FC<CommandItemProps> = ({ item }) => {
+    // @ts-expect-error
     const LucideIcon = icons[item.icon];
 
     return (
@@ -50,7 +51,7 @@ export default function Search() {
           router.push(item.href);
         }}
       >
-        {item.icon && <LucideIcon className="!w-4 !h-4 me-2" />}
+        {item.icon && <LucideIcon className="me-2 !h-4 !w-4" />}
         <span>{item.title}</span>
       </CommandItem>
     );
@@ -58,16 +59,16 @@ export default function Search() {
 
   return (
     <div>
-      <div className="relative flex-1 max-w-sm">
-        <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500 dark:text-neutral-400" />
+      <div className="relative max-w-sm flex-1">
+        <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
         <Input
-          className="w-full rounded-md bg-muted border h-9 pl-10 pr-4 text-sm shadow-sm cursor-pointer"
+          className="h-9 w-full cursor-pointer rounded-md border bg-muted pl-10 pr-4 text-sm shadow-sm"
           placeholder="Search..."
           type="search"
           onFocus={() => setOpen(true)}
         />
-        <div className="sm:flex hidden absolute top-1/2 -translate-y-1/2 right-2 text-xs font-medium font-mono items-center gap-0.5 dark:bg-neutral-700 bg-zinc-200 p-1 rounded-sm">
-          <CommandIcon className="w-3 h-3" />
+        <div className="absolute right-2 top-1/2 hidden -translate-y-1/2 items-center gap-0.5 rounded-sm bg-zinc-200 p-1 font-mono text-xs font-medium dark:bg-neutral-700 sm:flex">
+          <CommandIcon className="h-3 w-3" />
           <span>k</span>
         </div>
       </div>
@@ -78,7 +79,9 @@ export default function Search() {
           {page_routes.map((route) => (
             <>
               <CommandGroup heading={route.title}>
-                {route.items.map((item, key) => <CommandItemComponent key={key} item={item} />)}
+                {route.items.map((item, key) => (
+                  <CommandItemComponent key={key} item={item} />
+                ))}
               </CommandGroup>
               <CommandSeparator />
             </>

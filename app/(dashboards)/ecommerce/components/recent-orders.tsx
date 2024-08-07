@@ -110,7 +110,10 @@ const data: Payment[] = [
 
 export type Payment = {
   id: string;
-  customer: object;
+  customer: {
+    name?: string;
+    image?: string;
+  };
   product: {
     name: string;
   };
@@ -130,10 +133,10 @@ export const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => (
       <div className="flex items-center gap-4">
         <img
-          className="border w-10 h-10 rounded-full"
-          src={row.getValue("customer").image}
+          className="h-10 w-10 rounded-full border"
+          src={row.getValue("customer")}
         />
-        <div className="capitalize">{row.getValue("customer").name}</div>
+        <div className="capitalize">{row.getValue("customer")}</div>
       </div>
     ),
   },
@@ -141,7 +144,7 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "product",
     header: "Product",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("product").name}</div>
+      <div className="capitalize">{row.getValue("product")}</div>
     ),
   },
   {
@@ -210,7 +213,7 @@ export const columns: ColumnDef<Payment>[] = [
 export default function RecentOrders() {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
+    [],
   );
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
@@ -249,7 +252,7 @@ export default function RecentOrders() {
                         ? null
                         : flexRender(
                             header.column.columnDef.header,
-                            header.getContext()
+                            header.getContext(),
                           )}
                     </TableHead>
                   );
@@ -268,7 +271,7 @@ export default function RecentOrders() {
                     <TableCell key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </TableCell>
                   ))}
