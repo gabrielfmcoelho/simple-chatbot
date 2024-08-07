@@ -3,7 +3,6 @@
 const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig = {
-  basePath: "/dashboard",
   assetPrefix: isProd
     ? "https://dashboard.shadcnuikit.com/dashboard"
     : undefined,
