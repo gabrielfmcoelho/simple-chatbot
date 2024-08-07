@@ -3,9 +3,7 @@
 const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig = {
-  assetPrefix: isProd
-    ? "https://dashboard.shadcnuikit.com/dashboard"
-    : undefined,
+  assetPrefix: isProd ? "https://dashboard.shadcnuikit.com" : undefined,
 };
 
 export default nextConfig;
