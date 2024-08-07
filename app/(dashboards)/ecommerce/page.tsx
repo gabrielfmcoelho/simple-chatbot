@@ -13,9 +13,9 @@ import { Progress } from "@/components/ui/progress";
 import ExportButton from "@/components/ExportButton";
 import { Badge } from "@/components/ui/badge";
 
-import RecentOrders from "@/app/(dashboards)/ecommerce/components/recent-orders";
-import { CalendarDateRangePicker } from "@/app/(dashboards)/ecommerce/components/date-range-picker";
-import { BestSellingProductList } from "@/app/(dashboards)/ecommerce/components/best-selling-product-list";
+import RecentOrders from "@/components/dashboard/ecommerce/recent-orders";
+import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
+import BestSellingProductList from "@/components/dashboard/ecommerce/best-selling-product-list";
 import {
   CustomersChart,
   ReturningRateChart,
@@ -23,31 +23,31 @@ import {
   SalesChart,
   TotalRevenueChart,
   VisitBySourceChart,
-} from "@/app/(dashboards)/ecommerce/components/charts";
+} from "@/components/dashboard/ecommerce/charts";
 
 export const metadata: Metadata = {
   title: "Ecommerce Dashboard - Shadcn UI Kit",
   description: "...",
-}; 
+};
 
 export default function Page() {
   return (
     <>
-      <div className="flex items-center justify-between space-y-2 mb-4">
+      {/* <div className="mb-4 flex items-center justify-between space-y-2">
         <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
         <div className="flex items-center space-x-2">
           <CalendarDateRangePicker />
           <Button>Download</Button>
         </div>
-      </div>
-      <div className="grid grid-cols-12 gap-4">
+      </div> */}
+      {/* <div className="grid grid-cols-12 gap-4">
         <Card className="sm:col-span-3">
           <CardHeader className="pb-3">
             <CardTitle>Congratulations John! 🎉</CardTitle>
             <CardDescription>Best seller of the month</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold mb-4 mt-4">$15,231.89</div>
+            <div className="mb-4 mt-4 text-2xl font-bold">$15,231.89</div>
             <Button className="w-full">View Sales</Button>
           </CardContent>
         </Card>
@@ -98,18 +98,18 @@ export default function Page() {
             </div>
           </CardContent>
         </Card>
-      </div>
-      <div className="grid grid-cols-8 gap-4 mt-4">
+      </div> */}
+      {/* <div className="mt-4 grid grid-cols-8 gap-4">
         <Card className="sm:col-span-5">
           <CardHeader className="pb-3">
-            <CardTitle className="text-base font-normal flex justify-between">
+            <CardTitle className="flex justify-between text-base font-normal">
               Total Revenue
               <ExportButton />
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex flex-col items-stretch space-y-0 p-0 sm:flex-row">
-              <div className="flex gap-8 border p-4 rounded-lg">
+              <div className="flex gap-8 rounded-lg border p-4">
                 <button className="flex flex-1 flex-col justify-center gap-1 text-left">
                   <span className="text-xs text-muted-foreground">Desktop</span>
                   <span className="text-lg font-bold leading-none sm:text-2xl">
@@ -132,7 +132,7 @@ export default function Page() {
         <Card className="sm:col-span-3">
           <CardHeader className="pb-3">
             <CardTitle className="flex justify-between">
-              <div className="flex gap-2 items-center">
+              <div className="flex items-center gap-2">
                 50.56%
                 <Badge className="text-green-500" variant="outline">
                   +2.5%
@@ -146,12 +146,12 @@ export default function Page() {
             <ReturningRateChart />
           </CardContent>
         </Card>
-      </div>
+      </div> */}
 
-      <div className="grid grid-cols-12 gap-4 mt-4">
+      <div className="mt-4 grid grid-cols-12 gap-4">
         <Card className="sm:col-span-7">
           <CardHeader className="pb-3">
-            <CardTitle className="text-base font-normal flex justify-between">
+            <CardTitle className="flex justify-between text-base font-normal">
               Recent Orders
               <ExportButton />
             </CardTitle>
@@ -162,7 +162,7 @@ export default function Page() {
         </Card>
         <Card className="sm:col-span-5">
           <CardHeader className="pb-3">
-            <CardTitle className="text-base font-normal flex justify-between">
+            <CardTitle className="flex justify-between text-base font-normal">
               Best Selling Products
               <ExportButton />
             </CardTitle>
@@ -173,10 +173,10 @@ export default function Page() {
         </Card>
       </div>
 
-      <div className="grid grid-cols-12 gap-4 mt-4">
+      <div className="mt-4 grid grid-cols-12 gap-4">
         <Card className="sm:col-span-4">
           <CardHeader className="pb-3">
-            <CardTitle className="text-base font-normal flex justify-between">
+            <CardTitle className="flex justify-between text-base font-normal">
               Sales by Locations
               <ExportButton />
             </CardTitle>
@@ -185,35 +185,35 @@ export default function Page() {
             <div className="pt-8">
               <div className="flex flex-col gap-4">
                 <div>
-                  <div className="flex justify-between mb-2">
+                  <div className="mb-2 flex justify-between">
                     <span>Canada</span>
                     <span>75%</span>
                   </div>
                   <Progress value={30} className="h-2" />
                 </div>
                 <div>
-                  <div className="flex justify-between mb-2">
+                  <div className="mb-2 flex justify-between">
                     <span>Greenland</span>
                     <span>47%</span>
                   </div>
                   <Progress value={47} className="h-2" />
                 </div>
                 <div>
-                  <div className="flex justify-between mb-2">
+                  <div className="mb-2 flex justify-between">
                     <span>Russia</span>
                     <span>63%</span>
                   </div>
                   <Progress value={63} className="h-2" />
                 </div>
                 <div>
-                  <div className="flex justify-between mb-2">
+                  <div className="mb-2 flex justify-between">
                     <span>China</span>
                     <span>80%</span>
                   </div>
                   <Progress value={80} className="h-2" />
                 </div>
                 <div>
-                  <div className="flex justify-between mb-2">
+                  <div className="mb-2 flex justify-between">
                     <span>Australia</span>
                     <span>67%</span>
                   </div>
@@ -225,7 +225,7 @@ export default function Page() {
         </Card>
         <Card className="sm:col-span-4">
           <CardHeader className="pb-3">
-            <CardTitle className="text-base font-normal flex justify-between">
+            <CardTitle className="flex justify-between text-base font-normal">
               Store Visits by Source
               <ExportButton />
             </CardTitle>
@@ -241,7 +241,7 @@ export default function Page() {
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-8">
-            <div className="flex justify-between p-2 bg-muted">
+            <div className="flex justify-between bg-muted p-2">
               <div className="flex gap-1">
                 <Star stroke="orange" fill="orange" />
                 <Star stroke="orange" fill="orange" />

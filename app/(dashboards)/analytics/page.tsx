@@ -6,9 +6,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { AverageDailySalesChart } from "./average-daily-sales";
+import { AverageDailySalesChart } from "@/components/dashboard/analytics/average-daily-sales";
 import { Badge } from "@/components/ui/badge";
-import { EarningReportsChart } from "./earning-reports-chart";
+import { EarningReportsChart } from "@/components/dashboard/analytics/earning-reports-chart";
 import {
   AreaChart,
   ChevronUp,
@@ -19,10 +19,10 @@ import {
   Ticket,
 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
-import { SupportTrackerChart } from "./support-tracker-chart";
-import { SalesByCountries } from "./sales-by-countries";
-import { TotalEarningChart } from "./total-earning-chart";
-import { MonthlyCampaignState } from "./monthly-campaign-state";
+import { SupportTrackerChart } from "@/components/dashboard/analytics/support-tracker-chart";
+import { SalesByCountries } from "@/components/dashboard/analytics/sales-by-countries";
+import { TotalEarningChart } from "@/components/dashboard/analytics/total-earning-chart";
+import { MonthlyCampaignState } from "@/components/dashboard/analytics/monthly-campaign-state";
 
 export const metadata: Metadata = {
   title: "Analytics Dashboard - Shadcn UI Kit",

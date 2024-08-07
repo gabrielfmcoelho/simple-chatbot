@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -12,20 +12,18 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table"
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react"
+} from "@tanstack/react-table";
+import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/dropdown-menu";
 import {
   Table,
   TableBody,
@@ -33,112 +31,159 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 
 const data: Payment[] = [
   {
     id: "m5gr84i9",
-    name: "Tire Doodad",
-    price: 300,
-    sold: 316,
-    sales: 10,
+    customer: {
+      image: "https://avatar.iran.liara.run/public/33",
+      name: "Theodore Bell",
+    },
+    product: {
+      name: "Tire Doodad",
+    },
+    amount: 300,
+    status: "processing",
   },
   {
-    id: "3u1reuv4",
-    name: "Game Gadget",
-    price: 480,
-    sold: 316,
-    sales: 20,
+    id: "m5gr84i9",
+    customer: {
+      image: "https://avatar.iran.liara.run/public/33",
+      name: "Theodore Bell",
+    },
+    product: {
+      name: "Tire Doodad",
+    },
+    amount: 300,
+    status: "processing",
   },
   {
-    id: "derv1ws0",
-    name: "Outdoors Widget",
-    price: 350,
-    sold: 316,
-    sales: 15,
+    id: "m5gr84i9",
+    customer: {
+      image: "https://avatar.iran.liara.run/public/33",
+      name: "Theodore Bell",
+    },
+    product: {
+      name: "Tire Doodad",
+    },
+    amount: 300,
+    status: "processing",
   },
   {
-    id: "5kma53ae",
-    name: "Camera Supplies",
-    price: 500,
-    sold: 316,
-    sales: 40,
+    id: "m5gr84i9",
+    customer: {
+      image: "https://avatar.iran.liara.run/public/33",
+      name: "Theodore Bell",
+    },
+    product: {
+      name: "Tire Doodad",
+    },
+    amount: 300,
+    status: "processing",
   },
   {
-    id: "bhqecj4p",
-    name: "Bedding Tool",
-    price: 716,
-    sold: 316,
-    sales: 37,
+    id: "m5gr84i9",
+    customer: {
+      image: "https://avatar.iran.liara.run/public/33",
+      name: "Theodore Bell",
+    },
+    product: {
+      name: "Tire Doodad",
+    },
+    amount: 300,
+    status: "processing",
   },
-]
+  {
+    id: "m5gr84i9",
+    customer: {
+      image: "https://avatar.iran.liara.run/public/33",
+      name: "Theodore Bell",
+    },
+    product: {
+      name: "Tire Doodad",
+    },
+    amount: 300,
+    status: "processing",
+  },
+];
 
 export type Payment = {
-  id: string
-  name: string
-  price: number
-  sold: number
-  sales: number
-}
+  id: string;
+  customer: {
+    name?: string;
+    image?: string;
+  };
+  product: {
+    name: string;
+  };
+  amount: number;
+  status: "paid" | "processing" | "success" | "failed";
+};
 
 export const columns: ColumnDef<Payment>[] = [
   {
-    accessorKey: "name",
-    header: "Name",
+    accessorKey: "id",
+    header: "Order ID",
+    cell: ({ row }) => <span>#{row.getValue("id")}</span>,
+  },
+  {
+    accessorKey: "customer",
+    header: "Customer",
     cell: ({ row }) => (
-     <div className="flex items-center gap-4">
-       <img className="border w-10 h-10 rounded-full" src="https://avatar.iran.liara.run/public/23" />
-       <div className="capitalize">{row.getValue("name")}</div>
-     </div>
+      <div className="flex items-center gap-4">
+        <img
+          className="h-10 w-10 rounded-full border"
+          src={row.original.customer["image"]}
+        />
+        <div className="capitalize">{row.original.customer.name}</div>
+      </div>
     ),
   },
   {
-    accessorKey: "sold",
+    accessorKey: "product",
+    header: "Product",
+    cell: ({ row }) => (
+      <div className="capitalize">{row.original.product.name}</div>
+    ),
+  },
+  {
+    accessorKey: "amount",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Sold
+          Amount
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
-      )
+      );
     },
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("sold"))
+      const amount = parseFloat(row.getValue("amount"));
 
       // Format the amount as a dollar amount
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
-      }).format(amount)
+      }).format(amount);
 
-      return <div className="font-medium">{formatted}</div>
+      return <div className="text-center font-medium">{formatted}</div>;
     },
   },
   {
-    accessorKey: "sales",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Sales
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
+    accessorKey: "status",
+    header: "Status",
     cell: ({ row }) => (
-      <div className="text-center">{row.getValue("sales")}</div>
+      <div className="capitalize">{row.getValue("status")}</div>
     ),
   },
   {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original
+      const payment = row.original;
 
       return (
         <DropdownMenu>
@@ -160,19 +205,19 @@ export const columns: ColumnDef<Payment>[] = [
             <DropdownMenuItem>View payment details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-      )
+      );
     },
   },
-]
+];
 
-export function BestSellingProductList() {
-  const [sorting, setSorting] = React.useState<SortingState>([])
+export default function RecentOrders() {
+  const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
+    [],
+  );
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
+    React.useState<VisibilityState>({});
+  const [rowSelection, setRowSelection] = React.useState({});
 
   const table = useReactTable({
     data,
@@ -191,46 +236,10 @@ export function BestSellingProductList() {
       columnVisibility,
       rowSelection,
     },
-  })
+  });
 
   return (
     <div className="w-full">
-      <div className="flex items-center py-4 gap-4">
-        <Input
-          placeholder="Filter products..."
-          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("name")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns <ChevronDown className="ml-2 h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                )
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -243,10 +252,10 @@ export function BestSellingProductList() {
                         ? null
                         : flexRender(
                             header.column.columnDef.header,
-                            header.getContext()
+                            header.getContext(),
                           )}
                     </TableHead>
-                  )
+                  );
                 })}
               </TableRow>
             ))}
@@ -262,7 +271,7 @@ export function BestSellingProductList() {
                     <TableCell key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </TableCell>
                   ))}
@@ -306,5 +315,5 @@ export function BestSellingProductList() {
         </div>
       </div>
     </div>
-  )
+  );
 }
