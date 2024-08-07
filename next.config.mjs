@@ -16,6 +16,7 @@ const nextConfig = {
       ],
     };
   }, */
+  basePath: "/dashboard",
   assetPrefix: "https://dashboard.shadcnuikit.com",
 };
 
