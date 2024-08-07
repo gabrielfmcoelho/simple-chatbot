@@ -1,20 +1,28 @@
 type PageRoutesType = {
-  title: string
+  title: string;
   items: {
-    title: string
-    href: string
-    icon?: string
-  }[]
-}
+    title: string;
+    href: string;
+    icon?: string;
+  }[];
+};
 
-export const page_routes : PageRoutesType[] = [
+export const page_routes: PageRoutesType[] = [
   {
     title: "Dashboards",
     items: [
-      { title: "E-commerce", href: "/ecommerce", icon: "ShoppingBag" },
-      { title: "CRM", href: "/crm", icon: "BarChart" },
-      { title: "Analytics", href: "/analytics", icon: "Gauge" },
-      { title: "Project Management", href: "/project-management", icon: "FolderDot" },
+      {
+        title: "E-commerce",
+        href: "/dashboard/ecommerce",
+        icon: "ShoppingBag",
+      },
+      { title: "CRM", href: "/dashboard//crm", icon: "BarChart" },
+      { title: "Analytics", href: "/dashboard//analytics", icon: "Gauge" },
+      {
+        title: "Project Management",
+        href: "/project-management",
+        icon: "FolderDot",
+      },
       { title: "Cyripto", href: "/", icon: "WalletMinimal" },
       { title: "Hospital", href: "/", icon: "SquareActivity" },
       { title: "School", href: "/", icon: "GraduationCap" },
