@@ -16,6 +16,7 @@ const nextConfig = {
       ],
     };
   }, */
+  assetPrefix: "https://dashboard.shadcnuikit.com",
 };
 
 export default nextConfig;
