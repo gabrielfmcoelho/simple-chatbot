@@ -35,7 +35,7 @@ export const page_routes: PageRoutesType[] = [
     title: "Apps",
     items: [
       { title: "Chats", href: "/dashboard/apps/chat", icon: "MessageSquare" },
-      { title: "Email", href: "/dashboard/apps/email", icon: "Mail" },
+      { title: "Mail", href: "/dashboard/apps/mail", icon: "Mail" },
       { title: "Kanban", href: "/dashboard/apps/kanban", icon: "SquareKanban" },
       { title: "Todo List", href: "/dashboard/apps/todo", icon: "SquareCheck" },
       { title: "Notes", href: "/dashboard/apps/notes", icon: "StickyNote" },
