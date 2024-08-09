@@ -17,7 +17,11 @@ export const page_routes: PageRoutesType[] = [
         icon: "ShoppingBag",
       },
       { title: "CRM", href: "/dashboard/crm", icon: "BarChart" },
-      { title: "Analytics", href: "/dashboard/analytics", icon: "Gauge" },
+      {
+        title: "Analytics",
+        href: "/dashboard/website-analytics",
+        icon: "Gauge",
+      },
       {
         title: "Project Management",
         href: "/dashboard/project-management",

@@ -25,7 +25,9 @@ import { TotalEarningChart } from "@/components/dashboard/analytics/total-earnin
 import { MonthlyCampaignState } from "@/components/dashboard/analytics/monthly-campaign-state";
 
 export const metadata: Metadata = {
-  title: "Analytics Dashboard - Shadcn UI Kit",
+  title: "Website Analytics Dashboard - Shadcn UI Kit",
+  description:
+    "It is a dashboard designed to view and manage website statistics. It includes customizable components and more.",
 };
 
 export default function Page() {

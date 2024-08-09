@@ -26,7 +26,8 @@ import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Ecommerce Dashboard - Shadcn UI Kit",
-  description: "...",
+  description:
+    "It is an admin panel designed to manage e-commerce projects. It includes customizable components to suit your needs.",
 };
 
 export default function Page() {

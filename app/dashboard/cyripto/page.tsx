@@ -23,6 +23,8 @@ import CoinBuySell from "./coin-buy-sell";
 
 export const metadata: Metadata = {
   title: "Cyripto Dashboard - Shadcn UI Kit",
+  description:
+    "It is an admin panel designed for cryptocurrency management and tracking, passbook operations and virtual currency portfolio management. Includes customizable components and more.",
 };
 
 export default function Page() {
