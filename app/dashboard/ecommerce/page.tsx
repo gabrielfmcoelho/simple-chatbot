@@ -1,13 +1,28 @@
 import type { Metadata } from "next";
 import { Star } from "lucide-react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { ExportButton } from "@/components/CardActionMenus";
 
 import RecentOrders from "@/components/dashboard/ecommerce/recent-orders";
 import BestSellingProductList from "@/components/dashboard/ecommerce/best-selling-product-list";
-import { VisitBySourceChart } from "@/components/dashboard/ecommerce/charts";
+import {
+  CustomersChart,
+  ReturningRateChart,
+  RevenueChart,
+  SalesChart,
+  TotalRevenueChart,
+  VisitBySourceChart,
+} from "@/components/dashboard/ecommerce/charts";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Ecommerce Dashboard - Shadcn UI Kit",
@@ -24,7 +39,7 @@ export default function Page() {
           <Button>Download</Button>
         </div>
       </div> */}
-      {/* <div className="grid grid-cols-12 gap-4">
+      <div className="grid grid-cols-12 gap-4">
         <Card className="sm:col-span-3">
           <CardHeader className="pb-3">
             <CardTitle>Congratulations John! 🎉</CardTitle>
@@ -82,8 +97,8 @@ export default function Page() {
             </div>
           </CardContent>
         </Card>
-      </div> */}
-      {/* <div className="mt-4 grid grid-cols-8 gap-4">
+      </div>
+      <div className="mt-4 grid grid-cols-8 gap-4">
         <Card className="sm:col-span-5">
           <CardHeader className="pb-3">
             <CardTitle className="flex justify-between text-base font-normal">
@@ -130,7 +145,7 @@ export default function Page() {
             <ReturningRateChart />
           </CardContent>
         </Card>
-      </div> */}
+      </div>
 
       <div className="mt-4 grid grid-cols-12 gap-4">
         <Card className="sm:col-span-7">
