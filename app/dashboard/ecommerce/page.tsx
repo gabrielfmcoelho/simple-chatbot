@@ -1,29 +1,13 @@
 import type { Metadata } from "next";
 import { Star } from "lucide-react";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import ExportButton from "@/components/CardActionMenus";
-import { Badge } from "@/components/ui/badge";
+import { ExportButton } from "@/components/CardActionMenus";
 
 import RecentOrders from "@/components/dashboard/ecommerce/recent-orders";
-import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
 import BestSellingProductList from "@/components/dashboard/ecommerce/best-selling-product-list";
-import {
-  CustomersChart,
-  ReturningRateChart,
-  RevenueChart,
-  SalesChart,
-  TotalRevenueChart,
-  VisitBySourceChart,
-} from "@/components/dashboard/ecommerce/charts";
+import { VisitBySourceChart } from "@/components/dashboard/ecommerce/charts";
 
 export const metadata: Metadata = {
   title: "Ecommerce Dashboard - Shadcn UI Kit",
