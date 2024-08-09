@@ -18,7 +18,7 @@ export const page_routes: PageRoutesType[] = [
       },
       { title: "CRM", href: "/dashboard/crm", icon: "BarChart" },
       {
-        title: "Analytics",
+        title: "Website Analytics",
         href: "/dashboard/website-analytics",
         icon: "Gauge",
       },
