@@ -26,7 +26,6 @@ import { MonthlyCampaignState } from "@/components/dashboard/analytics/monthly-c
 
 export const metadata: Metadata = {
   title: "Analytics Dashboard - Shadcn UI Kit",
-  description: "...",
 };
 
 export default function Page() {

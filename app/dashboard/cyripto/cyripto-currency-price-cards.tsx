@@ -46,14 +46,14 @@ export default function CyriptoCurrencyPriceCards() {
     <Marquee autoFill pauseOnHover gradient gradientWidth={100}>
       {prices.map((item) => (
         <Link key={item.id} href="#">
-          <Card className="mx-2 text-sm hover:border-primary">
+          <Card className="mx-2 text-sm hover:border-primary/30">
             <CardContent className="flex items-center gap-4 p-3">
               <div>
                 <div className="mb-1 flex items-center">
                   <ChevronUp className="h-5 w-5 text-green-700" />{" "}
                   {item.changed}
                 </div>
-                <div>{item.price}</div>
+                <div className="!text-base font-bold">{item.price}</div>
               </div>
               <img
                 className="h-12 w-12 rounded-full bg-muted p-2"

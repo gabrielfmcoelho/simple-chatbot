@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   Card,
   CardHeader,
@@ -5,117 +6,74 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
-import {
-  Table,
-  TableHeader,
-  TableRow,
-  TableHead,
-  TableBody,
-  TableCell,
-} from "@/components/ui/table";
 import CyriptoCurrencyPriceCards from "./cyripto-currency-price-cards";
+import DigitalWallets from "./digital-wallets";
+import Link from "next/link";
+import { RecentActivities } from "./recent-activities";
+import { BalanceSummeryChart } from "./balance-summary";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import CoinBuySell from "./coin-buy-sell";
+
+export const metadata: Metadata = {
+  title: "Cyripto Dashboard - Shadcn UI Kit",
+};
 
 export default function Page() {
   return (
     <>
-      <div className="grid grid-cols-6 gap-4">
-        <div className="col-span-6">
+      <div className="grid grid-cols-7 gap-4">
+        <div className="col-span-7">
           <CyriptoCurrencyPriceCards />
         </div>
-        <Card className="col-span-1 md:col-span-2 lg:col-span-3">
+        <Card className="col-span-3">
           <CardHeader>
-            <CardTitle>Cryptocurrency Prices</CardTitle>
-            <CardDescription>
-              Current prices and performance of the top cryptocurrencies.
-            </CardDescription>
+            <CardTitle>Overview</CardTitle>
+            <CardDescription>Available balance in USD</CardDescription>
           </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Cryptocurrency</TableHead>
-                  <TableHead>Price</TableHead>
-                  <TableHead>24h Change</TableHead>
-                  <TableHead>Market Cap</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableCell>
-                    <div className="flex items-center gap-2">
-                      <img
-                        src="/placeholder.svg"
-                        alt="Bitcoin"
-                        className="h-6 w-6"
-                        width="24"
-                        height="24"
-                        style={{ aspectRatio: "24/24", objectFit: "cover" }}
-                      />
-                      <span>Bitcoin (BTC)</span>
-                    </div>
-                  </TableCell>
-                  <TableCell>$56,789.00</TableCell>
-                  <TableCell className="text-green-500">+2.3%</TableCell>
-                  <TableCell>$1.2T</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>
-                    <div className="flex items-center gap-2">
-                      <img
-                        src="/placeholder.svg"
-                        alt="Ethereum"
-                        className="h-6 w-6"
-                        width="24"
-                        height="24"
-                        style={{ aspectRatio: "24/24", objectFit: "cover" }}
-                      />
-                      <span>Ethereum (ETH)</span>
-                    </div>
-                  </TableCell>
-                  <TableCell>$1,789.00</TableCell>
-                  <TableCell className="text-red-500">-1.5%</TableCell>
-                  <TableCell>$210B</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>
-                    <div className="flex items-center gap-2">
-                      <img
-                        src="/placeholder.svg"
-                        alt="Litecoin"
-                        className="h-6 w-6"
-                        width="24"
-                        height="24"
-                        style={{ aspectRatio: "24/24", objectFit: "cover" }}
-                      />
-                      <span>Litecoin (LTC)</span>
-                    </div>
-                  </TableCell>
-                  <TableCell>$234.00</TableCell>
-                  <TableCell className="text-green-500">+0.7%</TableCell>
-                  <TableCell>$15.6B</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>
-                    <div className="flex items-center gap-2">
-                      <img
-                        src="/placeholder.svg"
-                        alt="Ripple"
-                        className="h-6 w-6"
-                        width="24"
-                        height="24"
-                        style={{ aspectRatio: "24/24", objectFit: "cover" }}
-                      />
-                      <span>Ripple (XRP)</span>
-                    </div>
-                  </TableCell>
-                  <TableCell>$0.56</TableCell>
-                  <TableCell className="text-red-500">-3.2%</TableCell>
-                  <TableCell>$25.3B</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
+          <CardContent className="flex flex-col gap-4">
+            <div className="text-3xl font-bold">$179,850.950</div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex flex-col gap-1 rounded-lg bg-muted px-4 py-3">
+                <span>Wallets</span>
+                <span className="text-2xl">10</span>
+              </div>
+              <div className="flex flex-col gap-1 rounded-lg bg-muted px-4 py-3">
+                <span>Transactions</span>
+                <span className="text-2xl">34,405</span>
+              </div>
+            </div>
+            <div className="text-sm italic text-muted-foreground">
+              Last activity at 19 Nov, 2025
+            </div>
           </CardContent>
         </Card>
+        <div className="col-span-2">
+          <div className="mb-4 flex items-center justify-between">
+            <span className="font-semibold">Digital Wallets</span>
+            <Link href="#" className="text-sm">
+              View All
+            </Link>
+          </div>
+          <div className="flex flex-col gap-4">
+            <DigitalWallets />
+          </div>
+        </div>
+        <div className="col-span-2">
+          <CoinBuySell />
+        </div>
+        <div className="col-span-2">
+          <RecentActivities />
+        </div>
+        <div className="col-span-5">
+          <BalanceSummeryChart />
+        </div>
       </div>
     </>
   );
