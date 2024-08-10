@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Select,
@@ -78,7 +78,12 @@ export default function CoinBuySell() {
   return (
     <>
       <Card>
-        <CardContent className="p-4">
+        <CardHeader>
+          <CardTitle className="flex justify-between text-base">
+            Trading
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
           <Tabs defaultValue="buy" onValueChange={setTransactionType}>
             <TabsList className="mb-4 w-full">
               <TabsTrigger className="w-full" value="buy">

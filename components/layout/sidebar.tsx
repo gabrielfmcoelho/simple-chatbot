@@ -4,6 +4,14 @@ import Link from "next/link";
 import { page_routes } from "@/lib/routes-config";
 import Anchor from "../anchor";
 import Logo from "./logo";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
+import { Button } from "../ui/button";
 
 type SidebarNavLinkProps = {
   item: {
@@ -32,8 +40,8 @@ export default function Sidebar() {
 
   return (
     <div className="fixed h-screen">
-      <Logo />
       <ScrollArea className="h-full w-[280px] border-r px-4">
+        <Logo />
         {page_routes.map((route) => (
           <>
             <div className="px-2 py-4 text-sm font-medium">{route.title}</div>
@@ -44,6 +52,21 @@ export default function Sidebar() {
             </nav>
           </>
         ))}
+        <div className="mt-10">
+          <Card>
+            <CardHeader>
+              <CardTitle>Get Shadcn UI Kit</CardTitle>
+              <CardDescription>
+                Unlock all features and get unlimited lifetime access.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button size="sm" className="w-full" asChild>
+                <Link href="/#pricing">Buy Now</Link>
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
       </ScrollArea>
     </div>
   );
