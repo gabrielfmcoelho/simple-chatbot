@@ -23,6 +23,8 @@ import { SupportTrackerChart } from "@/components/dashboard/analytics/support-tr
 import { SalesByCountries } from "@/components/dashboard/analytics/sales-by-countries";
 import { TotalEarningChart } from "@/components/dashboard/analytics/total-earning-chart";
 import { MonthlyCampaignState } from "@/components/dashboard/analytics/monthly-campaign-state";
+import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Website Analytics Dashboard - Shadcn UI Kit",
@@ -32,7 +34,16 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <>
+    <div className="container m-auto">
+      <div className="mb-4 flex items-center justify-between space-y-2">
+        <h1 className="text-2xl font-bold tracking-tight">
+          Website Analytics Dashboard
+        </h1>
+        <div className="flex items-center space-x-2">
+          <CalendarDateRangePicker />
+          <Button>Download</Button>
+        </div>
+      </div>
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-4">
           <Card className="h-full">
@@ -311,6 +322,6 @@ export default function Page() {
           </Card>
         </div>
       </div>
-    </>
+    </div>
   );
 }

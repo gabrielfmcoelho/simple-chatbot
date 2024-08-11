@@ -20,6 +20,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import CoinBuySell from "./coin-buy-sell";
+import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Cyripto Dashboard - Shadcn UI Kit",
@@ -29,7 +31,14 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <>
+    <div className="container m-auto">
+      <div className="mb-4 flex items-center justify-between space-y-2">
+        <h1 className="text-2xl font-bold tracking-tight">Cyripto Dashboard</h1>
+        <div className="flex items-center space-x-2">
+          <CalendarDateRangePicker />
+          <Button>Download</Button>
+        </div>
+      </div>
       <div className="grid grid-cols-7 gap-4">
         <div className="col-span-7">
           <CyriptoCurrencyPriceCards />
@@ -77,6 +86,6 @@ export default function Page() {
           <BalanceSummeryChart />
         </div>
       </div>
-    </>
+    </div>
   );
 }

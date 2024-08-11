@@ -23,6 +23,7 @@ import {
 } from "@/components/dashboard/ecommerce/charts";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
 
 export const metadata: Metadata = {
   title: "Ecommerce Dashboard - Shadcn UI Kit",
@@ -32,27 +33,29 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <>
-      {/* <div className="mb-4 flex items-center justify-between space-y-2">
-        <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+    <div className="container mx-auto">
+      <div className="mb-4 flex items-center justify-between space-y-2">
+        <h1 className="text-2xl font-bold tracking-tight">
+          Ecommerce Dashboard
+        </h1>
         <div className="flex items-center space-x-2">
           <CalendarDateRangePicker />
           <Button>Download</Button>
         </div>
-      </div> */}
+      </div>
       <div className="grid grid-cols-12 gap-4">
-        <Card className="sm:col-span-3">
+        <Card className="sm:col-span-6">
           <CardHeader className="pb-3">
             <CardTitle>Congratulations John! 🎉</CardTitle>
             <CardDescription>Best seller of the month</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="mb-4 mt-4 text-2xl font-bold">$15,231.89</div>
-            <Button className="w-full">View Sales</Button>
+            <Button>View Sales</Button>
           </CardContent>
         </Card>
 
-        <Card className="sm:col-span-3">
+        <Card className="sm:col-span-2">
           <CardHeader className="pb-3">
             <CardTitle className="text-base font-normal">Revenue</CardTitle>
           </CardHeader>
@@ -67,7 +70,7 @@ export default function Page() {
           </CardContent>
         </Card>
 
-        <Card className="sm:col-span-3">
+        <Card className="sm:col-span-2">
           <CardHeader className="pb-3">
             <CardTitle className="text-base font-normal">Sales</CardTitle>
           </CardHeader>
@@ -82,7 +85,7 @@ export default function Page() {
           </CardContent>
         </Card>
 
-        <Card className="sm:col-span-3">
+        <Card className="sm:col-span-2">
           <CardHeader className="pb-3">
             <CardTitle className="text-base font-normal">
               New Customers
@@ -282,6 +285,6 @@ export default function Page() {
           </CardContent>
         </Card>
       </div>
-    </>
+    </div>
   );
 }
