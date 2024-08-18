@@ -9,7 +9,7 @@ export default function DigitalWallets() {
             <div className="mb-2 flex items-center gap-2">
               <img
                 className="h-6 w-6 object-contain"
-                src="/cyripto-icons/bitcoin.svg"
+                src={process.env.BASE_URL + "/cyripto-icons/bitcoin.svg"}
               />
               <span>Bitcoin Wallet</span>
             </div>
