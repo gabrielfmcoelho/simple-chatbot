@@ -1,5 +1,3 @@
-export default function Page(){
-  return <>
-    Analysis dashboard page
-  </>
+export default function Page() {
+  return <>Analysis dashboard page</>;
 }
