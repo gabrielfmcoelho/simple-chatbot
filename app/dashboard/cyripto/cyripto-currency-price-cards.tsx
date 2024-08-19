@@ -9,36 +9,36 @@ const prices = [
     icon: "bitcoin",
     name: "Bitcoin",
     price: "$65,123",
-    changed: "4% (30 days)",
+    changed: "4% (30 days)"
   },
   {
     id: 2,
     icon: "ethereum",
     name: "Ethereum",
     price: "$35,123",
-    changed: "48% (30 days)",
+    changed: "48% (30 days)"
   },
   {
     id: 3,
     icon: "avalanche",
     name: "Avalanche",
     price: "$5,123",
-    changed: "28% (30 days)",
+    changed: "28% (30 days)"
   },
   {
     id: 4,
     icon: "bnb-bnb",
     name: "Bnb (Bnb)",
     price: "$2,123",
-    changed: "34% (30 days)",
+    changed: "34% (30 days)"
   },
   {
     id: 5,
     icon: "dogecoin",
     name: "Dogecoin",
     price: "$2,823",
-    changed: "30% (30 days)",
-  },
+    changed: "30% (30 days)"
+  }
 ];
 
 export default function CyriptoCurrencyPriceCards() {
@@ -50,11 +50,11 @@ export default function CyriptoCurrencyPriceCards() {
             <CardContent className="flex items-center gap-4 p-3">
               <div>
                 <div className="mb-1 flex items-center">
-                  <ChevronUp className="h-5 w-5 text-green-700" />{" "}
-                  {item.changed}
+                  <ChevronUp className="h-5 w-5 text-green-700" /> {item.changed}
                 </div>
                 <div className="!text-base font-bold">{item.price}</div>
               </div>
+              {process.env.DASHBOARD_BASE_URL}
               <img
                 className="h-12 w-12 rounded-full bg-muted p-2"
                 src={`${process.env.DASHBOARD_BASE_URL}/cyripto-icons/${item.icon}.svg`}

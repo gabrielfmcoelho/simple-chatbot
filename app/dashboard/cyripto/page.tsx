@@ -1,11 +1,5 @@
 import type { Metadata } from "next";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import CyriptoCurrencyPriceCards from "./cyripto-currency-price-cards";
 import DigitalWallets from "./digital-wallets";
 import Link from "next/link";
@@ -17,7 +11,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import CoinBuySell from "./coin-buy-sell";
 import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
@@ -26,12 +20,12 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Cyripto Dashboard - Shadcn UI Kit",
   description:
-    "It is an admin panel designed for cryptocurrency management and tracking, passbook operations and virtual currency portfolio management. Includes customizable components and more.",
+    "Cyripto dashboard template is a comprehensive and intuitive interface to effectively monitor cryptocurrency prices, market trends and portfolio performance."
 };
 
 export default function Page() {
   return (
-    <div className="container m-auto">
+    <>
       <div className="mb-4 flex items-center justify-between space-y-2">
         <h1 className="text-2xl font-bold tracking-tight">Cyripto Dashboard</h1>
         <div className="flex items-center space-x-2">
@@ -86,6 +80,6 @@ export default function Page() {
           <BalanceSummeryChart />
         </div>
       </div>
-    </div>
+    </>
   );
 }

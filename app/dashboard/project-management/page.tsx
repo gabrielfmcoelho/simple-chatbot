@@ -1,10 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   ArrowDownLeft,
   ArrowDownRight,
@@ -12,13 +6,29 @@ import {
   Award,
   Briefcase,
   DollarSign,
-  FileClock,
+  FileClock
 } from "lucide-react";
 import { OverviewChart } from "./overview-chart";
+import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
+import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Project Management Dashboard - Shadcn UI Kit",
+  description:
+    "The project management dashboard template provides a powerful and intuitive interface for tracking tasks, deadlines, and team progress to ensure project success."
+};
 
 export default function Page() {
   return (
     <>
+      <div className="mb-4 flex items-center justify-between space-y-2">
+        <h1 className="text-2xl font-bold tracking-tight">Project Dashboard</h1>
+        <div className="flex items-center space-x-2">
+          <CalendarDateRangePicker />
+          <Button>Download</Button>
+        </div>
+      </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -27,9 +37,7 @@ export default function Page() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">$45,231.89</div>
-            <p className="text-xs text-muted-foreground">
-              +20.1% from last month
-            </p>
+            <p className="text-xs text-muted-foreground">+20.1% from last month</p>
           </CardContent>
         </Card>
         <Card>
@@ -39,9 +47,7 @@ export default function Page() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">1.423</div>
-            <p className="text-xs text-muted-foreground">
-              +5.02 % from last month
-            </p>
+            <p className="text-xs text-muted-foreground">+5.02 % from last month</p>
           </CardContent>
         </Card>
         <Card>
@@ -51,9 +57,7 @@ export default function Page() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">3,423</div>
-            <p className="text-xs text-muted-foreground">
-              -3.58 % from last month
-            </p>
+            <p className="text-xs text-muted-foreground">-3.58 % from last month</p>
           </CardContent>
         </Card>
         <Card>
@@ -63,9 +67,7 @@ export default function Page() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">168h 40m</div>
-            <p className="text-xs text-muted-foreground">
-              +10.35 % from last month
-            </p>
+            <p className="text-xs text-muted-foreground">+10.35 % from last month</p>
           </CardContent>
         </Card>
         {/*  */}

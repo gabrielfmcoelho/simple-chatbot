@@ -13,7 +13,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
+  CommandSeparator
 } from "@/components/ui/command";
 import { useRouter } from "next/navigation";
 
@@ -49,8 +49,7 @@ export default function Search() {
         onSelect={() => {
           setOpen(false);
           router.push(item.href);
-        }}
-      >
+        }}>
         {item.icon && <LucideIcon className="me-2 !h-4 !w-4" />}
         <span>{item.title}</span>
       </CommandItem>
@@ -77,14 +76,14 @@ export default function Search() {
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           {page_routes.map((route) => (
-            <>
+            <React.Fragment key={route.title}>
               <CommandGroup heading={route.title}>
                 {route.items.map((item, key) => (
                   <CommandItemComponent key={key} item={item} />
                 ))}
               </CommandGroup>
               <CommandSeparator />
-            </>
+            </React.Fragment>
           ))}
         </CommandList>
       </CommandDialog>

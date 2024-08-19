@@ -14,31 +14,26 @@ export const page_routes: PageRoutesType[] = [
       {
         title: "Default",
         href: "/dashboard/default",
-        icon: "PieChart",
+        icon: "PieChart"
       },
       {
         title: "E-commerce",
         href: "/dashboard/ecommerce",
-        icon: "ShoppingBag",
+        icon: "ShoppingBag"
       },
       { title: "CRM", href: "/dashboard/crm", icon: "BarChart" },
       {
         title: "Website Analytics",
         href: "/dashboard/website-analytics",
-        icon: "Gauge",
+        icon: "Gauge"
       },
       {
         title: "Project Management",
         href: "/dashboard/project-management",
-        icon: "FolderDot",
+        icon: "FolderDot"
       },
-      { title: "Cyripto", href: "/dashboard/cyripto", icon: "WalletMinimal" },
-      {
-        title: "Hospital",
-        href: "/dashboard/hospital",
-        icon: "SquareActivity",
-      },
-    ],
+      { title: "Cyripto", href: "/dashboard/cyripto", icon: "WalletMinimal" }
+    ]
   },
   {
     title: "Apps",
@@ -48,8 +43,8 @@ export const page_routes: PageRoutesType[] = [
       { title: "Kanban", href: "/dashboard/apps/kanban", icon: "SquareKanban" },
       { title: "Todo List", href: "/dashboard/apps/todo", icon: "SquareCheck" },
       { title: "Notes", href: "/dashboard/apps/notes", icon: "StickyNote" },
-      { title: "Calendar", href: "/dashboard/apps/calendar", icon: "Calendar" },
-    ],
+      { title: "Calendar", href: "/dashboard/apps/calendar", icon: "Calendar" }
+    ]
   },
   {
     title: "Pages",
@@ -63,7 +58,7 @@ export const page_routes: PageRoutesType[] = [
       { title: "Invoices", href: "/", icon: "Scroll" },
       { title: "Blog", href: "/", icon: "Rss" },
       { title: "Pricing", href: "/", icon: "Gem" },
-      { title: "Help Center", href: "/", icon: "BadgeHelp" },
-    ],
-  },
+      { title: "Help Center", href: "/", icon: "BadgeHelp" }
+    ]
+  }
 ];

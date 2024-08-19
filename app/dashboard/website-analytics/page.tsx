@@ -1,11 +1,5 @@
 import type { Metadata } from "next";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AverageDailySalesChart } from "@/components/dashboard/analytics/average-daily-sales";
 import { Badge } from "@/components/ui/badge";
 import { EarningReportsChart } from "@/components/dashboard/analytics/earning-reports-chart";
@@ -16,7 +10,7 @@ import {
   DollarSignIcon,
   HandCoins,
   MessageCircleReply,
-  Ticket,
+  Ticket
 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { SupportTrackerChart } from "@/components/dashboard/analytics/support-tracker-chart";
@@ -29,16 +23,14 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Website Analytics Dashboard - Shadcn UI Kit",
   description:
-    "It is a dashboard designed to view and manage website statistics. It includes customizable components and more.",
+    "Website analytics dashboard template offers an efficient and flexible tool that allows to track websites traffic data, user interactions and performance analytics in detail with a modern, user-friendly and responsive interface."
 };
 
 export default function Page() {
   return (
-    <div className="container m-auto">
+    <>
       <div className="mb-4 flex items-center justify-between space-y-2">
-        <h1 className="text-2xl font-bold tracking-tight">
-          Website Analytics Dashboard
-        </h1>
+        <h1 className="text-2xl font-bold tracking-tight">Website Analytics Dashboard</h1>
         <div className="flex items-center space-x-2">
           <CalendarDateRangePicker />
           <Button>Download</Button>
@@ -54,39 +46,27 @@ export default function Page() {
             <CardContent>
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex items-center gap-3 text-sm">
-                  <div className="w-12 rounded-lg bg-muted px-2 py-1 text-center">
-                    432
-                  </div>
+                  <div className="w-12 rounded-lg bg-muted px-2 py-1 text-center">432</div>
                   <span>Direct</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
-                  <div className="w-12 rounded-lg bg-muted px-2 py-1 text-center">
-                    216
-                  </div>
+                  <div className="w-12 rounded-lg bg-muted px-2 py-1 text-center">216</div>
                   <span>Organic</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
-                  <div className="w-12 rounded-lg bg-muted px-2 py-1 text-center">
-                    29%
-                  </div>
+                  <div className="w-12 rounded-lg bg-muted px-2 py-1 text-center">29%</div>
                   <span>Sessions</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
-                  <div className="w-12 rounded-lg bg-muted px-2 py-1 text-center">
-                    2.3K
-                  </div>
+                  <div className="w-12 rounded-lg bg-muted px-2 py-1 text-center">2.3K</div>
                   <span>Page Views</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
-                  <div className="w-12 rounded-lg bg-muted px-2 py-1 text-center">
-                    1.6K
-                  </div>
+                  <div className="w-12 rounded-lg bg-muted px-2 py-1 text-center">1.6K</div>
                   <span>Leads</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
-                  <div className="w-12 rounded-lg bg-muted px-2 py-1 text-center">
-                    8%
-                  </div>
+                  <div className="w-12 rounded-lg bg-muted px-2 py-1 text-center">8%</div>
                   <span>Conversions</span>
                 </div>
               </div>
@@ -115,27 +95,17 @@ export default function Page() {
               <div className="mb-4 text-2xl font-bold">$42.5k</div>
               <div className="grid grid-cols-2 gap-4 divide-x">
                 <div className="flex items-center gap-3 text-sm">
-                  <div className="w-12 rounded-lg bg-muted px-2 py-1 text-center">
-                    62.2%
-                  </div>
+                  <div className="w-12 rounded-lg bg-muted px-2 py-1 text-center">62.2%</div>
                   <span>Orders</span>
                 </div>
                 <div className="flex items-center justify-end gap-3 text-sm">
-                  <div className="w-12 rounded-lg bg-muted px-2 py-1 text-center">
-                    25.5%
-                  </div>
+                  <div className="w-12 rounded-lg bg-muted px-2 py-1 text-center">25.5%</div>
                   <span>Visits</span>
                 </div>
               </div>
               <div className="mt-4 flex overflow-hidden rounded-lg">
-                <span
-                  className="h-4 bg-primary"
-                  style={{ width: "70%" }}
-                ></span>
-                <span
-                  className="h-4 bg-indigo-500"
-                  style={{ width: "30%" }}
-                ></span>
+                <span className="h-4 bg-primary" style={{ width: "70%" }}></span>
+                <span className="h-4 bg-indigo-500" style={{ width: "30%" }}></span>
               </div>
             </CardContent>
           </Card>
@@ -209,12 +179,8 @@ export default function Page() {
                 <div>
                   <div className="flex flex-col gap-3">
                     <div className="mb-5">
-                      <div className="mb-2 text-2xl font-bold lg:text-4xl">
-                        65
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        Tickets
-                      </div>
+                      <div className="mb-2 text-2xl font-bold lg:text-4xl">65</div>
+                      <div className="text-sm text-muted-foreground">Tickets</div>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted">
@@ -240,9 +206,7 @@ export default function Page() {
                       </div>
                       <div>
                         <div>Response Time</div>
-                        <div className="text-sm text-muted-foreground">
-                          1 Day
-                        </div>
+                        <div className="text-sm text-muted-foreground">1 Day</div>
                       </div>
                     </div>
                   </div>
@@ -287,9 +251,7 @@ export default function Page() {
                   </div>
                   <div>
                     <div>Total Revenue</div>
-                    <div className="text-sm text-muted-foreground">
-                      Client Payment
-                    </div>
+                    <div className="text-sm text-muted-foreground">Client Payment</div>
                   </div>
                   <div className="ms-auto text-green-600">+$126</div>
                 </div>
@@ -311,9 +273,7 @@ export default function Page() {
         <div className="col-span-4">
           <Card className="h-full">
             <CardHeader>
-              <CardTitle className="text-base">
-                Monthly Campaign State
-              </CardTitle>
+              <CardTitle className="text-base">Monthly Campaign State</CardTitle>
               <CardDescription>8.52k Social Visiters</CardDescription>
             </CardHeader>
             <CardContent>
@@ -322,6 +282,6 @@ export default function Page() {
           </Card>
         </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
 import { Star } from "lucide-react";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { ExportButton } from "@/components/CardActionMenus";
 
@@ -19,7 +13,7 @@ import {
   RevenueChart,
   SalesChart,
   TotalRevenueChart,
-  VisitBySourceChart,
+  VisitBySourceChart
 } from "@/components/dashboard/ecommerce/charts";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -28,16 +22,14 @@ import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range
 export const metadata: Metadata = {
   title: "Ecommerce Dashboard - Shadcn UI Kit",
   description:
-    "It is an admin panel designed to manage e-commerce projects. It includes customizable components to suit your needs.",
+    "The eCommerce dashboard template provides a detailed and user-friendly interface for monitoring sales, inventory, and customer data efficiently."
 };
 
 export default function Page() {
   return (
-    <div className="container mx-auto">
+    <>
       <div className="mb-4 flex items-center justify-between space-y-2">
-        <h1 className="text-2xl font-bold tracking-tight">
-          Ecommerce Dashboard
-        </h1>
+        <h1 className="text-2xl font-bold tracking-tight">Ecommerce Dashboard</h1>
         <div className="flex items-center space-x-2">
           <CalendarDateRangePicker />
           <Button>Download</Button>
@@ -61,9 +53,7 @@ export default function Page() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">$15,231.89</div>
-            <p className="text-xs text-muted-foreground">
-              +20.1% from last month
-            </p>
+            <p className="text-xs text-muted-foreground">+20.1% from last month</p>
             <div className="pt-8">
               <RevenueChart />
             </div>
@@ -76,9 +66,7 @@ export default function Page() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">20K</div>
-            <p className="text-xs text-muted-foreground">
-              +20.1% from last month
-            </p>
+            <p className="text-xs text-muted-foreground">+20.1% from last month</p>
             <div className="pt-8">
               <SalesChart />
             </div>
@@ -87,15 +75,11 @@ export default function Page() {
 
         <Card className="sm:col-span-2">
           <CardHeader className="pb-3">
-            <CardTitle className="text-base font-normal">
-              New Customers
-            </CardTitle>
+            <CardTitle className="text-base font-normal">New Customers</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">1.3K</div>
-            <p className="text-xs text-muted-foreground">
-              +10.8% from last month
-            </p>
+            <p className="text-xs text-muted-foreground">+10.8% from last month</p>
             <div className="pt-8">
               <CustomersChart />
             </div>
@@ -115,15 +99,11 @@ export default function Page() {
               <div className="flex gap-8 rounded-lg border p-4">
                 <button className="flex flex-1 flex-col justify-center gap-1 text-left">
                   <span className="text-xs text-muted-foreground">Desktop</span>
-                  <span className="text-lg font-bold leading-none sm:text-2xl">
-                    24,828
-                  </span>
+                  <span className="text-lg font-bold leading-none sm:text-2xl">24,828</span>
                 </button>
                 <button className="flex flex-1 flex-col justify-center gap-1 text-left">
                   <span className="text-xs text-muted-foreground">Mobile</span>
-                  <span className="text-lg font-bold leading-none sm:text-2xl">
-                    25,010
-                  </span>
+                  <span className="text-lg font-bold leading-none sm:text-2xl">25,010</span>
                 </button>
               </div>
             </div>
@@ -239,9 +219,7 @@ export default function Page() {
         </Card>
         <Card className="sm:col-span-4">
           <CardHeader className="pb-3">
-            <CardTitle className="text-base font-normal">
-              Customer Reviews
-            </CardTitle>
+            <CardTitle className="text-base font-normal">Customer Reviews</CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-8">
             <div className="flex justify-between bg-muted p-2">
@@ -285,6 +263,6 @@ export default function Page() {
           </CardContent>
         </Card>
       </div>
-    </div>
+    </>
   );
 }

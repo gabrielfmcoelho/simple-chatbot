@@ -9,7 +9,7 @@ export default function DigitalWallets() {
             <div className="mb-2 flex items-center gap-2">
               <img
                 className="h-6 w-6 object-contain"
-                src={process.env.BASE_URL + "/cyripto-icons/bitcoin.svg"}
+                src={process.env.DASHBOARD_BASE_URL + "/cyripto-icons/bitcoin.svg"}
               />
               <span>Bitcoin Wallet</span>
             </div>
@@ -23,7 +23,7 @@ export default function DigitalWallets() {
             <div className="mb-2 flex items-center gap-2">
               <img
                 className="h-6 w-6 object-contain"
-                src="/cyripto-icons/ethereum.svg"
+                src={process.env.DASHBOARD_BASE_URL + "/cyripto-icons/ethereum.svg"}
               />
               <span>Ethereum Wallet</span>
             </div>
@@ -37,7 +37,7 @@ export default function DigitalWallets() {
             <div className="mb-2 flex items-center gap-2">
               <img
                 className="h-6 w-6 object-contain"
-                src="/cyripto-icons/avalanche.svg"
+                src={process.env.DASHBOARD_BASE_URL + "/cyripto-icons/avalanche.svg"}
               />
               <span>Avalanche Wallet</span>
             </div>

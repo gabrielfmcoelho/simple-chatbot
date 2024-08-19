@@ -8,7 +8,7 @@ import GoogleAnalyticsInit from "@/components/ga";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
@@ -19,7 +19,7 @@ export default function RootLayout({
           <Sidebar />
           <div className="w-full ps-[280px]">
             <Header />
-            <main className="p-4">{children}</main>
+            <main className="container mx-auto p-4">{children}</main>
           </div>
         </div>
 
