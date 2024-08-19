@@ -23,7 +23,7 @@ export default function Page() {
   return (
     <>
       <div className="mb-4 flex items-center justify-between space-y-2">
-        <h1 className="text-2xl font-bold tracking-tight">Project Dashboard</h1>
+        <h1 className="text-2xl font-bold tracking-tight">Project Management</h1>
         <div className="flex items-center space-x-2">
           <CalendarDateRangePicker />
           <Button>Download</Button>
