@@ -7,7 +7,6 @@ config();
 const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig = {
-  distDir: "build",
   assetPrefix: isProd ? "https://dashboard.shadcnuikit.com" : undefined,
   env: {
     DASHBOARD_BASE_URL: process.env.DASHBOARD_BASE_URL
