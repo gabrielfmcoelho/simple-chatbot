@@ -2,13 +2,13 @@
 
 import * as React from "react";
 import { Label, Pie, PieChart } from "recharts";
+
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent
 } from "@/components/ui/chart";
-
 const chartData = [
   { browser: "new", tickets: 40, fill: "var(--color-new)" },
   { browser: "open", tickets: 25, fill: "var(--color-open)" }
@@ -25,7 +25,7 @@ const chartConfig = {
   }
 } satisfies ChartConfig;
 
-export function LeadsBySourceCard() {
+export function SupportTrackerChart() {
   return (
     <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[350px]">
       <PieChart>
