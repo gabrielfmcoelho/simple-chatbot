@@ -48,9 +48,9 @@ const chartConfig = {
 type ChartConfigKeys = keyof typeof chartConfig;
 
 export function LeadsBySourceCard() {
-  const totalVisitors = React.useMemo(() => {
+  /* const totalVisitors = React.useMemo(() => {
     return chartData.reduce((acc, curr) => acc + curr.leads, 0);
-  }, []);
+  }, []); */
 
   return (
     <Card className="flex flex-col">
@@ -76,7 +76,7 @@ export function LeadsBySourceCard() {
                           x={viewBox.cx}
                           y={viewBox.cy}
                           className="fill-foreground text-3xl font-bold">
-                          {totalVisitors.toLocaleString()}
+                          {/* {totalVisitors.toLocaleString()} */} 503
                         </tspan>
                         <tspan
                           x={viewBox.cx}
