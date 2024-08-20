@@ -59,7 +59,7 @@ export function LeadsBySourceCard() {
         <CardOptionsMenu />
       </CardHeader>
       <CardContent className="flex-1">
-        <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
+        {/* <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
           <PieChart>
             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
             <Pie data={chartData} dataKey="leads" nameKey="source" innerRadius={60} strokeWidth={5}>
@@ -91,7 +91,7 @@ export function LeadsBySourceCard() {
               />
             </Pie>
           </PieChart>
-        </ChartContainer>
+        </ChartContainer> */}
         <div className="flex justify-around">
           {chartData.map((item) => (
             <div className="flex flex-col" key={item.source}>
