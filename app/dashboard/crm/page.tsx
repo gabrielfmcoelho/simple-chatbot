@@ -33,7 +33,9 @@ export default function Page() {
           <ConversionRatioCard />
         </div>
         <div className="grid grid-cols-3 gap-4">
-          <LeadsBySourceCard />
+          <div>
+            <LeadsBySourceCard />
+          </div>
           <LeadsByCountryCard className="col-span-2" />
         </div>
 
