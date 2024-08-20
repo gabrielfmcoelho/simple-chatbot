@@ -6,7 +6,7 @@ import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range
 import { Button } from "@/components/ui/button";
 import { LeadsBySourceCard } from "./leads-by-source";
 import { LeadsCard } from "./leads";
-// import { LeadsByCountryCard } from "./leads-by-country";
+import { LeadsByCountryCard } from "./leads-by-country";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -27,17 +27,17 @@ export default function Page() {
       </div>
       <div className="space-y-4">
         <div className="grid grid-cols-4 gap-4">
-          {/* <TargetCard /> */}
+          <TargetCard />
           <TotalCustomersCard />
           <TotalRevenueCard />
-          {/* <ConversionRatioCard /> */}
+          <ConversionRatioCard />
         </div>
         <div className="grid grid-cols-3 gap-4">
-          {/* <LeadsBySourceCard /> */}
-          {/* <LeadsByCountryCard className="col-span-2" /> */}
+          <LeadsBySourceCard />
+          <LeadsByCountryCard className="col-span-2" />
         </div>
 
-        {/* <LeadsCard className="col-span-2" /> */}
+        <LeadsCard className="col-span-2" />
       </div>
     </>
   );
