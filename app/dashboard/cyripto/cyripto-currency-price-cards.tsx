@@ -54,7 +54,6 @@ export default function CyriptoCurrencyPriceCards() {
                 </div>
                 <div className="!text-base font-bold">{item.price}</div>
               </div>
-              {process.env.DASHBOARD_BASE_URL}
               <img
                 className="h-12 w-12 rounded-full bg-muted p-2"
                 src={`${process.env.DASHBOARD_BASE_URL}/cyripto-icons/${item.icon}.svg`}
