@@ -20,31 +20,20 @@ import {
 import { CardOptionsMenu } from "@/components/CardActionMenus";
 
 const chartData = [
-  { source: "social", leads: 275, fill: "var(--color-social)" },
-  { source: "email", leads: 200, fill: "var(--color-email)" },
-  { source: "call", leads: 287, fill: "var(--color-call)" },
-  { source: "others", leads: 173, fill: "var(--color-others)" }
+  { browser: "new", tickets: 40, fill: "var(--color-new)" },
+  { browser: "open", tickets: 25, fill: "var(--color-open)" }
 ];
 
 const chartConfig = {
-  social: {
-    label: "Social",
+  new: {
+    label: "New Tickets",
     color: "hsl(var(--chart-1))"
   },
-  email: {
-    label: "Email",
+  open: {
+    label: "Open Tickets",
     color: "hsl(var(--chart-2))"
-  },
-  call: {
-    label: "Call",
-    color: "hsl(var(--chart-3))"
-  },
-  others: {
-    label: "Others",
-    color: "hsl(var(--chart-4))"
   }
 } satisfies ChartConfig;
-
 type ChartConfigKeys = keyof typeof chartConfig;
 
 export function LeadsBySourceCard() {
@@ -55,10 +44,15 @@ export function LeadsBySourceCard() {
         <CardOptionsMenu />
       </CardHeader>
       <CardContent className="flex-1">
-        <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
+        <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[350px]">
           <PieChart>
             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-            <Pie data={chartData} dataKey="leads" nameKey="source" innerRadius={60} strokeWidth={5}>
+            <Pie
+              data={chartData}
+              dataKey="tickets"
+              nameKey="browser"
+              innerRadius={60}
+              strokeWidth={5}>
               <Label
                 content={({ viewBox }) => {
                   if (viewBox && "cx" in viewBox && "cy" in viewBox) {
@@ -72,13 +66,13 @@ export function LeadsBySourceCard() {
                           x={viewBox.cx}
                           y={viewBox.cy}
                           className="fill-foreground text-3xl font-bold">
-                          3340
+                          88%
                         </tspan>
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
                           className="fill-muted-foreground">
-                          Leads
+                          Completed
                         </tspan>
                       </text>
                     );
