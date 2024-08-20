@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/chart";
 import { CardOptionsMenu } from "@/components/CardActionMenus";
 
-/* const chartData = [
+const chartData = [
   { source: "social", leads: 275, fill: "var(--color-social)" },
   { source: "email", leads: 200, fill: "var(--color-email)" },
   { source: "call", leads: 287, fill: "var(--color-call)" },
@@ -43,9 +43,9 @@ const chartConfig = {
     label: "Others",
     color: "hsl(var(--chart-4))"
   }
-} satisfies ChartConfig; */
+} satisfies ChartConfig;
 
-/* type ChartConfigKeys = keyof typeof chartConfig; */
+type ChartConfigKeys = keyof typeof chartConfig;
 
 export function LeadsBySourceCard() {
   /* const totalVisitors = React.useMemo(() => {
@@ -92,7 +92,7 @@ export function LeadsBySourceCard() {
             </Pie>
           </PieChart>
         </ChartContainer> */}
-        {/* <div className="flex justify-around">
+        <div className="flex justify-around">
           {chartData.map((item) => (
             <div className="flex flex-col" key={item.source}>
               <div className="mb-1 flex items-center gap-2">
@@ -107,7 +107,7 @@ export function LeadsBySourceCard() {
             </div>
           ))}
           <div></div>
-        </div> */}
+        </div>
       </CardContent>
     </Card>
   );
