@@ -1,13 +1,13 @@
-import { TotalCustomersCard } from "./total-customers";
-import { TargetCard } from "./target-card";
-import { TotalRevenueCard } from "./total-revenue";
-import { ConversionRatioCard } from "./conversion-ratio";
 import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
 import { Button } from "@/components/ui/button";
-// import { LeadsBySourceCard } from "./leads-by-source";
-import { LeadsCard } from "./leads";
-import { LeadsByCountryCard } from "./leads-by-country";
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { LeadsByCountryCard } from "@/components/dashboard/crm/leads-by-country";
+import { TargetCard } from "@/components/dashboard/crm/target-card";
+import { TotalCustomersCard } from "@/components/dashboard/crm/total-customers";
+import { TotalRevenueCard } from "@/components/dashboard/crm/total-revenue";
+import { ConversionRatioCard } from "@/components/dashboard/crm/conversion-ratio";
+import { LeadsCard } from "@/components/dashboard/crm/leads";
+import { LeadsBySourceCard } from "@/components/dashboard/crm/leads-by-source";
 
 export const metadata: Metadata = {
   title: "CRM Dashboard - Shadcn UI Kit",
@@ -33,7 +33,7 @@ export default function Page() {
           <ConversionRatioCard />
         </div>
         <div className="grid grid-cols-3 gap-4">
-          {/* <LeadsBySourceCard /> */}
+          <LeadsBySourceCard />
           <LeadsByCountryCard className="col-span-2" />
         </div>
 
