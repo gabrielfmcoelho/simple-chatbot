@@ -7,7 +7,7 @@ import { TotalCustomersCard } from "@/components/dashboard/crm/total-customers";
 import { TotalRevenueCard } from "@/components/dashboard/crm/total-revenue";
 import { ConversionRatioCard } from "@/components/dashboard/crm/conversion-ratio";
 import { LeadsCard } from "@/components/dashboard/crm/leads";
-import { LeadsBySourceCard } from "@/components/dashboard/crm/leads-by-source";
+import { LeadsBySourceCard2 } from "@/components/dashboard/crm/leads-by-source";
 
 export const metadata: Metadata = {
   title: "CRM Dashboard - Shadcn UI Kit",
@@ -33,7 +33,9 @@ export default function Page() {
           <ConversionRatioCard />
         </div>
         <div className="grid grid-cols-3 gap-4">
-          <div>{/* <LeadsBySourceCard /> */}</div>
+          <div>
+            <LeadsBySourceCard2 />
+          </div>
           <LeadsByCountryCard className="col-span-2" />
         </div>
 

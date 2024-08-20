@@ -25,7 +25,7 @@ const chartConfig = {
   }
 } satisfies ChartConfig;
 
-export function LeadsBySourceCard() {
+export function LeadsBySourceCard2() {
   return (
     <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[350px]">
       <PieChart>
