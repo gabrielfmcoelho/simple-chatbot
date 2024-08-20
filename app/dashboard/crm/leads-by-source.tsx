@@ -45,7 +45,7 @@ const chartConfig = {
   }
 } satisfies ChartConfig;
 
-type ChartConfigKeys = keyof typeof chartConfig;
+/* type ChartConfigKeys = keyof typeof chartConfig; */
 
 export function LeadsBySourceCard() {
   /* const totalVisitors = React.useMemo(() => {
@@ -92,7 +92,7 @@ export function LeadsBySourceCard() {
             </Pie>
           </PieChart>
         </ChartContainer>
-        <div className="flex justify-around">
+        {/* <div className="flex justify-around">
           {chartData.map((item) => (
             <div className="flex flex-col" key={item.source}>
               <div className="mb-1 flex items-center gap-2">
@@ -107,7 +107,7 @@ export function LeadsBySourceCard() {
             </div>
           ))}
           <div></div>
-        </div>
+        </div> */}
       </CardContent>
     </Card>
   );
