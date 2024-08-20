@@ -5,7 +5,7 @@ import { ConversionRatioCard } from "./conversion-ratio";
 import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
 import { Button } from "@/components/ui/button";
 import { LeadsBySourceCard } from "./leads-by-source";
-import { LeadsCard } from "./leads";
+// import { LeadsCard } from "./leads";
 import { LeadsByCountryCard } from "./leads-by-country";
 import { Metadata } from "next";
 
@@ -37,7 +37,7 @@ export default function Page() {
           <LeadsByCountryCard className="col-span-2" />
         </div>
 
-        <LeadsCard className="col-span-2" />
+        {/* <LeadsCard className="col-span-2" /> */}
       </div>
     </>
   );
