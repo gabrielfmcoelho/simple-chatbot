@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/chart";
 import { CardOptionsMenu } from "@/components/CardActionMenus";
 
-const chartData = [
+/* const chartData = [
   { source: "social", leads: 275, fill: "var(--color-social)" },
   { source: "email", leads: 200, fill: "var(--color-email)" },
   { source: "call", leads: 287, fill: "var(--color-call)" },
@@ -43,7 +43,7 @@ const chartConfig = {
     label: "Others",
     color: "hsl(var(--chart-4))"
   }
-} satisfies ChartConfig;
+} satisfies ChartConfig; */
 
 /* type ChartConfigKeys = keyof typeof chartConfig; */
 
@@ -59,7 +59,7 @@ export function LeadsBySourceCard() {
         <CardOptionsMenu />
       </CardHeader>
       <CardContent className="flex-1">
-        <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
+        {/* <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
           <PieChart>
             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
             <Pie data={chartData} dataKey="leads" nameKey="source" innerRadius={60} strokeWidth={5}>
@@ -76,7 +76,7 @@ export function LeadsBySourceCard() {
                           x={viewBox.cx}
                           y={viewBox.cy}
                           className="fill-foreground text-3xl font-bold">
-                          {/* {totalVisitors.toLocaleString()} */} 503
+                          {totalVisitors.toLocaleString()}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
@@ -91,7 +91,7 @@ export function LeadsBySourceCard() {
               />
             </Pie>
           </PieChart>
-        </ChartContainer>
+        </ChartContainer> */}
         {/* <div className="flex justify-around">
           {chartData.map((item) => (
             <div className="flex flex-col" key={item.source}>
