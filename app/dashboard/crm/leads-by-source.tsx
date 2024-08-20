@@ -84,16 +84,16 @@ export function LeadsBySourceCard() {
         </ChartContainer>
         <div className="flex justify-around">
           {chartData.map((item) => (
-            <div className="flex flex-col" key={item.source}>
+            <div className="flex flex-col" key={item.browser}>
               <div className="mb-1 flex items-center gap-2">
                 <span
                   className="block h-2 w-2 rounded-full"
                   style={{
-                    backgroundColor: chartConfig[item.source as ChartConfigKeys]?.color
+                    backgroundColor: chartConfig[item.browser as ChartConfigKeys]?.color
                   }}></span>
-                <div>{chartConfig[item.source as ChartConfigKeys]?.label}</div>
+                <div>{chartConfig[item.browser as ChartConfigKeys]?.label}</div>
               </div>
-              <div className="text-xl font-bold">{item.leads}</div>
+              <div className="text-xl font-bold">{item.tickets}</div>
             </div>
           ))}
           <div></div>
