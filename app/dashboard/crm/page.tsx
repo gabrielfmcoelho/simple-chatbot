@@ -4,9 +4,9 @@ import { TotalRevenueCard } from "./total-revenue";
 import { ConversionRatioCard } from "./conversion-ratio";
 import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
 import { Button } from "@/components/ui/button";
-import { LeadsBySourceCard } from "./leads-by-source";
+// import { LeadsBySourceCard } from "./leads-by-source";
 // import { LeadsCard } from "./leads";
-// import { LeadsByCountryCard } from "./leads-by-country";
+import { LeadsByCountryCard } from "./leads-by-country";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -33,8 +33,8 @@ export default function Page() {
           <ConversionRatioCard />
         </div>
         <div className="grid grid-cols-3 gap-4">
-          <LeadsBySourceCard />
-          {/* <LeadsByCountryCard className="col-span-2" /> */}
+          {/* <LeadsBySourceCard /> */}
+          <LeadsByCountryCard className="col-span-2" />
         </div>
 
         {/* <LeadsCard className="col-span-2" /> */}
