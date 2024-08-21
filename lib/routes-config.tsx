@@ -50,7 +50,7 @@ export const page_routes: PageRoutesType[] = [
   {
     title: "Pages",
     items: [
-      { title: "Profile", href: "/pages/profile", icon: "ContactRound" },
+      { title: "Profile", href: "/dashboard/pages/profile", icon: "ContactRound" },
       { title: "Users List", href: "/", icon: "Users" },
       { title: "Settings", href: "/", icon: "Settings" },
       { title: "Products", href: "/", icon: "PackageSearch" },
