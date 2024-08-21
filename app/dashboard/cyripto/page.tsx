@@ -26,18 +26,18 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <div className="mb-4 flex items-center justify-between space-y-2">
+      <div className="mb-4 flex flex-col space-y-2 lg:flex-row lg:items-center lg:justify-between">
         <h1 className="text-2xl font-bold tracking-tight">Cyripto Dashboard</h1>
         <div className="flex items-center space-x-2">
           <CalendarDateRangePicker />
           <Button>Download</Button>
         </div>
       </div>
-      <div className="grid grid-cols-7 gap-4">
-        <div className="col-span-7">
+      <div className="grid gap-4 lg:grid-cols-6 xl:grid-cols-7">
+        <div className="lg:col-span-6 xl:col-span-7">
           <CyriptoCurrencyPriceCards />
         </div>
-        <Card className="col-span-3">
+        <Card className="lg:col-span-3 xl:col-span-3">
           <CardHeader>
             <CardTitle>Overview</CardTitle>
             <CardDescription>Available balance in USD</CardDescription>
@@ -59,7 +59,7 @@ export default function Page() {
             </div>
           </CardContent>
         </Card>
-        <div className="col-span-2">
+        <div className="lg:col-span-3 xl:col-span-2">
           <div className="mb-4 flex items-center justify-between">
             <span className="font-semibold">Digital Wallets</span>
             <Link href="#" className="text-sm">
@@ -70,13 +70,13 @@ export default function Page() {
             <DigitalWallets />
           </div>
         </div>
-        <div className="col-span-2">
+        <div className="lg:col-span-6 xl:col-span-2">
           <CoinBuySell />
         </div>
-        <div className="col-span-2">
+        <div className="lg:col-span-6 xl:col-span-2">
           <RecentActivities />
         </div>
-        <div className="col-span-5">
+        <div className="lg:col-span-6 xl:col-span-5">
           <BalanceSummeryChart />
         </div>
       </div>

@@ -25,15 +25,15 @@ export default function Page() {
           <Button>Download</Button>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid gap-4 lg:grid-cols-3">
         <TeamMembersCard />
         <SubscriptionsCard />
         <TotalRevenueCard />
         <ChatCard />
-        <div className="col-span-2">
+        <div className="lg:col-span-2">
           <MetricCard className="h-full" />
         </div>
-        <div className="col-span-2">
+        <div className="lg:col-span-2">
           <PaymentsCard className="h-full" />
         </div>
         <PaymentMethodCard />

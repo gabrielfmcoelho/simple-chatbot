@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <div className="mb-4 flex items-center justify-between space-y-2">
+      <div className="mb-4 flex flex-col space-y-2 lg:flex-row lg:items-center lg:justify-between">
         <h1 className="text-2xl font-bold tracking-tight">CRM Dashboard</h1>
         <div className="flex items-center space-x-2">
           <CalendarDateRangePicker />
@@ -26,15 +26,15 @@ export default function Page() {
         </div>
       </div>
       <div className="space-y-4">
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           <TargetCard />
           <TotalCustomersCard />
           <TotalRevenueCard />
           <ConversionRatioCard />
         </div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid gap-4 xl:grid-cols-3">
           <LeadBySourceCard />
-          <LeadsByCountryCard className="col-span-2" />
+          <LeadsByCountryCard className="xl:col-span-2" />
         </div>
 
         <LeadsCard className="col-span-2" />

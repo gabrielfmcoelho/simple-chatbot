@@ -15,24 +15,24 @@ type SidebarNavLinkProps = {
   };
 };
 
-export default function Sidebar() {
-  const SidebarNavLink: React.FC<SidebarNavLinkProps> = ({ item }) => {
-    // @ts-expect-error
-    const LucideIcon = icons[item.icon];
-
-    return (
-      <Anchor
-        href={item.href}
-        key={item.title + item.href}
-        activeClassName="!bg-primary text-primary-foreground">
-        {item.icon && <LucideIcon className="h-4 w-4" />}
-        {item.title}
-      </Anchor>
-    );
-  };
+export const SidebarNavLink: React.FC<SidebarNavLinkProps> = ({ item }: SidebarNavLinkProps) => {
+  // @ts-expect-error
+  const LucideIcon = icons[item.icon];
 
   return (
-    <div className="fixed h-screen">
+    <Anchor
+      href={item.href}
+      key={item.title + item.href}
+      activeClassName="!bg-primary text-primary-foreground">
+      {item.icon && <LucideIcon className="h-4 w-4" />}
+      {item.title}
+    </Anchor>
+  );
+};
+
+export default function Sidebar() {
+  return (
+    <div className="fixed hidden h-screen lg:block">
       <ScrollArea className="h-full w-[280px] border-r px-4">
         <Logo />
         {page_routes.map((route) => (

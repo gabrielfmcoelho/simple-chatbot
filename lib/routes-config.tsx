@@ -43,13 +43,14 @@ export const page_routes: PageRoutesType[] = [
       { title: "Kanban", href: "/dashboard/apps/kanban", icon: "SquareKanban" },
       { title: "Todo List", href: "/dashboard/apps/todo", icon: "SquareCheck" },
       { title: "Notes", href: "/dashboard/apps/notes", icon: "StickyNote" },
-      { title: "Calendar", href: "/dashboard/apps/calendar", icon: "Calendar" }
+      { title: "Calendar", href: "/dashboard/apps/calendar", icon: "Calendar" },
+      { title: "Api Key", href: "/dashboard/apps/api-key", icon: "Key" }
     ]
   },
   {
     title: "Pages",
     items: [
-      { title: "Profile", href: "/", icon: "ContactRound" },
+      { title: "Profile", href: "/pages/profile", icon: "ContactRound" },
       { title: "Users List", href: "/", icon: "Users" },
       { title: "Settings", href: "/", icon: "Settings" },
       { title: "Products", href: "/", icon: "PackageSearch" },

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <div className="mb-4 flex items-center justify-between space-y-2">
+      <div className="mb-4 flex flex-col space-y-2 lg:flex-row lg:items-center lg:justify-between">
         <h1 className="text-2xl font-bold tracking-tight">Project Management</h1>
         <div className="flex items-center space-x-2">
           <CalendarDateRangePicker />
@@ -72,8 +72,8 @@ export default function Page() {
         </Card>
         {/*  */}
       </div>
-      <div className="mt-4 grid grid-cols-3 gap-4">
-        <div className="col-span-2">
+      <div className="mt-4 grid gap-4 lg:grid-cols-3">
+        <div className="lg:col-span-2">
           <OverviewChart />
         </div>
         <Card>

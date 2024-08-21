@@ -3,13 +3,11 @@
 import WorldMap, { CountryContext } from "react-svg-worldmap";
 
 import * as React from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow
@@ -103,7 +101,7 @@ export function LeadsByCountryCard({ className }: { className: string }) {
         <CardOptionsMenu />
       </CardHeader>
       <CardContent className="flex-1 pb-0">
-        <div className="grid grid-cols-2 items-center gap-4">
+        <div className="grid items-center gap-4 lg:grid-cols-2">
           <div className="flex justify-center">
             {isClient ? (
               <WorldMap

@@ -28,15 +28,15 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <div className="mb-4 flex items-center justify-between space-y-2">
+      <div className="mb-4 flex flex-col space-y-2 lg:flex-row lg:items-center lg:justify-between">
         <h1 className="text-2xl font-bold tracking-tight">Ecommerce Dashboard</h1>
         <div className="flex items-center space-x-2">
           <CalendarDateRangePicker />
           <Button>Download</Button>
         </div>
       </div>
-      <div className="grid grid-cols-12 gap-4">
-        <Card className="sm:col-span-6">
+      <div className="grid gap-4 lg:grid-cols-12">
+        <Card className="md:col-span-12 xl:col-span-6">
           <CardHeader className="pb-3">
             <CardTitle>Congratulations John! 🎉</CardTitle>
             <CardDescription>Best seller of the month</CardDescription>
@@ -47,7 +47,7 @@ export default function Page() {
           </CardContent>
         </Card>
 
-        <Card className="sm:col-span-2">
+        <Card className="md:col-span-4 xl:col-span-2">
           <CardHeader className="pb-3">
             <CardTitle className="text-base font-normal">Revenue</CardTitle>
           </CardHeader>
@@ -60,7 +60,7 @@ export default function Page() {
           </CardContent>
         </Card>
 
-        <Card className="sm:col-span-2">
+        <Card className="md:col-span-4 xl:col-span-2">
           <CardHeader className="pb-3">
             <CardTitle className="text-base font-normal">Sales</CardTitle>
           </CardHeader>
@@ -73,7 +73,7 @@ export default function Page() {
           </CardContent>
         </Card>
 
-        <Card className="sm:col-span-2">
+        <Card className="md:col-span-4 xl:col-span-2">
           <CardHeader className="pb-3">
             <CardTitle className="text-base font-normal">New Customers</CardTitle>
           </CardHeader>
@@ -86,8 +86,8 @@ export default function Page() {
           </CardContent>
         </Card>
       </div>
-      <div className="mt-4 grid grid-cols-8 gap-4">
-        <Card className="sm:col-span-5">
+      <div className="mt-4 grid gap-4 lg:grid-cols-8">
+        <Card className="lg:col-span-5">
           <CardHeader className="pb-3">
             <CardTitle className="flex justify-between text-base font-normal">
               Total Revenue
@@ -112,7 +112,7 @@ export default function Page() {
             </div>
           </CardContent>
         </Card>
-        <Card className="sm:col-span-3">
+        <Card className="lg:col-span-3">
           <CardHeader className="pb-3">
             <CardTitle className="flex justify-between">
               <div className="flex items-center gap-2">
@@ -131,8 +131,8 @@ export default function Page() {
         </Card>
       </div>
 
-      <div className="mt-4 grid grid-cols-12 gap-4">
-        <Card className="sm:col-span-7">
+      <div className="mt-4 grid gap-4 lg:grid-cols-12">
+        <Card className="lg:col-span-7">
           <CardHeader className="pb-3">
             <CardTitle className="flex justify-between text-base font-normal">
               Recent Orders
@@ -143,7 +143,7 @@ export default function Page() {
             <RecentOrders />
           </CardContent>
         </Card>
-        <Card className="sm:col-span-5">
+        <Card className="lg:col-span-5">
           <CardHeader className="pb-3">
             <CardTitle className="flex justify-between text-base font-normal">
               Best Selling Products
@@ -156,8 +156,8 @@ export default function Page() {
         </Card>
       </div>
 
-      <div className="mt-4 grid grid-cols-12 gap-4">
-        <Card className="sm:col-span-4">
+      <div className="mt-4 grid gap-4 lg:grid-cols-12">
+        <Card className="md:col-span-4 lg:col-span-6 xl:col-span-4">
           <CardHeader className="pb-3">
             <CardTitle className="flex justify-between text-base font-normal">
               Sales by Locations
@@ -206,7 +206,7 @@ export default function Page() {
             </div>
           </CardContent>
         </Card>
-        <Card className="sm:col-span-4">
+        <Card className="md:col-span-4 lg:col-span-6 xl:col-span-4">
           <CardHeader className="pb-3">
             <CardTitle className="flex justify-between text-base font-normal">
               Store Visits by Source
@@ -217,7 +217,7 @@ export default function Page() {
             <VisitBySourceChart />
           </CardContent>
         </Card>
-        <Card className="sm:col-span-4">
+        <Card className="md:col-span-4 lg:col-span-12 xl:col-span-4">
           <CardHeader className="pb-3">
             <CardTitle className="text-base font-normal">Customer Reviews</CardTitle>
           </CardHeader>

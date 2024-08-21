@@ -17,7 +17,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="flex h-screen">
           <Sidebar />
-          <div className="w-full ps-[280px]">
+          <div className="w-full lg:ps-[280px]">
             <Header />
             <main className="container mx-auto p-4">{children}</main>
           </div>

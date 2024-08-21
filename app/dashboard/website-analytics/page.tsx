@@ -29,15 +29,15 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <div className="mb-4 flex items-center justify-between space-y-2">
+      <div className="mb-4 flex flex-col space-y-2 lg:flex-row lg:items-center lg:justify-between">
         <h1 className="text-2xl font-bold tracking-tight">Website Analytics Dashboard</h1>
         <div className="flex items-center space-x-2">
           <CalendarDateRangePicker />
           <Button>Download</Button>
         </div>
       </div>
-      <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-4">
+      <div className="grid gap-4 lg:grid-cols-12">
+        <div className="lg:col-span-4">
           <Card className="h-full">
             <CardHeader>
               <CardTitle className="text-base">Website Analytics</CardTitle>
@@ -73,7 +73,7 @@ export default function Page() {
             </CardContent>
           </Card>
         </div>
-        <div className="col-span-4">
+        <div className="lg:col-span-4">
           <Card className="h-full overflow-hidden">
             <CardHeader>
               <CardTitle className="text-base">Average Daily Sales</CardTitle>
@@ -85,7 +85,7 @@ export default function Page() {
             <AverageDailySalesChart />
           </Card>
         </div>
-        <div className="col-span-4">
+        <div className="lg:col-span-4">
           <Card className="h-full">
             <CardHeader>
               <CardTitle className="text-base">Sales Overview</CardTitle>
@@ -111,7 +111,7 @@ export default function Page() {
           </Card>
         </div>
 
-        <div className="col-span-8">
+        <div className="lg:col-span-8">
           <Card className="h-full">
             <CardHeader>
               <CardTitle className="text-base">Earning Reports</CardTitle>
@@ -168,7 +168,7 @@ export default function Page() {
           </Card>
         </div>
 
-        <div className="col-span-4">
+        <div className="lg:col-span-4">
           <Card className="h-full">
             <CardHeader>
               <CardTitle className="text-base">Earning Reports</CardTitle>
@@ -219,7 +219,7 @@ export default function Page() {
           </Card>
         </div>
 
-        <div className="col-span-4">
+        <div className="lg:col-span-4">
           <Card className="h-full">
             <CardHeader>
               <CardTitle className="text-base">Sales by Countries</CardTitle>
@@ -231,7 +231,7 @@ export default function Page() {
           </Card>
         </div>
 
-        <div className="col-span-4">
+        <div className="lg:col-span-4">
           <Card className="h-full">
             <CardHeader>
               <CardTitle className="text-base">Total Earning</CardTitle>
@@ -270,7 +270,7 @@ export default function Page() {
           </Card>
         </div>
 
-        <div className="col-span-4">
+        <div className="lg:col-span-4">
           <Card className="h-full">
             <CardHeader>
               <CardTitle className="text-base">Monthly Campaign State</CardTitle>
