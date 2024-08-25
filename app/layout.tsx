@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/header";
 import Sidebar from "@/components/layout/sidebar";
 import GoogleAnalyticsInit from "@/components/ga";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark2">
       <body className={inter.className}>
+        <NextTopLoader color="hsl(var(--primary))" height={2} shadow="none" />
         <div className="flex h-screen">
           <Sidebar />
           <div className="w-full lg:ps-[280px]">

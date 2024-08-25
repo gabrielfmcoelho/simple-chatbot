@@ -14,9 +14,7 @@ export const metadata: Metadata = {
 };
 
 async function getUsers() {
-  const data = await fs.readFile(
-    path.join(process.cwd(), "app/dashboard/pages/users-list/data.json")
-  );
+  const data = await fs.readFile(path.join(process.cwd(), "app/dashboard/pages/users/data.json"));
 
   return JSON.parse(data.toString());
 }

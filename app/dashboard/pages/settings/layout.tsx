@@ -5,8 +5,9 @@ import { Separator } from "@/components/ui/separator";
 import { SidebarNav } from "./components/sidebar-nav";
 
 export const metadata: Metadata = {
-  title: "Forms",
-  description: "Advanced form example using react-hook-form and Zod."
+  title: "Settings Page - Shadcn UI Kit",
+  description:
+    "Example of settings page and form created using react-hook-form and Zod validator. Built with Tailwind CSS and React."
 };
 
 const sidebarNavItems = [

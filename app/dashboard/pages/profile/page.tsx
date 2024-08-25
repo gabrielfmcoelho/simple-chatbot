@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -6,6 +7,12 @@ import { DownloadCloud, Link2Icon, Mail, MapPin, PhoneCall, Settings } from "luc
 
 import Link from "next/link";
 import { CompleteYourProfileComp } from "./complete-your-profile";
+
+export const metadata: Metadata = {
+  title: "Profile Page - Shadcn UI Kit",
+  description:
+    "A page created with React and Tailwind CSS where users summary information and details are displayed."
+};
 
 export default function Page() {
   return (
