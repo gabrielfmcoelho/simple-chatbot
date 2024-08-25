@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Essence Mascara Lash Princess",
+    "image": "/images/products/1.png",
+    "description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+    "category": "beauty",
+    "sku": "RCH45Q1A",
+    "stock": 5,
+    "price": 9.99,
+    "rating": 4.9,
+    "status": "active"
+  },
+  {
+    "id": 2,
+    "name": "Eyeshadow Palette with Mirror",
+    "image": "/images/products/2.png",
+    "description": "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go makeup application.",
+    "category": "beauty",
+    "sku": "MVCFH27F",
+    "stock": 25,
+    "price": 19,
+    "rating": 4.65,
+    "status": "active"
+  },
+  {
+    "id": 3,
+    "name": "Eyeshadow Palette with Mirror",
+    "image": "/images/products/3.png",
+    "description": "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go makeup application.",
+    "category": "beauty",
+    "sku": "MVCFH27F",
+    "stock": 25,
+    "price": 19,
+    "rating": 4.65,
+    "status": "active"
+  },
+  {
+    "id": 4,
+    "name": "Eyeshadow Palette with Mirror",
+    "image": "/images/products/4.png",
+    "description": "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go makeup application.",
+    "category": "beauty",
+    "sku": "MVCFH27F",
+    "stock": 25,
+    "price": 19,
+    "rating": 4.65,
+    "status": "active"
+  }
+]

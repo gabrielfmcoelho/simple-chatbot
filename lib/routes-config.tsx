@@ -51,9 +51,9 @@ export const page_routes: PageRoutesType[] = [
     title: "Pages",
     items: [
       { title: "Profile", href: "/dashboard/pages/profile", icon: "ContactRound" },
-      { title: "Users List", href: "/", icon: "Users" },
-      { title: "Settings", href: "/", icon: "Settings" },
-      { title: "Products", href: "/", icon: "PackageSearch" },
+      { title: "Users List", href: "/dashboard/pages/users-list", icon: "Users" },
+      { title: "Settings", href: "/dashboard/pages/settings", icon: "Settings" },
+      { title: "Products", href: "/dashboard/pages/products", icon: "PackageSearch" },
       { title: "Checkout", href: "/", icon: "CreditCard" },
       { title: "Authentication", href: "/", icon: "Fingerprint" },
       { title: "Invoices", href: "/", icon: "Scroll" },
