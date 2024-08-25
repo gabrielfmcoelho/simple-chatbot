@@ -25,6 +25,7 @@ import Search from "./search";
 import Logo from "./logo";
 import { SidebarNavLink } from "./sidebar";
 import { page_routes } from "@/lib/routes-config";
+import ThemeSwitch from "../theme-switch";
 
 export default function Header() {
   return (
@@ -81,6 +82,7 @@ export default function Header() {
             </div>
           </form> */}
         </div>
+        <ThemeSwitch />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="secondary" size="icon" className="rounded-full">
