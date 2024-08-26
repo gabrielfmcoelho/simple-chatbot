@@ -1,5 +1,7 @@
 import {
   CircleUser,
+  Download,
+  DownloadIcon,
   Home,
   LineChart,
   Menu,
@@ -99,6 +101,9 @@ export default function Header() {
             <DropdownMenuItem>Logout</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+        <Button asChild>
+          <Link href={`${process.env.BASE_URL}/#pricing`}>Buy Now</Link>
+        </Button>
       </header>
     </div>
   );

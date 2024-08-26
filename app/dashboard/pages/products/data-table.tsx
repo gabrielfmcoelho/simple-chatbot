@@ -13,14 +13,7 @@ import {
   getSortedRowModel,
   useReactTable
 } from "@tanstack/react-table";
-import {
-  ArrowUpDown,
-  CheckIcon,
-  ChevronDown,
-  MoreHorizontal,
-  PlusCircle,
-  Star
-} from "lucide-react";
+import { ArrowUpDown, ChevronDown, MoreHorizontal, PlusCircle } from "lucide-react";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
@@ -50,11 +43,9 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { Checkbox } from "@/components/ui/checkbox";
-import Image from "next/image";
 import { StarFilledIcon } from "@radix-ui/react-icons";
 
 export type User = {
@@ -76,7 +67,12 @@ export const columns: ColumnDef<User>[] = [
     cell: ({ row }) => (
       <div className="flex items-center gap-4">
         <figure className="rounded-lg border">
-          <Image src={row.original.image} width={80} height={80} alt="" />
+          <img
+            src={`${process.env.DASHBOARD_BASE_URL}${row.original.image}`}
+            width={80}
+            height={80}
+            alt=""
+          />
         </figure>
         <div className="capitalize">{row.getValue("name")}</div>
       </div>
@@ -125,12 +121,12 @@ export const columns: ColumnDef<User>[] = [
             {row.getValue("status")}
           </Badge>
         );
-      } else if (status === "pending") {
+      } else if (status === "out-of-stock") {
         return (
           <Badge
             className={cn("capitalize", {
               "bg-orange-100 text-orange-700 hover:bg-orange-100":
-                row.getValue("status") === "pending"
+                row.getValue("status") === "out-of-stock"
             })}>
             {row.getValue("status")}
           </Badge>
@@ -163,7 +159,8 @@ export const columns: ColumnDef<User>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View user</DropdownMenuItem>
+            <DropdownMenuItem>View details</DropdownMenuItem>
+            <DropdownMenuItem>Edit</DropdownMenuItem>
             <DropdownMenuItem>Delete</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -207,54 +204,31 @@ export default function UsersDataTable({ data }: { data: User[] }) {
       label: "Inactive"
     },
     {
-      value: "pending",
-      label: "Pending"
+      value: "out-of-stock",
+      label: "Out of stock"
     }
   ];
 
-  const plans = [
+  const categories = [
     {
-      value: "basic",
-      label: "Basic"
+      value: "beauty",
+      label: "Beauty"
     },
     {
-      value: "team",
-      label: "Team"
+      value: "technology",
+      label: "Technology"
     },
     {
-      value: "enterprise",
-      label: "Enterprise"
-    }
-  ];
-
-  const roles = [
-    {
-      value: "construction-foreman",
-      label: "Construction Foreman"
+      value: "toys",
+      label: "Toys"
     },
     {
-      value: "project-manager",
-      label: "Project Manager"
+      value: "food",
+      label: "Food"
     },
     {
-      value: "surveyor",
-      label: "Surveyor"
-    },
-    {
-      value: "architect",
-      label: "Architect"
-    },
-    {
-      value: "subcontractor",
-      label: "Subcontractor"
-    },
-    {
-      value: "electrician",
-      label: "Electrician"
-    },
-    {
-      value: "estimator",
-      label: "Estimator"
+      value: "home-appliances",
+      label: "Home Appliances"
     }
   ];
 
@@ -317,20 +291,20 @@ export default function UsersDataTable({ data }: { data: User[] }) {
                 <CommandList>
                   <CommandEmpty>No category found.</CommandEmpty>
                   <CommandGroup>
-                    {plans.map((plan) => (
+                    {categories.map((category) => (
                       <CommandItem
-                        key={plan.value}
-                        value={plan.value}
+                        key={category.value}
+                        value={category.value}
                         onSelect={(currentValue) => {
                           // setValue(currentValue === value ? "" : currentValue);
                           // setOpen(false);
                         }}>
                         <div className="flex items-center space-x-3 py-1">
-                          <Checkbox id={plan.value} />
+                          <Checkbox id={category.value} />
                           <label
-                            htmlFor={plan.value}
+                            htmlFor={category.value}
                             className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                            {plan.label}
+                            {category.label}
                           </label>
                         </div>
                       </CommandItem>

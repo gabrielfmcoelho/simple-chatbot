@@ -55,7 +55,7 @@ export default function Sidebar() {
             </CardHeader>
             <CardContent>
               <Button size="sm" className="w-full" asChild>
-                <Link href="/#pricing">Buy Now</Link>
+                <Link href={`${process.env.BASE_URL}/#pricing`}>Buy Now</Link>
               </Button>
             </CardContent>
           </Card>

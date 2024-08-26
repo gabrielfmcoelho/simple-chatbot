@@ -25,20 +25,16 @@ export default async function Page() {
   const products = await getProducts();
 
   return (
-    <>
-      <div className="h-full flex-1 flex-col space-y-4">
-        <div className="flex items-center justify-between space-y-2">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight">Products</h1>
-          </div>
-          <Button asChild>
-            <Link href="#">
-              <PlusCircledIcon className="me-2" /> Add New Product
-            </Link>
-          </Button>
-        </div>
-        <UsersDataTable data={products} />
+    <div className="space-y-4">
+      <div className="flex items-center justify-between space-y-2">
+        <h1 className="text-2xl font-bold tracking-tight">Products</h1>
+        <Button asChild>
+          <Link href="#">
+            <PlusCircledIcon className="me-2" /> Add New Product
+          </Link>
+        </Button>
       </div>
-    </>
+      <UsersDataTable data={products} />
+    </div>
   );
 }

@@ -33,7 +33,7 @@
     "stock": 25,
     "price": 19,
     "rating": 4.65,
-    "status": "active"
+    "status": "out-of-stock"
   },
   {
     "id": 4,
