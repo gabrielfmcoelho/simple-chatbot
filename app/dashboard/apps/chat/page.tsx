@@ -1,11 +1,18 @@
 import { promises as fs } from "fs";
 import path from "path";
+import { Metadata } from "next";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ActionDropdown from "./action-dropdown";
 import { ChatItemProps, UserPropsTypes } from "./types";
 import ChatList from "./chat-list";
 import ChatContent from "./chat-content";
+
+export const metadata: Metadata = {
+  title: "Chat App - Shadcn UI Kit",
+  description:
+    "This chat app template is perfect for listing and reading messages. Built with reusable and customizable components. It is fully mobile responsive."
+};
 
 async function getChats() {
   const data = await fs.readFile(
