@@ -26,7 +26,7 @@ export default function ChatHeader({ user }: { user: UserPropsTypes }) {
           <ArrowLeft className="h-4 w-4" />
         </Button>
         <UserAvatar
-          image={user.avatar}
+          image={`${process.env.DASHBOARD_BASE_URL}/${user.avatar}`}
           indicator={user.online_status}
           fallback={generateAvatarFallback(user.name)}
         />

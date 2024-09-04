@@ -32,7 +32,7 @@ export default function ChatListItem({
         { "!bg-gray-200 dark:!bg-muted": active }
       )}>
       <UserAvatar
-        image={chat.user?.avatar}
+        image={`${process.env.DASHBOARD_BASE_URL}/${chat.user?.avatar}`}
         indicator={chat.user?.online_status}
         fallback={generateAvatarFallback(chat.user?.name)}
       />

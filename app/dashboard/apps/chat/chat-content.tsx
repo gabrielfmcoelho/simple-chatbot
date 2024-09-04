@@ -23,10 +23,14 @@ export default function ChatContent() {
   if (!selectedChat) {
     return (
       <figure className="hidden h-full items-center justify-center text-center lg:flex">
-        <img className="block max-w-sm dark:hidden" src="/images/not-selected-chat.svg" alt="..." />
+        <img
+          className="block max-w-sm dark:hidden"
+          src={`${process.env.DASHBOARD_BASE_URL}/images/not-selected-chat.svg`}
+          alt="..."
+        />
         <img
           className="hidden max-w-sm dark:block"
-          src="/images/not-selected-chat-light.svg"
+          src={`${process.env.DASHBOARD_BASE_URL}/images/not-selected-chat-light.svg`}
           alt="..."
         />
       </figure>

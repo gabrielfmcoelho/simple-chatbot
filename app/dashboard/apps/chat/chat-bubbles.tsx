@@ -125,7 +125,9 @@ function VideoChatBubble({ message }: { message: ChatMessageProps }) {
       })}>
       <div className="flex items-center gap-4">
         <div
-          style={{ backgroundImage: `url(${message?.data?.cover})` }}
+          style={{
+            backgroundImage: `url(${process.env.DASHBOARD_BASE_URL}/${message?.data?.cover})`
+          }}
           className={cn(
             "relative order-1 flex aspect-[4/3] w-52 flex-shrink-0 cursor-pointer items-center justify-center self-start rounded-lg bg-cover transition-opacity hover:opacity-90"
           )}>
@@ -247,7 +249,12 @@ function ImageChatBubble({ message }: { message: ChatMessageProps }) {
                   <figure
                     className="relative cursor-pointer overflow-hidden rounded-lg transition-opacity hover:opacity-90"
                     key={key}>
-                    <img className="aspect-[4/3] object-cover" key={key} src={image} alt="image" />
+                    <img
+                      className="aspect-[4/3] object-cover"
+                      key={key}
+                      src={`${process.env.DASHBOARD_BASE_URL}/${image}`}
+                      alt="image"
+                    />
                     {key + 1 === images_limit && (
                       <div className="absolute inset-0 flex items-center justify-center bg-black/40 text-3xl font-semibold text-white">
                         +{images.length - images_with_limit.length}
