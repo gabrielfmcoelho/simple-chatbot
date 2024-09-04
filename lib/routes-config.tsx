@@ -1,11 +1,14 @@
 type PageRoutesType = {
   title: string;
-  items: {
-    title: string;
-    href: string;
-    icon?: string;
-  }[];
+  items: PageRoutesItemType;
 };
+
+type PageRoutesItemType = {
+  title: string;
+  href: string;
+  icon?: string;
+  items?: PageRoutesItemType;
+}[];
 
 export const page_routes: PageRoutesType[] = [
   {
@@ -51,14 +54,23 @@ export const page_routes: PageRoutesType[] = [
     title: "Pages",
     items: [
       { title: "Profile", href: "/dashboard/pages/profile", icon: "ContactRound" },
-      { title: "Users List", href: "/dashboard/pages/users", icon: "Users" },
+      { title: "Users", href: "/dashboard/pages/users", icon: "Users" },
       { title: "Settings", href: "/dashboard/pages/settings", icon: "Settings" },
+      {
+        title: "Orders",
+        href: "/dashboard/pages/orders",
+        icon: "PackageSearch",
+        items: [
+          { title: "List", href: "/dashboard/pages/orders" },
+          { title: "Detail", href: "/dashboard/pages/order/1" }
+        ]
+      },
       { title: "Products", href: "/dashboard/pages/products", icon: "PackageSearch" },
       { title: "Checkout", href: "/", icon: "CreditCard" },
       { title: "Authentication", href: "/", icon: "Fingerprint" },
       { title: "Invoices", href: "/", icon: "Scroll" },
       { title: "Blog", href: "/", icon: "Rss" },
-      { title: "Pricing", href: "/", icon: "Gem" },
+      { title: "Pricing Table", href: "/", icon: "Gem" },
       { title: "Help Center", href: "/", icon: "BadgeHelp" }
     ]
   }

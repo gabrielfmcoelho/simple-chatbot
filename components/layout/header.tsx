@@ -31,8 +31,8 @@ import ThemeSwitch from "../theme-switch";
 
 export default function Header() {
   return (
-    <div className="flex flex-col">
-      <header className="flex h-14 items-center gap-4 border-b px-4 lg:h-[60px] lg:px-6">
+    <div className="sticky top-0 z-50 flex flex-col">
+      <header className="flex h-14 items-center gap-4 border-b bg-background px-4 lg:h-[60px] lg:px-6">
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="shrink-0 lg:hidden">
