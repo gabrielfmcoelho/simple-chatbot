@@ -1,23 +1,18 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  ArrowDownLeft,
-  ArrowDownRight,
-  ArrowUpRight,
-  Award,
-  Briefcase,
-  DollarSign,
-  FileClock
-} from "lucide-react";
+import { ArrowDownLeft, ArrowUpRight, Award, Briefcase, DollarSign, FileClock } from "lucide-react";
 import { OverviewChart } from "./overview-chart";
 import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
 import { Button } from "@/components/ui/button";
-import { Metadata } from "next";
+import { generateMeta } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Project Management Dashboard - Shadcn UI Kit",
-  description:
-    "The project management dashboard template provides a powerful and intuitive interface for tracking tasks, deadlines, and team progress to ensure project success."
-};
+export async function generateMetadata() {
+  return generateMeta({
+    title: "Project Management Dashboard",
+    description:
+      "The project management dashboard template provides a powerful and intuitive interface for tracking tasks, deadlines, and team progress to ensure project success.",
+    canonical: "/project-management"
+  });
+}
 
 export default function Page() {
   return (

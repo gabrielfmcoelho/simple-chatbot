@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
 import TeamMembersCard from "./cards/theme-members";
 import SubscriptionsCard from "./cards/subscriptions";
@@ -8,12 +7,16 @@ import { Button } from "@/components/ui/button";
 import MetricCard from "./cards/metric";
 import { PaymentsCard } from "./cards/payment";
 import { PaymentMethodCard } from "./cards/payment-method";
+import { generateMeta } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Dashboard - Shadcn UI Kit",
-  description:
-    "The default dashboard template, built with React and Tailwind CSS, offers a sleek and efficient interface for monitoring key data and user interactions."
-};
+export async function generateMetadata() {
+  return generateMeta({
+    title: "Dashboard",
+    description:
+      "The default dashboard template, built with React and Tailwind CSS, offers a sleek and efficient interface for monitoring key data and user interactions.",
+    canonical: "/default"
+  });
+}
 
 export default function Page() {
   return (

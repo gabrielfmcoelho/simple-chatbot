@@ -1,19 +1,14 @@
 import { Separator } from "@/components/ui/separator";
 import { SidebarNav } from "./components/sidebar-nav";
+import { generateMeta } from "@/lib/utils";
 
 export async function generateMetadata() {
-  return {
-    title: "Settings Page - Shadcn UI Kit",
+  return generateMeta({
+    title: "Settings Page",
     description:
       "Example of settings page and form created using react-hook-form and Zod validator. Built with Tailwind CSS and React.",
-    metadataBase: new URL(`${process.env.BASE_URL}`),
-    alternates: {
-      canonical: "/dashboard/pages/settings"
-    },
-    openGraph: {
-      images: [`${process.env.DASHBOARD_BASE_URL}/seo.jpg`]
-    }
-  };
+    canonical: "/pages/settings"
+  });
 }
 
 const sidebarNavItems = [
@@ -39,11 +34,7 @@ const sidebarNavItems = [
   }
 ];
 
-interface SettingsLayoutProps {
-  children: React.ReactNode;
-}
-
-export default function SettingsLayout({ children }: SettingsLayoutProps) {
+export default function SettingsLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <div className="space-y-0.5">

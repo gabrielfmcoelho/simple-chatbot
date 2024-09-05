@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
 import { Star } from "lucide-react";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { ExportButton } from "@/components/CardActionMenus";
+import { generateMeta } from "@/lib/utils";
 
 import RecentOrders from "@/components/dashboard/ecommerce/recent-orders";
 import BestSellingProductList from "@/components/dashboard/ecommerce/best-selling-product-list";
@@ -19,11 +19,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
 
-export const metadata: Metadata = {
-  title: "Ecommerce Dashboard - Shadcn UI Kit",
-  description:
-    "The eCommerce dashboard template provides a detailed and user-friendly interface for monitoring sales, inventory, and customer data efficiently."
-};
+export async function generateMetadata() {
+  return generateMeta({
+    title: "Ecommerce Dashboard",
+    description:
+      "The ecommerce dashboard template provides a detailed and user-friendly interface for monitoring sales, inventory, and customer data efficiently.",
+    canonical: "/project-management"
+  });
+}
 
 export default function Page() {
   return (

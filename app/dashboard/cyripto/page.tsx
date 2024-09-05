@@ -1,27 +1,23 @@
-import type { Metadata } from "next";
+import Link from "next/link";
+import { generateMeta } from "@/lib/utils";
+
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import CyriptoCurrencyPriceCards from "./cyripto-currency-price-cards";
 import DigitalWallets from "./digital-wallets";
-import Link from "next/link";
 import { RecentActivities } from "./recent-activities";
 import { BalanceSummeryChart } from "./balance-summary";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from "@/components/ui/select";
 import CoinBuySell from "./coin-buy-sell";
 import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
 import { Button } from "@/components/ui/button";
 
-export const metadata: Metadata = {
-  title: "Cyripto Dashboard - Shadcn UI Kit",
-  description:
-    "Cyripto dashboard template is a comprehensive and intuitive interface to effectively monitor cryptocurrency prices, market trends and portfolio performance."
-};
+export async function generateMetadata() {
+  return generateMeta({
+    title: "Cyripto Dashboard",
+    description:
+      "Cyripto dashboard template is a comprehensive and intuitive interface to effectively monitor cryptocurrency prices, market trends and portfolio performance.",
+    canonical: "/cyripto"
+  });
+}
 
 export default function Page() {
   return (

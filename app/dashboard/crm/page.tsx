@@ -1,6 +1,5 @@
 import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
 import { Button } from "@/components/ui/button";
-import type { Metadata } from "next";
 import { LeadsByCountryCard } from "@/components/dashboard/crm/leads-by-country";
 import { TargetCard } from "@/components/dashboard/crm/target-card";
 import { TotalCustomersCard } from "@/components/dashboard/crm/total-customers";
@@ -8,12 +7,16 @@ import { TotalRevenueCard } from "@/components/dashboard/crm/total-revenue";
 import { ConversionRatioCard } from "@/components/dashboard/crm/conversion-ratio";
 import { LeadsCard } from "@/components/dashboard/crm/leads";
 import { LeadBySourceCard } from "@/components/dashboard/crm/leads-by-source";
+import { generateMeta } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "CRM Dashboard - Shadcn UI Kit",
-  description:
-    "CRM dashboard template offers a streamlined and interactive interface for managing customer relationships, tracking sales, and analyzing performance metrics."
-};
+export async function generateMetadata() {
+  return generateMeta({
+    title: "CRM Dashboard",
+    description:
+      "CRM dashboard template offers a streamlined and interactive interface for managing customer relationships, tracking sales, and analyzing performance metrics.",
+    canonical: "/crm"
+  });
+}
 
 export default function Page() {
   return (

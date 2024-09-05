@@ -1,17 +1,20 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { Metadata } from "next";
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { PlusCircledIcon } from "@radix-ui/react-icons";
 import UsersDataTable from "./data-table";
+import { generateMeta } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Products - Shadcn UI Kit",
-  description:
-    "A list of products created using the Tanstack Table. Tailwind is built on CSS and React."
-};
+export async function generateMetadata() {
+  return generateMeta({
+    title: "Products",
+    description:
+      "A list of products created using the Tanstack Table. Tailwind is built on CSS and React.",
+    canonical: "/pages/products"
+  });
+}
 
 async function getProducts() {
   const data = await fs.readFile(

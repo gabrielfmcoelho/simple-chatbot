@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AverageDailySalesChart } from "@/components/dashboard/analytics/average-daily-sales";
 import { Badge } from "@/components/ui/badge";
@@ -19,12 +18,16 @@ import { TotalEarningChart } from "@/components/dashboard/analytics/total-earnin
 import { MonthlyCampaignState } from "@/components/dashboard/analytics/monthly-campaign-state";
 import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
 import { Button } from "@/components/ui/button";
+import { generateMeta } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Website Analytics Dashboard - Shadcn UI Kit",
-  description:
-    "Website analytics dashboard template offers an efficient and flexible tool that allows to track websites traffic data, user interactions and performance analytics in detail with a modern, user-friendly and responsive interface."
-};
+export async function generateMetadata() {
+  return generateMeta({
+    title: "Website Analytics Dashboard",
+    description:
+      "Website analytics dashboard template offers an efficient and flexible tool that allows to track websites traffic data, user interactions and performance analytics in detail with a modern, user-friendly and responsive interface.",
+    canonical: "/website-analytics"
+  });
+}
 
 export default function Page() {
   return (
