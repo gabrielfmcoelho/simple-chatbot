@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { Metadata } from "next";
 import "./globals.scss";
 
 import Header from "@/components/layout/header";
@@ -23,7 +24,7 @@ export default function RootLayout({
             <Sidebar />
             <div className="w-full lg:ps-[280px]">
               <Header />
-              <main className="container2 mx-auto p-4">{children}</main>
+              <main className="container mx-auto p-4">{children}</main>
             </div>
           </div>
           {process.env.NODE_ENV === "production" ? <GoogleAnalyticsInit /> : null}

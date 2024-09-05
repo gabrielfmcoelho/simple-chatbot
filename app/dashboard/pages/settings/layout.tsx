@@ -1,14 +1,20 @@
-import { Metadata } from "next";
-import Image from "next/image";
-
 import { Separator } from "@/components/ui/separator";
 import { SidebarNav } from "./components/sidebar-nav";
 
-export const metadata: Metadata = {
-  title: "Settings Page - Shadcn UI Kit",
-  description:
-    "Example of settings page and form created using react-hook-form and Zod validator. Built with Tailwind CSS and React."
-};
+export async function generateMetadata() {
+  return {
+    title: "Settings Page - Shadcn UI Kit",
+    description:
+      "Example of settings page and form created using react-hook-form and Zod validator. Built with Tailwind CSS and React.",
+    metadataBase: new URL(`${process.env.BASE_URL}`),
+    alternates: {
+      canonical: "/dashboard/pages/settings"
+    },
+    openGraph: {
+      images: [`${process.env.DASHBOARD_BASE_URL}/seo.jpg`]
+    }
+  };
+}
 
 const sidebarNavItems = [
   {
