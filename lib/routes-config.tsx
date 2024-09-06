@@ -44,34 +44,60 @@ export const page_routes: PageRoutesType[] = [
       { title: "Chats", href: "/dashboard/apps/chat", icon: "MessageSquare" },
       { title: "Mail", href: "/dashboard/apps/mail", icon: "Mail" },
       { title: "Kanban", href: "/dashboard/apps/kanban", icon: "SquareKanban" },
-      { title: "Todo List", href: "/dashboard/apps/todo", icon: "SquareCheck" },
+      { title: "Todo List", href: "/dashboard/apps/todo-list", icon: "SquareCheck" },
       { title: "Notes", href: "/dashboard/apps/notes", icon: "StickyNote" },
       { title: "Calendar", href: "/dashboard/apps/calendar", icon: "Calendar" },
-      { title: "Api Key", href: "/dashboard/apps/api-key", icon: "Key" }
+      { title: "Api Keys", href: "/dashboard/apps/api-keys", icon: "Key" }
     ]
   },
   {
     title: "Pages",
     items: [
-      { title: "Profile", href: "/dashboard/pages/profile", icon: "ContactRound" },
+      {
+        title: "Profile",
+        href: "/dashboard/pages/profile",
+        icon: "ContactRound"
+      },
       { title: "Users", href: "/dashboard/pages/users", icon: "Users" },
-      { title: "Settings", href: "/dashboard/pages/settings", icon: "Settings" },
+      {
+        title: "Settings",
+        href: "/dashboard/pages/settings",
+        icon: "Settings",
+        items: [
+          { title: "Profile", href: "/dashboard/pages/settings" },
+          { title: "Account", href: "/dashboard/pages/settings/account" },
+          { title: "Appearance", href: "/dashboard/pages/settings/appearance" },
+          { title: "Notifications", href: "/dashboard/pages/settings/notifications" },
+          { title: "Display", href: "/dashboard/pages/settings/display" }
+        ]
+      },
       {
         title: "Orders",
         href: "/dashboard/pages/orders",
         icon: "PackageSearch",
         items: [
-          { title: "List", href: "/dashboard/pages/orders" },
-          { title: "Detail", href: "/dashboard/pages/order/1" }
+          { title: "Order List", href: "/dashboard/pages/orders" },
+          { title: "Order Detail", href: "/dashboard/pages/order/1" }
         ]
       },
-      { title: "Products", href: "/dashboard/pages/products", icon: "PackageSearch" },
-      { title: "Checkout", href: "/", icon: "CreditCard" },
-      { title: "Authentication", href: "/", icon: "Fingerprint" },
-      { title: "Invoices", href: "/", icon: "Scroll" },
-      { title: "Blog", href: "/", icon: "Rss" },
-      { title: "Pricing Table", href: "/", icon: "Gem" },
-      { title: "Help Center", href: "/", icon: "BadgeHelp" }
+      {
+        title: "Products",
+        href: "/dashboard/pages/products",
+        icon: "PackageSearch",
+        items: [
+          { title: "Product List", href: "/dashboard/pages/products" },
+          { title: "Product Detail", href: "/dashboard/pages/product/1" }
+        ]
+      },
+      {
+        title: "Authentication",
+        href: "/",
+        icon: "Fingerprint",
+        items: [
+          { title: "Login", href: "/dashboard/pages/login" },
+          { title: "Register", href: "/dashboard/pages/order/register" }
+        ]
+      }
     ]
   }
 ];

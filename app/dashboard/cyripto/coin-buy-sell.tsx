@@ -121,7 +121,7 @@ export default function CoinBuySell() {
                                     <div className="flex items-center gap-2">
                                       <img
                                         className="h-6 w-6"
-                                        src={`/cyripto-icons/${coin.icon}.svg`}
+                                        src={`${process.env.DASHBOARD_BASE_URL}/cyripto-icons/${coin.icon}.svg`}
                                       />
                                       {coin.name}/{coin.short_name}
                                     </div>
@@ -188,7 +188,7 @@ export default function CoinBuySell() {
                                   <div className="flex items-center gap-2">
                                     <img
                                       className="h-6 w-6"
-                                      src={`/cyripto-icons/${coins.find((coin) => coin.name === selectedCoin)?.icon}.svg`}
+                                      src={`${process.env.DASHBOARD_BASE_URL}/cyripto-icons/${coins.find((coin) => coin.name === selectedCoin)?.icon}.svg`}
                                     />
                                     {coins.find((coin) => coin.name === selectedCoin)?.name}/
                                     {coins.find((coin) => coin.name === selectedCoin)?.short_name}
@@ -201,7 +201,7 @@ export default function CoinBuySell() {
                                     <div className="flex items-center gap-2">
                                       <img
                                         className="h-6 w-6"
-                                        src={`/cyripto-icons/${coin.icon}.svg`}
+                                        src={`${process.env.DASHBOARD_BASE_URL}/cyripto-icons/${coin.icon}.svg`}
                                       />
                                       {coin.name}/{coin.short_name}
                                     </div>

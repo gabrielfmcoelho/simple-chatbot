@@ -43,7 +43,7 @@ const prices = [
 
 export default function CyriptoCurrencyPriceCards() {
   return (
-    <Marquee autoFill pauseOnHover gradient gradientWidth={100}>
+    <Marquee autoFill pauseOnHover>
       {prices.map((item) => (
         <Link key={item.id} href="#">
           <Card className="mx-2 text-sm hover:border-primary/30">
