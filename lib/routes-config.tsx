@@ -7,6 +7,7 @@ type PageRoutesItemType = {
   title: string;
   href: string;
   icon?: string;
+  isComing?: boolean;
   items?: PageRoutesItemType;
 }[];
 
@@ -42,12 +43,17 @@ export const page_routes: PageRoutesType[] = [
     title: "Apps",
     items: [
       { title: "Chats", href: "/dashboard/apps/chat", icon: "MessageSquare" },
-      { title: "Mail", href: "/dashboard/apps/mail", icon: "Mail" },
-      { title: "Kanban", href: "/dashboard/apps/kanban", icon: "SquareKanban" },
-      { title: "Todo List", href: "/dashboard/apps/todo-list", icon: "SquareCheck" },
-      { title: "Notes", href: "/dashboard/apps/notes", icon: "StickyNote" },
-      { title: "Calendar", href: "/dashboard/apps/calendar", icon: "Calendar" },
-      { title: "Api Keys", href: "/dashboard/apps/api-keys", icon: "Key" }
+      { title: "Mail", href: "/dashboard/apps/mail", icon: "Mail", isComing: true },
+      { title: "Kanban", href: "/dashboard/apps/kanban", icon: "SquareKanban", isComing: true },
+      {
+        title: "Todo List",
+        href: "/dashboard/apps/todo-list",
+        icon: "SquareCheck",
+        isComing: true
+      },
+      { title: "Notes", href: "/dashboard/apps/notes", icon: "StickyNote", isComing: true },
+      { title: "Calendar", href: "/dashboard/apps/calendar", icon: "Calendar", isComing: true },
+      { title: "Api Keys", href: "/dashboard/apps/api-keys", icon: "Key", isComing: true }
     ]
   },
   {
@@ -77,7 +83,7 @@ export const page_routes: PageRoutesType[] = [
         icon: "PackageSearch",
         items: [
           { title: "Order List", href: "/dashboard/pages/orders" },
-          { title: "Order Detail", href: "/dashboard/pages/order/1" }
+          { title: "Order Detail", href: "/dashboard/pages/order/1", isComing: true }
         ]
       },
       {
@@ -86,7 +92,8 @@ export const page_routes: PageRoutesType[] = [
         icon: "PackageSearch",
         items: [
           { title: "Product List", href: "/dashboard/pages/products" },
-          { title: "Product Detail", href: "/dashboard/pages/product/1" }
+          { title: "Product Detail", href: "/dashboard/pages/products/1", isComing: true },
+          { title: "Add Product", href: "/dashboard/pages/products/create", isComing: true }
         ]
       },
       {
@@ -94,8 +101,8 @@ export const page_routes: PageRoutesType[] = [
         href: "/",
         icon: "Fingerprint",
         items: [
-          { title: "Login", href: "/dashboard/pages/login" },
-          { title: "Register", href: "/dashboard/pages/order/register" }
+          { title: "Login", href: "/dashboard/pages/login", isComing: true },
+          { title: "Register", href: "/dashboard/pages/order/register", isComing: true }
         ]
       }
     ]

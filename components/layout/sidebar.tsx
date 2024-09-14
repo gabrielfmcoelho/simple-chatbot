@@ -8,12 +8,14 @@ import { Button } from "../ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import Icon from "../icon";
 import { ChevronDown } from "lucide-react";
+import { Badge } from "../ui/badge";
 
 type SidebarNavLinkProps = {
   item: {
     title: string;
     href: string;
     icon?: string;
+    isComing?: boolean;
   };
 };
 
@@ -25,6 +27,7 @@ export const SidebarNavLink: React.FC<SidebarNavLinkProps> = ({ item }: SidebarN
       activeClassName="!bg-primary text-primary-foreground">
       {item.icon && <Icon name={item.icon} className="h-4 w-4" />}
       {item.title}
+      {item.isComing && <Badge variant="outline">Coming</Badge>}
     </Anchor>
   );
 };
@@ -75,7 +78,7 @@ export default function Sidebar() {
             </CardHeader>
             <CardContent>
               <Button size="sm" className="w-full" asChild>
-                <Link href={`${process.env.BASE_URL}/#pricing`}>Buy Now</Link>
+                <Link href={`${process.env.BASE_URL}/#pricing`}>Get Template</Link>
               </Button>
             </CardContent>
           </Card>

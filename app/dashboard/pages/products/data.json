@@ -7,7 +7,7 @@
     "category": "beauty",
     "sku": "RCH45Q1A",
     "stock": 5,
-    "price": 9.99,
+    "price": "$9.99",
     "rating": 4.9,
     "status": "active"
   },
@@ -19,7 +19,7 @@
     "category": "beauty",
     "sku": "MVCFH27F",
     "stock": 25,
-    "price": 19,
+    "price": "$15",
     "rating": 4.65,
     "status": "active"
   },
@@ -30,8 +30,8 @@
     "description": "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go makeup application.",
     "category": "beauty",
     "sku": "MVCFH27F",
-    "stock": 25,
-    "price": 19,
+    "stock": 27,
+    "price": "$30",
     "rating": 4.65,
     "status": "out-of-stock"
   },
@@ -42,9 +42,21 @@
     "description": "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go makeup application.",
     "category": "beauty",
     "sku": "MVCFH27F",
-    "stock": 25,
-    "price": 19,
+    "stock": 10,
+    "price": "$19.99",
     "rating": 4.65,
     "status": "active"
+  },
+  {
+    "id": 4,
+    "name": "Eyeshadow Palette with Mirror",
+    "image": "/images/products/5.png",
+    "description": "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go makeup application.",
+    "category": "beauty",
+    "sku": "MVCFH27F",
+    "stock": 25,
+    "price": "$49.50",
+    "rating": 4.65,
+    "status": "closed-for-sale"
   }
 ]

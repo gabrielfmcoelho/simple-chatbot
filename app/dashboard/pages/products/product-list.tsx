@@ -14,7 +14,6 @@ import {
   useReactTable
 } from "@tanstack/react-table";
 import { ArrowUpDown, ChevronDown, MoreHorizontal, PlusCircle } from "lucide-react";
-
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
   Command,
@@ -48,30 +47,62 @@ import { cn } from "@/lib/utils";
 import { Checkbox } from "@/components/ui/checkbox";
 import { StarFilledIcon } from "@radix-ui/react-icons";
 
-export type User = {
+export type Product = {
   id: number;
   name: string;
   image: string;
+  description: string;
+  category: string;
+  sku: string;
+  stock: string;
+  price: string;
+  rating: string;
   status: string;
 };
 
-export const columns: ColumnDef<User>[] = [
+export const columns: ColumnDef<Product>[] = [
   {
-    accessorKey: "id",
-    header: "#",
-    cell: ({ row }) => row.getValue("id")
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={
+          table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")
+        }
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
+    enableSorting: false,
+    enableHiding: false
   },
   {
     accessorKey: "name",
-    header: "Name",
+    header: ({ column }) => {
+      return (
+        <Button
+          className="-ml-3"
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          Product Name
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
     cell: ({ row }) => (
       <div className="flex items-center gap-4">
         <figure className="rounded-lg border">
           <img
             src={`${process.env.DASHBOARD_BASE_URL}${row.original.image}`}
-            width={80}
-            height={80}
-            alt=""
+            width={48}
+            height={48}
+            alt="..."
           />
         </figure>
         <div className="capitalize">{row.getValue("name")}</div>
@@ -79,21 +110,61 @@ export const columns: ColumnDef<User>[] = [
     )
   },
   {
+    accessorKey: "price",
+    header: ({ column }) => {
+      return (
+        <Button
+          className="-ml-3"
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          Price
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => row.getValue("price")
+  },
+  {
     accessorKey: "category",
-    header: "Category",
+    header: ({ column }) => {
+      return (
+        <Button
+          className="-ml-3"
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          Category
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
     cell: ({ row }) => <div className="capitalize">{row.getValue("category")}</div>
   },
   {
     accessorKey: "stock",
-    header: "Stock",
+    header: ({ column }) => {
+      return (
+        <Button
+          className="-ml-3"
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          Stock
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
     cell: ({ row }) => row.getValue("stock")
+  },
+  {
+    accessorKey: "sku",
+    header: "SKU",
+    cell: ({ row }) => row.getValue("sku")
   },
   {
     accessorKey: "rating",
     header: "Rating",
     cell: ({ row }) => (
       <div className="flex items-center gap-1">
-        <StarFilledIcon className="text-orange-500" /> {row.getValue("rating")}
+        <StarFilledIcon className="text-orange-300" /> {row.getValue("rating")}
       </div>
     )
   },
@@ -114,29 +185,29 @@ export const columns: ColumnDef<User>[] = [
       const status = row.original.status;
       if (status === "active") {
         return (
-          <Badge
-            className={cn("capitalize", {
-              "bg-green-100 text-green-700 hover:bg-green-100": status === "active"
-            })}>
+          <Badge variant={status === "active" ? "success" : "default"} className="capitalize">
             {row.getValue("status")}
           </Badge>
         );
       } else if (status === "out-of-stock") {
         return (
           <Badge
-            className={cn("capitalize", {
-              "bg-orange-100 text-orange-700 hover:bg-orange-100":
-                row.getValue("status") === "out-of-stock"
-            })}>
-            {row.getValue("status")}
+            variant={status === "out-of-stock" ? "secondary" : "default"}
+            className="capitalize">
+            {row.getValue("status").replaceAll("-", " ")}
+          </Badge>
+        );
+      } else if (status === "closed-for-sale") {
+        return (
+          <Badge
+            variant={status === "closed-for-sale" ? "warning" : "default"}
+            className="capitalize">
+            {row.getValue("status").replaceAll("-", " ")}
           </Badge>
         );
       } else if (status === "inactive") {
         return (
-          <Badge
-            className={cn("capitalize", {
-              "bg-gray-100 text-gray-700 hover:bg-gray-100": status === "inactive"
-            })}>
+          <Badge variant={status === "inactive" ? "destructive" : "default"} className="capitalize">
             {row.getValue("status")}
           </Badge>
         );
@@ -161,6 +232,7 @@ export const columns: ColumnDef<User>[] = [
             <DropdownMenuSeparator />
             <DropdownMenuItem>View details</DropdownMenuItem>
             <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem>Copy ID</DropdownMenuItem>
             <DropdownMenuItem>Delete</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -169,7 +241,7 @@ export const columns: ColumnDef<User>[] = [
   }
 ];
 
-export default function UsersDataTable({ data }: { data: User[] }) {
+export default function ProductList({ data }: { data: Product[] }) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
@@ -206,6 +278,10 @@ export default function UsersDataTable({ data }: { data: User[] }) {
     {
       value: "out-of-stock",
       label: "Out of stock"
+    },
+    {
+      value: "closed-for-sale",
+      label: "Closed for sale"
     }
   ];
 
@@ -346,7 +422,7 @@ export default function UsersDataTable({ data }: { data: User[] }) {
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead key={header.id} className="[&:has([role=checkbox])]:pl-3">
                       {header.isPlaceholder
                         ? null
                         : flexRender(header.column.columnDef.header, header.getContext())}
