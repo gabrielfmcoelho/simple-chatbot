@@ -187,8 +187,8 @@ export const columns: ColumnDef<Project>[] = [
     accessorKey: "progress",
     header: "Progress",
     cell: ({ row }) => (
-      <div className="flex items-center gap-4">
-        <Progress value={row.getValue("progress")} className="h-2" />
+      <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
+        <Progress value={row.getValue("progress")} className="h-2 flex-shrink-0" />
         <span className="text-sm text-muted-foreground">%{row.getValue("progress")}</span>
       </div>
     )

@@ -7,6 +7,7 @@ import { generateMeta } from "@/lib/utils";
 import { RecentProjectList } from "./recent-projects-table";
 import ProjectEfficiency from "./project-efficiency";
 import Reminders from "./reminders";
+import AchievementByYear from "./achievement-by-year";
 
 export async function generateMetadata() {
   return generateMeta({
@@ -139,8 +140,9 @@ export default function Page() {
           </CardContent>
         </Card>
       </div>
-      <div className="mt-4 grid gap-4 xl:grid-cols-3">
+      <div className="mt-4 grid gap-4 xl:grid-cols-2 2xl:grid-cols-4">
         <Reminders />
+        <AchievementByYear />
         <ProjectEfficiency />
       </div>
       <RecentProjectList />

@@ -45,28 +45,32 @@ const chartConfig = {
 
 export default function ProjectEfficiency() {
   return (
-    <Card className="flex flex-col">
-      <CardHeader className="items-center pb-0">
-        <CardTitle>Project Efficiency</CardTitle>
+    <Card className="flex flex-col xl:col-span-1">
+      <CardHeader className="items-center">
+        <CardTitle className="text-xl">Project Efficiency</CardTitle>
       </CardHeader>
-      <CardContent className="flex-1 pb-0">
-        <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
-          <PieChart>
-            <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-            <Pie data={chartData} dataKey="visitors" nameKey="browser" innerRadius={60} />
-          </PieChart>
-        </ChartContainer>
+      <CardContent className="flex-1">
+        <div className="flex-1 flex-shrink-0">
+          <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
+            <PieChart>
+              <ChartTooltip
+                cursor={false}
+                content={
+                  <ChartTooltipContent
+                    formatter={(value, name, props) => (
+                      <div className="flex justify-between gap-2">
+                        <span className="capitalize">{name}</span> %{value}
+                      </div>
+                    )}
+                  />
+                }
+              />
+              <Pie data={chartData} dataKey="visitors" nameKey="browser" innerRadius={60} />
+              <ChartLegend content={<ChartLegendContent className="sss" nameKey="browser" />} />
+            </PieChart>
+          </ChartContainer>
+        </div>
       </CardContent>
-      <CardFooter className="flex flex-col items-stretch gap-2 xl:flex-row">
-        {chartData.map((item, key) => (
-          <div
-            key={key}
-            className="flex flex-grow items-center justify-between rounded-lg border py-0.5 ps-3 text-center text-sm capitalize">
-            {item.browser}
-            <span className="border-s px-2 py-1 text-muted-foreground">{item.visitors}</span>
-          </div>
-        ))}
-      </CardFooter>
     </Card>
   );
 }
