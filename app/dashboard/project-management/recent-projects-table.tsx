@@ -142,7 +142,7 @@ export const columns: ColumnDef<Project>[] = [
 
       return (
         <div className="flex items-center gap-4">
-          <Image
+          <img
             src={`${process.env.DASHBOARD_BASE_URL}/${client.avatar}`}
             width={40}
             height={40}
