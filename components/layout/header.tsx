@@ -1,16 +1,4 @@
-import {
-  CircleUser,
-  Download,
-  DownloadIcon,
-  Home,
-  LineChart,
-  Menu,
-  Package,
-  Package2,
-  ShoppingCart,
-  Users
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { CircleUser, Menu } from "lucide-react";
 import Link from "next/link";
 import {
   DropdownMenu,
@@ -87,10 +75,13 @@ export default function Header() {
         <ThemeSwitch />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="secondary" size="icon" className="rounded-full">
-              <CircleUser className="h-5 w-5" />
-              <span className="sr-only">Toggle user menu</span>
-            </Button>
+            <figure className="cursor-pointer">
+              <img
+                src={`${process.env.DASHBOARD_BASE_URL}/images/avatars/1.png`}
+                className="h-10 w-10"
+                alt="..."
+              />
+            </figure>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -101,9 +92,6 @@ export default function Header() {
             <DropdownMenuItem>Logout</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-        <Button asChild>
-          <Link href={`${process.env.BASE_URL}/#pricing`}>Buy Now</Link>
-        </Button>
       </header>
     </div>
   );

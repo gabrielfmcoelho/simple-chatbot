@@ -53,7 +53,10 @@ export default function ChatHeader({ user }: { user: UserPropsTypes }) {
                     </DialogTrigger>
                     <DialogContent className="top-8 flex translate-y-0 items-center justify-between">
                       <div className="flex items-center gap-4">
-                        <UserAvatar className="h-20 w-20" image="/avatars/1.png" />
+                        <UserAvatar
+                          className="h-20 w-20"
+                          image={`${process.env.DASHBOARD_BASE_URL}/images/avatars/4.png`}
+                        />
                         <div className="text-lg">Jennica calling ...</div>
                       </div>
                       <div className="flex gap-4">
@@ -83,7 +86,10 @@ export default function ChatHeader({ user }: { user: UserPropsTypes }) {
                     </DialogTrigger>
                     <DialogContent className="top-8 flex translate-y-0 items-center justify-between">
                       <div className="flex items-center gap-4">
-                        <UserAvatar className="h-20 w-20" image="/avatars/1.png" />
+                        <UserAvatar
+                          className="h-20 w-20"
+                          image={`${process.env.DASHBOARD_BASE_URL}/images/avatars/4.png`}
+                        />
                         <div className="text-lg">Jennica calling ...</div>
                       </div>
                       <div className="flex gap-4">

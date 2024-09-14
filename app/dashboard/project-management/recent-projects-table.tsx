@@ -192,8 +192,8 @@ export const columns: ColumnDef<Project>[] = [
     accessorKey: "progress",
     header: "Progress",
     cell: ({ row }) => (
-      <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
-        <Progress value={row.getValue("progress")} className="h-2 flex-shrink-0" />
+      <div className="flex flex-col lg:flex-row lg:items-center lg:gap-2">
+        <Progress value={row.getValue("progress")} className="h-2" />
         <span className="text-sm text-muted-foreground">%{row.getValue("progress")}</span>
       </div>
     )
@@ -203,21 +203,23 @@ export const columns: ColumnDef<Project>[] = [
     enableHiding: false,
     cell: ({ row }) => {
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <Ellipsis className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>View Project</DropdownMenuItem>
-            <DropdownMenuItem>Members</DropdownMenuItem>
-            <DropdownMenuItem>Delete</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="text-end">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <span className="sr-only">Open menu</span>
+                <Ellipsis className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>View Project</DropdownMenuItem>
+              <DropdownMenuItem>Members</DropdownMenuItem>
+              <DropdownMenuItem>Delete</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       );
     }
   }
