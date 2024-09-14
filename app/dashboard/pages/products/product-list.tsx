@@ -194,7 +194,7 @@ export const columns: ColumnDef<Product>[] = [
           <Badge
             variant={status === "out-of-stock" ? "secondary" : "default"}
             className="capitalize">
-            {row.getValue("status").replaceAll("-", " ")}
+            {row.getValue("status")}
           </Badge>
         );
       } else if (status === "closed-for-sale") {
@@ -202,7 +202,7 @@ export const columns: ColumnDef<Product>[] = [
           <Badge
             variant={status === "closed-for-sale" ? "warning" : "default"}
             className="capitalize">
-            {row.getValue("status").replaceAll("-", " ")}
+            {row.getValue("status")}
           </Badge>
         );
       } else if (status === "inactive") {
