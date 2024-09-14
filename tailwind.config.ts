@@ -89,7 +89,7 @@ const config = {
     require("tailwindcss-animate"),
     plugin(function ({ addBase }) {
       addBase({
-        html: { fontSize: "14px" }
+        html: { fontSize: "16px" }
       });
     })
   ]

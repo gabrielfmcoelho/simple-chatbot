@@ -4,6 +4,9 @@ import { OverviewChart } from "./overview-chart";
 import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
 import { Button } from "@/components/ui/button";
 import { generateMeta } from "@/lib/utils";
+import { RecentProjectList } from "./recent-projects-table";
+import ProjectEfficiency from "./project-efficiency";
+import Reminders from "./reminders";
 
 export async function generateMetadata() {
   return generateMeta({
@@ -78,7 +81,7 @@ export default function Page() {
           </CardHeader>
           <CardContent>
             <p className="mb-2 text-sm font-bold">Today’s Heroes</p>
-            <div className="flex -space-x-2">
+            <div className="flex -space-x-4">
               <img
                 className="inline-block h-12 w-12 rounded-full border-4 border-background"
                 src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -136,6 +139,11 @@ export default function Page() {
           </CardContent>
         </Card>
       </div>
+      <div className="mt-4 grid gap-4 xl:grid-cols-3">
+        <Reminders />
+        <ProjectEfficiency />
+      </div>
+      <RecentProjectList />
     </>
   );
 }

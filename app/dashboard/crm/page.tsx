@@ -29,7 +29,7 @@ export default function Page() {
         </div>
       </div>
       <div className="space-y-4">
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-4">
           <TargetCard />
           <TotalCustomersCard />
           <TotalRevenueCard />

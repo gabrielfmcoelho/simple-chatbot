@@ -32,7 +32,7 @@ export const SidebarNavLink: React.FC<SidebarNavLinkProps> = ({ item }: SidebarN
 export default function Sidebar() {
   return (
     <div className="fixed hidden h-screen lg:block">
-      <ScrollArea className="h-full w-[280px] border-r px-4">
+      <ScrollArea className="h-full w-[--sidebar-width] border-r px-4">
         <Logo />
         {page_routes.map((route) => (
           <>
@@ -48,7 +48,7 @@ export default function Sidebar() {
                           {item.title}
                           <ChevronDown className="ms-auto h-4 w-4 transition-transform group-data-[state=closed]:rotate-90" />
                         </CollapsibleTrigger>
-                        <CollapsibleContent className="data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down overflow-hidden">
+                        <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
                           <div className="py-2 *:flex *:items-center *:gap-3 *:rounded-lg *:px-7 *:py-2 *:transition-all hover:*:bg-muted">
                             {item.items.map((item, key) => (
                               <SidebarNavLink key={key} item={item} />

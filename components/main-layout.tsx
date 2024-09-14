@@ -25,9 +25,9 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       <NextTopLoader color="hsl(var(--primary))" height={2} shadow="none" />
       <div className="flex h-screen">
         <Sidebar />
-        <div className="w-full lg:ps-[280px]">
+        <div className="w-full lg:ps-[--sidebar-width]">
           <Header />
-          <main className={cn("p-4", { "container mx-auto": themeOptions.container })}>
+          <main className={cn("p-4", { "container2 mx-auto2": themeOptions.container })}>
             {children}
           </main>
         </div>
