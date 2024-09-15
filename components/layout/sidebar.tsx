@@ -27,7 +27,11 @@ export const SidebarNavLink: React.FC<SidebarNavLinkProps> = ({ item }: SidebarN
       activeClassName="!bg-primary text-primary-foreground">
       {item.icon && <Icon name={item.icon} className="h-4 w-4" />}
       {item.title}
-      {item.isComing && <Badge variant="outline">Coming</Badge>}
+      {item.isComing && (
+        <Badge className="ms-auto opacity-50" variant="outline">
+          Coming
+        </Badge>
+      )}
     </Anchor>
   );
 };

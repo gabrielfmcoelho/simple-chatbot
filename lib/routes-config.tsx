@@ -37,14 +37,15 @@ export const page_routes: PageRoutesType[] = [
         icon: "FolderDot"
       },
       { title: "Cyripto", href: "/dashboard/cyripto", icon: "WalletMinimal" },
-      { title: "Academy", href: "#", icon: "GraduationCap", isComing: true }
+      { title: "Academy", href: "#", icon: "GraduationCap", isComing: true },
+      { title: "Online Courses", href: "#", icon: "LandPlot", isComing: true }
     ]
   },
   {
     title: "Apps",
     items: [
       { title: "Chats", href: "/dashboard/apps/chat", icon: "MessageSquare" },
-      { title: "Mail", href: "/dashboard/apps/mail", icon: "Mail", isComing: true },
+      { title: "Inbox", href: "/dashboard/apps/inbox", icon: "Mail", isComing: true },
       { title: "Kanban", href: "/dashboard/apps/kanban", icon: "SquareKanban", isComing: true },
       {
         title: "Todo List",
@@ -54,6 +55,7 @@ export const page_routes: PageRoutesType[] = [
       },
       { title: "Notes", href: "/dashboard/apps/notes", icon: "StickyNote", isComing: true },
       { title: "Calendar", href: "/dashboard/apps/calendar", icon: "Calendar", isComing: true },
+      { title: "File Manager", href: "#", icon: "Package", isComing: true },
       { title: "Api Keys", href: "/dashboard/apps/api-keys", icon: "Key", isComing: true }
     ]
   },
@@ -101,6 +103,16 @@ export const page_routes: PageRoutesType[] = [
           { title: "Product List", href: "/dashboard/pages/products" },
           { title: "Product Detail", href: "/dashboard/pages/products/1", isComing: true },
           { title: "Add Product", href: "/dashboard/pages/products/create", isComing: true }
+        ]
+      },
+      {
+        title: "Pricing",
+        href: "#",
+        icon: "BadgeDollarSign",
+        items: [
+          { title: "Column Pricing", href: "/dashboard/pages/products", isComing: true },
+          { title: "Table Pricing", href: "/dashboard/pages/products/1", isComing: true },
+          { title: "Pricing Modal", href: "/dashboard/pages/products/create", isComing: true }
         ]
       },
       {
