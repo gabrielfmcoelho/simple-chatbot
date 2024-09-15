@@ -36,7 +36,8 @@ export const page_routes: PageRoutesType[] = [
         href: "/dashboard/project-management",
         icon: "FolderDot"
       },
-      { title: "Cyripto", href: "/dashboard/cyripto", icon: "WalletMinimal" }
+      { title: "Cyripto", href: "/dashboard/cyripto", icon: "WalletMinimal" },
+      { title: "Academy", href: "#", icon: "GraduationCap", isComing: true }
     ]
   },
   {
@@ -59,6 +60,12 @@ export const page_routes: PageRoutesType[] = [
   {
     title: "Pages",
     items: [
+      {
+        title: "Landing Page",
+        href: "#",
+        icon: "Proportions",
+        isComing: true
+      },
       {
         title: "Profile",
         href: "/dashboard/pages/profile",

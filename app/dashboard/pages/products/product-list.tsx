@@ -49,15 +49,15 @@ import { StarFilledIcon } from "@radix-ui/react-icons";
 
 export type Product = {
   id: number;
-  name: string;
-  image: string;
-  description: string;
-  category: string;
-  sku: string;
-  stock: string;
-  price: string;
-  rating: string;
-  status: string;
+  name?: string;
+  image?: string;
+  description?: string;
+  category?: string;
+  sku?: string;
+  stock?: string;
+  price?: string;
+  rating?: string;
+  status?: string;
 };
 
 export const columns: ColumnDef<Product>[] = [
@@ -194,7 +194,7 @@ export const columns: ColumnDef<Product>[] = [
           <Badge
             variant={status === "out-of-stock" ? "secondary" : "default"}
             className="capitalize">
-            {row.getValue("status")}
+            {status.replaceAll("-", " ")}
           </Badge>
         );
       } else if (status === "closed-for-sale") {
@@ -202,13 +202,13 @@ export const columns: ColumnDef<Product>[] = [
           <Badge
             variant={status === "closed-for-sale" ? "warning" : "default"}
             className="capitalize">
-            {row.getValue("status")}
+            {status.replaceAll("-", " ")}
           </Badge>
         );
       } else if (status === "inactive") {
         return (
           <Badge variant={status === "inactive" ? "destructive" : "default"} className="capitalize">
-            {row.getValue("status")}
+            {status}
           </Badge>
         );
       }
