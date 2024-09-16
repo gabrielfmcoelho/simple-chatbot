@@ -1,5 +1,4 @@
-import { CircleUser, Menu } from "lucide-react";
-import Link from "next/link";
+import { Menu } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,6 +15,7 @@ import Logo from "./logo";
 import { SidebarNavLink } from "./sidebar";
 import { page_routes } from "@/lib/routes-config";
 import ThemeSwitch from "../theme-switch";
+import { Fragment } from "react";
 
 export default function Header() {
   return (
@@ -32,14 +32,14 @@ export default function Header() {
             <Logo className="px-0" />
             <nav className="grid gap-2 text-lg font-medium">
               {page_routes.map((route) => (
-                <>
+                <Fragment key={route.title}>
                   <div className="px-2 py-4 font-medium">{route.title}</div>
                   <nav className="*:flex *:items-center *:gap-3 *:rounded-lg *:px-3 *:py-2 *:transition-all hover:*:bg-muted">
                     {route.items.map((item, key) => (
                       <SidebarNavLink key={key} item={item} />
                     ))}
                   </nav>
-                </>
+                </Fragment>
               ))}
             </nav>
             <div className="mt-auto">

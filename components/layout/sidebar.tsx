@@ -1,5 +1,7 @@
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Fragment } from "react";
 import Link from "next/link";
+
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { page_routes } from "@/lib/routes-config";
 import Anchor from "../anchor";
 import Logo from "./logo";
@@ -39,15 +41,15 @@ export const SidebarNavLink: React.FC<SidebarNavLinkProps> = ({ item }: SidebarN
 export default function Sidebar() {
   return (
     <div className="fixed hidden h-screen lg:block">
-      <ScrollArea className="h-full w-[--sidebar-width] border-r px-4">
+      <ScrollArea className="h-full w-[--sidebar-width] border-r bg-background px-4">
         <Logo />
         {page_routes.map((route) => (
-          <>
+          <Fragment key={route.title}>
             <div className="px-2 py-4 font-medium">{route.title}</div>
             <div className="*:flex *:items-center *:gap-3 *:rounded-lg *:px-3 *:py-2 *:transition-all hover:*:bg-muted">
               {route.items.map((item, key) => {
                 return (
-                  <>
+                  <Fragment key={item.title}>
                     {item.items?.length ? (
                       <Collapsible className="group !block transition-all hover:data-[state=open]:bg-transparent">
                         <CollapsibleTrigger className="flex w-full items-center gap-3">
@@ -66,11 +68,11 @@ export default function Sidebar() {
                     ) : (
                       <SidebarNavLink key={key} item={item} />
                     )}
-                  </>
+                  </Fragment>
                 );
               })}
             </div>
-          </>
+          </Fragment>
         ))}
         <div className="mt-10">
           <Card>

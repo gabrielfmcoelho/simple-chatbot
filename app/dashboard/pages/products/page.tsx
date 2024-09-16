@@ -34,7 +34,7 @@ export default async function Page() {
       <div className="flex items-center justify-between space-y-2">
         <h1 className="text-2xl font-bold tracking-tight">Products</h1>
         <Button asChild>
-          <Link href="#">
+          <Link href="/dashboard/pages/products/create">
             <PlusCircledIcon className="me-2" /> Add New Product
           </Link>
         </Button>
