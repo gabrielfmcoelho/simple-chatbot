@@ -76,7 +76,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-muted text-foreground;
+    @apply overflow-x-hidden bg-muted text-foreground;
   }
   .mdxeditor {
     @apply overflow-hidden rounded-lg;

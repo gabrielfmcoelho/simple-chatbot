@@ -2,7 +2,7 @@ import {
   DropdownMenu,
   DropdownMenuItem,
   DropdownMenuContent,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Download, Ellipsis } from "lucide-react";
@@ -28,7 +28,7 @@ export function ExportButton() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm">
+        <Button variant="outline" size="sm" className="!mt-0">
           Export <Download className="ms-2 h-3 w-3" />
         </Button>
       </DropdownMenuTrigger>

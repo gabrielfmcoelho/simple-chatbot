@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { InfiniteSlider } from "@/components/ui/custom/infinite-slider";
 import { ChevronUp } from "lucide-react";
 import Link from "next/link";
-import Marquee from "react-fast-marquee";
 
 const prices = [
   {
@@ -43,10 +43,10 @@ const prices = [
 
 export default function CyriptoCurrencyPriceCards() {
   return (
-    <Marquee autoFill pauseOnHover>
+    <InfiniteSlider durationOnHover={75}>
       {prices.map((item) => (
         <Link key={item.id} href="#">
-          <Card className="mx-2 text-sm hover:border-primary/30">
+          <Card className="text-sm hover:border-primary/30">
             <CardContent className="flex items-center gap-4 p-3">
               <div>
                 <div className="mb-1 flex items-center">
@@ -63,6 +63,6 @@ export default function CyriptoCurrencyPriceCards() {
           </Card>
         </Link>
       ))}
-    </Marquee>
+    </InfiniteSlider>
   );
 }

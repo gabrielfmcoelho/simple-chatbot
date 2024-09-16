@@ -5,7 +5,7 @@ export function RecentActivities() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex justify-between text-base">
+        <CardTitle className="flex justify-between">
           Recent Activities
           <CardOptionsMenu />
         </CardTitle>

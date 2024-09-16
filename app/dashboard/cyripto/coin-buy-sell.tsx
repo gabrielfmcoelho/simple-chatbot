@@ -79,7 +79,7 @@ export default function CoinBuySell() {
     <>
       <Card>
         <CardHeader>
-          <CardTitle className="flex justify-between text-base">Trading</CardTitle>
+          <CardTitle className="flex justify-between">Trading</CardTitle>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="buy" onValueChange={setTransactionType}>
