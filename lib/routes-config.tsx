@@ -102,7 +102,7 @@ export const page_routes: PageRoutesType[] = [
         items: [
           { title: "Product List", href: "/dashboard/pages/products" },
           { title: "Product Detail", href: "/dashboard/pages/products/1", isComing: true },
-          { title: "Add Product", href: "/dashboard/pages/products/create", isComing: true }
+          { title: "Add Product", href: "/dashboard/pages/products/create" }
         ]
       },
       {
