@@ -43,7 +43,6 @@ import {
   TableRow
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
 import { Checkbox } from "@/components/ui/checkbox";
 import { StarFilledIcon } from "@radix-ui/react-icons";
 import { Card, CardContent } from "@/components/ui/card";
@@ -58,7 +57,7 @@ export type Product = {
   stock?: string;
   price?: string;
   rating?: string;
-  status?: string;
+  status: "active" | "out-of-stock" | "closed-for-sale" | "completed" | "inactive";
 };
 
 export const columns: ColumnDef<Product>[] = [
@@ -183,37 +182,21 @@ export const columns: ColumnDef<Product>[] = [
       );
     },
     cell: ({ row }) => {
-      const status = row.original.status;
-      if (status === "active") {
-        return (
-          <Badge variant={status === "active" ? "success" : "default"} className="capitalize">
-            {row.getValue("status")}
-          </Badge>
-        );
-      } else if (status === "out-of-stock") {
-        return (
-          <Badge
-            variant={status === "out-of-stock" ? "secondary" : "default"}
-            className="capitalize">
-            {status.replaceAll("-", " ")}
-          </Badge>
-        );
-      } else if (status === "closed-for-sale") {
-        return (
-          <Badge
-            variant={status === "closed-for-sale" ? "warning" : "default"}
-            className="capitalize">
-            {status.replaceAll("-", " ")}
-          </Badge>
-        );
-      } else if (status === "inactive") {
-        return (
-          <Badge variant={status === "inactive" ? "destructive" : "default"} className="capitalize">
-            {status}
-          </Badge>
-        );
-      }
-      return <span className="capitalize">{status}</span>;
+      const statusMap = {
+        active: "success",
+        "out-of-stock": "secondary",
+        "closed-for-sale": "warning",
+        completed: "success",
+        inactive: "destructive"
+      } as const;
+
+      const statusClass = statusMap[row.original.status] ?? "default";
+
+      return (
+        <Badge variant={statusClass} className="capitalize">
+          {row.original.status.replaceAll("-", " ")}
+        </Badge>
+      );
     }
   },
   {

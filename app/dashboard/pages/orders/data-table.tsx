@@ -44,58 +44,56 @@ import {
   TableRow
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
 import { Checkbox } from "@/components/ui/checkbox";
-import { StarFilledIcon } from "@radix-ui/react-icons";
 
-export type User = {
+export type Order = {
   id: number;
-  name: string;
-  image: string;
-  status: string;
+  customer: Customer;
+  price?: string;
+  status: "active" | "transportation" | "pending" | "completed" | "cancel";
+  date?: string;
+  type?: string;
 };
 
-export const columns: ColumnDef<User>[] = [
+export type Customer = {
+  name?: string;
+  email?: string;
+};
+
+export const columns: ColumnDef<Order>[] = [
   {
     accessorKey: "id",
     header: "#",
     cell: ({ row }) => row.getValue("id")
   },
   {
-    accessorKey: "name",
-    header: "Name",
-    cell: ({ row }) => (
-      <div className="flex items-center gap-4">
-        <figure className="rounded-lg border">
-          <img
-            src={`${process.env.DASHBOARD_BASE_URL}${row.original.image}`}
-            width={80}
-            height={80}
-            alt=""
-          />
-        </figure>
-        <div className="capitalize">{row.getValue("name")}</div>
-      </div>
-    )
+    accessorKey: "customer",
+    header: "Customer",
+    cell: ({ row }) => {
+      const customer = row.original.customer;
+
+      return (
+        <div className="space-y-1">
+          <div className="font-semibold">{customer.name}</div>
+          <div>{customer.email}</div>
+        </div>
+      );
+    }
   },
   {
-    accessorKey: "category",
-    header: "Category",
-    cell: ({ row }) => <div className="capitalize">{row.getValue("category")}</div>
+    accessorKey: "price",
+    header: "Price",
+    cell: ({ row }) => row.getValue("price")
   },
   {
-    accessorKey: "stock",
-    header: "Stock",
-    cell: ({ row }) => row.getValue("stock")
+    accessorKey: "date",
+    header: "Date",
+    cell: ({ row }) => row.getValue("date")
   },
   {
-    accessorKey: "rating",
-    header: "Rating",
-    cell: ({ row }) => (
-      <div className="flex items-center gap-1">
-        <StarFilledIcon className="text-orange-500" /> {row.getValue("rating")}
-      </div>
-    )
+    accessorKey: "type",
+    header: "Type",
+    cell: ({ row }) => <div className="capitalize">{row.getValue("type")}</div>
   },
   {
     accessorKey: "status",
@@ -111,37 +109,21 @@ export const columns: ColumnDef<User>[] = [
       );
     },
     cell: ({ row }) => {
-      const status = row.original.status;
-      if (status === "active") {
-        return (
-          <Badge
-            className={cn("capitalize", {
-              "bg-green-100 text-green-700 hover:bg-green-100": status === "active"
-            })}>
-            {row.getValue("status")}
-          </Badge>
-        );
-      } else if (status === "out-of-stock") {
-        return (
-          <Badge
-            className={cn("capitalize", {
-              "bg-orange-100 text-orange-700 hover:bg-orange-100":
-                row.getValue("status") === "out-of-stock"
-            })}>
-            {row.getValue("status")}
-          </Badge>
-        );
-      } else if (status === "inactive") {
-        return (
-          <Badge
-            className={cn("capitalize", {
-              "bg-gray-100 text-gray-700 hover:bg-gray-100": status === "inactive"
-            })}>
-            {row.getValue("status")}
-          </Badge>
-        );
-      }
-      return <span className="capitalize">{status}</span>;
+      const statusMap = {
+        active: "success",
+        transportation: "secondary",
+        pending: "warning",
+        completed: "success",
+        cancel: "destructive"
+      } as const;
+
+      const statusClass = statusMap[row.original.status] ?? "default";
+
+      return (
+        <Badge variant={statusClass} className="capitalize">
+          {row.original.status}
+        </Badge>
+      );
     }
   },
   {
@@ -169,7 +151,7 @@ export const columns: ColumnDef<User>[] = [
   }
 ];
 
-export default function UsersDataTable({ data }: { data: User[] }) {
+export default function OrdersDataTable({ data }: { data: Order[] }) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
@@ -234,10 +216,10 @@ export default function UsersDataTable({ data }: { data: User[] }) {
 
   return (
     <div className="w-full">
-      <div className="flex items-center gap-4 py-4">
+      <div className="flex items-center gap-4 pb-4">
         <div className="flex gap-2">
           <Input
-            placeholder="Search products..."
+            placeholder="Search orders..."
             value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
             onChange={(event) => table.getColumn("name")?.setFilterValue(event.target.value)}
             className="max-w-sm"
