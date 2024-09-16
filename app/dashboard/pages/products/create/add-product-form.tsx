@@ -1,7 +1,5 @@
 "use client";
 
-import { Suspense } from "react";
-import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -34,23 +32,29 @@ import { CirclePlusIcon, UploadIcon } from "lucide-react";
 import { AddMediaFromUrl } from "./add-media-from-url";
 import AddNewCategory from "./add-category";
 
-const EditorComp = dynamic(() => import("./editor"), { ssr: false });
-
-const markdown = `
-Hello **world**!
-`;
-
 const FormSchema = z.object({
   name: z.string().min(2, {
     message: "Username must be at least 2 characters."
-  })
+  }),
+  sku: z.string(),
+  barcode: z.string(),
+  description: z.string(),
+  file: z.string(),
+  variants: z.string(),
+  price: z.string(),
+  status: z.string(),
+  category: z.string(),
+  sub_category: z.string()
 });
 
 export default function AddProductForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      name: ""
+      name: "",
+      sku: "",
+      barcode: "",
+      description: ""
     }
   });
 
@@ -101,45 +105,48 @@ export default function AddProductForm() {
                       </FormItem>
                     )}
                   />
+                  <div className="grid gap-4 lg:grid-cols-2">
+                    <FormField
+                      control={form.control}
+                      name="sku"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>SKU</FormLabel>
+                          <FormControl>
+                            <Input {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="barcode"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Barcode</FormLabel>
+                          <FormControl>
+                            <Input {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                   <FormField
                     control={form.control}
-                    name="username"
+                    name="description"
                     render={({ field }) => (
-                      <div className="space-y-4">
-                        <FormItem>
-                          <FormLabel>Name</FormLabel>
-                          <FormControl>
-                            <Input name="username22" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                        <div className="grid gap-4 lg:grid-cols-2">
-                          <FormItem>
-                            <FormLabel>SKU</FormLabel>
-                            <FormControl>
-                              <Input {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                          <FormItem>
-                            <FormLabel>Barcode</FormLabel>
-                            <FormControl>
-                              <Input placeholder="1234-5678" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        </div>
-                        <FormItem>
-                          <FormLabel>Description (Optional)</FormLabel>
-                          <FormControl>
-                            <Textarea {...field} />
-                          </FormControl>
-                          <FormDescription>
-                            Set a description to the product for better visibility.
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      </div>
+                      <FormItem>
+                        <FormLabel>Description (Optional)</FormLabel>
+                        <FormControl>
+                          <Textarea {...field} />
+                        </FormControl>
+                        <FormDescription>
+                          Set a description to the product for better visibility.
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
                     )}
                   />
                 </div>
@@ -157,8 +164,8 @@ export default function AddProductForm() {
               </CardHeader>
               <CardContent>
                 <FormField
+                  name="file"
                   control={form.control}
-                  name="username"
                   render={({ field }) => (
                     <div className="flex h-40 items-center justify-center rounded-lg border-2 border-dashed">
                       <Button type="button" variant="outline">
@@ -176,8 +183,8 @@ export default function AddProductForm() {
               </CardHeader>
               <CardContent>
                 <FormField
+                  name="variants"
                   control={form.control}
-                  name="username"
                   render={({ field }) => (
                     <div className="space-y-4">
                       <div className="grid gap-4 lg:grid-flow-col">
@@ -260,11 +267,11 @@ export default function AddProductForm() {
                 <CardTitle>Pricing</CardTitle>
               </CardHeader>
               <CardContent>
-                <FormField
-                  control={form.control}
-                  name="username"
-                  render={({ field }) => (
-                    <div className="space-y-4">
+                <div className="space-y-4">
+                  <FormField
+                    name="price"
+                    control={form.control}
+                    render={({ field }) => (
                       <FormItem>
                         <FormLabel>Base Price</FormLabel>
                         <FormControl>
@@ -272,6 +279,12 @@ export default function AddProductForm() {
                         </FormControl>
                         <FormMessage />
                       </FormItem>
+                    )}
+                  />
+                  <FormField
+                    name="price"
+                    control={form.control}
+                    render={({ field }) => (
                       <FormItem>
                         <FormLabel>Discounted Price</FormLabel>
                         <FormControl>
@@ -279,22 +292,22 @@ export default function AddProductForm() {
                         </FormControl>
                         <FormMessage />
                       </FormItem>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="terms" />
-                        <label
-                          htmlFor="terms"
-                          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                          Charge tax on this product
-                        </label>
-                      </div>
-                      <hr />
-                      <div className="flex items-center space-x-2">
-                        <Switch id="airplane-mode" checked />
-                        <Label htmlFor="airplane-mode">In stock</Label>
-                      </div>
-                    </div>
-                  )}
-                />
+                    )}
+                  />
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="terms" />
+                    <label
+                      htmlFor="terms"
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                      Charge tax on this product
+                    </label>
+                  </div>
+                  <hr />
+                  <div className="flex items-center space-x-2">
+                    <Switch id="airplane-mode" checked />
+                    <Label htmlFor="airplane-mode">In stock</Label>
+                  </div>
+                </div>
               </CardContent>
             </Card>
             <Card>
@@ -303,8 +316,8 @@ export default function AddProductForm() {
               </CardHeader>
               <CardContent>
                 <FormField
+                  name="status"
                   control={form.control}
-                  name="username"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
@@ -333,11 +346,11 @@ export default function AddProductForm() {
                 <CardTitle>Categories</CardTitle>
               </CardHeader>
               <CardContent>
-                <FormField
-                  control={form.control}
-                  name="username"
-                  render={({ field }) => (
-                    <div className="space-y-4">
+                <div className="space-y-4">
+                  <FormField
+                    name="category"
+                    control={form.control}
+                    render={({ field }) => (
                       <FormItem>
                         <FormControl>
                           <div className="flex gap-2">
@@ -360,6 +373,12 @@ export default function AddProductForm() {
                         </FormControl>
                         <FormMessage />
                       </FormItem>
+                    )}
+                  />
+                  <FormField
+                    name="sub_category"
+                    control={form.control}
+                    render={({ field }) => (
                       <FormItem>
                         <FormControl>
                           <div className="flex gap-2">
@@ -380,9 +399,9 @@ export default function AddProductForm() {
                         </FormControl>
                         <FormMessage />
                       </FormItem>
-                    </div>
-                  )}
-                />
+                    )}
+                  />
+                </div>
               </CardContent>
             </Card>
           </div>
