@@ -1,8 +1,11 @@
 "use client";
 
 import { createContext } from "react";
-import { SelectedChatContextType, UserProfileContextType } from "@/app/dashboard/apps/chat/types";
 import { ThemeOptionsProps } from "@/types/theme";
+import {
+  SelectedChatContextType,
+  UserProfileContextType
+} from "@/app/dashboard/(auth)/apps/chat/types";
 
 export const UserProfileContext = createContext<UserProfileContextType | false>(false); // after
 

@@ -19,7 +19,7 @@ export async function generateMetadata() {
 
 async function getChats() {
   const data = await fs.readFile(
-    path.join(process.cwd(), "app/dashboard/apps/chat/data/chats.json")
+    path.join(process.cwd(), "app/dashboard/(auth)/apps/chat/data/chats.json")
   );
 
   return JSON.parse(data.toString());
@@ -27,7 +27,7 @@ async function getChats() {
 
 async function getChatUser(id: number) {
   const data = await fs.readFile(
-    path.join(process.cwd(), "app/dashboard/apps/chat/data/contacts.json")
+    path.join(process.cwd(), "app/dashboard/(auth)/apps/chat/data/contacts.json")
   );
 
   return JSON.parse(data.toString()).find((item: UserPropsTypes) => item.id === id);

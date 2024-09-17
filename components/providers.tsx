@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { ThemeProvider } from "next-themes";
 import { SelectedChatContext, ThemeOptionsContext } from "./contexts";
-import { ChatItemProps } from "@/app/dashboard/apps/chat/types";
 import { ThemeOptionsProps } from "@/types/theme";
+import { ChatItemProps } from "@/app/dashboard/(auth)/apps/chat/types";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [selectedChat, setSelectedChat] = useState<ChatItemProps | null>(null);

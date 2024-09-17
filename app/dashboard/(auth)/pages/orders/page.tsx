@@ -27,7 +27,9 @@ export async function generateMetadata() {
 }
 
 async function getOrders() {
-  const data = await fs.readFile(path.join(process.cwd(), "app/dashboard/pages/orders/data.json"));
+  const data = await fs.readFile(
+    path.join(process.cwd(), "app/dashboard/(auth)/pages/orders/data.json")
+  );
 
   return JSON.parse(data.toString());
 }
