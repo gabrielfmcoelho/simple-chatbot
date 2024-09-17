@@ -101,7 +101,7 @@ export const page_routes: PageRoutesType[] = [
         icon: "PackageSearch",
         items: [
           { title: "Product List", href: "/dashboard/pages/products" },
-          { title: "Product Detail", href: "/dashboard/pages/products/1", isComing: true },
+          { title: "Product Detail", href: "/dashboard/pages/products/1" },
           { title: "Add Product", href: "/dashboard/pages/products/create" }
         ]
       },
