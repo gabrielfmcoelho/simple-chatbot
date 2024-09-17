@@ -68,7 +68,10 @@ export default function ProductReviewList() {
       {reviews.map((review) => (
         <div key={review.id} className="grid gap-4 rounded-lg border p-4">
           <div className="flex items-start gap-4">
-            <UserAvatar image={review.image} fallback={review.name} />
+            <UserAvatar
+              image={`${process.env.DASHBOARD_BASE_URL}/${review.image}`}
+              fallback={review.name}
+            />
             <div className="grid flex-grow gap-1">
               <div className="flex items-center justify-between gap-2">
                 <div className="font-medium">{review.name}</div>
