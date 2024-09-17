@@ -9,10 +9,16 @@ import { ThemeOptionsProps } from "@/types/theme";
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [selectedChat, setSelectedChat] = useState<ChatItemProps | null>(null);
   const [themeOptions, setThemeOptions] = useState<ThemeOptionsProps>({
-    container: true,
-    themeColor: "black",
-    rtl: false,
-    layout: "vertical"
+    containerContent: false,
+    colorSchema: "white",
+    gradientStyle: true,
+    fontFamily: "Inter",
+    direction: "ltr",
+    layout: "vertical",
+    sidebar: "classic",
+    navbar: "sticky",
+    rounded: "lg",
+    shadow: "none"
   });
 
   return (

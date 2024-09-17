@@ -5,7 +5,7 @@ export type ThemeOptionsProps = {
   fontFamily?: string;
   direction: "ltr" | "rtl";
   layout: "vertical" | "horizontal";
-  sidebar: "column" | "compact" | "icon" | "hidden";
+  sidebar: "classic" | "column" | "compact" | "icon" | "hidden";
   navbar: "sticky" | "static" | "hidden";
   rounded: "none" | "sm" | "lg" | "xl";
   shadow: "none" | "sm" | "lg" | "xl";
