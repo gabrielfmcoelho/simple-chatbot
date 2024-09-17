@@ -23,7 +23,7 @@ export async function generateMetadata() {
     title: "Product Detail",
     description:
       "Add new products page. A fast and efficient product addition process using Next.js and Tailwind CSS. User-friendly interface with easily editable form fields.",
-    canonical: "/pages/products"
+    canonical: "/pages/products/1"
   });
 }
 
