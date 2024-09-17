@@ -1,7 +1,12 @@
 export type ThemeOptionsProps = {
-  container?: boolean;
-  themeColor?: string;
-  rtl?: boolean;
-  layout?: "vertical" | "horizontal";
-  sidebar?: "compact" | "icon" | "hidden";
+  containerContent?: boolean;
+  colorSchema?: string;
+  gradientStyle?: boolean;
+  fontFamily?: string;
+  direction: "ltr" | "rtl";
+  layout: "vertical" | "horizontal";
+  sidebar: "column" | "compact" | "icon" | "hidden";
+  navbar: "sticky" | "static" | "hidden";
+  rounded: "none" | "sm" | "lg" | "xl";
+  shadow: "none" | "sm" | "lg" | "xl";
 };
