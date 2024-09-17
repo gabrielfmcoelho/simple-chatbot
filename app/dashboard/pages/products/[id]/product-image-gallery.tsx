@@ -45,7 +45,7 @@ export default function ProductImageGallery() {
               <SwiperSlide key={key}>
                 <img
                   className="aspect-[3/2] rounded-lg object-contain lg:aspect-square"
-                  src={image}
+                  src={`${process.env.DASHBOARD_BASE_URL}/${image}`}
                 />
               </SwiperSlide>
             ))}
@@ -66,7 +66,10 @@ export default function ProductImageGallery() {
             {images.map((image, key) => (
               <SwiperSlide key={key} className="group">
                 <figure className="rounded-lg border opacity-70 group-[.swiper-slide-thumb-active]:border-primary group-[.swiper-slide-thumb-active]:!opacity-100">
-                  <img className="aspect-square object-contain" src={image} />
+                  <img
+                    className="aspect-square object-contain"
+                    src={`${process.env.DASHBOARD_BASE_URL}/${image}`}
+                  />
                 </figure>
               </SwiperSlide>
             ))}
