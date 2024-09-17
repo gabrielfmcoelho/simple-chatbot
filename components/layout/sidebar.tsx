@@ -84,7 +84,11 @@ export default function Sidebar() {
             </CardHeader>
             <CardContent>
               <Button size="sm" className="w-full" asChild>
-                <Link href={`${process.env.BASE_URL}/#pricing`}>Get Template</Link>
+                <Link
+                  href="https://bundui.lemonsqueezy.com/buy/385ebdb6-6193-4d37-9148-057ab89b9c8d"
+                  target="_blank">
+                  Get Template
+                </Link>
               </Button>
             </CardContent>
           </Card>
