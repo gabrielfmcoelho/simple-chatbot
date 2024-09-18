@@ -122,7 +122,9 @@ export const page_routes: PageRoutesType[] = [
         items: [
           { title: "Login v1", href: "/dashboard/login/v1" },
           { title: "Login v2", href: "/dashboard/login/v2" },
-          { title: "Register", href: "/dashboard/order/register", isComing: true }
+          { title: "Register v1", href: "/dashboard/register/v1" },
+          { title: "Register v2", href: "/dashboard/register/v2" },
+          { title: "Forgot Password", href: "/dashboard/forgot-password" }
         ]
       }
     ]

@@ -3,14 +3,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { generateMeta } from "@/lib/utils";
 import { GithubIcon } from "lucide-react";
-import Link from "next/link";
 
 export async function generateMetadata() {
   return generateMeta({
-    title: "Login Page",
+    title: "Register Page",
     description:
       "A login form with email and password. There's an option to login with Google and a link to sign up if you don't have an account.",
-    canonical: "/login/v1"
+    canonical: "/register/v1"
   });
 }
 
@@ -28,12 +27,27 @@ export default function LoginPageV1() {
       <div className="flex w-full items-center justify-center lg:w-1/2">
         <div className="w-full max-w-md space-y-8 px-4">
           <div className="text-center">
-            <h2 className="mt-6 text-3xl font-bold text-gray-900">Welcome back</h2>
-            <p className="mt-2 text-sm text-gray-600">Please sign in to your account</p>
+            <h2 className="mt-6 text-3xl font-bold text-gray-900">Register</h2>
+            <p className="mt-2 text-sm text-gray-600">
+              Create a new account to access the dashboard.
+            </p>
           </div>
 
           <form className="mt-8 space-y-6">
             <div className="space-y-4">
+              <div>
+                <Label htmlFor="name" className="sr-only">
+                  Name
+                </Label>
+                <Input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  className="w-full"
+                  placeholder="Name"
+                />
+              </div>
               <div>
                 <Label htmlFor="email" className="sr-only">
                   Email address
@@ -61,13 +75,6 @@ export default function LoginPageV1() {
                   className="w-full"
                   placeholder="Password"
                 />
-              </div>
-              <div className="text-end">
-                <Link
-                  href="/dashboard/forgot-password"
-                  className="ml-auto inline-block text-sm underline">
-                  Forgot your password?
-                </Link>
               </div>
             </div>
 
@@ -116,12 +123,12 @@ export default function LoginPageV1() {
               </Button>
             </div>
 
-            <div className="mt-6 text-center text-sm">
-              Don&apos;t have an account?{" "}
-              <Link href="/dashboard/register/v1" className="underline">
-                Sign up
-              </Link>
-            </div>
+            <p className="mt-6 text-center text-sm text-gray-600">
+              Already have an account?{" "}
+              <a href="/dashboard/login/v1" className="text-primary hover:underline">
+                Log in
+              </a>
+            </p>
           </div>
         </div>
       </div>
