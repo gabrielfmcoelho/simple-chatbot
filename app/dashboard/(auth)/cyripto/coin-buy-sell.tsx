@@ -77,7 +77,7 @@ export default function CoinBuySell() {
 
   return (
     <>
-      <Card>
+      <Card className="lg:col-span-6 xl:col-span-2">
         <CardHeader>
           <CardTitle className="flex justify-between">Trading</CardTitle>
         </CardHeader>

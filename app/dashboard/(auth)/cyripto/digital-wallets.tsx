@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function DigitalWallets() {
   return (
-    <Card>
+    <Card className="lg:col-span-6 xl:col-span-2">
       <CardHeader className="flex-row justify-between">
         <CardTitle>Digital Wallets</CardTitle>
         <Link href="#" className="!mt-0 text-sm hover:underline">

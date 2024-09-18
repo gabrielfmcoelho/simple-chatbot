@@ -38,7 +38,7 @@ const chartConfig = {
 
 export function BalanceSummeryChart() {
   return (
-    <Card className="h-full">
+    <Card className="xl:col-span-2">
       <CardHeader className="flex-row justify-between">
         <CardTitle>Balance Summary</CardTitle>
         <ExportButton />

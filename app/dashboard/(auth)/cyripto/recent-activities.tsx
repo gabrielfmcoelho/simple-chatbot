@@ -3,7 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 export function RecentActivities() {
   return (
-    <Card>
+    <Card className="xl:col-span-1">
       <CardHeader>
         <CardTitle className="flex justify-between">
           Recent Activities
