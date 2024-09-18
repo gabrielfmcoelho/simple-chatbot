@@ -126,6 +126,16 @@ export const page_routes: PageRoutesType[] = [
           { title: "Register v2", href: "/dashboard/register/v2" },
           { title: "Forgot Password", href: "/dashboard/forgot-password" }
         ]
+      },
+      {
+        title: "Error Pages",
+        href: "/",
+        icon: "Fingerprint",
+        items: [
+          { title: "404", href: "/dashboard/pages/error/404" },
+          { title: "500", href: "/dashboard/pages/error/500" },
+          { title: "403", href: "/dashboard/pages/error/403" }
+        ]
       }
     ]
   }
