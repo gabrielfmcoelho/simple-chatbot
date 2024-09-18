@@ -87,6 +87,7 @@ export function InfiniteSlider({
         {...hoverProps}>
         {children}
         {children}
+        {children}
       </motion.div>
     </div>
   );
