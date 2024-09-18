@@ -57,7 +57,7 @@ export default function ForgotPasswordForm() {
         <CardHeader>
           <CardTitle className="text-2xl">Forgot Password</CardTitle>
           <CardDescription>
-            Enter your email address and we'll send you instructions to reset your password.
+            Enter your email address and we&#39;ll send you instructions to reset your password.
           </CardDescription>
         </CardHeader>
         <CardContent>
