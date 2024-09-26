@@ -80,7 +80,7 @@ export default function ForgotPasswordForm() {
                           type="email"
                           autoComplete="email"
                           className="w-full pl-10"
-                          placeholder="Enter your email address"
+                          placeholder="Enter your email addresss"
                         />
                       </div>
                     </FormControl>
