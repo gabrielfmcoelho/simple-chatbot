@@ -34,11 +34,9 @@ export default function CourseProgressByMonth() {
       <CardHeader className="relative flex-col items-start justify-between gap-y-4 sm:flex-row">
         <div className="space-y-2">
           <CardTitle>Course Progress by Month</CardTitle>
-          <CardDescription>
-            <div className="flex items-center gap-2">
-              Compared to previous month 50.56%
-              <Badge variant="success">+2.5%</Badge>
-            </div>
+          <CardDescription className="flex items-center gap-2">
+            Compared to previous month 50.56%
+            <Badge variant="success">+2.5%</Badge>
           </CardDescription>
         </div>
         <DateRangeSelectInput />

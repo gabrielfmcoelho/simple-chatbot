@@ -25,7 +25,10 @@ export default function LeaderboardCard() {
             <li key={student.id} className="flex items-center space-x-4">
               <span className="font-bold">{index + 1}.</span>
               <Avatar className="h-10 w-10">
-                <AvatarImage src={`/images/avatars/${student.avatar}`} alt={student.name} />
+                <AvatarImage
+                  src={`${process.env.DASHBOARD_BASE_URL}/images/avatars/${student.avatar}`}
+                  alt={student.name}
+                />
                 <AvatarFallback>
                   {student.name
                     .split(" ")

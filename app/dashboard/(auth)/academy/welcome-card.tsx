@@ -18,11 +18,19 @@ export default function WelcomeCard() {
           </div>
         </div>
         <figure className="hidden lg:col-span-1 lg:block">
-          <img src="/images/academy-dashboard-light.svg" className="block dark:hidden" alt="..." />
-          <img src="/images/academy-dashboard-dark.svg" className="hidden dark:block" alt="..." />
+          <img
+            src={`${process.env.DASHBOARD_BASE_URL}/images/academy-dashboard-light.svg`}
+            className="block dark:hidden"
+            alt="..."
+          />
+          <img
+            src={`${process.env.DASHBOARD_BASE_URL}/images/academy-dashboard-dark.svg`}
+            className="hidden dark:block"
+            alt="..."
+          />
         </figure>
         <img
-          src="/images/star-shape.png"
+          src={`${process.env.DASHBOARD_BASE_URL}/images/star-shape.png`}
           className="pointer-events-none absolute inset-0"
           alt="..."
         />
