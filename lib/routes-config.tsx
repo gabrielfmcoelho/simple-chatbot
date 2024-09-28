@@ -37,8 +37,8 @@ export const page_routes: PageRoutesType[] = [
         icon: "FolderDot"
       },
       { title: "Cyripto", href: "/dashboard/cyripto", icon: "WalletMinimal" },
-      { title: "Academy", href: "#", icon: "GraduationCap", isComing: true },
-      { title: "Online Courses", href: "#", icon: "LandPlot", isComing: true }
+      { title: "Academy", href: "/dashboard/academy", icon: "GraduationCap" },
+      { title: "Hospital", href: "/dashboard/hospital", icon: "Activity", isComing: true }
     ]
   },
   {

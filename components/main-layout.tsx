@@ -28,7 +28,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         <div className="w-full lg:ps-[--sidebar-width]">
           <Header />
           <main
-            className={cn("h-full p-4 lg:pb-14", {
+            className={cn("min-h-full p-4", {
               "container2 mx-auto2": themeOptions.containerContent
             })}>
             {children}
