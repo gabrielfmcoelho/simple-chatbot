@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui
 import { Button } from "../ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import Icon from "../icon";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, LockIcon } from "lucide-react";
 import { Badge } from "../ui/badge";
 
 type SidebarNavLinkProps = {
@@ -74,7 +74,7 @@ export default function Sidebar() {
             </div>
           </Fragment>
         ))}
-        <div className="mt-10">
+        <div className="sticky bottom-0 mt-10">
           <Card>
             <CardHeader>
               <CardTitle>Get Shadcn UI Kit</CardTitle>
@@ -83,11 +83,14 @@ export default function Sidebar() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Button size="sm" className="w-full" asChild>
+              <Button
+                size="sm"
+                className="w-full items-center bg-gradient-to-r from-indigo-700 via-purple-500 to-pink-700 hover:opacity-90"
+                asChild>
                 <Link
                   href="https://bundui.lemonsqueezy.com/buy/385ebdb6-6193-4d37-9148-057ab89b9c8d"
                   target="_blank">
-                  Get Template
+                  <LockIcon className="me-2 h-4 w-4" /> Get Lifetime Access
                 </Link>
               </Button>
             </CardContent>
