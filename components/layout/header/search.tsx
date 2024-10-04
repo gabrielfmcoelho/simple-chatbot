@@ -61,7 +61,7 @@ export default function Search() {
       <div className="relative max-w-sm flex-1">
         <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
         <Input
-          className="h-9 w-full cursor-pointer rounded-md border bg-muted pl-10 pr-4 text-sm shadow-sm"
+          className="h-9 w-full cursor-pointer rounded-md border pl-10 pr-4 text-sm shadow-sm"
           placeholder="Search..."
           type="search"
           onFocus={() => setOpen(true)}

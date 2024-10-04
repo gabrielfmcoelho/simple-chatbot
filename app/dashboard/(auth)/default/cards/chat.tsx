@@ -6,19 +6,14 @@ import { Check, Plus, Send } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-  CommandList,
+  CommandList
 } from "@/components/ui/command";
 import {
   Dialog,
@@ -26,42 +21,37 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
+  DialogTitle
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const users = [
   {
     name: "Olivia Martin",
     email: "m@example.com",
-    avatar: "/avatars/01.png",
+    avatar: "images/avatars/1.png"
   },
   {
     name: "Isabella Nguyen",
     email: "isabella.nguyen@email.com",
-    avatar: "/avatars/03.png",
+    avatar: "images/avatars/3.png"
   },
   {
     name: "Emma Wilson",
     email: "emma@example.com",
-    avatar: "/avatars/05.png",
+    avatar: "images/avatars/5.png"
   },
   {
     name: "Jackson Lee",
     email: "lee@example.com",
-    avatar: "/avatars/02.png",
+    avatar: "images/avatars/2.png"
   },
   {
     name: "William Kim",
     email: "will@email.com",
-    avatar: "/avatars/04.png",
-  },
+    avatar: "images/avatars/4.png"
+  }
 ] as const;
 
 type User = (typeof users)[number];
@@ -73,20 +63,20 @@ export function ChatCard() {
   const [messages, setMessages] = React.useState([
     {
       role: "agent",
-      content: "Hi, how can I help you today?",
+      content: "Hi, how can I help you today?"
     },
     {
       role: "user",
-      content: "Hey, I'm having trouble with my account.",
+      content: "Hey, I'm having trouble with my account."
     },
     {
       role: "agent",
-      content: "What seems to be the problem?",
+      content: "What seems to be the problem?"
     },
     {
       role: "user",
-      content: "I can't log in.",
-    },
+      content: "I can't log in."
+    }
   ]);
   const [input, setInput] = React.useState("");
   const inputLength = input.trim().length;
@@ -112,8 +102,7 @@ export function ChatCard() {
                   size="icon"
                   variant="outline"
                   className="ml-auto rounded-full"
-                  onClick={() => setOpen(true)}
-                >
+                  onClick={() => setOpen(true)}>
                   <Plus className="h-4 w-4" />
                   <span className="sr-only">New message</span>
                 </Button>
@@ -131,9 +120,8 @@ export function ChatCard() {
                   "flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm",
                   message.role === "user"
                     ? "ml-auto bg-primary text-primary-foreground"
-                    : "bg-muted",
-                )}
-              >
+                    : "bg-muted"
+                )}>
                 {message.content}
               </div>
             ))}
@@ -148,13 +136,12 @@ export function ChatCard() {
                 ...messages,
                 {
                   role: "user",
-                  content: input,
-                },
+                  content: input
+                }
               ]);
               setInput("");
             }}
-            className="flex w-full items-center space-x-2"
-          >
+            className="flex w-full items-center space-x-2">
             <Input
               id="message"
               placeholder="Type your message..."
@@ -175,8 +162,7 @@ export function ChatCard() {
           <DialogHeader className="px-4 pb-4 pt-5">
             <DialogTitle>New message</DialogTitle>
             <DialogDescription>
-              Invite a user to this thread. This will create a new group
-              message.
+              Invite a user to this thread. This will create a new group message.
             </DialogDescription>
           </DialogHeader>
           <Command className="overflow-hidden rounded-t-none border-t">
@@ -191,30 +177,24 @@ export function ChatCard() {
                     onSelect={() => {
                       if (selectedUsers.includes(user)) {
                         return setSelectedUsers(
-                          selectedUsers.filter(
-                            (selectedUser) => selectedUser !== user,
-                          ),
+                          selectedUsers.filter((selectedUser) => selectedUser !== user)
                         );
                       }
 
                       return setSelectedUsers(
-                        [...users].filter((u) =>
-                          [...selectedUsers, user].includes(u),
-                        ),
+                        [...users].filter((u) => [...selectedUsers, user].includes(u))
                       );
-                    }}
-                  >
+                    }}>
                     <Avatar>
-                      <AvatarImage src={user.avatar} alt="Image" />
+                      <AvatarImage
+                        src={`${process.env.DASHBOARD_BASE_URL}/${user.avatar}`}
+                        alt="Image"
+                      />
                       <AvatarFallback>{user.name[0]}</AvatarFallback>
                     </Avatar>
                     <div className="ml-2">
-                      <p className="text-sm font-medium leading-none">
-                        {user.name}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {user.email}
-                      </p>
+                      <p className="text-sm font-medium leading-none">{user.name}</p>
+                      <p className="text-sm text-muted-foreground">{user.email}</p>
                     </div>
                     {selectedUsers.includes(user) ? (
                       <Check className="ml-auto flex h-5 w-5 text-primary" />
@@ -228,26 +208,20 @@ export function ChatCard() {
             {selectedUsers.length > 0 ? (
               <div className="flex -space-x-2 overflow-hidden">
                 {selectedUsers.map((user) => (
-                  <Avatar
-                    key={user.email}
-                    className="inline-block border-2 border-background"
-                  >
-                    <AvatarImage src={user.avatar} />
+                  <Avatar key={user.email} className="inline-block border-2 border-background">
+                    <AvatarImage src={`${process.env.DASHBOARD_BASE_URL}/${user.avatar}`} />
                     <AvatarFallback>{user.name[0]}</AvatarFallback>
                   </Avatar>
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-muted-foreground">
-                Select users to add to this thread.
-              </p>
+              <p className="text-sm text-muted-foreground">Select users to add to this thread.</p>
             )}
             <Button
               disabled={selectedUsers.length < 2}
               onClick={() => {
                 setOpen(false);
-              }}
-            >
+              }}>
               Continue
             </Button>
           </DialogFooter>

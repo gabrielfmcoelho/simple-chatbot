@@ -1,13 +1,13 @@
 "use client";
 
 import NextTopLoader from "nextjs-toploader";
-import Sidebar from "./layout/sidebar";
-import Header from "./layout/header";
 import GoogleAnalyticsInit from "./ga";
 import { useContext } from "react";
 import { ThemeOptionsContext, ThemeOptionsContextType } from "./contexts";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import Header from "./layout/header";
+import Sidebar from "./layout/header/mobile-sidebar";
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

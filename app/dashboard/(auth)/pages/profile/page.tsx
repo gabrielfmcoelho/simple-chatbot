@@ -24,7 +24,7 @@ export default function Page() {
         <h1 className="text-2xl font-bold tracking-tight">Account Profile</h1>
         <div className="flex items-center space-x-2">
           <Button asChild>
-            <Link href="/settings">
+            <Link href="/dashboard/pages/settings">
               <Settings className="mr-2 h-4 w-4" />
               Settings
             </Link>
@@ -61,13 +61,18 @@ export default function Page() {
             <CardContent className="relative pt-6 lg:pt-12">
               <Badge className="absolute start-4 top-4">Pro</Badge>
               <div className="space-y-12">
-                <div className="flex flex-col items-center">
-                  <Avatar className="h-16 w-16">
-                    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                <div className="flex flex-col items-center space-y-4">
+                  <Avatar className="h-20 w-20">
+                    <AvatarImage
+                      src={`${process.env.DASHBOARD_BASE_URL}/images/avatars/10.png`}
+                      alt="@shadcn"
+                    />
                     <AvatarFallback>CN</AvatarFallback>
                   </Avatar>
-                  <h5 className="text-lg font-semibold">Anshan Haso</h5>
-                  <div className="text-sm text-muted-foreground">Project Manager</div>
+                  <div className="text-center">
+                    <h5 className="text-lg font-semibold">Anshan Haso</h5>
+                    <div className="text-sm text-muted-foreground">Project Manager</div>
+                  </div>
                 </div>
                 <div className="grid grid-cols-3 divide-x text-center">
                   <div>

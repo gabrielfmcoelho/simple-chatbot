@@ -3,14 +3,14 @@ import Link from "next/link";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { page_routes } from "@/lib/routes-config";
-import Anchor from "../anchor";
-import Logo from "./logo";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
-import { Button } from "../ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import Icon from "../icon";
 import { ChevronDown, LockIcon } from "lucide-react";
-import { Badge } from "../ui/badge";
+import { Badge } from "@/components/ui/badge";
+import Icon from "@/components/icon";
+import Anchor from "@/components/anchor";
+import Logo from "../logo";
+import { Button } from "@/components/ui/button";
 
 type SidebarNavLinkProps = {
   item: {
