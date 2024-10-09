@@ -110,9 +110,9 @@ export const page_routes: PageRoutesType[] = [
         href: "#",
         icon: "BadgeDollarSign",
         items: [
-          { title: "Column Pricing", href: "#", isComing: true },
-          { title: "Table Pricing", href: "#", isComing: true },
-          { title: "Pricing Modal", href: "#", isComing: true }
+          { title: "Column Pricing", href: "/dashboard/pages/pricing/column" },
+          { title: "Table Pricing", href: "/dashboard/pages/pricing/table" },
+          { title: "Single Pricing", href: "/dashboard/pages/pricing/single" }
         ]
       },
       {
