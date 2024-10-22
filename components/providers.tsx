@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { SelectedChatContext, ThemeOptionsContext } from "./contexts";
 import { ThemeOptionsProps } from "@/types/theme";
 import { ChatItemProps } from "@/app/dashboard/(auth)/apps/chat/types";
-import { themeSettingsRender } from "./layout/theme-settings-render";
 import { themeColors } from "@/store/useThemeStore";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
@@ -23,7 +22,8 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   });
 
   useEffect(() => {
-    const storagedTheme = JSON.parse(localStorage.getItem("settings-storage"))?.state;
+    const store = localStorage.getItem("settings-storage");
+    const storagedTheme = store ? JSON.parse(store)?.state : null;
     if (storagedTheme) {
       document.documentElement.style.setProperty(
         "--primary",
