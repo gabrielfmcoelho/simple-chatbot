@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SelectedChatContext, ThemeOptionsContext } from "./contexts";
 import { ThemeOptionsProps } from "@/types/theme";
 import { ChatItemProps } from "@/app/dashboard/(auth)/apps/chat/types";
+import { themeSettingsRender } from "./layout/theme-settings-render";
+import { themeColors } from "@/store/useThemeStore";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [selectedChat, setSelectedChat] = useState<ChatItemProps | null>(null);
@@ -19,6 +21,16 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     rounded: "lg",
     shadow: "none"
   });
+
+  useEffect(() => {
+    const storagedTheme = JSON.parse(localStorage.getItem("settings-storage"))?.state;
+    if (storagedTheme) {
+      document.documentElement.style.setProperty(
+        "--primary",
+        themeColors[storagedTheme.colorScheme]
+      );
+    }
+  }, []);
 
   return (
     <ThemeOptionsContext.Provider value={{ themeOptions, setThemeOptions }}>
