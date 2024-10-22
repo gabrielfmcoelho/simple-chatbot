@@ -40,11 +40,11 @@ export default function RootLayout({
         className={`${inter.variable} ${roboto.variable} ${montserrat.variable} ${poppins.variable} ${overpass_mono.variable}`}>
         {children}
         <Toaster />
-        {/* <script
+        <script
           dangerouslySetInnerHTML={{
             __html: themeSettingsRender()
           }}
-        /> */}
+        />
       </body>
     </html>
   );

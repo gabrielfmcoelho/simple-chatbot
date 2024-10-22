@@ -29,6 +29,16 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         "--primary",
         themeColors[storagedTheme.colorScheme]
       );
+      document.addEventListener("DOMContentLoaded", function () {
+        if (storagedTheme.fontFamily) {
+          const v = "var(--font-" + storagedTheme.fontFamily + ")";
+          document.body.style.setProperty("font-family", v);
+        }
+
+        if (storagedTheme.contentContainer) {
+          document.querySelector("main")?.classList.add("container", "mx-auto");
+        }
+      });
     }
   }, []);
 
