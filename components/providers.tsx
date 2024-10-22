@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { ThemeProvider } from "next-themes";
 import { SelectedChatContext, ThemeOptionsContext } from "./contexts";
 import { ThemeOptionsProps } from "@/types/theme";
 import { ChatItemProps } from "@/app/dashboard/(auth)/apps/chat/types";
@@ -22,12 +21,10 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   });
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-      <ThemeOptionsContext.Provider value={{ themeOptions, setThemeOptions }}>
-        <SelectedChatContext.Provider value={{ selectedChat, setSelectedChat }}>
-          {children}
-        </SelectedChatContext.Provider>
-      </ThemeOptionsContext.Provider>
-    </ThemeProvider>
+    <ThemeOptionsContext.Provider value={{ themeOptions, setThemeOptions }}>
+      <SelectedChatContext.Provider value={{ selectedChat, setSelectedChat }}>
+        {children}
+      </SelectedChatContext.Provider>
+    </ThemeOptionsContext.Provider>
   );
 }

@@ -2,23 +2,13 @@
 
 import NextTopLoader from "nextjs-toploader";
 import GoogleAnalyticsInit from "./ga";
-import { useContext } from "react";
-import { ThemeOptionsContext, ThemeOptionsContextType } from "./contexts";
-import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import Header from "./layout/header";
 import Sidebar from "./layout/header/mobile-sidebar";
+import ThemeCustomizer from "./theme-customizer";
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const { themeOptions, setThemeOptions } = useContext(
-    ThemeOptionsContext
-  ) as ThemeOptionsContextType;
-
-  /*   useEffect(() => {
-    if (pathname)
-      setThemeOptions((prevState) => ({ ...prevState, container: !pathname.includes("chat") }));
-  }, [pathname]); */
 
   return (
     <>
@@ -27,13 +17,9 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         <Sidebar />
         <div className="w-full lg:ps-[--sidebar-width]">
           <Header />
-          <main
-            className={cn("min-h-full p-4", {
-              "container2 mx-auto2": themeOptions.containerContent
-            })}>
-            {children}
-          </main>
+          <main className="min-h-full p-4">{children}</main>
         </div>
+        <ThemeCustomizer />
       </div>
       {process.env.NODE_ENV === "production" ? <GoogleAnalyticsInit /> : null}
     </>

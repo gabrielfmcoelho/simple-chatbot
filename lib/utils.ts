@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from "clsx";
 import { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
+import * as d3 from "d3-color";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -33,4 +34,8 @@ export function generateMeta({
       images: [`${process.env.DASHBOARD_BASE_URL}/seo.jpg`]
     }
   };
+}
+
+export function getHSLValue(hex: string): string {
+  return d3.color(hex)!.formatHsl().slice(4, -1).replaceAll(",", "");
 }

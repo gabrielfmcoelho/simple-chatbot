@@ -32,6 +32,14 @@
     --chart-5: 240 2% 26%;
 
     --sidebar-width: 19rem;
+
+    --shadowx: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+
+    --font-inter: "Inter", sans-serif;
+    --font-roboto: "Roboto", sans-serif;
+    --font-montserrat: "Montserrat", sans-serif;
+    --font-montserrat: "Poppins", sans-serif;
+    --font-overpass-mono: "Overpass Mono", sans-serif;
   }
 
   .dark {
@@ -76,7 +84,7 @@
     @apply border-border;
   }
   body {
-    @apply overflow-x-hidden bg-muted/70 text-foreground;
+    @apply overflow-x-hidden bg-muted text-foreground;
   }
   .mdxeditor {
     @apply overflow-hidden rounded-lg;
@@ -87,4 +95,12 @@
   .mdxeditor-prose {
     @apply min-h-[100px] border;
   }
+}
+
+html {
+  font-family: var(--font-inter);
+}
+
+.shadow-base {
+  box-shadow: var(--shadowx);
 }

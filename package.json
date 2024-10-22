@@ -26,6 +26,7 @@
     "@radix-ui/react-scroll-area": "^1.0.5",
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-separator": "^1.1.0",
+    "@radix-ui/react-slider": "^1.2.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-switch": "^1.1.0",
     "@radix-ui/react-tabs": "^1.0.4",
@@ -36,6 +37,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
+    "d3-color": "^3.1.0",
     "date-fns": "^3.6.0",
     "dotenv": "^16.4.5",
     "framer-motion": "^11.5.4",
@@ -57,7 +59,9 @@
     "swiper": "^11.1.14",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.23.8"
+    "vm2": "^3.9.19",
+    "zod": "^3.23.8",
+    "zustand": "^5.0.0-rc.2"
   },
   "devDependencies": {
     "@types/node": "^20",
