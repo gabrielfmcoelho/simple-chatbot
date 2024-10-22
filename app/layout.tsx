@@ -36,17 +36,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
+      <body
+        className={`${inter.variable} ${roboto.variable} ${montserrat.variable} ${poppins.variable} ${overpass_mono.variable}`}>
+        {children}
+        <Toaster />
         <script
           dangerouslySetInnerHTML={{
             __html: themeSettingsRender()
           }}
         />
-      </head>
-      <body
-        className={`${inter.variable} ${roboto.variable} ${montserrat.variable} ${poppins.variable} ${overpass_mono.variable}`}>
-        {children}
-        <Toaster />
       </body>
     </html>
   );
