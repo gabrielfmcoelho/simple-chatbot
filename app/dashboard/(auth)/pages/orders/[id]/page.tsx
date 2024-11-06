@@ -91,8 +91,8 @@ export default function OrderDetails() {
   const currentStepIndex = Object.keys(statusSteps).indexOf(order.status);
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-6 flex items-center justify-between">
+    <div className="container mx-auto">
+      <div className="mb-4 flex items-center justify-between">
         <Button asChild variant="link" className="h-auto p-0">
           <Link href="/dashboard/pages/orders">
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -218,7 +218,7 @@ export default function OrderDetails() {
                   <TableCell>
                     <div className="flex items-center gap-4">
                       <Image
-                        src={`${process.env.DASHBOARD_BASE_URL}/${item.image}`}
+                        src={`${process.env.DASHBOARD_BASE_URL}${item.image}`}
                         className="rounded-lg border"
                         width={60}
                         height={60}
