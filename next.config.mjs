@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 import { config } from "dotenv";
+import { hostname } from "os";
 
 config();
 
@@ -11,6 +12,18 @@ const nextConfig = {
   env: {
     BASE_URL: process.env.BASE_URL,
     DASHBOARD_BASE_URL: process.env.DASHBOARD_BASE_URL
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost"
+      },
+      {
+        protocol: "https",
+        hostname: "dashboard.shadcnuikit.com"
+      }
+    ]
   }
 };
 

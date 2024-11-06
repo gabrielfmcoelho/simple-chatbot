@@ -39,7 +39,7 @@ export default async function Page() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between space-y-2">
+      <div className="flex items-center justify-between">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>

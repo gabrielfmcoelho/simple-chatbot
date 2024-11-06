@@ -45,9 +45,13 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
+import Image from "next/image";
+import Link from "next/link";
 
 export type Order = {
   id: number;
+  product_name: string;
+  image: string;
   customer: Customer;
   price?: string;
   status: "active" | "transportation" | "pending" | "completed" | "cancel";
@@ -62,9 +66,67 @@ export type Customer = {
 
 export const columns: ColumnDef<Order>[] = [
   {
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={
+          table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")
+        }
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
+    enableSorting: false,
+    enableHiding: false
+  },
+  {
     accessorKey: "id",
     header: "#",
-    cell: ({ row }) => row.getValue("id")
+    cell: ({ row }) => (
+      <Link
+        href={`${process.env.BASE_URL}/dashboard/pages/orders/${row.getValue("id")}`}
+        className="text-muted-foreground hover:underline">
+        #{row.getValue("id")}
+      </Link>
+    )
+  },
+  {
+    accessorKey: "product_name",
+    header: "Product Name",
+    cell: ({ row }) => (
+      <div className="flex items-center gap-4">
+        <Image
+          src={`${process.env.DASHBOARD_BASE_URL}/${row.original.image}`}
+          className="rounded-lg border"
+          width={60}
+          height={60}
+          alt=""
+        />
+        {row.getValue("product_name")}
+      </div>
+    )
+  },
+  {
+    accessorKey: "price",
+    header: ({ column }) => {
+      return (
+        <Button
+          className="-ml-3"
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          Price
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => row.getValue("price")
   },
   {
     accessorKey: "customer",
@@ -75,19 +137,24 @@ export const columns: ColumnDef<Order>[] = [
       return (
         <div className="space-y-1">
           <div className="font-semibold">{customer.name}</div>
-          <div>{customer.email}</div>
+          <div className="text-muted-foreground">{customer.email}</div>
         </div>
       );
     }
   },
   {
-    accessorKey: "price",
-    header: "Price",
-    cell: ({ row }) => row.getValue("price")
-  },
-  {
     accessorKey: "date",
-    header: "Date",
+    header: ({ column }) => {
+      return (
+        <Button
+          className="-ml-3"
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          Date
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
     cell: ({ row }) => row.getValue("date")
   },
   {
@@ -141,7 +208,7 @@ export const columns: ColumnDef<Order>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View details</DropdownMenuItem>
+            <DropdownMenuItem>Order Details</DropdownMenuItem>
             <DropdownMenuItem>Edit</DropdownMenuItem>
             <DropdownMenuItem>Delete</DropdownMenuItem>
           </DropdownMenuContent>
@@ -178,16 +245,20 @@ export default function OrdersDataTable({ data }: { data: Order[] }) {
 
   const statuses = [
     {
-      value: "active",
-      label: "Active"
+      value: "pending",
+      label: "Pending"
     },
     {
-      value: "inactive",
-      label: "Inactive"
+      value: "completed",
+      label: "Completed"
     },
     {
-      value: "out-of-stock",
-      label: "Out of stock"
+      value: "shipped",
+      label: "Shipped"
+    },
+    {
+      value: "delivered",
+      label: "Delivered"
     }
   ];
 
@@ -220,8 +291,10 @@ export default function OrdersDataTable({ data }: { data: Order[] }) {
         <div className="flex gap-2">
           <Input
             placeholder="Search orders..."
-            value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-            onChange={(event) => table.getColumn("name")?.setFilterValue(event.target.value)}
+            value={(table.getColumn("product_name")?.getFilterValue() as string) ?? ""}
+            onChange={(event) =>
+              table.getColumn("product_name")?.setFilterValue(event.target.value)
+            }
             className="max-w-sm"
           />
           <Popover>
