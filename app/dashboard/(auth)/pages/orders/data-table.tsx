@@ -103,7 +103,7 @@ export const columns: ColumnDef<Order>[] = [
     cell: ({ row }) => (
       <div className="flex items-center gap-4">
         <Image
-          src={`${process.env.DASHBOARD_BASE_URL}/${row.original.image}`}
+          src={`${process.env.DASHBOARD_BASE_URL}${row.original.image}`}
           className="rounded-lg border"
           width={60}
           height={60}
