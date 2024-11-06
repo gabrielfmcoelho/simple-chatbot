@@ -223,6 +223,7 @@ export default function OrderDetails() {
                         width={60}
                         height={60}
                         alt=""
+                        unoptimized
                       />
                       <span>{item.name}</span>
                     </div>
