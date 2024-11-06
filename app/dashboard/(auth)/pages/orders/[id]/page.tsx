@@ -26,9 +26,31 @@ import {
 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 
+type OrderStatus = "processing" | "shipped" | "out-for-delivery" | "delivered";
+
+interface Order {
+  id: string;
+  date: string;
+  status: OrderStatus;
+  customer: {
+    name: string;
+    email: string;
+    address: string;
+  };
+  items: {
+    id: number;
+    name: string;
+    image: string;
+    quantity: number;
+    price: number;
+  }[];
+  subtotal: number;
+  shipping: number;
+  total: number;
+}
+
 export default function OrderDetails() {
-  // This would typically come from a database or API
-  const order = {
+  const order: Order = {
     id: "ORD-12345",
     date: "2023-04-15",
     status: "shipped",
@@ -58,12 +80,13 @@ export default function OrderDetails() {
     total: 111.97
   };
 
-  const statusSteps = {
+  const statusSteps: Record<OrderStatus, string> = {
     processing: "Processing",
     shipped: "Shipped",
     "out-for-delivery": "Out for Delivery",
     delivered: "Delivered"
   };
+
   const currentStep = statusSteps[order.status];
   const currentStepIndex = Object.keys(statusSteps).indexOf(order.status);
 
@@ -146,7 +169,7 @@ export default function OrderDetails() {
                 <div key={index} className="text-center">
                   <div
                     className={`mx-auto flex size-12 items-center justify-center rounded-full text-lg ${index <= currentStepIndex ? "bg-green-500 text-white" : "bg-gray-200"} `}>
-                    {index < currentStep ? (
+                    {index < currentStepIndex ? (
                       <CheckCircle className="size-5" />
                     ) : (
                       {
@@ -154,14 +177,14 @@ export default function OrderDetails() {
                         shipped: <Truck className="size-5" />,
                         "out-for-delivery": <Truck className="size-5" />,
                         delivered: <CheckCircle2 className="size-5" />
-                      }[step]
+                      }[step as OrderStatus]
                     )}
                   </div>
-                  <div className="mt-2 text-xs">{statusSteps[step]}</div>
+                  <div className="mt-2 text-xs">{statusSteps[step as OrderStatus]}</div>
                 </div>
               ))}
             </div>
-            <div className="space-y-4">
+            <div className="space-y-6">
               <Progress
                 className="w-full"
                 value={(currentStepIndex / (Object.keys(statusSteps).length - 1)) * 100}
