@@ -14,6 +14,7 @@ const nextConfig = {
     DASHBOARD_BASE_URL: process.env.DASHBOARD_BASE_URL
   },
   images: {
+    domains: ["dashboard.shadcnuikit.com"],
     remotePatterns: [
       {
         protocol: "http",
