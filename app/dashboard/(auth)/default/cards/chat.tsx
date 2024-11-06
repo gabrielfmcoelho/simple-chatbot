@@ -87,7 +87,7 @@ export function ChatCard() {
         <CardHeader className="flex flex-row items-center">
           <div className="flex items-center space-x-4">
             <Avatar>
-              <AvatarImage src="/avatars/01.png" alt="Image" />
+              <AvatarImage src={`${process.env.DASHBOARD_BASE_URL}/images/avatars/4.png`} />
               <AvatarFallback>OM</AvatarFallback>
             </Avatar>
             <div>

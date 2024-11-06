@@ -8,6 +8,7 @@ type PageRoutesItemType = {
   href: string;
   icon?: string;
   isComing?: boolean;
+  isNew?: boolean;
   items?: PageRoutesItemType;
 }[];
 
@@ -92,7 +93,7 @@ export const page_routes: PageRoutesType[] = [
         icon: "PackageSearch",
         items: [
           { title: "Order List", href: "/dashboard/pages/orders" },
-          { title: "Order Detail", href: "/dashboard/pages/orders/123" }
+          { title: "Order Detail", href: "/dashboard/pages/orders/123", isNew: true }
         ]
       },
       {

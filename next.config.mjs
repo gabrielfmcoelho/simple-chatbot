@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 
 import { config } from "dotenv";
-import { hostname } from "os";
 
 config();
 
