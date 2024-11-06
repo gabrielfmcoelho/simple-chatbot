@@ -10,10 +10,10 @@ export default async function AuthLayout({
   children: React.ReactNode;
 }>) {
   const cookieStore = await cookies();
-  const defaultOpen = cookieStore.get("sidebar:state")?.value === "true";
+  const cookieStoreValue = cookieStore.get("sidebar:state")?.value;
 
   return (
-    <SidebarProvider defaultOpen={defaultOpen}>
+    <SidebarProvider defaultOpen={cookieStoreValue ? JSON.parse(cookieStoreValue) : true}>
       <Providers>
         <MainLayout>{children}</MainLayout>
       </Providers>
