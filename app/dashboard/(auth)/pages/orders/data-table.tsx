@@ -108,6 +108,7 @@ export const columns: ColumnDef<Order>[] = [
           width={60}
           height={60}
           alt=""
+          unoptimized
         />
         {row.getValue("product_name")}
       </div>
