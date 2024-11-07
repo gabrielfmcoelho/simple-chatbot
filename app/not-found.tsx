@@ -1,8 +1,6 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
-import { generateMeta } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function NotFound() {
@@ -25,12 +23,13 @@ export default function NotFound() {
           </Button>
         </div>
       </div>
-
       <div className="hidden lg:block">
-        <img
+        <Image
           src={`${process.env.DASHBOARD_BASE_URL}/images/404.svg`}
-          alt="Login visual"
-          className="object-contain"
+          width={300}
+          height={400}
+          className="w-full object-contain lg:max-w-2xl"
+          alt="not found image"
         />
       </div>
     </div>
