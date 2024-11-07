@@ -59,7 +59,9 @@ const config = {
           primary: "hsl(var(--sidebar-primary))",
           "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
           accent: "hsl(var(--sidebar-accent))",
+          "accent-hover": "hsl(var(--sidebar-accent-hover))",
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
+          "accent-foreground-hover": "hsl(var(--sidebar-accent-foreground-hover))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))"
         }

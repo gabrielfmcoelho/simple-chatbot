@@ -11,7 +11,7 @@ export async function generateMetadata() {
   return generateMeta({
     title: "Users",
     description:
-      "A list of users created using the Tanstack Table. Tailwind is built on CSS and React.",
+      "A list of users generated using the Tanstack Table. Built with Tailwind CSS, Shadcn UI and Next.js.",
     canonical: "/pages/users"
   });
 }

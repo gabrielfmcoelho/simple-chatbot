@@ -93,7 +93,7 @@ export const page_routes: PageRoutesType[] = [
         icon: "PackageSearch",
         items: [
           { title: "Order List", href: "/dashboard/pages/orders" },
-          { title: "Order Detail", href: "/dashboard/pages/orders/123", isNew: true }
+          { title: "Order Detail", href: "/dashboard/pages/orders/detail" }
         ]
       },
       {

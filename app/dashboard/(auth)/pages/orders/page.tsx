@@ -19,9 +19,9 @@ import OrdersDataTable from "./data-table";
 
 export async function generateMetadata() {
   return generateMeta({
-    title: "Orders",
+    title: "Orders Page",
     description:
-      "A list of orders created using the Tanstack Table. Tailwind is built on CSS and React.",
+      "A list of orders generated using the Tanstack Table. Built with Tailwind CSS, Shadcn UI and Next.js.",
     canonical: "/pages/orders"
   });
 }

@@ -31,11 +31,14 @@ import Logo from "./logo";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
+  const pathname = usePathname();
+
   return (
     <SidebarContainer collapsible="icon">
-      <SidebarHeader>
+      <SidebarHeader className="h-16 items-center justify-center">
         <SidebarMenu>
           <SidebarMenuItem>
             <DropdownMenu>
@@ -76,20 +79,24 @@ export default function Sidebar() {
                         <Collapsible className="group/collapsible">
                           <CollapsibleTrigger asChild>
                             <SidebarMenuButton tooltip={item.title}>
-                              {item.icon && <Icon name={item.icon} className="h-4 w-4" />}
+                              {item.icon && <Icon name={item.icon} className="size-4" />}
                               <span>{item.title}</span>
                               <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                             </SidebarMenuButton>
                           </CollapsibleTrigger>
                           <CollapsibleContent>
                             <SidebarMenuSub>
-                              {item.items.map((item2, key) => (
+                              {item.items.map((subItem, key) => (
                                 <SidebarMenuSubItem key={key}>
-                                  <SidebarMenuSubButton asChild>
-                                    <a href={item2.href}>
-                                      {item2.icon && <Icon name={item2.icon} className="h-4 w-4" />}
-                                      <span>{item2.title}</span>
-                                    </a>
+                                  <SidebarMenuSubButton
+                                    isActive={pathname === subItem.href}
+                                    asChild>
+                                    <Link href={subItem.href}>
+                                      {subItem.icon && (
+                                        <Icon name={subItem.icon} className="size-4" />
+                                      )}
+                                      <span>{subItem.title}</span>
+                                    </Link>
                                   </SidebarMenuSubButton>
                                 </SidebarMenuSubItem>
                               ))}
@@ -97,11 +104,14 @@ export default function Sidebar() {
                           </CollapsibleContent>
                         </Collapsible>
                       ) : (
-                        <SidebarMenuButton asChild tooltip={item.title}>
-                          <a href={item.href}>
-                            {item.icon && <Icon name={item.icon} className="h-4 w-4" />}
+                        <SidebarMenuButton
+                          asChild
+                          tooltip={item.title}
+                          isActive={pathname === item.href}>
+                          <Link href={item.href}>
+                            {item.icon && <Icon name={item.icon} className="size-4" />}
                             <span>{item.title}</span>
-                          </a>
+                          </Link>
                         </SidebarMenuButton>
                       )}
                       {item.isComing ? (

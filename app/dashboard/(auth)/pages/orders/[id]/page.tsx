@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -25,6 +23,7 @@ import {
   Truck
 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
+import { generateMeta } from "@/lib/utils";
 
 type OrderStatus = "processing" | "shipped" | "out-for-delivery" | "delivered";
 
@@ -49,7 +48,16 @@ interface Order {
   total: number;
 }
 
-export default function OrderDetails() {
+export async function generateMetadata() {
+  return generateMeta({
+    title: "Order Detail Page",
+    description:
+      "View and track your order details quickly on this page built with Shadcn UI, Tailwind CSS, and Next.js. Access comprehensive order information at a glance.",
+    canonical: "/pages/orders/detail"
+  });
+}
+
+export default function Page() {
   const order: Order = {
     id: "ORD-12345",
     date: "2023-04-15",
