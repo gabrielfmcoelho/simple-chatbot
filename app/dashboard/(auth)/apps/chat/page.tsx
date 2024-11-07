@@ -12,7 +12,7 @@ export async function generateMetadata() {
   return generateMeta({
     title: "Chat App",
     description:
-      "This chat app template is perfect for listing and reading messages. Built with reusable and customizable components. It is fully mobile responsive.",
+      "Check incoming and outgoing messages or manage your contacts with the chat app template. Built with Shadcn UI.",
     canonical: "/apps/chat"
   });
 }
