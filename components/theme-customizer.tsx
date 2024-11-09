@@ -1,7 +1,7 @@
 "use client";
 
-import { memo, useCallback, useState } from "react";
 import { Settings } from "lucide-react";
+import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import {
@@ -13,97 +13,35 @@ import {
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
-import { Checkbox } from "./ui/checkbox";
 import useSettingsStore, {
-  defaultTheme,
-  ShadowType,
+  ThemeDirection,
+  FontFamily,
   themeColors,
-  ThemeColorSchemeType,
-  ThemeDirectionType,
-  ThemeFontFamilyType,
-  themeSettings,
-  ThemeType
-} from "@/store/useThemeStore";
+  themeSettings
+} from "@/store/themeSettingsStore";
 import { Label } from "./ui/label";
 
 function ThemeCustomizer() {
-  const [isOpen, setIsOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
   const {
-    colorScheme,
-    setColorScheme,
+    themeColor,
+    setThemeColor,
     resetTheme,
-    setTheme,
-    theme,
     fontFamily,
     setFontFamily,
     direction,
     setDirection,
-    rounded,
-    setRounded,
-    shadow,
-    setShadow,
-    contentContainer,
-    setContentContainer
+    roundedCorner,
+    setRoundedCorner
   } = useSettingsStore((state) => state);
-
-  const setThemeHandle = (value: ThemeType) => {
-    setTheme(value);
-
-    if (value === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  };
-
-  const setDirectionHandle = (value: ThemeDirectionType) => {
-    setDirection(value);
-
-    if (value === "rtl") {
-      document.documentElement.setAttribute("dir", "rtl");
-    } else {
-      document.documentElement.setAttribute("dir", "ltr");
-    }
-  };
-
-  const setFontFamilyHandle = (value: ThemeFontFamilyType) => {
-    setFontFamily(value);
-    document.body.style.setProperty("font-family", `var(--font-${value})`);
-  };
-
-  const setColorSchemeHandle = (value: ThemeColorSchemeType) => {
-    setColorScheme(value);
-    document.documentElement.style.setProperty("--primary", themeColors[value]);
-  };
-
-  const setRoundedHandle = (value: number) => {
-    setRounded(value);
-    document.documentElement.style.setProperty("--radius", value + "rem");
-  };
-
-  const resetThemeHandle = useCallback(() => {
-    resetTheme();
-    document.documentElement.classList.remove("dark");
-    document.body.style.setProperty("font-family", `var(--font-${defaultTheme.fontFamily})`);
-    if (defaultTheme.colorScheme) {
-      document.documentElement.style.setProperty(
-        "--primary",
-        themeColors[defaultTheme.colorScheme]
-      );
-    }
-    document.documentElement.style.setProperty("--radius", defaultTheme.rounded + "rem");
-    if (defaultTheme.direction) {
-      document.documentElement.setAttribute("dir", defaultTheme.direction);
-    }
-  }, [colorScheme, rounded]);
 
   return (
     <>
-      <Sheet open={isOpen} onOpenChange={setIsOpen}>
+      <Sheet>
         <SheetTrigger asChild>
           <Button
             variant="outline"
-            className="fixed bottom-2/4 right-0 rounded-full rounded-br-none rounded-tr-none py-6 shadow-lg">
+            className="fixed bottom-2/4 right-0 z-50 rounded-full rounded-br-none rounded-tr-none py-6 shadow-lg">
             <Settings className="h-6 w-6 animate-spin" />
             <span className="sr-only">Open theme customizer</span>
           </Button>
@@ -117,13 +55,13 @@ function ThemeCustomizer() {
               <Label>Font Family</Label>
               <Select
                 value={fontFamily}
-                onValueChange={(value: ThemeFontFamilyType) => setFontFamilyHandle(value)}>
+                onValueChange={(value: FontFamily) => setFontFamily(value)}>
                 <SelectTrigger className="col-span-3">
                   <SelectValue placeholder="Select primary color" />
                 </SelectTrigger>
                 <SelectContent>
                   {Object.keys(themeSettings.fontFamily).map((key) => {
-                    const item = themeSettings.fontFamily[key as ThemeFontFamilyType];
+                    const item = themeSettings.fontFamily[key as FontFamily];
                     return (
                       <SelectItem key={key} value={key}>
                         {item}
@@ -136,8 +74,8 @@ function ThemeCustomizer() {
             <div className="flex flex-col gap-4">
               <Label>Primary Color</Label>
               <Select
-                value={colorScheme.toString()}
-                onValueChange={(value: ThemeColorSchemeType) => setColorSchemeHandle(value)}>
+                value={String(themeColor === "default" ? "" : themeColor)}
+                onValueChange={(value: string) => setThemeColor(value)}>
                 <SelectTrigger className="col-span-3">
                   <SelectValue placeholder="Select primary color" />
                 </SelectTrigger>
@@ -158,23 +96,22 @@ function ThemeCustomizer() {
               </Select>
             </div>
             <div className="flex flex-col gap-4">
-              <Label htmlFor="rounded">Border Radius</Label>
+              <Label htmlFor="roundedCorner">Rounded Conners</Label>
               <Slider
-                id="rounded"
+                id="roundedCorner"
                 min={0}
                 max={1.5}
                 step={0.3}
-                value={[rounded]}
-                onValueChange={([value]) => setRoundedHandle(value)}
+                value={[roundedCorner]}
+                onValueChange={([value]) => setRoundedCorner(value)}
                 className="col-span-3"
               />
             </div>
             <RadioGroup
               value={theme}
-              onValueChange={(value: ThemeType) => setThemeHandle(value)}
+              onValueChange={(value) => setTheme(value)}
               className="grid grid-cols-2 gap-4">
               <div>
-                {" "}
                 <RadioGroupItem
                   value="light"
                   id="light"
@@ -225,7 +162,7 @@ function ThemeCustomizer() {
               <Label>Direction</Label>
               <RadioGroup
                 value={direction}
-                onValueChange={(value: ThemeDirectionType) => setDirectionHandle(value)}
+                onValueChange={(value: ThemeDirection) => setDirection(value)}
                 className="grid grid-cols-2 gap-4">
                 <div>
                   <RadioGroupItem value="ltr" id="ltr" className="peer sr-only" aria-label="ltr" />
@@ -245,70 +182,15 @@ function ThemeCustomizer() {
                 </div>
               </RadioGroup>
             </div>
-
-            {/* <div className="flex flex-col gap-4">
-              <Label>Shadow {shadow}</Label>
-              <RadioGroup
-                defaultValue={shadow}
-                onValueChange={(value: ShadowType) => setShadow(value)}
-                className="grid grid-cols-3 gap-4">
-                {Object.keys(themeSettings.shadow).map((key) => {
-                  const item = themeSettings.shadow[key as ShadowType];
-                  return (
-                    <div key={key}>
-                      <RadioGroupItem
-                        value={item}
-                        id={key}
-                        className="peer sr-only"
-                        aria-label={key}
-                      />
-                      <Label
-                        htmlFor={key}
-                        className="flex flex-col items-center justify-between rounded-md border border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">
-                        {key}
-                      </Label>
-                    </div>
-                  );
-                })}
-              </RadioGroup>
-            </div>
-            <div className="flex flex-col gap-4">
-              <Label htmlFor="primary">Layout</Label>
-              <Select value="Vertical">
-                <SelectTrigger className="col-span-3">
-                  <SelectValue placeholder="Select primary color" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Vertical">Vertical</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="flex flex-col gap-4">
-              <Label htmlFor="primary">Sidebar</Label>
-              <Select value="Vertical">
-                <SelectTrigger className="col-span-3">
-                  <SelectValue placeholder="Select primary color" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Vertical">Default</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Checkbox
-                id="terms"
-                checked={contentContainer}
-                onCheckedChange={(checked: boolean) => setContentContainer(checked)}
-              />
-              <label
-                htmlFor="terms"
-                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Content container
-              </label>
-            </div> */}
           </div>
           <div className="mt-4 flex justify-between">
-            <Button variant="destructive" className="w-full" onClick={resetThemeHandle}>
+            <Button
+              variant="destructive"
+              className="w-full"
+              onClick={() => {
+                resetTheme();
+                setTheme("light");
+              }}>
               Reset to Default
             </Button>
           </div>
@@ -318,4 +200,4 @@ function ThemeCustomizer() {
   );
 }
 
-export default memo(ThemeCustomizer);
+export default ThemeCustomizer;

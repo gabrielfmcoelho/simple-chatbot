@@ -4,10 +4,10 @@ import { cn, generateAvatarFallback } from "@/lib/utils";
 import ChatUserDropdown from "./chat-list-item-dropdown";
 import { Ellipsis } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ChatItemProps, SelectedChatContextType } from "./types";
-import { SelectedChatContext } from "@/components/contexts";
+import { ChatItemProps } from "./types";
 import UserAvatar from "@/components/user-avatar";
 import MessageStatusIcon from "./message-status-icon";
+import useChatStore from "@/store/chatStore";
 
 export default function ChatListItem({
   chat,
@@ -16,7 +16,7 @@ export default function ChatListItem({
   chat: ChatItemProps;
   active: boolean | null;
 }) {
-  const { setSelectedChat } = useContext(SelectedChatContext) as SelectedChatContextType;
+  const { setSelectedChat } = useChatStore();
 
   const handleClick = (chat: ChatItemProps) => {
     setSelectedChat(chat);

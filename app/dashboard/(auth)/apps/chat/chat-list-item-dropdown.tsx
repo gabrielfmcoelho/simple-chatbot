@@ -1,7 +1,5 @@
 "use client";
 
-import { useContext } from "react";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,18 +8,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
-import { UserProfileContext } from "@/components/contexts";
-import { UserProfileContextType } from "./types";
+import useChatStore from "@/store/chatStore";
 
 export default function ChatUserDropdown({ children }: { children: React.ReactNode }) {
-  const { setShow } = useContext(UserProfileContext) as UserProfileContextType;
+  const { toggleProfileSheet } = useChatStore();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
       <DropdownMenuContent className="w-44">
         <DropdownMenuGroup>
-          <DropdownMenuItem onClick={() => setShow(true)}>View profile</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => toggleProfileSheet(true)}>View profile</DropdownMenuItem>
           <DropdownMenuItem>Add to archive</DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>Block</DropdownMenuItem>

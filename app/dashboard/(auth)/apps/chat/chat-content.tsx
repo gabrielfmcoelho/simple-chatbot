@@ -1,18 +1,18 @@
 "use client";
 
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import ChatFooter from "./chat-footer";
 import ChatHeader from "./chat-header";
 import ChatBubble from "./chat-bubbles";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { SelectedChatContext } from "@/components/contexts";
-import { ChatMessageProps, SelectedChatContextType } from "./types";
+import { ChatMessageProps } from "./types";
 import UserDetailSheet from "./user-detail-sheet";
+import useChatStore from "@/store/chatStore";
 
 export default function ChatContent() {
+  const { selectedChat } = useChatStore();
   const messagesContainerRef = useRef<HTMLDivElement | null>(null);
-  const { selectedChat } = useContext(SelectedChatContext) as SelectedChatContextType;
 
   useEffect(() => {
     if (messagesContainerRef.current) {

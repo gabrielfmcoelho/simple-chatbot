@@ -13,7 +13,7 @@ export async function generateMetadata() {
   return generateMeta({
     title: "Dashboard",
     description:
-      "The default dashboard template, built with React and Tailwind CSS, offers a sleek and efficient interface for monitoring key data and user interactions.",
+      "The admin dashboard template offers a sleek and efficient interface for monitoring important data and user interactions. Built with Tailwind CSS and Next.js.",
     canonical: "/default"
   });
 }

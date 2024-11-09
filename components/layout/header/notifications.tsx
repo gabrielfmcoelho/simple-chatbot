@@ -17,11 +17,9 @@ const Notifications = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button size="sm" variant="link" className="relative">
-          <BellIcon className="animate-tada h-5 w-5" />
-          <Badge
-            className="absolute bottom-[calc(100%-10px)] left-[calc(100%-12px)] h-4 w-4 items-center justify-center rounded-full p-0 text-[8px] font-semibold"
-            color="destructive">
+        <Button size="sm" variant="link" className="relative text-foreground">
+          <BellIcon className="h-5 w-5" />
+          <Badge className="absolute bottom-[calc(100%-10px)] left-[calc(100%-12px)] h-4 w-4 items-center justify-center rounded-full p-0 text-[8px] font-semibold">
             2
           </Badge>
         </Button>

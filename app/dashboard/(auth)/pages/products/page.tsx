@@ -13,7 +13,7 @@ export async function generateMetadata() {
   return generateMeta({
     title: "Products",
     description:
-      "A list of products created using the Tanstack Table. Tailwind is built on CSS and React.",
+      "A list of products created using the Tanstack Table. Built with Tailwind CSS and Next.js.",
     canonical: "/pages/products"
   });
 }

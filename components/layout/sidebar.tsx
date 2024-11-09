@@ -70,7 +70,7 @@ export default function Sidebar() {
         <ScrollArea>
           {page_routes.map((route, key) => (
             <SidebarGroup key={key}>
-              <SidebarGroupLabel>Application</SidebarGroupLabel>
+              <SidebarGroupLabel>{route.title}</SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu>
                   {route.items.map((item, key) => (
@@ -91,7 +91,9 @@ export default function Sidebar() {
                                   <SidebarMenuSubButton
                                     isActive={pathname === subItem.href}
                                     asChild>
-                                    <Link href={subItem.href}>
+                                    <Link
+                                      href={subItem.href}
+                                      target={subItem.newTab ? "_blank" : ""}>
                                       {subItem.icon && (
                                         <Icon name={subItem.icon} className="size-4" />
                                       )}
@@ -108,7 +110,7 @@ export default function Sidebar() {
                           asChild
                           tooltip={item.title}
                           isActive={pathname === item.href}>
-                          <Link href={item.href}>
+                          <Link href={item.href} target={item.newTab ? "_blank" : ""}>
                             {item.icon && <Icon name={item.icon} className="size-4" />}
                             <span>{item.title}</span>
                           </Link>

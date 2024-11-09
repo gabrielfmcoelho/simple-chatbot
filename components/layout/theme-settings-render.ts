@@ -1,4 +1,4 @@
-import { themeColors } from "@/store/useThemeStore";
+import { themeColors } from "@/store/themeSettingsStore";
 
 export const themeSettingsRender = () => {
   return `(function() {

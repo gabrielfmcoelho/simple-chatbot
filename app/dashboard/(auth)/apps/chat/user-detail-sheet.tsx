@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import React, { useContext } from "react";
 
 import {
   Sheet,
@@ -11,18 +10,17 @@ import {
   SheetTitle
 } from "@/components/ui/sheet";
 import { Dribbble, Facebook, FileText, Instagram, Linkedin, SheetIcon, X } from "lucide-react";
-import { UserProfileContext } from "@/components/contexts";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import UserAvatar from "@/components/user-avatar";
 import { Button } from "@/components/ui/button";
-import { UserProfileContextType, UserPropsTypes } from "./types";
+import { UserPropsTypes } from "./types";
 import { generateAvatarFallback } from "@/lib/utils";
+import useChatStore from "@/store/chatStore";
 
 export default function UserDetailSheet({ user }: { user: UserPropsTypes }) {
-  const { show, setShow } = useContext(UserProfileContext) as UserProfileContextType;
-
+  const { showProfileSheet, toggleProfileSheet } = useChatStore();
   return (
-    <Sheet open={show} onOpenChange={setShow}>
+    <Sheet open={showProfileSheet} onOpenChange={toggleProfileSheet}>
       <SheetContent>
         <SheetHeader>
           <SheetTitle className="text-2xl">Profile</SheetTitle>

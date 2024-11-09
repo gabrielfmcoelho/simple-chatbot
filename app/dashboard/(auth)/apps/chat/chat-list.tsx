@@ -1,16 +1,16 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 import { Search } from "lucide-react";
 import ChatListItem from "./chat-list-item";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ChatItemProps, SelectedChatContextType } from "./types";
-import { SelectedChatContext } from "@/components/contexts";
+import { ChatItemProps } from "./types";
+import useChatStore from "@/store/chatStore";
 
 export default function ChatList({ chats }: { chats: ChatItemProps[] }) {
-  const { selectedChat } = useContext(SelectedChatContext) as SelectedChatContextType;
+  const { selectedChat } = useChatStore();
   const [filteredChats, setFilteredChats] = useState(chats);
 
   const changeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {

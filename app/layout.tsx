@@ -1,7 +1,8 @@
 import "./globals.scss";
 import { Inter, Roboto, Montserrat, Poppins, Overpass_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
-import { themeSettingsRender } from "@/components/layout/theme-settings-render";
+import { ThemeProvider } from "next-themes";
+import ThemeSettingsProvider from "@/components/theme-settings-provider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -38,13 +39,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.className} ${inter.variable} ${roboto.variable} ${montserrat.variable} ${poppins.variable} ${overpass_mono.variable}`}>
-        {children}
+        <ThemeProvider attribute="class" enableSystem={false}>
+          <ThemeSettingsProvider>{children}</ThemeSettingsProvider>
+        </ThemeProvider>
         <Toaster />
-        {/* <script
-          dangerouslySetInnerHTML={{
-            __html: themeSettingsRender()
-          }}
-        /> */}
       </body>
     </html>
   );

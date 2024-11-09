@@ -45,7 +45,7 @@ import {
 } from "@/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
+import { cn, generateAvatarFallback } from "@/lib/utils";
 import { Checkbox } from "@/components/ui/checkbox";
 
 export type User = {
@@ -70,8 +70,8 @@ export const columns: ColumnDef<User>[] = [
     cell: ({ row }) => (
       <div className="flex items-center gap-4">
         <Avatar>
-          <AvatarImage src={row.original.image} alt="shadcn ui kit" />
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarImage src={`${process.env.BASE_URL}/${row.original.image}`} alt="shadcn ui kit" />
+          <AvatarFallback>{generateAvatarFallback(row.getValue("name"))}</AvatarFallback>
         </Avatar>
         <div className="capitalize">{row.getValue("name")}</div>
       </div>

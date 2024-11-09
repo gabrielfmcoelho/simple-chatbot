@@ -9,6 +9,7 @@ type PageRoutesItemType = {
   icon?: string;
   isComing?: boolean;
   isNew?: boolean;
+  newTab?: boolean;
   items?: PageRoutesItemType;
 }[];
 
@@ -137,6 +138,23 @@ export const page_routes: PageRoutesType[] = [
           { title: "500", href: "/dashboard/pages/error/500" },
           { title: "403", href: "/dashboard/pages/error/403" }
         ]
+      }
+    ]
+  },
+  {
+    title: "Others",
+    items: [
+      {
+        title: "Components",
+        href: "/components",
+        icon: "Component",
+        newTab: true
+      },
+      {
+        title: "Documentation",
+        href: "#",
+        icon: "ClipboardMinus",
+        isComing: true
       }
     ]
   }

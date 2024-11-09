@@ -1,6 +1,5 @@
 import { cookies } from "next/headers";
 
-import Providers from "@/components/providers";
 import MainLayout from "@/components/main-layout";
 import { SidebarProvider } from "@/components/ui/sidebar";
 
@@ -14,9 +13,7 @@ export default async function AuthLayout({
 
   return (
     <SidebarProvider defaultOpen={cookieStoreValue ? JSON.parse(cookieStoreValue) : true}>
-      <Providers>
-        <MainLayout>{children}</MainLayout>
-      </Providers>
+      <MainLayout>{children}</MainLayout>
     </SidebarProvider>
   );
 }

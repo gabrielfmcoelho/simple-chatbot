@@ -1,19 +1,17 @@
 "use client";
 
-import { useContext } from "react";
-
 import { ArrowLeft, Ellipsis, Phone, PhoneCall, Video, X } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import ChatUserDropdown from "./chat-list-item-dropdown";
 import { Dialog, DialogClose, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { SelectedChatContextType, UserPropsTypes } from "./types";
-import { SelectedChatContext } from "@/components/contexts";
+import { UserPropsTypes } from "./types";
 import UserAvatar from "@/components/user-avatar";
 import { generateAvatarFallback } from "@/lib/utils";
+import useChatStore from "@/store/chatStore";
 
 export default function ChatHeader({ user }: { user: UserPropsTypes }) {
-  const { setSelectedChat } = useContext(SelectedChatContext) as SelectedChatContextType;
+  const { setSelectedChat } = useChatStore();
 
   return (
     <div className="flex justify-between gap-4">
