@@ -288,15 +288,15 @@ export default function OrdersDataTable({ data }: { data: Order[] }) {
 
   return (
     <div className="w-full">
-      <div className="flex items-center gap-4 pb-4">
-        <div className="flex gap-2">
+      <div className="items-center gap-4 pb-4 lg:flex">
+        <div className="flex flex-col gap-2 lg:flex-row">
           <Input
             placeholder="Search orders..."
             value={(table.getColumn("product_name")?.getFilterValue() as string) ?? ""}
             onChange={(event) =>
               table.getColumn("product_name")?.setFilterValue(event.target.value)
             }
-            className="max-w-sm"
+            className="lg:max-w-sm"
           />
           <Popover>
             <PopoverTrigger asChild>
@@ -371,29 +371,31 @@ export default function OrdersDataTable({ data }: { data: Order[] }) {
             </PopoverContent>
           </Popover>
         </div>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns <ChevronDown className="ml-2 h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) => column.toggleVisibility(!!value)}>
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                );
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="hidden lg:block">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="ml-auto">
+                Columns <ChevronDown className="ml-2 h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => {
+                  return (
+                    <DropdownMenuCheckboxItem
+                      key={column.id}
+                      className="capitalize"
+                      checked={column.getIsVisible()}
+                      onCheckedChange={(value) => column.toggleVisibility(!!value)}>
+                      {column.id}
+                    </DropdownMenuCheckboxItem>
+                  );
+                })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
       <div className="rounded-md border">
         <Table>

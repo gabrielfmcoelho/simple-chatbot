@@ -10,7 +10,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
   return (
     <>
       <NextTopLoader color="hsl(var(--primary))" showSpinner={false} height={2} shadow="none" />
-      <div className="flex h-screen grow">
+      <div className="flex">
         <Sidebar />
         <div className="w-full">
           <Header />

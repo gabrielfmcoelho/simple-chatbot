@@ -16,6 +16,7 @@ import {
   CommandSeparator
 } from "@/components/ui/command";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 type CommandItemProps = {
   item: {
@@ -57,8 +58,8 @@ export default function Search() {
   };
 
   return (
-    <div>
-      <div className="relative max-w-sm flex-1">
+    <div className="ms-auto lg:me-auto lg:flex-1">
+      <div className="relative hidden max-w-sm flex-1 lg:block">
         <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
         <Input
           className="h-9 w-full cursor-pointer rounded-md border pl-10 pr-4 text-sm shadow-sm"
@@ -67,9 +68,14 @@ export default function Search() {
           onFocus={() => setOpen(true)}
         />
         <div className="absolute right-2 top-1/2 hidden -translate-y-1/2 items-center gap-0.5 rounded-sm bg-zinc-200 p-1 font-mono text-xs font-medium dark:bg-neutral-700 sm:flex">
-          <CommandIcon className="h-3 w-3" />
+          <CommandIcon className="size-3" />
           <span>k</span>
         </div>
+      </div>
+      <div className="block lg:hidden">
+        <Button size="sm" variant="link" onClick={() => setOpen(true)} className="text-foreground">
+          <SearchIcon className="size-5" />
+        </Button>
       </div>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />

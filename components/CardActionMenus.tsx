@@ -28,7 +28,7 @@ export function CardOptionsMenu() {
 
 export function ExportButton() {
   return (
-    <div className="absolute end-4 top-2">
+    <div className="absolute end-4 top-4">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="sm" className="!mt-0">

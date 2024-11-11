@@ -1,4 +1,4 @@
-import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
+import CalendarDateRangePicker from "@/components/date-range-picker";
 import TeamMembersCard from "./cards/theme-members";
 import SubscriptionsCard from "./cards/subscriptions";
 import TotalRevenueCard from "./cards/total-revenue";
@@ -21,14 +21,14 @@ export async function generateMetadata() {
 export default function Page() {
   return (
     <>
-      <div className="mb-4 flex items-center justify-between space-y-2">
+      <div className="mb-4 flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between">
         <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
         <div className="flex items-center space-x-2">
           <CalendarDateRangePicker />
           <Button>Download</Button>
         </div>
       </div>
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="gap-4 space-y-4 lg:grid lg:grid-cols-3">
         <TeamMembersCard />
         <SubscriptionsCard />
         <TotalRevenueCard />

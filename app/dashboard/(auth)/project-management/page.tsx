@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowDownLeft, ArrowUpRight, Award, Briefcase, DollarSign, FileClock } from "lucide-react";
 import { OverviewChart } from "./overview-chart";
-import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
+import CalendarDateRangePicker from "@/components/date-range-picker";
 import { Button } from "@/components/ui/button";
 import { generateMeta } from "@/lib/utils";
 import { RecentProjectList } from "./recent-projects-table";

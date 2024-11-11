@@ -24,7 +24,7 @@ export default function Messages() {
           </Badge>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="z-[999] mx-4 p-0 lg:w-[320px]">
+      <DropdownMenuContent align="end" className="z-[999] mx-4 max-w-sm p-0 lg:w-[320px]">
         <DropdownMenuLabel>
           <div className="border-default-100 flex justify-between border-b px-4 py-3">
             <div className="text-default-800 text-sm font-medium">Messages</div>

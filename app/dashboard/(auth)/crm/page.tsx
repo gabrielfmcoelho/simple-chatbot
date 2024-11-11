@@ -1,4 +1,4 @@
-import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
+import CalendarDateRangePicker from "@/components/date-range-picker";
 import { Button } from "@/components/ui/button";
 import { LeadsByCountryCard } from "@/components/dashboard/crm/leads-by-country";
 import { TargetCard } from "@/components/dashboard/crm/target-card";
@@ -21,7 +21,7 @@ export async function generateMetadata() {
 export default function Page() {
   return (
     <>
-      <div className="mb-4 flex flex-col space-y-2 lg:flex-row lg:items-center lg:justify-between">
+      <div className="mb-4 flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between lg:space-y-0">
         <h1 className="text-2xl font-bold tracking-tight">CRM Dashboard</h1>
         <div className="flex items-center space-x-2">
           <CalendarDateRangePicker />

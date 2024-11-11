@@ -23,7 +23,8 @@ import {
   SidebarMenuItem,
   SidebarMenuSub,
   SidebarMenuSubButton,
-  SidebarMenuSubItem
+  SidebarMenuSubItem,
+  useSidebar
 } from "@/components/ui/sidebar";
 import { page_routes } from "@/lib/routes-config";
 import { ChevronRight, ChevronsUpDown, Sparkles } from "lucide-react";
@@ -32,9 +33,15 @@ import { Button } from "../ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const { toggleSidebar, isMobile } = useSidebar();
+
+  useEffect(() => {
+    if (isMobile) toggleSidebar();
+  }, [pathname]);
 
   return (
     <SidebarContainer collapsible="icon">

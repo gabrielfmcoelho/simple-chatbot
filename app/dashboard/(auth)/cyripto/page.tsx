@@ -5,7 +5,7 @@ import DigitalWallets from "./digital-wallets";
 import { RecentActivities } from "./recent-activities";
 import { BalanceSummeryChart } from "./balance-summary";
 import CoinBuySell from "./coin-buy-sell";
-import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
+import CalendarDateRangePicker from "@/components/date-range-picker";
 import { Button } from "@/components/ui/button";
 import OverviewCard from "./overview-card";
 

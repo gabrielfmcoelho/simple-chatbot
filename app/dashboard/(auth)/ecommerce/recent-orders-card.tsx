@@ -4,6 +4,7 @@ import * as React from "react";
 import {
   ColumnDef,
   ColumnFiltersState,
+  PaginationState,
   SortingState,
   VisibilityState,
   flexRender,
@@ -11,7 +12,7 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  useReactTable,
+  useReactTable
 } from "@tanstack/react-table";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 
@@ -22,7 +23,7 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import {
   Table,
@@ -30,86 +31,12 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
+  TableRow
 } from "@/components/ui/table";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
-const data: Payment[] = [
-  {
-    id: "m5gr84i9",
-    customer: {
-      image: "https://avatar.iran.liara.run/public/33",
-      name: "Theodore Bell",
-    },
-    product: {
-      name: "Tire Doodad",
-    },
-    amount: 300,
-    status: "processing",
-  },
-  {
-    id: "m5gr84i9",
-    customer: {
-      image: "https://avatar.iran.liara.run/public/33",
-      name: "Theodore Bell",
-    },
-    product: {
-      name: "Tire Doodad",
-    },
-    amount: 300,
-    status: "processing",
-  },
-  {
-    id: "m5gr84i9",
-    customer: {
-      image: "https://avatar.iran.liara.run/public/33",
-      name: "Theodore Bell",
-    },
-    product: {
-      name: "Tire Doodad",
-    },
-    amount: 300,
-    status: "processing",
-  },
-  {
-    id: "m5gr84i9",
-    customer: {
-      image: "https://avatar.iran.liara.run/public/33",
-      name: "Theodore Bell",
-    },
-    product: {
-      name: "Tire Doodad",
-    },
-    amount: 300,
-    status: "processing",
-  },
-  {
-    id: "m5gr84i9",
-    customer: {
-      image: "https://avatar.iran.liara.run/public/33",
-      name: "Theodore Bell",
-    },
-    product: {
-      name: "Tire Doodad",
-    },
-    amount: 300,
-    status: "processing",
-  },
-  {
-    id: "m5gr84i9",
-    customer: {
-      image: "https://avatar.iran.liara.run/public/33",
-      name: "Theodore Bell",
-    },
-    product: {
-      name: "Tire Doodad",
-    },
-    amount: 300,
-    status: "processing",
-  },
-];
-
-export type Payment = {
-  id: string;
+export type Order = {
+  id: number;
   customer: {
     name?: string;
     image?: string;
@@ -121,31 +48,125 @@ export type Payment = {
   status: "paid" | "processing" | "success" | "failed";
 };
 
-export const columns: ColumnDef<Payment>[] = [
+const orders: Order[] = [
+  {
+    id: 1023,
+    customer: {
+      name: "Theodore Bell",
+      image: "/images/avatars/1.png"
+    },
+    product: {
+      name: "Tire Doodad"
+    },
+    amount: 300,
+    status: "processing"
+  },
+  {
+    id: 2045,
+    customer: {
+      name: "Amelia Grant",
+      image: "/images/avatars/2.png"
+    },
+    product: {
+      name: "Engine Kit"
+    },
+    amount: 450,
+    status: "paid"
+  },
+  {
+    id: 3067,
+    customer: {
+      name: "Eleanor Ward",
+      image: "/images/avatars/3.png"
+    },
+    product: {
+      name: "Brake Pad"
+    },
+    amount: 200,
+    status: "success"
+  },
+  {
+    id: 4089,
+    customer: {
+      name: "Henry Carter",
+      image: "/images/avatars/4.png"
+    },
+    product: {
+      name: "Fuel Pump"
+    },
+    amount: 500,
+    status: "processing"
+  },
+  {
+    id: 5102,
+    customer: {
+      name: "Olivia Harris",
+      image: "/images/avatars/5.png"
+    },
+    product: {
+      name: "Steering Wheel"
+    },
+    amount: 350,
+    status: "failed"
+  },
+  {
+    id: 6123,
+    customer: {
+      name: "James Robinson",
+      image: "/images/avatars/6.png"
+    },
+    product: {
+      name: "Air Filter"
+    },
+    amount: 180,
+    status: "paid"
+  },
+  {
+    id: 7145,
+    customer: {
+      name: "Sophia Martinez",
+      image: "/images/avatars/7.png"
+    },
+    product: {
+      name: "Oil Filter"
+    },
+    amount: 220,
+    status: "success"
+  },
+  {
+    id: 8167,
+    customer: {
+      name: "Liam Thompson",
+      image: "/images/avatars/8.png"
+    },
+    product: {
+      name: "Radiator Cap"
+    },
+    amount: 290,
+    status: "processing"
+  }
+];
+
+export const columns: ColumnDef<Order>[] = [
   {
     accessorKey: "id",
     header: "Order ID",
-    cell: ({ row }) => <span>#{row.getValue("id")}</span>,
+    cell: ({ row }) => <span>#{row.getValue("id")}</span>
   },
   {
     accessorKey: "customer",
     header: "Customer",
     cell: ({ row }) => (
       <div className="flex items-center gap-4">
-        <img
-          className="h-10 w-10 rounded-full border"
-          src={row.original.customer["image"]}
-        />
+        <img className="h-10 w-10 rounded-full border" src={row.original.customer["image"]} />
         <div className="capitalize">{row.original.customer.name}</div>
       </div>
-    ),
+    )
   },
   {
     accessorKey: "product",
     header: "Product",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.original.product.name}</div>
-    ),
+    cell: ({ row }) => <div className="capitalize">{row.original.product.name}</div>
   },
   {
     accessorKey: "amount",
@@ -153,8 +174,7 @@ export const columns: ColumnDef<Payment>[] = [
       return (
         <Button
           variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Amount
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
@@ -166,24 +186,22 @@ export const columns: ColumnDef<Payment>[] = [
       // Format the amount as a dollar amount
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
-        currency: "USD",
+        currency: "USD"
       }).format(amount);
 
       return <div className="text-center font-medium">{formatted}</div>;
-    },
+    }
   },
   {
     accessorKey: "status",
     header: "Status",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
-    ),
+    cell: ({ row }) => <div className="capitalize">{row.getValue("status")}</div>
   },
   {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original;
+      const order = row.original;
 
       return (
         <DropdownMenu>
@@ -195,10 +213,8 @@ export const columns: ColumnDef<Payment>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              Copy payment ID
+            <DropdownMenuItem onClick={() => navigator.clipboard.writeText(String(order.id))}>
+              Copy order ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>View customer</DropdownMenuItem>
@@ -206,21 +222,22 @@ export const columns: ColumnDef<Payment>[] = [
           </DropdownMenuContent>
         </DropdownMenu>
       );
-    },
-  },
+    }
+  }
 ];
 
-export default function RecentOrders() {
+export function EcommerceRecentOrdersCard() {
   const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    [],
-  );
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({});
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
+  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
+  const [pagination, setPagination] = React.useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: 5
+  });
 
   const table = useReactTable({
-    data,
+    data: orders,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -235,12 +252,16 @@ export default function RecentOrders() {
       columnFilters,
       columnVisibility,
       rowSelection,
-    },
+      pagination
+    }
   });
 
   return (
-    <div className="w-full">
-      <div className="rounded-md border">
+    <Card className="lg:col-span-7">
+      <CardHeader className="relative">
+        <CardTitle className="font-semibold">Recent Orders</CardTitle>
+      </CardHeader>
+      <CardContent className="px-0">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -250,10 +271,7 @@ export default function RecentOrders() {
                     <TableHead key={header.id}>
                       {header.isPlaceholder
                         ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext(),
-                          )}
+                        : flexRender(header.column.columnDef.header, header.getContext())}
                     </TableHead>
                   );
                 })}
@@ -263,57 +281,42 @@ export default function RecentOrders() {
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                >
+                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext(),
-                      )}
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>
                   ))}
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
+                <TableCell colSpan={columns.length} className="h-24 text-center">
                   No results.
                 </TableCell>
               </TableRow>
             )}
           </TableBody>
         </Table>
-      </div>
-      <div className="flex items-center justify-end space-x-2 pt-4">
-        <div className="flex-1 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div>
-        <div className="space-x-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Previous
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Next
-          </Button>
-        </div>
-      </div>
-    </div>
+      </CardContent>
+      <CardFooter className="flex justify-between">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() =>
+            setPagination((prev) => ({ ...prev, pageIndex: Math.max(prev.pageIndex - 1, 0) }))
+          }
+          disabled={!table.getCanPreviousPage()}>
+          Previous
+        </Button>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setPagination((prev) => ({ ...prev, pageIndex: prev.pageIndex + 1 }))}
+          disabled={!table.getCanNextPage()}>
+          Next
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }

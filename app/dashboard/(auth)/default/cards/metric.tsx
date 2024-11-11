@@ -2,44 +2,38 @@
 
 import { Line, LineChart, ResponsiveContainer, Tooltip } from "recharts";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExportButton } from "@/components/CardActionMenus";
 
 const data = [
   {
     average: 400,
-    today: 240,
+    today: 240
   },
   {
     average: 300,
-    today: 139,
+    today: 139
   },
   {
     average: 200,
-    today: 980,
+    today: 980
   },
   {
     average: 278,
-    today: 390,
+    today: 390
   },
   {
     average: 189,
-    today: 480,
+    today: 480
   },
   {
     average: 239,
-    today: 380,
+    today: 380
   },
   {
     average: 349,
-    today: 430,
-  },
+    today: 430
+  }
 ];
 
 export default function MetricCard({ className }: { className?: string }) {
@@ -57,7 +51,7 @@ export default function MetricCard({ className }: { className?: string }) {
         </div>
       </CardHeader>
       <CardContent className="pb-4">
-        <div className="h-[250px]">
+        <div className="h-32 lg:h-[250px]">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
               data={data}
@@ -65,9 +59,8 @@ export default function MetricCard({ className }: { className?: string }) {
                 top: 5,
                 right: 10,
                 left: 10,
-                bottom: 0,
-              }}
-            >
+                bottom: 0
+              }}>
               <Tooltip
                 content={({ active, payload }) => {
                   if (active && payload && payload.length) {
@@ -86,9 +79,7 @@ export default function MetricCard({ className }: { className?: string }) {
                             <span className="text-[0.70rem] uppercase text-muted-foreground">
                               Today
                             </span>
-                            <span className="font-bold">
-                              {payload[1].value}
-                            </span>
+                            <span className="font-bold">{payload[1].value}</span>
                           </div>
                         </div>
                       </div>
@@ -104,13 +95,13 @@ export default function MetricCard({ className }: { className?: string }) {
                 dataKey="average"
                 activeDot={{
                   r: 6,
-                  style: { fill: "var(--theme-primary)", opacity: 0.25 },
+                  style: { fill: "var(--theme-primary)", opacity: 0.25 }
                 }}
                 style={
                   {
                     stroke: "var(--theme-primary)",
                     opacity: 0.25,
-                    "--theme-primary": `hsl(var(--primary))`,
+                    "--theme-primary": `hsl(var(--primary))`
                   } as React.CSSProperties
                 }
               />
@@ -120,12 +111,12 @@ export default function MetricCard({ className }: { className?: string }) {
                 strokeWidth={2}
                 activeDot={{
                   r: 8,
-                  style: { fill: "var(--theme-primary)" },
+                  style: { fill: "var(--theme-primary)" }
                 }}
                 style={
                   {
                     stroke: "var(--theme-primary)",
-                    "--theme-primary": `hsl(var(--primary))`,
+                    "--theme-primary": `hsl(var(--primary))`
                   } as React.CSSProperties
                 }
               />

@@ -16,7 +16,7 @@ import { SupportTrackerChart } from "@/components/dashboard/analytics/support-tr
 import { SalesByCountries } from "@/components/dashboard/analytics/sales-by-countries";
 import { TotalEarningChart } from "@/components/dashboard/analytics/total-earning-chart";
 import { MonthlyCampaignState } from "@/components/dashboard/analytics/monthly-campaign-state";
-import CalendarDateRangePicker from "@/components/dashboard/ecommerce/date-range-picker";
+import CalendarDateRangePicker from "@/components/date-range-picker";
 import { Button } from "@/components/ui/button";
 import { generateMeta } from "@/lib/utils";
 
