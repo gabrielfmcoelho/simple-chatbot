@@ -158,7 +158,10 @@ export const columns: ColumnDef<Order>[] = [
     header: "Customer",
     cell: ({ row }) => (
       <div className="flex items-center gap-4">
-        <img className="h-10 w-10 rounded-full border" src={row.original.customer["image"]} />
+        <img
+          className="h-10 w-10 rounded-full border"
+          src={`${process.env.DASHBOARD_BASE_URL}${row.original.customer["image"]}`}
+        />
         <div className="capitalize">{row.original.customer.name}</div>
       </div>
     )

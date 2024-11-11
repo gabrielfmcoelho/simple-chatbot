@@ -119,11 +119,9 @@ export const columns: ColumnDef<Product>[] = [
     header: "Product",
     cell: ({ row }) => (
       <div className="flex items-center gap-4">
-        <Image
+        <img
           className="size-10 rounded-lg border"
           src={`${process.env.DASHBOARD_BASE_URL}${row.original.image}`}
-          width={60}
-          height={60}
           alt="..."
         />
         <div className="capitalize">{row.getValue("name")}</div>
