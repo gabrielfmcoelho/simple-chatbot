@@ -21,6 +21,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "dashboard.shadcnuikit.com"
+      },
+      {
+        protocol: "https",
+        hostname: "shadcnuikit.com"
       }
     ]
   }

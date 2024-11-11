@@ -125,6 +125,7 @@ export const columns: ColumnDef<Product>[] = [
           width={60}
           height={60}
           alt="..."
+          opti
         />
         <div className="capitalize">{row.getValue("name")}</div>
       </div>
