@@ -142,18 +142,16 @@ export default function Sidebar() {
       <SidebarFooter>
         <Card className="group-data-[collapsible=icon]:hidden">
           <CardHeader className="p-4">
-            <CardTitle>Upgrade to Pro</CardTitle>
+            <CardTitle>Get this Dashboard</CardTitle>
             <CardDescription>
-              Get pro now to own all templates, components and pages for life.
+              Use the link to get this dashboard template and access other resources.
             </CardDescription>
           </CardHeader>
           <CardContent className="p-4 pt-0">
-            <Button variant="secondary" className="w-full" asChild>
-              <Link
-                href="https://bundui.lemonsqueezy.com/buy/385ebdb6-6193-4d37-9148-057ab89b9c8d"
-                target="_blank">
+            <Button className="w-full" asChild>
+              <Link href="/pricing" target="_blank">
                 <Sparkles className="me-2 size-4" />
-                Upgrade Now
+                Get Shadcn UI Kit
               </Link>
             </Button>
           </CardContent>

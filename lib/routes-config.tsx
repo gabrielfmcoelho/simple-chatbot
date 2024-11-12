@@ -151,6 +151,12 @@ export const page_routes: PageRoutesType[] = [
         newTab: true
       },
       {
+        title: "Templates",
+        href: "/templates",
+        icon: "Component",
+        newTab: true
+      },
+      {
         title: "Documentation",
         href: "#",
         icon: "ClipboardMinus",
