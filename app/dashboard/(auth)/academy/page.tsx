@@ -3,7 +3,7 @@ import StudentSuccessCard from "./student-success-card";
 import LearningPathCard from "./learning-path-card";
 import { MostActivityCard } from "./most-activity";
 import ProgressStatisticsCard from "./progress-statistics-card";
-import LeaderboardCard from "./leader-board-card";
+import { LeaderboardCard } from "./leader-board-card";
 import CoursesListTable from "./courses-list";
 import CourseProgressByMonth from "./course-progress-by-month";
 import WelcomeCard from "./welcome-card";

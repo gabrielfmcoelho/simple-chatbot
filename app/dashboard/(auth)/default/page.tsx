@@ -1,5 +1,5 @@
 import CalendarDateRangePicker from "@/components/date-range-picker";
-import TeamMembersCard from "./cards/theme-members";
+import { ThemeMembersCard } from "./cards/theme-members";
 import SubscriptionsCard from "./cards/subscriptions";
 import TotalRevenueCard from "./cards/total-revenue";
 import { ChatCard } from "./cards/chat";
@@ -29,7 +29,7 @@ export default function Page() {
         </div>
       </div>
       <div className="gap-4 space-y-4 lg:grid lg:grid-cols-3">
-        <TeamMembersCard />
+        <ThemeMembersCard />
         <SubscriptionsCard />
         <TotalRevenueCard />
         <ChatCard />

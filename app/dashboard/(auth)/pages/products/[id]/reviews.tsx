@@ -1,101 +1,133 @@
-import { StarIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import UserAvatar from "@/components/user-avatar";
+"use client";
+
+import { Star } from "lucide-react";
+
+import { Avatar, AvatarFallback, AvatarImage } from "../../../../../../components/ui/avatar";
+import { Button } from "../../../../../../components/ui/button";
+import { Card, CardContent } from "../../../../../../components/ui/card";
+import { ScrollArea } from "../../../../../../components/ui/scroll-area";
+import { Separator } from "../../../../../../components/ui/separator";
 
 const reviews = [
   {
-    id: 4,
-    name: "Mark P.",
+    id: 1,
+    name: "Jessica K.",
     image: "/images/avatars/4.png",
     title: "Decent but could be better",
-    body: "The product is okay, but I expected more for the price. A few minor flaws, but overall, it's acceptable.",
+    description:
+      "The product is decent, but there's room for improvement. The quality is good, but some features could be enhanced.",
+    rating: 3,
+    date: "2 days ago"
+  },
+  {
+    id: 2,
+    name: "Michael B.",
+    image: "/images/avatars/5.png",
+    title: "Beautiful design",
+    description:
+      "I'm really impressed with the design. It's sleek, modern, and fits perfectly with my needs.",
+    rating: 5,
     date: "5 days ago"
   },
   {
-    id: 5,
-    name: "Jessica K.",
-    image: "/images/avatars/5.png",
-    title: "Beautiful design",
-    body: "I love the sleek design and the ease of use. Haven’t come across such a stylish product in a long time. Highly satisfied!",
+    id: 3,
+    name: "Anna M.",
+    image: "/images/avatars/6.png",
+    title: "Satisfied with my purchase",
+    description:
+      "Overall, I'm satisfied with my purchase. The product meets my expectations and serves its purpose well.",
+    rating: 4,
+    date: "1 week ago"
+  },
+  {
+    id: 4,
+    name: "Chris T.",
+    image: "/images/avatars/7.png",
+    title: "Could be improved",
+    description:
+      "While the product has some good features, there are several areas where it could be improved.",
+    rating: 3,
     date: "2 weeks ago"
   },
   {
-    id: 6,
-    name: "Michael B.",
-    image: "/images/avatars/6.png",
-    title: "Satisfied with my purchase",
-    body: "I’m really happy with this purchase. The quality is great, and it works just as described. No complaints so far!",
-    date: "4 days ago"
-  },
-  {
-    id: 7,
-    name: "Anna M.",
-    image: "/images/avatars/7.png",
-    title: "Could be improved",
-    body: "The product works, but there’s room for improvement. It does its job, but the build quality feels a bit cheap.",
-    date: "6 days ago"
-  },
-  {
-    id: 8,
-    name: "Chris T.",
+    id: 5,
+    name: "Lisa G.",
     image: "/images/avatars/8.png",
     title: "Great for everyday use",
-    body: "Perfect for daily use. It’s simple, efficient, and does exactly what it promises. Definitely worth the money.",
-    date: "1 day ago"
-  },
-  {
-    id: 9,
-    name: "Lisa G.",
-    image: "/images/avatars/9.png",
-    title: "Not worth the price",
-    body: "The product does the job, but I feel it’s overpriced for what it offers. There are better options available at a similar price.",
+    description:
+      "This product has become an essential part of my daily routine. It's reliable and easy to use.",
+    rating: 5,
     date: "3 weeks ago"
   },
   {
-    id: 10,
+    id: 6,
     name: "David L.",
+    image: "/images/avatars/9.png",
+    title: "Not worth the price",
+    description:
+      "Unfortunately, I don't feel the product justifies its price point. There are better alternatives available.",
+    rating: 2,
+    date: "1 month ago"
+  },
+  {
+    id: 7,
+    name: "Theodore Bell",
     image: "/images/avatars/10.png",
     title: "Highly functional and stylish",
-    body: "This product is both functional and stylish. It fits perfectly with my needs, and I’m really impressed with the overall quality.",
+    description:
+      "This product perfectly combines functionality with style. It's exactly what I was looking for.",
+    rating: 5,
     date: "1 month ago"
   }
 ];
 
-export default function ProductReviewList() {
+export function Reviews() {
   return (
-    <div className="space-y-4">
-      {reviews.map((review) => (
-        <div key={review.id} className="grid gap-4 rounded-lg border p-4">
-          <div className="flex items-start gap-4">
-            <UserAvatar
-              image={`${process.env.DASHBOARD_BASE_URL}/${review.image}`}
-              fallback={review.name}
-            />
-            <div className="grid flex-grow gap-1">
-              <div className="flex items-center justify-between gap-2">
-                <div className="font-medium">{review.name}</div>
-                <div className="text-xs text-muted-foreground">{review.date}</div>
-              </div>
-              <div className="flex items-center gap-2">
-                <Badge variant="outline">
-                  <div className="flex items-center gap-2">
-                    <StarIcon className="h-4 w-4 fill-orange-400 stroke-orange-400" />
-                    <div className="text-sm text-muted-foreground">3.2</div>
-                  </div>
-                </Badge>
+    <Card>
+      <CardContent className="grid gap-6 p-6">
+        <div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-start gap-4">
+              <div className="grid gap-0.5">
+                <h1 className="text-xl font-bold">Customer Reviews</h1>
+                <p className="text-sm text-muted-foreground">See what our customers are saying.</p>
               </div>
             </div>
+            <Button>Write a Review</Button>
           </div>
-          <div className="grid gap-2">
-            <div className="font-semibold">{review.title}</div>
-            <div className="text-muted-foreground">{review.body}</div>
-          </div>
+          <Separator className="my-4" />
+          <ScrollArea className="h-[400px] pr-4">
+            <div className="grid gap-8">
+              {reviews.map((review) => (
+                <div key={review.id} className="grid gap-4">
+                  <div className="flex items-center gap-4">
+                    <Avatar>
+                      <AvatarImage src={review.image} alt={review.name} />
+                      <AvatarFallback>{review.name[0]}</AvatarFallback>
+                    </Avatar>
+                    <div className="grid gap-0.5">
+                      <h3 className="text-sm font-medium">{review.name}</h3>
+                      <p className="text-sm text-muted-foreground">{review.date}</p>
+                    </div>
+                    <div className="ml-auto flex items-center gap-0.5">
+                      {Array.from({ length: review.rating }, (_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                      ))}
+                      {Array.from({ length: 5 - review.rating }, (_, i) => (
+                        <Star key={i + review.rating} className="h-4 w-4 text-muted-foreground/20" />
+                      ))}
+                    </div>
+                  </div>
+                  <div className="grid gap-1">
+                    <h3 className="font-bold">{review.title}</h3>
+                    <p className="text-sm text-muted-foreground">{review.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </ScrollArea>
         </div>
-      ))}
-      <div className="text-center">
-        <Button variant="outline">Load more..</Button>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }

@@ -1,10 +1,11 @@
 "use client";
 
 import NextTopLoader from "nextjs-toploader";
-import Header from "./layout/header";
+
+import { Header } from "./layout/header";
 import Sidebar from "./layout/sidebar";
 import ThemeCustomizer from "./theme-customizer";
-import GoogleAnalyticsInit from "@/lib/ga";
+import GoogleAnalyticsInit from "../lib/ga";
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   return (
