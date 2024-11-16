@@ -3,10 +3,10 @@
 import * as React from "react";
 import { Check, Plus, Send } from "lucide-react";
 
-import { cn } from "../../../../../lib/utils";
-import { Avatar, AvatarFallback, AvatarImage } from "../../../../../components/ui/avatar";
-import { Button } from "../../../../../components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader } from "../../../../../components/ui/card";
+import { cn } from "@/lib/utils";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import {
   Command,
   CommandEmpty,
@@ -14,7 +14,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList
-} from "../../../../../components/ui/command";
+} from "@/components/ui/command";
 import {
   Dialog,
   DialogContent,
@@ -22,35 +22,35 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle
-} from "../../../../../components/ui/dialog";
-import { Input } from "../../../../../components/ui/input";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../../../../../components/ui/tooltip";
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const users = [
   {
     name: "Olivia Martin",
     email: "m@example.com",
-    avatar: "/images/avatars/1.png"
+    avatar: "images/avatars/1.png"
   },
   {
     name: "Isabella Nguyen",
     email: "isabella.nguyen@email.com",
-    avatar: "/images/avatars/3.png"
+    avatar: "images/avatars/3.png"
   },
   {
     name: "Emma Wilson",
     email: "emma@example.com",
-    avatar: "/images/avatars/5.png"
+    avatar: "images/avatars/5.png"
   },
   {
     name: "Jackson Lee",
     email: "lee@example.com",
-    avatar: "/images/avatars/2.png"
+    avatar: "images/avatars/2.png"
   },
   {
     name: "William Kim",
     email: "will@email.com",
-    avatar: "/images/avatars/4.png"
+    avatar: "images/avatars/4.png"
   }
 ] as const;
 
@@ -87,7 +87,7 @@ export function ChatCard() {
         <CardHeader className="flex flex-row items-center">
           <div className="flex items-center space-x-4">
             <Avatar>
-              <AvatarImage src="/images/avatars/4.png" />
+              <AvatarImage src={`${process.env.DASHBOARD_BASE_URL}/images/avatars/4.png`} />
               <AvatarFallback>OM</AvatarFallback>
             </Avatar>
             <div>
@@ -129,7 +129,7 @@ export function ChatCard() {
         </CardContent>
         <CardFooter>
           <form
-            onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
+            onSubmit={(event) => {
               event.preventDefault();
               if (inputLength === 0) return;
               setMessages([
@@ -186,7 +186,10 @@ export function ChatCard() {
                       );
                     }}>
                     <Avatar>
-                      <AvatarImage src={user.avatar} alt="Image" />
+                      <AvatarImage
+                        src={`${process.env.DASHBOARD_BASE_URL}/${user.avatar}`}
+                        alt="Image"
+                      />
                       <AvatarFallback>{user.name[0]}</AvatarFallback>
                     </Avatar>
                     <div className="ml-2">
@@ -206,7 +209,7 @@ export function ChatCard() {
               <div className="flex -space-x-2 overflow-hidden">
                 {selectedUsers.map((user) => (
                   <Avatar key={user.email} className="inline-block border-2 border-background">
-                    <AvatarImage src={user.avatar} />
+                    <AvatarImage src={`${process.env.DASHBOARD_BASE_URL}/${user.avatar}`} />
                     <AvatarFallback>{user.name[0]}</AvatarFallback>
                   </Avatar>
                 ))}

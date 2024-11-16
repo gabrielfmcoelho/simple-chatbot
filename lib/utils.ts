@@ -23,18 +23,15 @@ export function generateMeta({
   description: string;
   canonical: string;
 }): Metadata {
-  const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
-  const dashboardBaseUrl = process.env.DASHBOARD_BASE_URL || 'http://localhost:3000';
-
   return {
     title: `${title} - Shadcn UI Kit`,
     description: description,
-    metadataBase: new URL(baseUrl),
+    metadataBase: new URL(`${process.env.BASE_URL}`),
     alternates: {
       canonical: `/dashboard${canonical}`
     },
     openGraph: {
-      images: [`${dashboardBaseUrl}/seo.jpg`]
+      images: [`${process.env.DASHBOARD_BASE_URL}/seo.jpg`]
     }
   };
 }

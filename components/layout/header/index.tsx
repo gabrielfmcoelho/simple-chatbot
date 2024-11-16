@@ -1,30 +1,21 @@
-"use client";
+import ThemeSwitch from "./theme-switch";
+import Notifications from "./notifications";
+import UserMenu from "./user-menu";
+import Messages from "./messages";
+import Search from "./search";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
-import { Search } from "lucide-react";
-
-import { Input } from "../../ui/input";
-import { Messages } from "./messages";
-import { Notifications } from "./notifications";
-import { UserMenu } from "./user-menu";
-
-export function Header() {
+export default function Header() {
   return (
-    <div className="flex h-16 items-center justify-between border-b px-4">
-      <form>
-        <div className="relative">
-          <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Search..."
-            className="h-9 pl-8 md:w-[300px] lg:w-[400px]"
-          />
-        </div>
-      </form>
-      <div className="flex items-center gap-4">
+    <div className="sticky top-0 z-10 flex flex-col">
+      <header className="flex h-14 items-center gap-2 border-b bg-background px-4 lg:h-[60px]">
+        <SidebarTrigger className="*:size-5" />
+        <Search />
         <Messages />
         <Notifications />
+        <ThemeSwitch />
         <UserMenu />
-      </div>
+      </header>
     </div>
   );
 }

@@ -1,9 +1,4 @@
-"use client";
-
-import { LogOut, Settings, User } from "lucide-react";
-
-import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
-import { Button } from "../../ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,51 +6,70 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger
-} from "../../ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
+import { BadgeCheck, Bell, CreditCard, LogOut, Sparkles } from "lucide-react";
 
-export function UserMenu() {
+export default function UserMenu() {
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-          <Avatar className="h-8 w-8">
+    <div className="ms-4">
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Avatar className="size-8 rounded-full">
             <AvatarImage
-              src="/images/avatars/1.png"
+              src={`${process.env.DASHBOARD_BASE_URL}/images/avatars/1.png`}
               alt="shadcn ui kit"
             />
-            <AvatarFallback>SC</AvatarFallback>
+            <AvatarFallback className="rounded-lg">TB</AvatarFallback>
           </Avatar>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56" align="end" forceMount>
-        <DropdownMenuLabel className="font-normal">
-          <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">shadcn</p>
-            <p className="text-xs leading-none text-muted-foreground">m@example.com</p>
-          </div>
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent
+          className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+          align="start">
+          <DropdownMenuLabel className="p-0 font-normal">
+            <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+              <Avatar className="h-8 w-8 rounded-lg">
+                <AvatarImage
+                  src={`${process.env.DASHBOARD_BASE_URL}/images/avatars/1.png`}
+                  alt="shadcn ui kit"
+                />
+                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+              </Avatar>
+              <div className="grid flex-1 text-left text-sm leading-tight">
+                <span className="truncate font-semibold">Toby Belhome</span>
+                <span className="truncate text-xs text-muted-foreground">contact@bundui.io</span>
+              </div>
+            </div>
+          </DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <DropdownMenuItem>
+              <Sparkles className="me-2 size-4" />
+              Upgrade to Pro
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <DropdownMenuItem>
+              <BadgeCheck className="me-2 size-4" />
+              Account
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <CreditCard className="me-2 size-4" />
+              Billing
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Bell className="me-2 size-4" />
+              Notifications
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <User className="mr-2 h-4 w-4" />
-            <span>Profile</span>
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+            <LogOut className="me-2 size-4" />
+            Log out
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Settings className="mr-2 h-4 w-4" />
-            <span>Settings</span>
-            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <LogOut className="mr-2 h-4 w-4" />
-          <span>Log out</span>
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
   );
 }

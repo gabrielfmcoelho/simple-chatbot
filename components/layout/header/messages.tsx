@@ -1,58 +1,77 @@
-"use client";
-
-import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
-import { Button } from "../../ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger
-} from "../../ui/dropdown-menu";
-import { messages } from "./data";
+} from "@/components/ui/dropdown-menu";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { messages, type Message } from "./data";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { MailIcon } from "lucide-react";
 
-export function Messages() {
+export default function Messages() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="relative">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-4 w-4">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-          </svg>
-          <span className="sr-only">Toggle messages</span>
-          <div className="absolute right-0 top-0 h-2 w-2 rounded-full bg-red-600" />
+        <Button size="sm" variant="link" className="relative text-foreground">
+          <MailIcon className="animate-tada h-5 w-5" />
+          <Badge className="absolute bottom-[calc(100%-10px)] left-[calc(100%-12px)] h-4 w-4 items-center justify-center rounded-full p-0 text-[8px] font-semibold">
+            3
+          </Badge>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-[440px]" align="end" forceMount>
-        <DropdownMenuLabel>Messages</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup className="grid gap-4 p-4">
-          {messages.map((item, index) => (
-            <DropdownMenuItem key={index} className="grid grid-cols-[25px_1fr] items-start p-0">
-              <Avatar className="mt-1">
-                <AvatarImage src={`/images/avatars/${item.avatar}`} />
-                <AvatarFallback>M</AvatarFallback>
-              </Avatar>
-              <div className="grid gap-1">
-                <p className="text-sm font-medium leading-none">{item.title}</p>
-                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                  {item.desc}
-                </p>
-                <p className="line-clamp-2 text-xs text-muted-foreground/80">{item.time}</p>
-              </div>
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuGroup>
+      <DropdownMenuContent align="end" className="z-[999] mx-4 max-w-sm p-0 lg:w-[320px]">
+        <DropdownMenuLabel>
+          <div className="border-default-100 flex justify-between border-b px-4 py-3">
+            <div className="text-default-800 text-sm font-medium">Messages</div>
+            <div className="text-default-800 text-xs md:text-right">
+              <Link href="" className="underline">
+                View all
+              </Link>
+            </div>
+          </div>
+        </DropdownMenuLabel>
+        <div className="h-[300px] xl:h-[350px]">
+          <ScrollArea className="h-full">
+            {messages.map((item: Message, index: number) => (
+              <DropdownMenuItem
+                key={`inbox-${index}`}
+                className="group flex cursor-pointer gap-9 px-4 py-2">
+                <div className="flex flex-1 items-start gap-2">
+                  <div className="flex-none">
+                    <Avatar className="h-8 w-8">
+                      <AvatarImage
+                        src={`${process.env.DASHBOARD_BASE_URL}/images/avatars/${item.image}`}
+                      />
+                      <AvatarFallback> {item.title.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                  </div>
+                  <div className="flex flex-1 flex-col gap-0.5">
+                    <div className="text-default-600 dark:group-hover:text-default-800 truncate text-sm font-normal">
+                      {item.title}
+                    </div>
+                    <div className="text-default-600 dark:group-hover:text-default-700 line-clamp-1 text-xs font-light">
+                      {item.desc}
+                    </div>
+                    <div className="text-default-400 dark:group-hover:text-default-500 text-xs">
+                      {" "}
+                      {item.date}
+                    </div>
+                  </div>
+                </div>
+                {item.hasnotifaction && (
+                  <div className="flex-0">
+                    <span className="dark:border-default-400 inline-block h-[10px] w-[10px] rounded-full border border-destructive-foreground bg-destructive" />
+                  </div>
+                )}
+              </DropdownMenuItem>
+            ))}
+          </ScrollArea>
+        </div>
       </DropdownMenuContent>
     </DropdownMenu>
   );

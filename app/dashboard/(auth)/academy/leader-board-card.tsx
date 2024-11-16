@@ -1,72 +1,46 @@
-"use client";
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-const students = [
-  {
-    name: "Olivia Martin",
-    email: "m@example.com",
-    avatar: "1.png",
-    score: 2023
-  },
-  {
-    name: "Isabella Nguyen",
-    email: "isabella.nguyen@email.com",
-    avatar: "2.png",
-    score: 1956
-  },
-  {
-    name: "Emma Wilson",
-    email: "emma@example.com",
-    avatar: "3.png",
-    score: 1891
-  },
-  {
-    name: "Jackson Lee",
-    email: "lee@example.com",
-    avatar: "4.png",
-    score: 1824
-  },
-  {
-    name: "William Kim",
-    email: "will@email.com",
-    avatar: "5.png",
-    score: 1783
-  }
-];
+export default function LeaderboardCard() {
+  const topStudents = [
+    { id: 1, name: "Liam Smith", points: 5000, avatar: "1.png" },
+    { id: 2, name: "Emma Brown", points: 4800, avatar: "2.png" },
+    { id: 3, name: "Noah Johnson", points: 4600, avatar: "3.png" },
+    { id: 4, name: "Olivia Davis", points: 4400, avatar: "4.png" }
+  ];
 
-export function LeaderboardCard() {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Leader Board</CardTitle>
+    <Card className="lg:col-span-6 xl:col-span-3">
+      <CardHeader className="flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle>Leaderboard</CardTitle>
+        <Button variant="outline" size="sm">
+          View All
+        </Button>
       </CardHeader>
-      <CardContent>
-        <ScrollArea className="h-[300px]">
-          {students.map((student, index) => (
-            <div key={student.email} className="mb-4 flex items-center">
-              <div className="flex items-center gap-4">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-muted">
-                  <span className="text-sm font-bold">{index + 1}</span>
-                </div>
-                <Avatar>
-                  <AvatarImage
-                    src={`/images/avatars/${student.avatar}`}
-                    alt={student.name}
-                  />
-                  <AvatarFallback>{student.name[0]}</AvatarFallback>
-                </Avatar>
-                <div className="grid gap-1">
-                  <p className="text-sm font-medium leading-none">{student.name}</p>
-                  <p className="text-sm text-muted-foreground">{student.email}</p>
-                </div>
-              </div>
-              <div className="ml-auto font-medium">{student.score} points</div>
-            </div>
+      <CardContent className="pt-4">
+        <ul className="space-y-4">
+          {topStudents.map((student, index) => (
+            <li key={student.id} className="flex items-center space-x-4">
+              <span className="font-bold">{index + 1}.</span>
+              <Avatar className="h-10 w-10">
+                <AvatarImage
+                  src={`${process.env.DASHBOARD_BASE_URL}/images/avatars/${student.avatar}`}
+                  alt={student.name}
+                />
+                <AvatarFallback>
+                  {student.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
+                </AvatarFallback>
+              </Avatar>
+              <span className="flex-1 font-medium">{student.name}</span>
+              <Badge variant="secondary">{student.points} pts</Badge>
+            </li>
           ))}
-        </ScrollArea>
+        </ul>
       </CardContent>
     </Card>
   );
