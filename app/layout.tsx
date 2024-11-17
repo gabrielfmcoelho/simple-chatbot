@@ -3,6 +3,7 @@ import { Inter, Roboto, Montserrat, Poppins, Overpass_Mono } from "next/font/goo
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "next-themes";
 import ThemeSettingsProvider from "@/components/theme-settings-provider";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -37,6 +38,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      {process.env.NODE_ENV !== "development" ? (
+        <Script
+          async
+          src="https://analytics.umami.is/script.js"
+          data-website-id="c37edc28-ee5f-4c62-9ce3-377fa6f600a8"
+        />
+      ) : null}
       <body
         className={`${inter.className} ${inter.variable} ${roboto.variable} ${montserrat.variable} ${poppins.variable} ${overpass_mono.variable}`}>
         <ThemeProvider attribute="class" enableSystem={false}>
