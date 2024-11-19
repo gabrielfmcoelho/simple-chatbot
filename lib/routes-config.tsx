@@ -58,7 +58,7 @@ export const page_routes: PageRoutesType[] = [
       { title: "Notes", href: "/dashboard/apps/notes", icon: "StickyNote", isComing: true },
       { title: "Calendar", href: "/dashboard/apps/calendar", icon: "Calendar", isComing: true },
       { title: "File Manager", href: "#", icon: "Package", isComing: true },
-      { title: "Api Keys", href: "/dashboard/apps/api-keys", icon: "Key", isComing: true }
+      { title: "Api Keys", href: "/dashboard/apps/api-keys", icon: "Key", isComing: false }
     ]
   },
   {
