@@ -37,16 +37,19 @@ export const themeSettings = {
 export type ThemeColor = keyof typeof themeColors;
 export type FontFamily = keyof typeof themeSettings.fontFamily;
 export type ThemeDirection = "ltr" | "rtl";
+export type ContentLayout = "full" | "centered";
 
 interface SettingsState {
   fontFamily: FontFamily;
   themeColor: ThemeColor | "default";
   layout: "vertical" | "horizontal";
+  contentLayout: ContentLayout;
   direction: ThemeDirection;
   sidebarLayout: "default" | "rtl";
   contentContainer: boolean;
   roundedCorner: number;
   setThemeColor: (colorScheme: ThemeColor) => void;
+  setContentLayout: (contentLayout: ContentLayout) => void;
   setFontFamily: (fontFamily: FontFamily) => void;
   setRoundedCorner: (rounded: number) => void;
   setDirection: (direction: ThemeDirection) => void;
@@ -58,11 +61,13 @@ const themeSettingsStore: StateCreator<SettingsState> = (set) => ({
   fontFamily: "inter",
   themeColor: "default",
   layout: "vertical",
+  contentLayout: "full",
   direction: "ltr",
   sidebarLayout: "default",
   contentContainer: false,
   roundedCorner: 0.5,
   setThemeColor: (themeColor) => set({ themeColor }),
+  setContentLayout: (contentLayout) => set({ contentLayout }),
   setFontFamily: (fontFamily) => set({ fontFamily }),
   setRoundedCorner: (roundedCorner) => set({ roundedCorner }),
   setDirection: (direction) => set({ direction }),
@@ -70,6 +75,7 @@ const themeSettingsStore: StateCreator<SettingsState> = (set) => ({
   resetTheme: () =>
     set({
       layout: "vertical",
+      contentLayout: "full",
       fontFamily: "inter",
       themeColor: "default",
       direction: "ltr",

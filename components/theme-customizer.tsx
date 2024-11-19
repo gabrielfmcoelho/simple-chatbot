@@ -17,7 +17,8 @@ import useSettingsStore, {
   ThemeDirection,
   FontFamily,
   themeColors,
-  themeSettings
+  themeSettings,
+  ContentLayout
 } from "@/store/themeSettingsStore";
 import { Label } from "./ui/label";
 
@@ -32,7 +33,9 @@ function ThemeCustomizer() {
     direction,
     setDirection,
     roundedCorner,
-    setRoundedCorner
+    setRoundedCorner,
+    contentLayout,
+    setContentLayout
   } = useSettingsStore((state) => state);
 
   return (
@@ -178,6 +181,41 @@ function ThemeCustomizer() {
                     htmlFor="rtl"
                     className="flex flex-col items-center justify-between rounded-md border border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">
                     RTL
+                  </Label>
+                </div>
+              </RadioGroup>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <Label>Content Layout</Label>
+              <RadioGroup
+                value={contentLayout}
+                onValueChange={(value: ContentLayout) => setContentLayout(value)}
+                className="grid grid-cols-2 gap-4">
+                <div>
+                  <RadioGroupItem
+                    value="full"
+                    id="full"
+                    className="peer sr-only"
+                    aria-label="full"
+                  />
+                  <Label
+                    htmlFor="full"
+                    className="flex flex-col items-center justify-between rounded-md border border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">
+                    Full
+                  </Label>
+                </div>
+                <div>
+                  <RadioGroupItem
+                    value="centered"
+                    id="centered"
+                    className="peer sr-only"
+                    aria-label="centered"
+                  />
+                  <Label
+                    htmlFor="centered"
+                    className="flex flex-col items-center justify-between rounded-md border border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">
+                    Centered
                   </Label>
                 </div>
               </RadioGroup>
