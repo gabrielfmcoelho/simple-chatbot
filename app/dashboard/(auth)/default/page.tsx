@@ -21,14 +21,14 @@ export async function generateMetadata() {
 export default function Page() {
   return (
     <>
-      <div className="mb-4 flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between">
+      <div className="mb-4 flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between lg:space-y-0">
         <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
         <div className="flex items-center space-x-2">
           <CalendarDateRangePicker />
           <Button>Download</Button>
         </div>
       </div>
-      <div className="gap-4 space-y-4 lg:grid lg:grid-cols-3">
+      <div className="gap-4 space-y-4 lg:grid lg:grid-cols-3 lg:space-y-0">
         <TeamMembersCard />
         <SubscriptionsCard />
         <TotalRevenueCard />

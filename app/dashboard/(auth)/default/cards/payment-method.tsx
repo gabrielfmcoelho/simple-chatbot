@@ -77,8 +77,8 @@ export function PaymentMethodCard() {
           </div>
         </RadioGroup>
         <div className="grid gap-2">
-          <Label htmlFor="name">Name</Label>
-          <Input id="name" placeholder="First Last" />
+          <Label htmlFor="name">Name on the card</Label>
+          <Input id="name" />
         </div>
         <div className="grid gap-2">
           <Label htmlFor="city">City</Label>
