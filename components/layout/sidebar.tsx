@@ -149,7 +149,7 @@ export default function Sidebar() {
           </CardHeader>
           <CardContent className="p-4 pt-0">
             <Button className="w-full" asChild>
-              <Link href="/pricing" target="_blank">
+              <Link href="https://shadcnuikit.com/pricing" target="_blank">
                 <Sparkles className="me-2 size-4" />
                 Get Shadcn UI Kit
               </Link>
