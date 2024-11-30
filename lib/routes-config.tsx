@@ -38,6 +38,11 @@ export const page_routes: PageRoutesType[] = [
         href: "/dashboard/project-management",
         icon: "FolderDot"
       },
+      {
+        title: "File Manager",
+        href: "/dashboard/file-manager",
+        icon: "Folder"
+      },
       { title: "Cyripto", href: "/dashboard/cyripto", icon: "WalletMinimal" },
       { title: "Academy", href: "/dashboard/academy", icon: "GraduationCap" },
       { title: "Hospital", href: "/dashboard/hospital", icon: "Activity", isComing: true }
