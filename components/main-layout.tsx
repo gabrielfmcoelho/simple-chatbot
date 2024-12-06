@@ -27,7 +27,6 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         </div>
         <ThemeCustomizer />
       </div>
-      {process.env.NODE_ENV === "production" ? <GoogleAnalyticsInit /> : null}
     </>
   );
 }

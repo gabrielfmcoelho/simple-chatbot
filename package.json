@@ -50,7 +50,6 @@
     "react-copy-to-clipboard": "^5.1.0",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18",
-    "react-ga4": "^2.1.0",
     "react-hook-form": "^7.52.2",
     "react-svg-worldmap": "^2.0.0-alpha.16",
     "react-use-measure": "^2.1.1",
