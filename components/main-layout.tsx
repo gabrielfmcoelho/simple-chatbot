@@ -4,7 +4,6 @@ import NextTopLoader from "nextjs-toploader";
 import Header from "./layout/header";
 import Sidebar from "./layout/sidebar";
 import ThemeCustomizer from "./theme-customizer";
-import GoogleAnalyticsInit from "@/lib/ga";
 import useThemeSettingsStore from "@/store/themeSettingsStore";
 import { cn } from "@/lib/utils";
 
