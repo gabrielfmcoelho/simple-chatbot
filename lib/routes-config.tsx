@@ -45,7 +45,7 @@ export const page_routes: PageRoutesType[] = [
       },
       { title: "Cyripto", href: "/dashboard/cyripto", icon: "WalletMinimal" },
       { title: "Academy", href: "/dashboard/academy", icon: "GraduationCap" },
-      { title: "Hospital", href: "/dashboard/hospital", icon: "Activity", isComing: true }
+      { title: "Hospital Management", href: "/dashboard/hospital-management", icon: "Activity" }
     ]
   },
   {
