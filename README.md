@@ -32,7 +32,7 @@ If your project includes an `.env.example` file, make sure to rename it to `.env
 
     cp .env.example .env
 
-4. Run the development server:
+4. Run the development server: 
 
     
     npm run dev
