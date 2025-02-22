@@ -11,28 +11,24 @@ const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-roboto",
-  display: 'swap',
 });
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "600"],
   variable: "--font-montserrat",
-  display: 'swap',
 });
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "600"],
   variable: "--font-poppins",
-  display: 'swap',
 });
 
 const overpass_mono = Overpass_Mono({
   subsets: ["latin"],
   weight: ["400", "600"],
   variable: "--font-overpass-mono",
-  display: 'swap',
 });
 
 export default function RootLayout({
