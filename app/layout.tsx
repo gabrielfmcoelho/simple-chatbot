@@ -3,7 +3,6 @@ import "./globals.scss";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "next-themes";
 import ThemeSettingsProvider from "@/components/theme-settings-provider";
-import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 

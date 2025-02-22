@@ -63,9 +63,6 @@ export default function Sidebar() {
                   <span>Ecommerce</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <span>CRM</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
                   <span>Web Analiytics</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
