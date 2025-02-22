@@ -1,11 +1,12 @@
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { generateMeta } from "@/lib/utils";
 import { GithubIcon } from "lucide-react";
-import Link from "next/link";
 
-export async function generateMetadata() {
+export function generateMetadata() {
   return generateMeta({
     title: "Login Page",
     description:
@@ -14,7 +15,7 @@ export async function generateMetadata() {
   });
 }
 
-export default function LoginPageV1() {
+export default function Page() {
   return (
     <div className="flex pb-8 lg:h-screen lg:pb-0">
       <div className="hidden w-1/2 bg-gray-100 lg:block">

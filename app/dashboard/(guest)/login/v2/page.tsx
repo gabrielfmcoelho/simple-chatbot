@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { generateMeta } from "@/lib/utils";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
-export async function generateMetadata() {
+export function generateMetadata() {
   return generateMeta({
     title: "Login Page v2",
     description:
@@ -16,7 +16,7 @@ export async function generateMetadata() {
   });
 }
 
-export default function LoginFormV2() {
+export default function Page() {
   return (
     <div className="flex items-center justify-center py-4 lg:h-screen">
       <Card className="mx-auto w-96">
