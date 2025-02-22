@@ -1,5 +1,5 @@
-import "./globals.scss";
 import { Inter, Roboto, Montserrat, Poppins, Overpass_Mono } from "next/font/google";
+import "./globals.scss";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "next-themes";
 import ThemeSettingsProvider from "@/components/theme-settings-provider";
@@ -10,25 +10,29 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
-  variable: "--font-roboto"
+  variable: "--font-roboto",
+  display: 'swap',
 });
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "600"],
-  variable: "--font-montserrat"
+  variable: "--font-montserrat",
+  display: 'swap',
 });
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "600"],
-  variable: "--font-poppins"
+  variable: "--font-poppins",
+  display: 'swap',
 });
 
 const overpass_mono = Overpass_Mono({
   subsets: ["latin"],
   weight: ["400", "600"],
-  variable: "--font-overpass-mono"
+  variable: "--font-overpass-mono",
+  display: 'swap',
 });
 
 export default function RootLayout({
