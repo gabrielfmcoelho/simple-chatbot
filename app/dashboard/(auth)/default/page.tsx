@@ -2,12 +2,12 @@ import CalendarDateRangePicker from "@/components/date-range-picker";
 import TeamMembersCard from "./cards/theme-members";
 import SubscriptionsCard from "./cards/subscriptions";
 import TotalRevenueCard from "./cards/total-revenue";
-import { ChatCard } from "./cards/chat";
 import { Button } from "@/components/ui/button";
 import MetricCard from "./cards/metric";
 import { PaymentsCard } from "./cards/payment";
 import { PaymentMethodCard } from "./cards/payment-method";
 import { generateMeta } from "@/lib/utils";
+import { ChatCard } from "@/app/dashboard/(auth)/default/cards/chat";
 
 export async function generateMetadata() {
   return generateMeta({

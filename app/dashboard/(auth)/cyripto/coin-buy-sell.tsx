@@ -144,7 +144,7 @@ export default function CoinBuySell() {
                           <FormItem>
                             <FormLabel>Amount (BTC)</FormLabel>
                             <FormControl>
-                              <Input value="$0,0000005" />
+                              <Input defaultValue="$0,0000005" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -159,7 +159,7 @@ export default function CoinBuySell() {
                           <FormItem>
                             <FormLabel>Amount (USD)</FormLabel>
                             <FormControl>
-                              <Input value="0,0000005" />
+                              <Input defaultValue="0,0000005" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -224,7 +224,7 @@ export default function CoinBuySell() {
                           <FormItem>
                             <FormLabel>Amount (BTC)</FormLabel>
                             <FormControl>
-                              <Input value="$0,0000005" />
+                              <Input defaultValue="$0,0000008" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -239,7 +239,7 @@ export default function CoinBuySell() {
                           <FormItem>
                             <FormLabel>Amount (USD)</FormLabel>
                             <FormControl>
-                              <Input value="0,0000005" />
+                              <Input defaultValue="0,0000004" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>

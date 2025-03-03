@@ -103,13 +103,22 @@ const config = {
           to: {
             height: "0"
           }
+        },
+        tada: {
+          "0%": { transform: "scale(1)" },
+          "10%, 20%": { transform: "scale(0.9) rotate(-3deg)" },
+          "30%, 50%, 70%": { transform: "scale(1.1) rotate(3deg)" },
+          "40%, 60%": { transform: "scale(1.1) rotate(-3deg)" },
+          "80%": { transform: "scale(1) rotate(0deg)" },
+          "100%": { transform: "scale(1)" }
         }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "collapsible-down": "collapsible-down 0.2s ease-out",
-        "collapsible-up": "collapsible-up 0.2s ease-out"
+        "collapsible-up": "collapsible-up 0.2s ease-out",
+        tada: "tada 1s ease-in-out infinite"
       }
     }
   },

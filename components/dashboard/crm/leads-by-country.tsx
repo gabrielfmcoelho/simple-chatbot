@@ -113,24 +113,26 @@ export function LeadsByCountryCard({ className }: { className: string }) {
               />
             ) : null}
           </div>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Country</TableHead>
-                <TableHead>User</TableHead>
-                <TableHead className="text-right">Bounce Rate</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {countries.map((country) => (
-                <TableRow key={country.id}>
-                  <TableCell className="font-medium">{country.country}</TableCell>
-                  <TableCell>{country.lead_count}</TableCell>
-                  <TableCell className="text-right">{country.bounce_rate}</TableCell>
+          <div className="rounded-md border">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Country</TableHead>
+                  <TableHead>User</TableHead>
+                  <TableHead className="text-right">Bounce Rate</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHeader>
+              <TableBody>
+                {countries.map((country) => (
+                  <TableRow key={country.id}>
+                    <TableCell className="font-medium">{country.country}</TableCell>
+                    <TableCell>{country.lead_count}</TableCell>
+                    <TableCell className="text-right">{country.bounce_rate}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
         </div>
       </CardContent>
     </Card>

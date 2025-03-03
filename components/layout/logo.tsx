@@ -1,14 +1,13 @@
-import Link from "next/link";
+import Image from "next/image";
 
-type LogoProps = {
-  className?: string;
-};
-
-export default function Logo({ className }: LogoProps) {
+export default function Logo() {
   return (
-    <Link href="/" className={className}>
-      <img src="/logo-light.png" className="hidden w-6 dark:block" alt="shadcn ui kit light logo" />
-      <img src="/logo.png" className="block w-6 dark:hidden" alt="shadcn ui kit logo" />
-    </Link>
+    <Image
+      src="/logo.png"
+      width={30}
+      height={30}
+      className="me-1 w-full rounded-[7px] group-data-[collapsible]:size-8"
+      alt="shadcn ui kit logo"
+    />
   );
 }

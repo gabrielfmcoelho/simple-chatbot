@@ -12,7 +12,7 @@ const chartConfig = {
   },
   safari: {
     label: "Safari",
-    color: "hsl(var(--primary))"
+    color: "hsl(var(--foreground))"
   }
 } satisfies ChartConfig;
 
@@ -21,7 +21,7 @@ export function TargetCard() {
     <Card className="flex flex-col">
       <CardContent className="pt-6">
         <h4 className="mb-2 text-2xl font-bold">Your target is incomplete</h4>
-        <div className="flex justify-between gap-2">
+        <div className="flex items-center justify-between gap-2">
           <div>
             <ChartContainer config={chartConfig} className="mx-auto aspect-square h-[60px]">
               <RadialBarChart
@@ -62,12 +62,10 @@ export function TargetCard() {
               </RadialBarChart>
             </ChartContainer>
           </div>
-          <div className="flex flex-col gap-2">
-            <p className="text-muted-foreground">
-              You have completed <span className="text-orange-400">48%</span> of the given target,
-              you can also check your status
-            </p>
-          </div>
+          <p className="text-sm text-muted-foreground">
+            You have completed <span className="text-orange-400">48%</span> of the given target, you
+            can also check your status
+          </p>
         </div>
       </CardContent>
     </Card>

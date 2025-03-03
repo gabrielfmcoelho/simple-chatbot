@@ -4,7 +4,6 @@ import { LeadsByCountryCard } from "@/components/dashboard/crm/leads-by-country"
 import { TargetCard } from "@/components/dashboard/crm/target-card";
 import { TotalCustomersCard } from "@/components/dashboard/crm/total-customers";
 import { TotalRevenueCard } from "@/components/dashboard/crm/total-revenue";
-import { ConversionRatioCard } from "@/components/dashboard/crm/conversion-ratio";
 import { LeadsCard } from "@/components/dashboard/crm/leads";
 import { LeadBySourceCard } from "@/components/dashboard/crm/leads-by-source";
 import { generateMeta } from "@/lib/utils";
@@ -29,11 +28,10 @@ export default function Page() {
         </div>
       </div>
       <div className="space-y-4">
-        <div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-3">
           <TargetCard />
           <TotalCustomersCard />
           <TotalRevenueCard />
-          <ConversionRatioCard />
         </div>
         <div className="grid gap-4 xl:grid-cols-3">
           <LeadBySourceCard />

@@ -37,10 +37,10 @@ export default function ChatList({ chats }: { chats: ChatItemProps[] }) {
         <ScrollArea className="w-full min-w-0">
           <div className="block min-w-0 divide-y">
             {filteredChats.length ? (
-              filteredChats.map((chat) => (
+              filteredChats.map((chat, key) => (
                 <ChatListItem
                   chat={chat}
-                  key={chat.id}
+                  key={key}
                   active={selectedChat && selectedChat.id === chat.id}
                 />
               ))

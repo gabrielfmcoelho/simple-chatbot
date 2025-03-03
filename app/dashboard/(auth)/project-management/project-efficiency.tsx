@@ -1,16 +1,8 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
 import { Pie, PieChart } from "recharts";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
@@ -19,8 +11,6 @@ import {
   ChartTooltip,
   ChartTooltipContent
 } from "@/components/ui/chart";
-
-export const description = "A donut chart";
 
 const chartData = [
   { browser: "active", visitors: 30, fill: "var(--color-active)" },

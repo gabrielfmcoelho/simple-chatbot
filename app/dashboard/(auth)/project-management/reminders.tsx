@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { ArrowRight, CheckCircle, CircleCheck, Dot, PlusCircleIcon } from "lucide-react";
+import { ArrowRight, CircleCheck, PlusCircleIcon } from "lucide-react";
 
 type Reminder = {
   id: number;
@@ -23,7 +23,7 @@ const reminders: Reminder[] = [
     date: "Today, 12:30"
   },
   {
-    id: 1,
+    id: 2,
     note: "Have a meeting with the new design team.",
     level: "medium",
     type: "Meeting",
@@ -31,7 +31,7 @@ const reminders: Reminder[] = [
     date: "Today, 10:00"
   },
   {
-    id: 1,
+    id: 3,
     note: "Respond to customer support emails.",
     level: "high",
     type: "Customer Support",

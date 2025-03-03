@@ -16,12 +16,12 @@ const includeColors = [
 ];
 
 export const themeColors = Object.fromEntries(
-  Object.entries(tailwindColors).reduce<[string, string][]>((acc, [color, values]) => {
-    if (typeof values === "object" && values["600"] && includeColors.includes(color)) {
-      acc.push([color, getHSLValue(values["600"])]);
-    }
-    return acc;
-  }, [])
+  Object.entries(tailwindColors)
+    .filter(
+      ([color, values]) =>
+        typeof values === "object" && values["600"] && includeColors.includes(color)
+    )
+    .map(([color, values]) => [color, getHSLValue(values["600"])])
 );
 
 export const themeSettings = {
@@ -34,61 +34,85 @@ export const themeSettings = {
   }
 } as const;
 
-export type ThemeColor = keyof typeof themeColors;
 export type FontFamily = keyof typeof themeSettings.fontFamily;
-export type ThemeDirection = "ltr" | "rtl";
 export type ContentLayout = "full" | "centered";
 
 interface SettingsState {
   fontFamily: FontFamily;
-  themeColor: ThemeColor | "default";
+  themeColor: { name: string; value: string };
   layout: "vertical" | "horizontal";
   contentLayout: ContentLayout;
-  direction: ThemeDirection;
   sidebarLayout: "default" | "rtl";
-  contentContainer: boolean;
   roundedCorner: number;
-  setThemeColor: (colorScheme: ThemeColor) => void;
+  setThemeColor: (name: string, value: string) => void;
   setContentLayout: (contentLayout: ContentLayout) => void;
   setFontFamily: (fontFamily: FontFamily) => void;
   setRoundedCorner: (rounded: number) => void;
-  setDirection: (direction: ThemeDirection) => void;
-  setContentContainer: (contentContainer: boolean) => void;
   resetTheme: () => void;
 }
 
-const themeSettingsStore: StateCreator<SettingsState> = (set) => ({
+const themeColorInitialValue = { name: "default", value: "222.2 47.4% 11.2%" };
+
+const initialState: Omit<
+  SettingsState,
+  | "setThemeColor"
+  | "setContentLayout"
+  | "setFontFamily"
+  | "setRoundedCorner"
+  | "setContentContainer"
+  | "resetTheme"
+> = {
   fontFamily: "inter",
-  themeColor: "default",
+  themeColor: themeColorInitialValue,
   layout: "vertical",
   contentLayout: "full",
-  direction: "ltr",
   sidebarLayout: "default",
-  contentContainer: false,
-  roundedCorner: 0.5,
-  setThemeColor: (themeColor) => set({ themeColor }),
-  setContentLayout: (contentLayout) => set({ contentLayout }),
-  setFontFamily: (fontFamily) => set({ fontFamily }),
-  setRoundedCorner: (roundedCorner) => set({ roundedCorner }),
-  setDirection: (direction) => set({ direction }),
-  setContentContainer: (contentContainer) => set({ contentContainer }),
-  resetTheme: () =>
-    set({
-      layout: "vertical",
-      contentLayout: "full",
-      fontFamily: "inter",
-      themeColor: "default",
-      direction: "ltr",
-      sidebarLayout: "default",
-      roundedCorner: 0.5,
-      contentContainer: false
-    })
-});
+  roundedCorner: 0.5
+};
 
-const useThemeSettingsStore = create(
-  persist(themeSettingsStore, {
-    name: "settings-storage"
-  })
-);
+const updateCSSVariable = (property: string, value: string) => {
+  document.documentElement.style.setProperty(property, value);
+  if (property === "font-family") {
+    document.body.style.setProperty(property, value);
+  } else if (property === "content-layout") {
+    document.documentElement.setAttribute(`data-${property}`, value);
+  } else {
+    document.documentElement.style.setProperty(property, value);
+  }
+};
+
+const themeSettingsStore: StateCreator<SettingsState> = (set) => {
+  const updateState = <K extends keyof SettingsState>(key: K, value: SettingsState[K]) =>
+    set({ [key]: value });
+
+  return {
+    ...initialState,
+    setThemeColor: (name, value) => {
+      updateState("themeColor", { name, value });
+      updateCSSVariable("--primary", value);
+    },
+    setFontFamily: (fontFamily) => {
+      updateState("fontFamily", fontFamily);
+      updateCSSVariable("font-family", `var(--font-${fontFamily})`);
+    },
+    setRoundedCorner: (roundedCorner) => {
+      updateState("roundedCorner", roundedCorner);
+      updateCSSVariable("--radius", `${roundedCorner}rem`);
+    },
+    setContentLayout: (contentLayout) => {
+      updateState("contentLayout", contentLayout);
+      updateCSSVariable("content-layout", contentLayout);
+    },
+    resetTheme: () => {
+      set(initialState);
+      updateCSSVariable("--primary", themeColorInitialValue.value);
+      updateCSSVariable("font-family", `var(--font-inter)`);
+      updateCSSVariable("--radius", "0.5rem");
+      updateCSSVariable("content-layout", "full");
+    }
+  };
+};
+
+const useThemeSettingsStore = create(persist(themeSettingsStore, { name: "settings-storage" }));
 
 export default useThemeSettingsStore;

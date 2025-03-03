@@ -36,15 +36,14 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
-import { ChevronDownIcon, ChevronsUpDown, Ellipsis } from "lucide-react";
-import Image from "next/image";
+import { ChevronDownIcon, Ellipsis } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 
 const data: Project[] = [
   {
     id: 1,
-    name: "Product Devlopment",
+    name: "Product Development",
     client: {
       avatar: "/images/avatars/1.png",
       name: "Kevin Heal"
@@ -55,7 +54,7 @@ const data: Project[] = [
     progress: 30
   },
   {
-    id: 1,
+    id: 2,
     name: "New Office Building",
     client: {
       avatar: "/images/avatars/2.png",
@@ -67,8 +66,8 @@ const data: Project[] = [
     progress: 60
   },
   {
-    id: 1,
-    name: "Mobile app desing",
+    id: 3,
+    name: "Mobile app design",
     client: {
       avatar: "/images/avatars/3.png",
       name: "Kevin Heal"
@@ -79,7 +78,7 @@ const data: Project[] = [
     progress: 99
   },
   {
-    id: 1,
+    id: 4,
     name: "Website & Blog",
     client: {
       avatar: "/images/avatars/4.png",

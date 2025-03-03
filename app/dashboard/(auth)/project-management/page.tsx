@@ -69,7 +69,6 @@ export default function Page() {
             <p className="text-xs text-muted-foreground">+10.35 % from last month</p>
           </CardContent>
         </Card>
-        {/*  */}
       </div>
       <div className="mt-4 grid gap-4 lg:grid-cols-3">
         <div className="lg:col-span-2">

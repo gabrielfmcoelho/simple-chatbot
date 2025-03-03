@@ -24,8 +24,16 @@ export const page_routes: PageRoutesType[] = [
       },
       {
         title: "E-commerce",
-        href: "/dashboard/ecommerce",
-        icon: "ShoppingBag"
+        href: "#",
+        icon: "ShoppingBag",
+        items: [
+          { title: "Dashboard", href: "/dashboard/ecommerce" },
+          { title: "Product List", href: "/dashboard/pages/products" },
+          { title: "Product Detail", href: "/dashboard/pages/products/1" },
+          { title: "Add Product", href: "/dashboard/pages/products/create" },
+          { title: "Order List", href: "/dashboard/pages/orders" },
+          { title: "Order Detail", href: "/dashboard/pages/orders/detail" }
+        ]
       },
       { title: "CRM", href: "/dashboard/crm", icon: "BarChart" },
       {
@@ -51,18 +59,19 @@ export const page_routes: PageRoutesType[] = [
   {
     title: "Apps",
     items: [
+      { title: "Kanban", href: "/dashboard/apps/kanban", icon: "SquareKanban", isComing: true },
+      { title: "AI Chat", href: "/dashboard/apps/ai-chat", icon: "Brain", isComing: true },
+      { title: "Notes", href: "/dashboard/apps/notes", icon: "StickyNote" },
       { title: "Chats", href: "/dashboard/apps/chat", icon: "MessageSquare" },
       { title: "Inbox", href: "/dashboard/apps/inbox", icon: "Mail", isComing: true },
-      { title: "Kanban", href: "/dashboard/apps/kanban", icon: "SquareKanban", isComing: true },
       {
         title: "Todo List",
         href: "/dashboard/apps/todo-list",
         icon: "SquareCheck",
         isComing: true
       },
-      { title: "Notes", href: "/dashboard/apps/notes", icon: "StickyNote", isComing: true },
       { title: "Calendar", href: "/dashboard/apps/calendar", icon: "Calendar", isComing: true },
-      { title: "File Manager", href: "#", icon: "Package", isComing: true },
+      { title: "File Manager", href: "#", icon: "ArchiveRestore", isComing: true },
       { title: "Api Keys", href: "/dashboard/apps/api-keys", icon: "Key", isComing: false }
     ]
   },
@@ -70,17 +79,14 @@ export const page_routes: PageRoutesType[] = [
     title: "Pages",
     items: [
       {
-        title: "Landing Page",
-        href: "#",
-        icon: "Proportions",
-        isComing: true
+        title: "Users",
+        href: "/dashboard/pages/users",
+        icon: "Users",
+        items: [
+          { title: "Users List", href: "/dashboard/pages/users" },
+          { title: "Profile", href: "/dashboard/pages/profile" }
+        ]
       },
-      {
-        title: "Profile",
-        href: "/dashboard/pages/profile",
-        icon: "ContactRound"
-      },
-      { title: "Users", href: "/dashboard/pages/users", icon: "Users" },
       {
         title: "Settings",
         href: "/dashboard/pages/settings",
@@ -91,25 +97,6 @@ export const page_routes: PageRoutesType[] = [
           { title: "Appearance", href: "/dashboard/pages/settings/appearance" },
           { title: "Notifications", href: "/dashboard/pages/settings/notifications" },
           { title: "Display", href: "/dashboard/pages/settings/display" }
-        ]
-      },
-      {
-        title: "Orders",
-        href: "/dashboard/pages/orders",
-        icon: "PackageSearch",
-        items: [
-          { title: "Order List", href: "/dashboard/pages/orders" },
-          { title: "Order Detail", href: "/dashboard/pages/orders/detail" }
-        ]
-      },
-      {
-        title: "Products",
-        href: "/dashboard/pages/products",
-        icon: "PackageSearch",
-        items: [
-          { title: "Product List", href: "/dashboard/pages/products" },
-          { title: "Product Detail", href: "/dashboard/pages/products/1" },
-          { title: "Add Product", href: "/dashboard/pages/products/create" }
         ]
       },
       {
@@ -143,6 +130,12 @@ export const page_routes: PageRoutesType[] = [
           { title: "500", href: "/dashboard/pages/error/500" },
           { title: "403", href: "/dashboard/pages/error/403" }
         ]
+      },
+      {
+        title: "Landing Page",
+        href: "#",
+        icon: "Proportions",
+        isComing: true
       }
     ]
   },

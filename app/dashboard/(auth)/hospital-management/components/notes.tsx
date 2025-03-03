@@ -27,8 +27,8 @@ export function Notes() {
     { id: 2, date: new Date(2024, 4, 15), text: "Staff meeting at 2 PM" },
     { id: 3, date: new Date(2024, 2, 16), text: "New patient orientation" },
     { id: 4, date: new Date(2024, 1, 16), text: "Inventory check" },
-    { id: 2, date: new Date(2024, 2, 15), text: "Staff meeting at 2 PM" },
-    { id: 5, date: new Date(2024, 3, 15), text: "Staff meeting at 2 PM" }
+    { id: 5, date: new Date(2024, 2, 15), text: "Staff meeting at 2 PM" },
+    { id: 6, date: new Date(2024, 3, 15), text: "Staff meeting at 2 PM" }
   ]);
   const [newNote, setNewNote] = React.useState("");
 

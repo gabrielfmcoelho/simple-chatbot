@@ -1,7 +1,10 @@
+import React from "react";
 import { cookies } from "next/headers";
-
-import MainLayout from "@/components/main-layout";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import Sidebar from "@/components/layout/sidebar";
+import Header from "@/components/layout/header";
+import ThemeCustomizerPanel from "@/components/theme-customizer-panel";
+import { SWRConfig } from "swr";
 
 export default async function AuthLayout({
   children
@@ -9,11 +12,20 @@ export default async function AuthLayout({
   children: React.ReactNode;
 }>) {
   const cookieStore = await cookies();
-  const cookieStoreValue = cookieStore.get("sidebar:state")?.value;
+  const defaultOpen =
+    cookieStore.get("sidebar_state")?.value === "true" ||
+    cookieStore.get("sidebar_state") === undefined;
 
   return (
-    <SidebarProvider defaultOpen={cookieStoreValue ? JSON.parse(cookieStoreValue) : true}>
-      <MainLayout>{children}</MainLayout>
+    <SidebarProvider defaultOpen={defaultOpen}>
+      <Sidebar />
+      <SidebarInset>
+        <Header />
+        <main className="p-4 xl:group-data-[content-layout=centered]:container xl:group-data-[content-layout=centered]:mt-8">
+          <SWRConfig>{children}</SWRConfig>
+        </main>
+        <ThemeCustomizerPanel />
+      </SidebarInset>
     </SidebarProvider>
   );
 }

@@ -17,6 +17,8 @@ import {
 } from "@/components/ui/command";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 type CommandItemProps = {
   item: {
@@ -78,6 +80,11 @@ export default function Search() {
         </Button>
       </div>
       <CommandDialog open={open} onOpenChange={setOpen}>
+        <VisuallyHidden>
+          <DialogHeader>
+            <DialogTitle></DialogTitle>
+          </DialogHeader>
+        </VisuallyHidden>
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>

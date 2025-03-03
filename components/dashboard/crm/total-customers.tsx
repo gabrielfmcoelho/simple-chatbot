@@ -30,10 +30,10 @@ export function TotalCustomersCard() {
             <Users2Icon className="h-5 w-5" />
           </div>
           <div className="flex flex-col gap-2">
-            <div>Total Customers</div>
+            <div className="font-medium">Total Customers</div>
             <h4 className="text-2xl font-bold">1,02,890</h4>
             <div className="flex flex-col text-sm text-muted-foreground">
-              <span className="font-bold text-green-500">+20.1%</span>
+              <span className="text-green-500">+20.1%</span>
               <span className="flex items-center">
                 from last month
                 <TrendingUp className="ms-1 h-4 w-4" />

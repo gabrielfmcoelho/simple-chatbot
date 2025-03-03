@@ -44,8 +44,8 @@ export default function ChatContent() {
         <div ref={messagesContainerRef}>
           <div className="flex flex-col items-start space-y-10 py-8">
             {selectedChat?.messages?.length &&
-              selectedChat.messages.map((item: ChatMessageProps) => (
-                <ChatBubble message={item} type={item.type} key={item.id} />
+              selectedChat.messages.map((item: ChatMessageProps, key) => (
+                <ChatBubble message={item} type={item.type} key={key} />
               ))}
           </div>
         </div>

@@ -11,27 +11,27 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { messages, type Message } from "./data";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { MailIcon } from "lucide-react";
+import { ClockIcon, MailIcon } from "lucide-react";
 
 export default function Messages() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button size="sm" variant="link" className="relative text-foreground">
-          <MailIcon className="animate-tada h-5 w-5" />
+          <MailIcon className="!size-5" />
           <Badge className="absolute bottom-[calc(100%-10px)] left-[calc(100%-12px)] h-4 w-4 items-center justify-center rounded-full p-0 text-[8px] font-semibold">
             3
           </Badge>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="z-[999] mx-4 max-w-sm p-0 lg:w-[320px]">
-        <DropdownMenuLabel>
-          <div className="border-default-100 flex justify-between border-b px-4 py-3">
-            <div className="text-default-800 text-sm font-medium">Messages</div>
+      <DropdownMenuContent align="end" className="z-50 p-0 lg:w-80">
+        <DropdownMenuLabel className="p-0">
+          <div className="flex justify-between border-b px-6 py-4">
+            <div className="font-medium">Messages</div>
             <div className="text-default-800 text-xs md:text-right">
-              <Link href="" className="underline">
-                View all
-              </Link>
+              <Button variant="link" className="h-auto p-0" asChild>
+                <Link href="#">View all</Link>
+              </Button>
             </div>
           </div>
         </DropdownMenuLabel>
@@ -50,15 +50,15 @@ export default function Messages() {
                       <AvatarFallback> {item.title.charAt(0)}</AvatarFallback>
                     </Avatar>
                   </div>
-                  <div className="flex flex-1 flex-col gap-0.5">
-                    <div className="text-default-600 dark:group-hover:text-default-800 truncate text-sm font-normal">
+                  <div className="flex flex-1 flex-col gap-1">
+                    <div className="dark:group-hover:text-default-800 truncate text-sm font-normal">
                       {item.title}
                     </div>
-                    <div className="text-default-600 dark:group-hover:text-default-700 line-clamp-1 text-xs font-light">
+                    <div className="dark:group-hover:text-default-700 line-clamp-1 text-xs font-light text-muted-foreground">
                       {item.desc}
                     </div>
-                    <div className="text-default-400 dark:group-hover:text-default-500 text-xs">
-                      {" "}
+                    <div className="dark:group-hover:text-default-500 flex items-center gap-1 text-xs text-muted-foreground">
+                      <ClockIcon className="!size-3" />
                       {item.date}
                     </div>
                   </div>

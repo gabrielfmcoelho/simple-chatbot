@@ -1,11 +1,13 @@
 "use client";
 
-import Icon from "@/components/icon";
+import { Fragment, useEffect } from "react";
+import Link from "next/link";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -27,31 +29,36 @@ import {
   useSidebar
 } from "@/components/ui/sidebar";
 import { page_routes } from "@/lib/routes-config";
-import { ChevronRight, ChevronsUpDown, Sparkles } from "lucide-react";
+import { ChevronRight, ChevronsUpDown, SparklesIcon } from "lucide-react";
 import Logo from "./logo";
 import { Button } from "../ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import Icon from "@/components/icon";
+import { useIsTablet } from "@/hooks/use-mobile";
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const { toggleSidebar, isMobile } = useSidebar();
+  const { toggleSidebar, setOpen, setOpenMobile, isMobile } = useSidebar();
+  const isTablet = useIsTablet();
 
   useEffect(() => {
-    if (isMobile) toggleSidebar();
+    if (isMobile) setOpenMobile(false);
   }, [pathname]);
 
+  useEffect(() => {
+    setOpen(!isTablet);
+  }, [isTablet]);
+
   return (
-    <SidebarContainer collapsible="icon">
+    <SidebarContainer collapsible="icon" variant="floating">
       <SidebarHeader className="h-16 items-center justify-center">
         <SidebarMenu>
           <SidebarMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <SidebarMenuButton>
-                  <Logo className="me-2 group-data-[collapsible=icon]:me-0" />
+                <SidebarMenuButton className="rounded-none group-data-[collapsible=icon]:!px-0">
+                  <Logo />
                   <div className="truncate font-semibold group-data-[collapsible=icon]:hidden">
                     Shadcn UI Kit
                   </div>
@@ -76,39 +83,65 @@ export default function Sidebar() {
             <SidebarGroup key={key}>
               <SidebarGroupLabel>{route.title}</SidebarGroupLabel>
               <SidebarGroupContent>
-                <SidebarMenu>
+                <SidebarMenu className="space-y-1">
                   {route.items.map((item, key) => (
                     <SidebarMenuItem key={key}>
                       {item.items?.length ? (
-                        <Collapsible className="group/collapsible">
-                          <CollapsibleTrigger asChild>
-                            <SidebarMenuButton tooltip={item.title}>
-                              {item.icon && <Icon name={item.icon} className="size-4" />}
-                              <span>{item.title}</span>
-                              <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-                            </SidebarMenuButton>
-                          </CollapsibleTrigger>
-                          <CollapsibleContent>
-                            <SidebarMenuSub>
-                              {item.items.map((subItem, key) => (
-                                <SidebarMenuSubItem key={key}>
-                                  <SidebarMenuSubButton
-                                    isActive={pathname === subItem.href}
-                                    asChild>
-                                    <Link
-                                      href={subItem.href}
-                                      target={subItem.newTab ? "_blank" : ""}>
-                                      {subItem.icon && (
-                                        <Icon name={subItem.icon} className="size-4" />
-                                      )}
-                                      <span>{subItem.title}</span>
-                                    </Link>
-                                  </SidebarMenuSubButton>
-                                </SidebarMenuSubItem>
-                              ))}
-                            </SidebarMenuSub>
-                          </CollapsibleContent>
-                        </Collapsible>
+                        <Fragment>
+                          <div className="hidden group-data-[collapsible=icon]:block">
+                            <DropdownMenu>
+                              <DropdownMenuTrigger asChild>
+                                <SidebarMenuButton tooltip={item.title}>
+                                  {item.icon && <Icon name={item.icon} className="size-4" />}
+                                  <span>{item.title}</span>
+                                  <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                                </SidebarMenuButton>
+                              </DropdownMenuTrigger>
+                              {item.items?.length ? (
+                                <DropdownMenuContent
+                                  side={isMobile ? "bottom" : "right"}
+                                  align={isMobile ? "end" : "start"}
+                                  className="min-w-48 rounded-lg">
+                                  <DropdownMenuLabel>{item.title}</DropdownMenuLabel>
+                                  {item.items.map((item) => (
+                                    <DropdownMenuItem asChild key={item.title}>
+                                      <a href={item.href}>{item.title}</a>
+                                    </DropdownMenuItem>
+                                  ))}
+                                </DropdownMenuContent>
+                              ) : null}
+                            </DropdownMenu>
+                          </div>
+                          <Collapsible className="group/collapsible block group-data-[collapsible=icon]:hidden">
+                            <CollapsibleTrigger asChild>
+                              <SidebarMenuButton tooltip={item.title}>
+                                {item.icon && <Icon name={item.icon} className="size-4" />}
+                                <span>{item.title}</span>
+                                <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                              </SidebarMenuButton>
+                            </CollapsibleTrigger>
+                            <CollapsibleContent>
+                              <SidebarMenuSub>
+                                {item.items.map((subItem, key) => (
+                                  <SidebarMenuSubItem key={key}>
+                                    <SidebarMenuSubButton
+                                      isActive={pathname === subItem.href}
+                                      asChild>
+                                      <Link
+                                        href={subItem.href}
+                                        target={subItem.newTab ? "_blank" : ""}>
+                                        {subItem.icon && (
+                                          <Icon name={subItem.icon} className="size-4" />
+                                        )}
+                                        <span>{subItem.title}</span>
+                                      </Link>
+                                    </SidebarMenuSubButton>
+                                  </SidebarMenuSubItem>
+                                ))}
+                              </SidebarMenuSub>
+                            </CollapsibleContent>
+                          </Collapsible>
+                        </Fragment>
                       ) : (
                         <SidebarMenuButton
                           asChild
@@ -147,7 +180,7 @@ export default function Sidebar() {
           <CardContent className="p-4 pt-0">
             <Button className="w-full" asChild>
               <Link href="https://shadcnuikit.com/pricing" target="_blank">
-                <Sparkles className="me-2 size-4" />
+                <SparklesIcon className="me-1 size-4" />
                 Get Shadcn UI Kit
               </Link>
             </Button>
