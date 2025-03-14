@@ -6,7 +6,10 @@ export function getThemeScript() {
         const root = document.documentElement;
         
         if (theme.themeColor) {
-          root.style.setProperty("--primary", theme.themeColor.value);
+          root.style.setProperty("--primary", theme.themeColor.value ?? theme.themeColor.primary);
+          if(theme.themeColor?.foreground){
+            root.style.setProperty("--primary-foreground", theme.themeColor.foreground);
+          }
         }
 
         if (theme.roundedCorner !== undefined) {

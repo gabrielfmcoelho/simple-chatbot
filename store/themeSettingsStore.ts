@@ -19,9 +19,9 @@ export const themeColors = Object.fromEntries(
   Object.entries(tailwindColors)
     .filter(
       ([color, values]) =>
-        typeof values === "object" && values["600"] && includeColors.includes(color)
+        typeof values === "object" && values["700"] && includeColors.includes(color)
     )
-    .map(([color, values]) => [color, getHSLValue(values["600"])])
+    .map(([color, values]) => [color, getHSLValue(values["700"])])
 );
 
 export const themeSettings = {
@@ -39,19 +39,23 @@ export type ContentLayout = "full" | "centered";
 
 interface SettingsState {
   fontFamily: FontFamily;
-  themeColor: { name: string; value: string };
+  themeColor: { name: string; primary: string; foreground: string };
   layout: "vertical" | "horizontal";
   contentLayout: ContentLayout;
   sidebarLayout: "default" | "rtl";
   roundedCorner: number;
-  setThemeColor: (name: string, value: string) => void;
+  setThemeColor: (name: string, primary: string, foreground: string) => void;
   setContentLayout: (contentLayout: ContentLayout) => void;
   setFontFamily: (fontFamily: FontFamily) => void;
   setRoundedCorner: (rounded: number) => void;
   resetTheme: () => void;
 }
 
-const themeColorInitialValue = { name: "default", value: "24 9.8% 10%" };
+const themeColorInitialValue = {
+  name: "default",
+  primary: "24 9.8% 10%",
+  foreground: "60 9.1% 97.8%"
+};
 
 const initialState: Omit<
   SettingsState,
@@ -87,9 +91,10 @@ const themeSettingsStore: StateCreator<SettingsState> = (set) => {
 
   return {
     ...initialState,
-    setThemeColor: (name, value) => {
-      updateState("themeColor", { name, value });
-      updateCSSVariable("--primary", value);
+    setThemeColor: (name, primary, foreground) => {
+      updateState("themeColor", { name, primary, foreground });
+      updateCSSVariable("--primary", primary);
+      updateCSSVariable("--primary-foreground", foreground);
     },
     setFontFamily: (fontFamily) => {
       updateState("fontFamily", fontFamily);
@@ -105,10 +110,11 @@ const themeSettingsStore: StateCreator<SettingsState> = (set) => {
     },
     resetTheme: () => {
       set(initialState);
-      updateCSSVariable("--primary", themeColorInitialValue.value);
-      updateCSSVariable("font-family", `var(--font-inter)`);
-      updateCSSVariable("--radius", "0.5rem");
-      updateCSSVariable("content-layout", "full");
+      updateCSSVariable("--primary", "");
+      updateCSSVariable("--primary-foreground", "");
+      updateCSSVariable("font-family", "");
+      updateCSSVariable("--radius", "");
+      updateCSSVariable("content-layout", "");
     }
   };
 };

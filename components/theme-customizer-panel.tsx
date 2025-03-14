@@ -64,7 +64,9 @@ function ThemeCustomizerPanel() {
               <Label>Theme color</Label>
               <Select
                 value={String(themeColor.name === "default" ? "" : themeColor.name)}
-                onValueChange={(value: string) => setThemeColor(value, themeColors[value])}>
+                onValueChange={(value: string) =>
+                  setThemeColor(value, themeColors[value], "60 9.1% 97.8%")
+                }>
                 <SelectTrigger className="col-span-3">
                   <SelectValue placeholder="Select color" />
                 </SelectTrigger>
