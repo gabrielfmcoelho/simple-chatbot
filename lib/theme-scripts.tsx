@@ -1,7 +1,7 @@
 export function getThemeScript() {
   return `
     (function () {
-      const theme = JSON.parse(localStorage.getItem("settings-storage") || "{}")?.state;
+      const theme = JSON.parse(localStorage.getItem("shadcn-theme-settings") || "{}")?.state;
       if (theme) {
         const root = document.documentElement;
         

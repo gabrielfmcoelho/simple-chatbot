@@ -119,6 +119,8 @@ const themeSettingsStore: StateCreator<SettingsState> = (set) => {
   };
 };
 
-const useThemeSettingsStore = create(persist(themeSettingsStore, { name: "settings-storage" }));
+const useThemeSettingsStore = create(
+  persist(themeSettingsStore, { name: "shadcn-theme-settings" })
+);
 
 export default useThemeSettingsStore;
