@@ -8,6 +8,7 @@ export default function Logo() {
       height={30}
       className="me-1 rounded-[7px] group-data-[collapsible]:size-8"
       alt="shadcn ui kit logo"
+      unoptimized
     />
   );
 }
