@@ -3,6 +3,15 @@
 @tailwind utilities;
 
 @layer base {
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
   :root {
     --background: 0 0% 100%;
     --foreground: 20 14.3% 4.1%;
@@ -47,6 +56,18 @@
     --sidebar-accent-foreground-hover: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --fc-button-bg-color: hsl(var(--primary));
+    --fc-button-hover-bg-color: hsl(var(--primary));
+    --fc-button-active-bg-color: hsl(var(--primary));
+    --fc-button-hover-border-color: transparent;
+    --fc-button-active-border-color: transparent;
+    --fc-button-border-color: transparent;
+    --fc-event-border-color: transparent;
+    --fc-event-text-color: hsl(var(--foreground));
+    --fc-border-color: hsl(var(--border));
+    --fc-page-bg-color: hsl(var(--muted));
+    --fc-today-bg-color: hsl(var(--muted));
   }
 
   .dark {
@@ -56,8 +77,8 @@
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 34.65%;
-    // --primary-foreground: 0 0% 34.65%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 20 14.3% 4.1%;
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 3.7% 15.9%;
@@ -86,9 +107,20 @@
     --sidebar-accent-foreground-hover: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --fc-button-bg-color: hsl(var(--primary));
+    --fc-button-hover-bg-color: hsl(var(--primary));
+    --fc-button-active-bg-color: hsl(var(--primary));
+    --fc-button-hover-border-color: transparent;
+    --fc-button-active-border-color: transparent;
+    --fc-button-border-color: transparent;
+    --fc-event-border-color: transparent;
+    --fc-event-text-color: hsl(var(--foreground));
+    --fc-border-color: hsl(var(--border));
+    --fc-page-bg-color: hsl(var(--muted));
+    --fc-today-bg-color: hsl(var(--muted));
   }
 }
-
 
 ._editorRoot_uazmk_53 {
   --baseTextContrast: hsl(var(--foreground)) !important;
@@ -97,13 +129,38 @@
   --radius-medium: 0 !important;
 }
 
+.fc-daygrid-event {
+  @apply relative !rounded-md
+}
 
+.fc .fc-timegrid-axis-cushion, .fc .fc-timegrid-slot-label-cushion {
+  @apply text-sm text-muted-foreground
+}
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+.fc-h-event .fc-event-main, .fc-v-event .fc-event-main {
+  @apply text-inherit
+}
+
+.fc .fc-daygrid-event {
+  @apply px-1 !border-transparent
+}
+
+.fc .fc-col-header-cell-cushion {
+  @apply text-sm font-medium
+}
+
+.fc .fc-event-resizable {
+  @apply !border-transparent
+}
+
+.fc-timegrid-event .fc-event-main {
+  @apply !px-1
+}
+
+.fc .fc-scrollgrid-liquid {
+  @apply !rounded-md
+}
+
+.fc-daygrid-event-dot {
+  @apply !hidden
 }

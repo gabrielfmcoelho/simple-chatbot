@@ -1,10 +1,11 @@
 import React from "react";
 
 import { Inter, Roboto, Montserrat, Poppins, Overpass_Mono } from "next/font/google";
-import "./globals.scss";
+import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "next-themes";
 import NextTopLoader from "nextjs-toploader";
+import { getThemeScript } from "@/lib/theme-scripts";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -40,10 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="group">
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `let theme = JSON.parse(localStorage.getItem('settings-storage'))?.state; if(theme?.themeColor){ document.documentElement.style.setProperty('--primary', theme.themeColor.value); document.documentElement.style.setProperty('--radius', theme.roundedCorner + 'rem'); document.addEventListener("DOMContentLoaded", function() { document.body.style.setProperty("font-family", 'var(--font-' + theme.fontFamily + ')') }); document.documentElement.setAttribute('data-content-layout', theme.contentLayout); };`
-          }}></script>
+        <script dangerouslySetInnerHTML={{ __html: getThemeScript() }} />
       </head>
       <body
         suppressHydrationWarning

@@ -15,7 +15,7 @@ export function RecentActivities() {
           <div className="flex items-center">
             <img
               className="h-12 w-12 rounded-full bg-muted p-2"
-              src={process.env.DASHBOARD_BASE_URL + "/cyripto-icons/bitcoin.svg"}
+              src={process.env.DASHBOARD_BASE_URL + "/crypto-icons/bitcoin.svg"}
             />
             <div className="ml-4 space-y-1">
               <p className="text-sm font-medium leading-none">Buy Bitcoin</p>
@@ -29,7 +29,7 @@ export function RecentActivities() {
           <div className="flex items-center">
             <img
               className="h-12 w-12 rounded-full bg-muted p-2"
-              src={process.env.DASHBOARD_BASE_URL + "/cyripto-icons/ethereum.svg"}
+              src={process.env.DASHBOARD_BASE_URL + "/crypto-icons/ethereum.svg"}
             />
             <div className="ml-4 space-y-1">
               <p className="text-sm font-medium leading-none">Buy Ethereum</p>
@@ -43,7 +43,7 @@ export function RecentActivities() {
           <div className="flex items-center">
             <img
               className="h-12 w-12 rounded-full bg-muted p-2"
-              src={process.env.DASHBOARD_BASE_URL + "/cyripto-icons/dogecoin.svg"}
+              src={process.env.DASHBOARD_BASE_URL + "/crypto-icons/dogecoin.svg"}
             />
             <div className="ml-4 space-y-1">
               <p className="text-sm font-medium leading-none">Sell Dogecoin</p>
@@ -57,7 +57,7 @@ export function RecentActivities() {
           <div className="flex items-center">
             <img
               className="h-12 w-12 rounded-full bg-muted p-2"
-              src={process.env.DASHBOARD_BASE_URL + "/cyripto-icons/tether.svg"}
+              src={process.env.DASHBOARD_BASE_URL + "/crypto-icons/tether.svg"}
             />
             <div className="ml-4 space-y-1">
               <p className="text-sm font-medium leading-none">Buy Tether</p>
@@ -71,7 +71,7 @@ export function RecentActivities() {
           <div className="flex items-center">
             <img
               className="h-12 w-12 rounded-full bg-muted p-2"
-              src={process.env.DASHBOARD_BASE_URL + "/cyripto-icons/toncoin.svg"}
+              src={process.env.DASHBOARD_BASE_URL + "/crypto-icons/toncoin.svg"}
             />
             <div className="ml-4 space-y-1">
               <p className="text-sm font-medium leading-none">Toncoin</p>
@@ -85,7 +85,7 @@ export function RecentActivities() {
           <div className="flex items-center">
             <img
               className="h-12 w-12 rounded-full bg-muted p-2"
-              src={process.env.DASHBOARD_BASE_URL + "/cyripto-icons/avalanche.svg"}
+              src={process.env.DASHBOARD_BASE_URL + "/crypto-icons/avalanche.svg"}
             />
             <div className="ml-4 space-y-1">
               <p className="text-sm font-medium leading-none">Avalanche</p>

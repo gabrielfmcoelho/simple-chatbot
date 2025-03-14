@@ -62,7 +62,7 @@ export default function Search() {
   return (
     <div className="ms-auto lg:me-auto lg:flex-1">
       <div className="relative hidden max-w-sm flex-1 lg:block">
-        <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
+        <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
         <Input
           className="h-9 w-full cursor-pointer rounded-md border pl-10 pr-4 text-sm shadow-sm"
           placeholder="Search..."
@@ -76,7 +76,7 @@ export default function Search() {
       </div>
       <div className="block lg:hidden">
         <Button size="sm" variant="link" onClick={() => setOpen(true)} className="text-foreground">
-          <SearchIcon className="size-5" />
+          <SearchIcon className="!size-5" />
         </Button>
       </div>
       <CommandDialog open={open} onOpenChange={setOpen}>

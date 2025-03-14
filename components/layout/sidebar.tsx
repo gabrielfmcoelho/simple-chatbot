@@ -81,7 +81,9 @@ export default function Sidebar() {
         <ScrollArea>
           {page_routes.map((route, key) => (
             <SidebarGroup key={key}>
-              <SidebarGroupLabel>{route.title}</SidebarGroupLabel>
+              <SidebarGroupLabel className="text-xs uppercase tracking-wider">
+                {route.title}
+              </SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu className="space-y-1">
                   {route.items.map((item, key) => (
@@ -92,7 +94,12 @@ export default function Sidebar() {
                             <DropdownMenu>
                               <DropdownMenuTrigger asChild>
                                 <SidebarMenuButton tooltip={item.title}>
-                                  {item.icon && <Icon name={item.icon} className="size-4" />}
+                                  {item.icon && (
+                                    <Icon
+                                      name={item.icon}
+                                      className="size-4 text-muted-foreground"
+                                    />
+                                  )}
                                   <span>{item.title}</span>
                                   <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                                 </SidebarMenuButton>
@@ -115,7 +122,9 @@ export default function Sidebar() {
                           <Collapsible className="group/collapsible block group-data-[collapsible=icon]:hidden">
                             <CollapsibleTrigger asChild>
                               <SidebarMenuButton tooltip={item.title}>
-                                {item.icon && <Icon name={item.icon} className="size-4" />}
+                                {item.icon && (
+                                  <Icon name={item.icon} className="size-4 text-muted-foreground" />
+                                )}
                                 <span>{item.title}</span>
                                 <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                               </SidebarMenuButton>
@@ -131,7 +140,10 @@ export default function Sidebar() {
                                         href={subItem.href}
                                         target={subItem.newTab ? "_blank" : ""}>
                                         {subItem.icon && (
-                                          <Icon name={subItem.icon} className="size-4" />
+                                          <Icon
+                                            name={subItem.icon}
+                                            className="size-4 text-muted-foreground"
+                                          />
                                         )}
                                         <span>{subItem.title}</span>
                                       </Link>
@@ -148,7 +160,9 @@ export default function Sidebar() {
                           tooltip={item.title}
                           isActive={pathname === item.href}>
                           <Link href={item.href} target={item.newTab ? "_blank" : ""}>
-                            {item.icon && <Icon name={item.icon} className="size-4" />}
+                            {item.icon && (
+                              <Icon name={item.icon} className="size-4 text-muted-foreground" />
+                            )}
                             <span>{item.title}</span>
                           </Link>
                         </SidebarMenuButton>
@@ -180,7 +194,6 @@ export default function Sidebar() {
           <CardContent className="p-4 pt-0">
             <Button className="w-full" asChild>
               <Link href="https://shadcnuikit.com/pricing" target="_blank">
-                <SparklesIcon className="me-1 size-4" />
                 Get Shadcn UI Kit
               </Link>
             </Button>

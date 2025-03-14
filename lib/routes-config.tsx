@@ -51,7 +51,7 @@ export const page_routes: PageRoutesType[] = [
         href: "/dashboard/file-manager",
         icon: "Folder"
       },
-      { title: "Cyripto", href: "/dashboard/cyripto", icon: "WalletMinimal" },
+      { title: "Crypto", href: "/dashboard/crypto", icon: "WalletMinimal" },
       { title: "Academy", href: "/dashboard/academy", icon: "GraduationCap" },
       { title: "Hospital Management", href: "/dashboard/hospital-management", icon: "Activity" }
     ]
@@ -70,7 +70,7 @@ export const page_routes: PageRoutesType[] = [
         icon: "SquareCheck",
         isComing: true
       },
-      { title: "Calendar", href: "/dashboard/apps/calendar", icon: "Calendar", isComing: true },
+      { title: "Calendar", href: "/dashboard/apps/calendar", icon: "Calendar" },
       { title: "File Manager", href: "#", icon: "ArchiveRestore", isComing: true },
       { title: "Api Keys", href: "/dashboard/apps/api-keys", icon: "Key", isComing: false }
     ]

@@ -11,10 +11,10 @@ import OverviewCard from "./overview-card";
 
 export async function generateMetadata() {
   return generateMeta({
-    title: "Cyripto Dashboard",
+    title: "Crypto Dashboard",
     description:
-      "Cyripto dashboard template is a comprehensive and intuitive interface to effectively monitor cryptocurrency prices, market trends and portfolio performance.",
-    canonical: "/cyripto"
+      "Crypto dashboard template is a comprehensive and intuitive interface to effectively monitor cryptocurrency prices, market trends and portfolio performance.",
+    canonical: "/crypto"
   });
 }
 

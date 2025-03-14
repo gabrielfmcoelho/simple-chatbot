@@ -51,7 +51,7 @@ interface SettingsState {
   resetTheme: () => void;
 }
 
-const themeColorInitialValue = { name: "default", value: "222.2 47.4% 11.2%" };
+const themeColorInitialValue = { name: "default", value: "24 9.8% 10%" };
 
 const initialState: Omit<
   SettingsState,
