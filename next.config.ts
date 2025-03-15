@@ -10,7 +10,8 @@ const nextConfig = {
   assetPrefix: isProduction ? process.env.DASHBOARD_BASE_URL : undefined,
   env: {
     BASE_URL: process.env.BASE_URL,
-    DASHBOARD_BASE_URL: process.env.DASHBOARD_BASE_URL
+    DASHBOARD_BASE_URL: process.env.DASHBOARD_BASE_URL,
+    IMAGE_BASE_URL: process.env.IMAGE_BASE_URL
   },
   images: {
     remotePatterns: [

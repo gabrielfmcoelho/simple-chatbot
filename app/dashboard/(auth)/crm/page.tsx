@@ -1,11 +1,11 @@
 import CalendarDateRangePicker from "@/components/date-range-picker";
 import { Button } from "@/components/ui/button";
-import { LeadsByCountryCard } from "@/components/dashboard/crm/leads-by-country";
-import { TargetCard } from "@/components/dashboard/crm/target-card";
-import { TotalCustomersCard } from "@/components/dashboard/crm/total-customers";
-import { TotalRevenueCard } from "@/components/dashboard/crm/total-revenue";
-import { LeadsCard } from "@/components/dashboard/crm/leads";
-import { LeadBySourceCard } from "@/components/dashboard/crm/leads-by-source";
+import { LeadsByCountryCard } from "@/app/dashboard/(auth)/crm/leads-by-country";
+import { TargetCard } from "@/app/dashboard/(auth)/crm/target-card";
+import { TotalCustomersCard } from "@/app/dashboard/(auth)/crm/total-customers";
+import { TotalRevenueCard } from "@/app/dashboard/(auth)/crm/total-revenue";
+import { LeadsCard } from "@/app/dashboard/(auth)/crm/leads";
+import { LeadBySourceCard } from "@/app/dashboard/(auth)/crm/leads-by-source";
 import { generateMeta } from "@/lib/utils";
 
 export async function generateMetadata() {

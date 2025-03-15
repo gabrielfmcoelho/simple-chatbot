@@ -149,10 +149,6 @@
   @apply text-sm font-medium
 }
 
-.fc .fc-event-resizable {
-  @apply !border-transparent
-}
-
 .fc-timegrid-event .fc-event-main {
   @apply !px-1
 }
