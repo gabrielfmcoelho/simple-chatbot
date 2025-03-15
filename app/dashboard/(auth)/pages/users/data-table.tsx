@@ -13,7 +13,7 @@ import {
   getSortedRowModel,
   useReactTable
 } from "@tanstack/react-table";
-import { ArrowUpDown, CheckIcon, ChevronDown, MoreHorizontal, PlusCircle } from "lucide-react";
+import { ArrowUpDown, ChevronDown, MoreHorizontal, PlusCircle } from "lucide-react";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
@@ -307,7 +307,7 @@ export default function UsersDataTable({ data }: { data: User[] }) {
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline">
-                <PlusCircle className="me-2 h-4 w-4" />
+                <PlusCircle className="h-4 w-4" />
                 Status
               </Button>
             </PopoverTrigger>
@@ -343,7 +343,7 @@ export default function UsersDataTable({ data }: { data: User[] }) {
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline">
-                <PlusCircle className="me-2 h-4 w-4" />
+                <PlusCircle className="h-4 w-4" />
                 Plan
               </Button>
             </PopoverTrigger>
@@ -379,7 +379,7 @@ export default function UsersDataTable({ data }: { data: User[] }) {
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline">
-                <PlusCircle className="me-2 h-4 w-4" />
+                <PlusCircle className="h-4 w-4" />
                 Role
               </Button>
             </PopoverTrigger>

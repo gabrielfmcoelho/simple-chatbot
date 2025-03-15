@@ -12,7 +12,7 @@ export async function generateMetadata() {
   return generateMeta({
     title: "CRM Dashboard",
     description:
-      "CRM dashboard template offers a streamlined and interactive interface for managing customer relationships, tracking sales, and analyzing performance metrics.",
+      "CRM admin dashboard template offers a streamlined and interactive interface for managing customer relationships, tracking sales, and analyzing performance metrics.",
     canonical: "/crm"
   });
 }

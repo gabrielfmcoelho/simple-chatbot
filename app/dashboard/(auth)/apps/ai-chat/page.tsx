@@ -5,8 +5,8 @@ export async function generateMetadata() {
   return generateMeta({
     title: "AI Chat App",
     description:
-      "AI chat app template coming soon. It comes with chat history, different message templates and a handy prompt form.",
-    canonical: "/apps/kanban"
+      "A template you can use to create applications that allow you to chat with artificial intelligence. Built with shadcn/ui, Next.js and Tailwind CSS.",
+    canonical: "/apps/ai-chat"
   });
 }
 

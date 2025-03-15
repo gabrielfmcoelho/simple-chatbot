@@ -5,7 +5,7 @@ export async function generateMetadata() {
   return generateMeta({
     title: "Note App",
     description:
-      "A note template built with Next.js and Tailwind CSS. Quickly organize your notes and easily manage your projects with its flexible structure.",
+      "Add, organize and manage notes with the note app template. Built with shadcn/ui, Next.js and Tailwind CSS.",
     canonical: "/apps/notes"
   });
 }

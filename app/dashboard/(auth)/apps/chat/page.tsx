@@ -1,18 +1,19 @@
-import { promises as fs } from "fs";
-import path from "path";
 import { generateMeta } from "@/lib/utils";
+import path from "path";
+import { promises as fs } from "fs";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 import ActionDropdown from "./action-dropdown";
-import { ChatItemProps, UserPropsTypes } from "./types";
 import ChatList from "./chat-list";
 import ChatContent from "./chat-content";
+import { ChatItemProps, UserPropsTypes } from "./types";
 
 export async function generateMetadata() {
   return generateMeta({
     title: "Chat App",
     description:
-      "Check incoming and outgoing messages or manage your contacts with the chat app template. Built with Shadcn UI.",
+      "A template to create chat and messaging apps for your customers or users. Built with shadcn/ui, Next.js and Tailwind CSS.",
     canonical: "/apps/chat"
   });
 }

@@ -1,6 +1,8 @@
 import { generateMeta } from "@/lib/utils";
+
 import { Button } from "@/components/ui/button";
 import CalendarDateRangePicker from "@/components/date-range-picker";
+
 import { WelcomeCard } from "./welcome-card";
 import { EcommerceRevenueCard } from "./revenue-card";
 import { EcommerceSalesCard } from "./sales-card";
@@ -17,8 +19,8 @@ export async function generateMetadata() {
   return generateMeta({
     title: "Ecommerce Dashboard",
     description:
-      "The ecommerce dashboard template provides a detailed and user-friendly interface for monitoring sales, inventory, and customer data efficiently.",
-    canonical: "/project-management"
+      "The e-commerce admin dashboard template is an admin template that you can use for your e-commerce website projects. Built with shadcn/ui.",
+    canonical: "/ecommerce"
   });
 }
 

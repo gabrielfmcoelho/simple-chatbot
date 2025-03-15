@@ -52,7 +52,7 @@ export const page_routes: PageRoutesType[] = [
         icon: "Folder"
       },
       { title: "Crypto", href: "/dashboard/crypto", icon: "WalletMinimal" },
-      { title: "Academy", href: "/dashboard/academy", icon: "GraduationCap" },
+      { title: "Academy/School", href: "/dashboard/academy", icon: "GraduationCap" },
       { title: "Hospital Management", href: "/dashboard/hospital-management", icon: "Activity" }
     ]
   },
@@ -65,13 +65,18 @@ export const page_routes: PageRoutesType[] = [
       { title: "Chats", href: "/dashboard/apps/chat", icon: "MessageSquare" },
       { title: "Inbox", href: "/dashboard/apps/inbox", icon: "Mail", isComing: true },
       {
-        title: "Todo List",
-        href: "/dashboard/apps/todo-list",
+        title: "Todo List App",
+        href: "/dashboard/apps/todo-list-app",
         icon: "SquareCheck",
         isComing: true
       },
       { title: "Calendar", href: "/dashboard/apps/calendar", icon: "Calendar" },
-      { title: "File Manager", href: "#", icon: "ArchiveRestore", isComing: true },
+      {
+        title: "File Manager",
+        href: "/dashboard/apps/file-manager",
+        icon: "ArchiveRestore",
+        isComing: true
+      },
       { title: "Api Keys", href: "/dashboard/apps/api-keys", icon: "Key", isComing: false }
     ]
   },
@@ -133,9 +138,9 @@ export const page_routes: PageRoutesType[] = [
       },
       {
         title: "Landing Page",
-        href: "#",
+        href: "/template/cosmic-landing-page-template",
         icon: "Proportions",
-        isComing: true
+        newTab: true
       }
     ]
   },
@@ -149,9 +154,15 @@ export const page_routes: PageRoutesType[] = [
         newTab: true
       },
       {
+        title: "Blocks",
+        href: "/blocks",
+        icon: "Component",
+        newTab: true
+      },
+      {
         title: "Templates",
         href: "/templates",
-        icon: "Component",
+        icon: "Proportions",
         newTab: true
       },
       {

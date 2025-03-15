@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Flag from "react-world-flags";
 
-export default function SalesbyCountriesCard() {
+export default function SalesByCountriesCard() {
   return (
     <Card className="h-full">
       <CardHeader>

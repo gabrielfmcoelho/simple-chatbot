@@ -1,9 +1,11 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { generateMeta } from "@/lib/utils";
 import { ArrowDownLeft, ArrowUpRight, Award, Briefcase, DollarSign, FileClock } from "lucide-react";
-import { OverviewChart } from "./overview-chart";
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import CalendarDateRangePicker from "@/components/date-range-picker";
 import { Button } from "@/components/ui/button";
-import { generateMeta } from "@/lib/utils";
+
+import { OverviewChart } from "./overview-chart";
 import { RecentProjectList } from "./recent-projects-table";
 import ProjectEfficiency from "./project-efficiency";
 import Reminders from "./reminders";
@@ -13,7 +15,7 @@ export async function generateMetadata() {
   return generateMeta({
     title: "Project Management Dashboard",
     description:
-      "The project management dashboard template provides a powerful and intuitive interface for tracking tasks, deadlines, and team progress to ensure project success.",
+      "The project management admin dashboard template provides a powerful and intuitive interface for tracking tasks, deadlines, and team progress to ensure project success.",
     canonical: "/project-management"
   });
 }

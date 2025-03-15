@@ -1,18 +1,19 @@
 import { generateMeta } from "@/lib/utils";
 import Link from "next/link";
 
+import { DownloadCloud, Link2Icon, Mail, MapPin, PhoneCall, Settings } from "lucide-react";
+import { CompleteYourProfileComp } from "./complete-your-profile";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DownloadCloud, Link2Icon, Mail, MapPin, PhoneCall, Settings } from "lucide-react";
-import { CompleteYourProfileComp } from "./complete-your-profile";
 
 export async function generateMetadata() {
   return generateMeta({
     title: "Profile Page",
     description:
-      "A page created with React and Tailwind CSS where users summary information and details are displayed.",
+      "You can use the profile page template to show user details. Built with shadcn/ui components.",
     canonical: "/pages/profile"
   });
 }

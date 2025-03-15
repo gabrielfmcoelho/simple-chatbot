@@ -8,7 +8,7 @@ export async function generateMetadata() {
   return generateMeta({
     title: "Calendar",
     description:
-      "Plan your events and tasks in an organized way with the calendar template. Easily track the timing of your projects thanks to its flexible and customizable structure.",
+      "Plan your events or tasks in an organized way with the Calendar app template. Built with shadcn/ui, Next.js and Tailwind CSS.",
     canonical: "/apps/calendar"
   });
 }

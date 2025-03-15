@@ -5,7 +5,7 @@ export async function generateMetadata() {
   return generateMeta({
     title: "Kanban",
     description:
-      "Create a layout where you can easily manage your projects and tasks with the Kanban template. Optimize your workflow with flexible and customizable columns.",
+      "Create a layout where you can easily manage your projects and tasks with the Kanban template. Built with shadcn/ui, Next.js and Tailwind CSS.",
     canonical: "/apps/kanban"
   });
 }

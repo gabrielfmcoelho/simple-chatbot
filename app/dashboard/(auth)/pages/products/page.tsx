@@ -11,7 +11,7 @@ import ProductList from "./product-list";
 
 export async function generateMetadata() {
   return generateMeta({
-    title: "Products",
+    title: "Products Page",
     description:
       "A list of products created using the Tanstack Table. Built with Tailwind CSS and Next.js.",
     canonical: "/pages/products"

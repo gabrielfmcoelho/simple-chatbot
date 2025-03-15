@@ -10,7 +10,7 @@ import {
   DialogTrigger
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { CalendarIcon, PlusIcon } from "lucide-react";
+import { CalendarIcon } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -28,6 +28,7 @@ import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
 import { useState } from "react";
 import { toast } from "@/components/ui/use-toast";
+import { PlusCircledIcon } from "@radix-ui/react-icons";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -56,7 +57,7 @@ export default function CreateApiKeyDialog() {
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogTrigger asChild>
           <Button>
-            <PlusIcon className="me-2 size-4" /> Create Api Key
+            <PlusCircledIcon /> Create Api Key
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">

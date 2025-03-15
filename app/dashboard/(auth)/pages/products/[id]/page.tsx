@@ -20,7 +20,7 @@ import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 
 export async function generateMetadata() {
   return generateMeta({
-    title: "Product Detail",
+    title: "Product Detail Page",
     description:
       "The product detail page is a user-friendly interface that allows you to see the basic data of the product in detail. Built with Tailwind CSS and Next.js",
     canonical: "/pages/products/detail"

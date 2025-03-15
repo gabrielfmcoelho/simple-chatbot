@@ -3,7 +3,7 @@ import AddProductForm from "./add-product-form";
 
 export async function generateMetadata() {
   return generateMeta({
-    title: "Add Product",
+    title: "Add Product Page",
     description:
       "Add new products page. A fast and efficient product addition process using Next.js and Tailwind CSS. User-friendly interface with easily editable form fields.",
     canonical: "/pages/products/create"

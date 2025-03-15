@@ -48,7 +48,6 @@ export function Notes() {
     <Card>
       <CardHeader>
         <CardTitle>Notes</CardTitle>
-        <CardDescription>Notes for yourself</CardDescription>
       </CardHeader>
       <CardContent>
         <ul className="divide-y">

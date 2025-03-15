@@ -7,42 +7,42 @@ const patients = [
   {
     id: 1,
     name: "Olivia Martin",
-    avatar: "https://randomuser.me/api/portraits/men/40.jpg",
+    avatar: `${process.env.IMAGE_BASE_URL}/avatars/01.png`,
     email: "olivia.martin@email.com",
     lastProcedure: "Appendectomy",
-    date: "2024-05-20"
+    date: "2025-05-20"
   },
   {
     id: 2,
     name: "Jackson Lee",
-    avatar: "https://randomuser.me/api/portraits/men/71.jpg",
+    avatar: `${process.env.IMAGE_BASE_URL}/avatars/02.png`,
     email: "jackson.lee@email.com",
     lastProcedure: "Knee Arthroscopy",
-    date: "2024-05-18"
+    date: "2025-05-18"
   },
   {
     id: 3,
     name: "Isabella Nguyen",
-    avatar: "https://randomuser.me/api/portraits/men/50.jpg",
+    avatar: `${process.env.IMAGE_BASE_URL}/avatars/03.png`,
     email: "isabella.nguyen@email.com",
     lastProcedure: "Cataract Surgery",
-    date: "2024-05-15"
+    date: "2025-05-15"
   },
   {
     id: 4,
     name: "William Chen",
-    avatar: "https://randomuser.me/api/portraits/men/10.jpg",
+    avatar: `${process.env.IMAGE_BASE_URL}/avatars/04.png`,
     email: "william.chen@email.com",
     lastProcedure: "Colonoscopy",
-    date: "2024-05-12"
+    date: "2025-05-12"
   },
   {
     id: 5,
     name: "Can Jackson",
-    avatar: "https://randomuser.me/api/portraits/men/13.jpg",
+    avatar: `${process.env.IMAGE_BASE_URL}/avatars/05.png`,
     email: "can.jackson@email.com",
     lastProcedure: "Colonoscopy",
-    date: "2024-08-12"
+    date: "2025-08-12"
   }
 ];
 
@@ -70,11 +70,11 @@ export function PatientsWithLastProcedure() {
                     .join("")}
                 </AvatarFallback>
               </Avatar>
-              <div className="ml-4 space-y-1">
+              <div className="ml-3 space-y-1">
                 <p className="font-medium leading-none">{patient.name}</p>
                 <p className="text-sm text-muted-foreground">{patient.email}</p>
               </div>
-              <div className="ml-auto text-end font-medium">
+              <div className="ml-auto space-y-1 text-end font-medium">
                 <p className="text-sm">{patient.lastProcedure}</p>
                 <p className="text-sm text-muted-foreground">{patient.date}</p>
               </div>

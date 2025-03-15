@@ -1,12 +1,14 @@
+import { generateMeta } from "@/lib/utils";
+
 import CalendarDateRangePicker from "@/components/date-range-picker";
 import { Button } from "@/components/ui/button";
-import { generateMeta } from "@/lib/utils";
+
 import AverageDailySalesCard from "./cards/average-daily-sales";
 import WebsiteAnalyticsCard from "./cards/website-analytics-card";
 import SaleOverviewCard from "./cards/sales-overflow-card";
 import EarningReportsCard from "./cards/earning-reports-card";
 import TicketsCard from "./cards/tickets-card";
-import SalesbyCountriesCard from "./cards/sales-by-countries-card";
+import SalesByCountriesCard from "./cards/sales-by-countries-card";
 import TotalEarningCard from "./cards/total-earning-card";
 import MonthlyCampaignStateCard from "./cards/monthly-campaign-state";
 
@@ -14,7 +16,7 @@ export async function generateMetadata() {
   return generateMeta({
     title: "Website Analytics Dashboard",
     description:
-      "Website analytics dashboard template offers an efficient and flexible tool that allows to track websites traffic data, user interactions and performance analytics in detail with a modern, user-friendly and responsive interface.",
+      "Website analytics admin dashboard template offers an efficient and flexible tool that allows to track websites traffic data, user interactions and performance analytics in detail with a modern, user-friendly and responsive interface.",
     canonical: "/website-analytics"
   });
 }
@@ -48,7 +50,7 @@ export default function Page() {
           <TicketsCard />
         </div>
         <div className="lg:col-span-4">
-          <SalesbyCountriesCard />
+          <SalesByCountriesCard />
         </div>
         <div className="lg:col-span-4">
           <TotalEarningCard />
