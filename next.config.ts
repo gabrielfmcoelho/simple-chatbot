@@ -11,7 +11,8 @@ const nextConfig = {
   env: {
     BASE_URL: process.env.BASE_URL,
     DASHBOARD_BASE_URL: process.env.DASHBOARD_BASE_URL,
-    IMAGE_BASE_URL: process.env.IMAGE_BASE_URL
+    IMAGE_BASE_URL: process.env.IMAGE_BASE_URL,
+    GA_KEY: process.env.GA_KEY
   },
   images: {
     remotePatterns: [

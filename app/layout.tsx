@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "next-themes";
 import NextTopLoader from "nextjs-toploader";
 import { getThemeScript } from "@/lib/theme-scripts";
+import GoogleAnalyticsInit from "@/lib/ga";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -51,6 +52,7 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <Toaster />
+        {process.env.NODE_ENV === "production" ? <GoogleAnalyticsInit /> : null}
       </body>
     </html>
   );
