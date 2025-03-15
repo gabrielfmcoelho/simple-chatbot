@@ -63,7 +63,7 @@ export function FileUploadDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <Button onClick={() => setOpen(true)}>
-        <CloudUploadIcon className="me-2 size-4" /> Upload Files
+        <CloudUploadIcon /> Upload Files
       </Button>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

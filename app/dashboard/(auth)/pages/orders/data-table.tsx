@@ -301,7 +301,7 @@ export default function OrdersDataTable({ data }: { data: Order[] }) {
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline">
-                <PlusCircle className="me-2 h-4 w-4" />
+                <PlusCircle />
                 Status
               </Button>
             </PopoverTrigger>
@@ -337,7 +337,7 @@ export default function OrdersDataTable({ data }: { data: Order[] }) {
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline">
-                <PlusCircle className="me-2 h-4 w-4" />
+                <PlusCircle />
                 Category
               </Button>
             </PopoverTrigger>

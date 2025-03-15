@@ -5,7 +5,6 @@ import { generateMeta } from "@/lib/utils";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { PlusCircledIcon } from "@radix-ui/react-icons";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -64,7 +63,7 @@ export default async function Page() {
         </div>
         <Button asChild>
           <Link href="#">
-            <PlusCircledIcon className="me-2" /> Create Order
+            <PlusCircledIcon /> Create Order
           </Link>
         </Button>
       </div>

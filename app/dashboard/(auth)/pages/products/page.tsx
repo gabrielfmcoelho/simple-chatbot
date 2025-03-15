@@ -35,7 +35,7 @@ export default async function Page() {
         <h1 className="text-2xl font-bold tracking-tight">Products</h1>
         <Button asChild>
           <Link href="/dashboard/pages/products/create">
-            <PlusCircledIcon className="me-2" /> Add New Product
+            <PlusCircledIcon /> Add New Product
           </Link>
         </Button>
       </div>
