@@ -6,7 +6,7 @@ export async function generateMetadata() {
     title: "Logistics Admin Dashboard",
     description:
       "On the hotel admin dashboard, you can see your turnover, manage reservations, and view your customers. Built with shadcn/ui, Tailwind CSS, Next.js.",
-    canonical: "/crm"
+    canonical: "/logistics"
   });
 }
 
