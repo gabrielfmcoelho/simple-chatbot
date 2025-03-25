@@ -5,22 +5,14 @@ import { generateMeta } from "@/lib/utils";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { PlusCircledIcon } from "@radix-ui/react-icons";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator
-} from "@/components/ui/breadcrumb";
-import { ChevronRight } from "lucide-react";
 import OrdersDataTable from "./data-table";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export async function generateMetadata() {
   return generateMeta({
     title: "Orders Page",
     description:
-      "A list of orders generated using the Tanstack Table. Built with Tailwind CSS, Shadcn UI and Next.js.",
+      "A list of orders generated using the Tanstack Table. Built with Tailwind CSS, shadcn/ui and Next.js.",
     canonical: "/pages/orders"
   });
 }
@@ -37,37 +29,25 @@ export default async function Page() {
   const orders = await getOrders();
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-6 divide-x">
-          <h1 className="text-2xl font-bold">Orders</h1>
-          <Breadcrumb className="hidden ps-6 lg:block">
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/dashboard/default">Dashboard</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>
-                <ChevronRight />
-              </BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/dashboard/pages/orders">Pages</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>
-                <ChevronRight />
-              </BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbPage>Orders</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
+    <div className="space-y-4">
+      <div className="flex flex-row items-center justify-between">
+        <h1 className="text-xl font-bold tracking-tight lg:text-2xl">Orders</h1>
         <Button asChild>
           <Link href="#">
             <PlusCircledIcon /> Create Order
           </Link>
         </Button>
       </div>
-      <OrdersDataTable data={orders} />
+      <Tabs defaultValue="overview" className="space-y-4">
+        <TabsList>
+          <TabsTrigger value="overview">All</TabsTrigger>
+          <TabsTrigger value="completed">Completed</TabsTrigger>
+          <TabsTrigger value="processed">Processed</TabsTrigger>
+          <TabsTrigger value="returned">Returned</TabsTrigger>
+          <TabsTrigger value="canceled">Canceled</TabsTrigger>
+        </TabsList>
+        <OrdersDataTable data={orders} />
+      </Tabs>
     </div>
   );
 }

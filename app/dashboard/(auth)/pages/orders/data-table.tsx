@@ -1,6 +1,8 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -13,7 +15,7 @@ import {
   getSortedRowModel,
   useReactTable
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, MoreHorizontal, PlusCircle } from "lucide-react";
+import { ArrowUpDown, Columns, FilterIcon, MoreHorizontal, PlusCircle } from "lucide-react";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
@@ -45,8 +47,6 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
-import Image from "next/image";
-import Link from "next/link";
 
 export type Order = {
   id: number;
@@ -92,23 +92,22 @@ export const columns: ColumnDef<Order>[] = [
     cell: ({ row }) => (
       <Link
         href={`${process.env.BASE_URL}/dashboard/pages/orders/${row.getValue("id")}`}
-        className="text-muted-foreground hover:underline">
+        className="text-muted-foreground hover:text-primary hover:underline">
         #{row.getValue("id")}
       </Link>
     )
   },
   {
     accessorKey: "product_name",
-    header: "Product Name",
+    header: "Product",
     cell: ({ row }) => (
       <div className="flex items-center gap-4">
         <Image
-          src={`${process.env.DASHBOARD_BASE_URL}${row.original.image}`}
-          className="rounded-lg border"
+          src={`${process.env.ASSETS_URL}${row.original.image}`}
           width={60}
           height={60}
-          alt=""
           unoptimized
+          alt="..."
         />
         {row.getValue("product_name")}
       </div>
@@ -123,7 +122,7 @@ export const columns: ColumnDef<Order>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Price
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="size-3" />
         </Button>
       );
     },
@@ -152,7 +151,7 @@ export const columns: ColumnDef<Order>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Date
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="size-3" />
         </Button>
       );
     },
@@ -172,25 +171,30 @@ export const columns: ColumnDef<Order>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Status
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="size-3" />
         </Button>
       );
     },
     cell: ({ row }) => {
+      const status = row.original.status;
+
       const statusMap = {
         active: "success",
-        transportation: "secondary",
+        transportation: "info",
         pending: "warning",
+        cancel: "destructive",
         completed: "success",
-        cancel: "destructive"
+        delivered: "success"
       } as const;
 
-      const statusClass = statusMap[row.original.status] ?? "default";
+      const statusClass = statusMap[status] ?? "secondary";
 
       return (
-        <Badge variant={statusClass} className="capitalize">
-          {row.original.status}
-        </Badge>
+        <div>
+          <Badge variant={statusClass} className="capitalize">
+            {status.replaceAll("-", " ")}
+          </Badge>
+        </div>
       );
     }
   },
@@ -286,96 +290,105 @@ export default function OrdersDataTable({ data }: { data: Order[] }) {
     }
   ];
 
+  const Filters = () => {
+    return (
+      <>
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button variant="outline">
+              <PlusCircle />
+              Status
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-52 p-0">
+            <Command>
+              <CommandInput placeholder="Status" className="h-9" />
+              <CommandList>
+                <CommandEmpty>No status found.</CommandEmpty>
+                <CommandGroup>
+                  {statuses.map((status) => (
+                    <CommandItem key={status.value} value={status.value}>
+                      <div className="flex items-center space-x-3 py-1">
+                        <Checkbox id={status.value} />
+                        <label
+                          htmlFor={status.value}
+                          className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                          {status.label}
+                        </label>
+                      </div>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </CommandList>
+            </Command>
+          </PopoverContent>
+        </Popover>
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button variant="outline">
+              <PlusCircle />
+              Category
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-52 p-0">
+            <Command>
+              <CommandInput placeholder="Category" className="h-9" />
+              <CommandList>
+                <CommandEmpty>No category found.</CommandEmpty>
+                <CommandGroup>
+                  {categories.map((category) => (
+                    <CommandItem key={category.value} value={category.value}>
+                      <div className="flex items-center space-x-3 py-1">
+                        <Checkbox id={category.value} />
+                        <label
+                          htmlFor={category.value}
+                          className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                          {category.label}
+                        </label>
+                      </div>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </CommandList>
+            </Command>
+          </PopoverContent>
+        </Popover>
+      </>
+    );
+  };
+
   return (
-    <div className="w-full">
-      <div className="items-center gap-4 pb-4 lg:flex">
-        <div className="flex flex-col gap-2 lg:flex-row">
-          <Input
-            placeholder="Search orders..."
-            value={(table.getColumn("product_name")?.getFilterValue() as string) ?? ""}
-            onChange={(event) =>
-              table.getColumn("product_name")?.setFilterValue(event.target.value)
-            }
-            className="lg:max-w-sm"
-          />
+    <div className="w-full space-y-4">
+      <div className="flex gap-3">
+        <Input
+          placeholder="Search orders..."
+          value={(table.getColumn("product_name")?.getFilterValue() as string) ?? ""}
+          onChange={(event) => table.getColumn("product_name")?.setFilterValue(event.target.value)}
+          className="md:max-w-sm"
+        />
+        <div className="hidden gap-2 md:flex">
+          <Filters />
+        </div>
+        {/*filter for mobile*/}
+        <div className="inline md:hidden">
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="outline">
-                <PlusCircle />
-                Status
+              <Button variant="outline" size="icon">
+                <FilterIcon />
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-52 p-0">
-              <Command>
-                <CommandInput placeholder="Status" className="h-9" />
-                <CommandList>
-                  <CommandEmpty>No status found.</CommandEmpty>
-                  <CommandGroup>
-                    {statuses.map((status) => (
-                      <CommandItem
-                        key={status.value}
-                        value={status.value}
-                        onSelect={(currentValue) => {
-                          // setValue(currentValue === value ? "" : currentValue);
-                          // setOpen(false);
-                        }}>
-                        <div className="flex items-center space-x-3 py-1">
-                          <Checkbox id={status.value} />
-                          <label
-                            htmlFor={status.value}
-                            className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                            {status.label}
-                          </label>
-                        </div>
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                </CommandList>
-              </Command>
-            </PopoverContent>
-          </Popover>
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="outline">
-                <PlusCircle />
-                Category
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-52 p-0">
-              <Command>
-                <CommandInput placeholder="Category" className="h-9" />
-                <CommandList>
-                  <CommandEmpty>No category found.</CommandEmpty>
-                  <CommandGroup>
-                    {categories.map((category) => (
-                      <CommandItem
-                        key={category.value}
-                        value={category.value}
-                        onSelect={(currentValue) => {
-                          // setValue(currentValue === value ? "" : currentValue);
-                          // setOpen(false);
-                        }}>
-                        <div className="flex items-center space-x-3 py-1">
-                          <Checkbox id={category.value} />
-                          <label
-                            htmlFor={category.value}
-                            className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                            {category.label}
-                          </label>
-                        </div>
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                </CommandList>
-              </Command>
+            <PopoverContent className="w-60 p-4">
+              <div className="grid space-y-2">
+                <Filters />
+              </div>
             </PopoverContent>
           </Popover>
         </div>
-        <div className="hidden lg:block">
+        <div className="ms-auto">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="ml-auto">
-                Columns <ChevronDown className="ml-2 h-4 w-4" />
+              <Button variant="outline">
+                <span className="hidden lg:inline">Columns</span> <Columns />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -435,8 +448,8 @@ export default function OrdersDataTable({ data }: { data: Order[] }) {
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 pt-4">
-        <div className="flex-1 text-sm text-muted-foreground">
+      <div className="flex items-center justify-end space-x-2">
+        <div className="text-muted-foreground flex-1 text-sm">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>

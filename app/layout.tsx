@@ -1,58 +1,54 @@
 import React from "react";
-
-import { Inter, Roboto, Montserrat, Poppins, Overpass_Mono } from "next/font/google";
-import "./globals.css";
-import { Toaster } from "@/components/ui/toaster";
+import { cookies } from "next/headers";
+import { cn } from "@/lib/utils";
 import { ThemeProvider } from "next-themes";
-import NextTopLoader from "nextjs-toploader";
 import { getThemeScript } from "@/lib/theme-scripts";
 import GoogleAnalyticsInit from "@/lib/ga";
+import { fontVariables } from "@/lib/fonts";
+import NextTopLoader from "nextjs-toploader";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+import "./globals.css";
 
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-roboto"
-});
+import { Toaster } from "@/components/ui/toaster";
+import { ActiveThemeProvider } from "@/components/active-theme";
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-montserrat"
-});
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-poppins"
-});
-
-const overpass_mono = Overpass_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-overpass-mono"
-});
-
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const activeThemeValue = cookieStore.get("active_theme")?.value;
+
   return (
-    <html lang="en" suppressHydrationWarning className="group">
+    <html lang="en" suppressHydrationWarning className="group" data-content-layout="full">
       <head>
         <script dangerouslySetInnerHTML={{ __html: getThemeScript() }} />
       </head>
       <body
         suppressHydrationWarning
-        className={`${inter.className} ${inter.variable} ${roboto.variable} ${montserrat.variable} ${poppins.variable} ${overpass_mono.variable}`}>
-        <NextTopLoader color="hsl(var(--primary))" showSpinner={false} height={2} shadow="none" />
-        <ThemeProvider attribute="class" enableSystem={false}>
-          {children}
+        className={cn(
+          "bg-background font-sans",
+          activeThemeValue ? `theme-${activeThemeValue}` : "",
+          fontVariables
+        )}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange>
+          <ActiveThemeProvider initialTheme={activeThemeValue}>
+            {children}
+            <Toaster />
+            <NextTopLoader
+              color="hsl(var(--primary))"
+              showSpinner={false}
+              height={2}
+              shadow-sm="none"
+            />
+            {process.env.NODE_ENV === "production" ? <GoogleAnalyticsInit /> : null}
+          </ActiveThemeProvider>
         </ThemeProvider>
-        <Toaster />
-        {process.env.NODE_ENV === "production" ? <GoogleAnalyticsInit /> : null}
       </body>
     </html>
   );

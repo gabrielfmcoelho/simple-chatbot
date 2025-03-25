@@ -1,13 +1,10 @@
 import { generateMeta } from "@/lib/utils";
 import path from "path";
 import { promises as fs } from "fs";
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-import ActionDropdown from "./action-dropdown";
-import ChatList from "./chat-list";
-import ChatContent from "./chat-content";
 import { ChatItemProps, UserPropsTypes } from "./types";
+
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ActionDropdown, ChatList, ChatContent } from "@/app/dashboard/(auth)/apps/chat/components";
 
 export async function generateMetadata() {
   return generateMeta({
@@ -22,7 +19,6 @@ async function getChats() {
   const data = await fs.readFile(
     path.join(process.cwd(), "app/dashboard/(auth)/apps/chat/data/chats.json")
   );
-
   return JSON.parse(data.toString());
 }
 
@@ -43,23 +39,21 @@ export default async function Page() {
       return item;
     })
   );
-
+  // h-[calc(100vh-6rem)]
   return (
-    <div className="gap-8 lg:flex">
-      <div className="w-full lg:w-96">
-        <Card>
-          <CardHeader className="py-4 lg:py-6">
-            <div className="flex items-center justify-between">
-              <CardTitle className="font-bold">Chats</CardTitle>
-              <ActionDropdown />
-            </div>
-          </CardHeader>
-          <CardContent className="p-0">
-            <ChatList chats={chats_with_user} />
-          </CardContent>
-        </Card>
-      </div>
-      <div className="flex-grow">
+    <div className="lg:flex">
+      <Card className="w-full pb-0 lg:w-96">
+        <CardHeader>
+          <CardTitle className="text-xl">Chats</CardTitle>
+          <CardAction>
+            <ActionDropdown />
+          </CardAction>
+        </CardHeader>
+        <CardContent className="p-0">
+          <ChatList chats={chats_with_user} />
+        </CardContent>
+      </Card>
+      <div className="grow">
         <ChatContent />
       </div>
     </div>

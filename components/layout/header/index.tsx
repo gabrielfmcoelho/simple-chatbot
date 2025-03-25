@@ -1,17 +1,29 @@
-import ThemeSwitch from "./theme-switch";
-import Notifications from "./notifications";
-import UserMenu from "./user-menu";
-import Messages from "./messages";
-import { SidebarTrigger } from "@/components/ui/sidebar";
+"use client";
+
+import * as React from "react";
+import { PanelLeftIcon } from "lucide-react";
+
+import { useSidebar } from "@/components/ui/sidebar";
 import Search from "@/components/layout/header/search";
+import UserMenu from "@/components/layout/header/user-menu";
+import ThemeSwitch from "@/components/layout/header/theme-switch";
+import Notifications from "@/components/layout/header/notifications";
+import { Button } from "@/components/ui/button";
 
 export default function Header() {
+  const { toggleSidebar } = useSidebar();
+
   return (
-    <div className="sticky top-0 z-10 flex flex-col">
-      <header className="flex h-14 items-center gap-2 px-4 backdrop-blur-lg lg:h-[60px]">
-        <SidebarTrigger className="block *:size-5 md:hidden lg:block" />
+    <div className="sticky top-0 z-50 flex flex-col">
+      <header className="bg-background/50 flex h-14 items-center gap-3 px-4 backdrop-blur-xl lg:h-[60px]">
+        <Button
+          onClick={toggleSidebar}
+          size="icon"
+          variant="outline"
+          className="flex md:hidden lg:flex">
+          <PanelLeftIcon />
+        </Button>
         <Search />
-        <Messages />
         <Notifications />
         <ThemeSwitch />
         <UserMenu />

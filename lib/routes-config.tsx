@@ -35,6 +35,7 @@ export const page_routes: PageRoutesType[] = [
           { title: "Order Detail", href: "/dashboard/pages/orders/detail" }
         ]
       },
+      { title: "Sales", href: "/dashboard/sales", icon: "BadgeDollarSign" },
       { title: "CRM", href: "/dashboard/crm", icon: "BarChart" },
       {
         title: "Website Analytics",
@@ -53,7 +54,9 @@ export const page_routes: PageRoutesType[] = [
       },
       { title: "Crypto", href: "/dashboard/crypto", icon: "WalletMinimal" },
       { title: "Academy/School", href: "/dashboard/academy", icon: "GraduationCap" },
-      { title: "Hospital Management", href: "/dashboard/hospital-management", icon: "Activity" }
+      { title: "Hospital Management", href: "/dashboard/hospital-management", icon: "Activity" },
+      { title: "Hotel Dashboard", href: "/dashboard/hotel", icon: "Building2", isComing: true },
+      { title: "Logistics", href: "/dashboard/logistics", icon: "Truck", isComing: true }
     ]
   },
   {
@@ -77,7 +80,8 @@ export const page_routes: PageRoutesType[] = [
         icon: "ArchiveRestore",
         isComing: true
       },
-      { title: "Api Keys", href: "/dashboard/apps/api-keys", icon: "Key", isComing: false }
+      { title: "Api Keys", href: "/dashboard/apps/api-keys", icon: "Key", isComing: false },
+      { title: "POS App", href: "/dashboard/apps/pos", icon: "Cookie", isComing: true }
     ]
   },
   {

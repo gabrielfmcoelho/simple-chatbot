@@ -77,7 +77,7 @@ export default function Page() {
 
   return (
     <Card>
-      <CardContent className="pt-6">
+      <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
@@ -98,9 +98,7 @@ export default function Page() {
                       name="items"
                       render={({ field }) => {
                         return (
-                          <FormItem
-                            key={item.id}
-                            className="flex flex-row items-start space-x-3 space-y-0">
+                          <FormItem key={item.id} className="flex flex-row items-start">
                             <FormControl>
                               <Checkbox
                                 checked={field.value?.includes(item.id)}

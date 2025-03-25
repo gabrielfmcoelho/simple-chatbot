@@ -1,29 +1,37 @@
-import { Button } from "@/components/ui/button";
 import { generateMeta } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export async function generateMetadata() {
   return generateMeta({
     title: "403 Page",
     description:
-      "The unauthorized 403 page template. Built with Tailwind CSS, Next.js, React and Shadcn.",
-    canonical: "/pages/error/404"
+      "The unauthorized 403 page template. Built with shadcn/ui, Tailwind CSS and Next.js.",
+    canonical: "/pages/error/403"
   });
 }
 
-export default function Error404() {
+export default function Page() {
   return (
-    <div className="flex h-full items-center justify-center">
+    <div className="flex h-[calc(100vh-6rem)] items-center justify-center">
       <div className="text-center">
-        <figure className="m-auto w-40 lg:w-72">
-          <img src={`${process.env.DASHBOARD_BASE_URL}/images/403.svg`} className="w-full" />
+        <figure className="m-auto w-40 lg:w-60">
+          <Image
+            width={300}
+            height={200}
+            src={`${process.env.BASE_URL}/403.svg`}
+            className="w-full"
+            alt="..."
+            unoptimized
+          />
         </figure>
-        <div className="mt-8 space-y-4 lg:mt-14">
-          <h1 className="text-3xl font-bold tracking-tight lg:text-5xl">No authorization</h1>
+        <div className="mt-6 space-y-4 lg:mt-8">
+          <h1 className="text-3xl font-bold tracking-tight lg:text-5xl">No Authorization</h1>
           <p className="text-muted-foreground">
             You do not appear to have permission to access this page
           </p>
         </div>
-        <div className="mt-8">
+        <div className="mt-6 lg:mt-8">
           <Button size="lg">Go to home</Button>
         </div>
       </div>

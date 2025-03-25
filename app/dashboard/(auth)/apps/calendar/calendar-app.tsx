@@ -2,6 +2,7 @@
 
 import React from "react";
 
+import { toast } from "sonner";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -14,10 +15,9 @@ import useCalendarEventStore from "@/store/useCalendarEventStore";
 import { eventColors } from "@/app/dashboard/(auth)/apps/calendar/data";
 import { EventClickArg } from "@fullcalendar/core";
 import CalendarToolbar from "@/app/dashboard/(auth)/apps/calendar/calendar-toolbar";
-import { toast } from "sonner";
 
 export default function CalendarApp() {
-  const calendarRef = React.useRef<FullCalendar | null>(null);
+  const calendarRef = React.useRef<FullCalendar>(null);
   const { events, setSelectedEvent, setOpenSheet } = useCalendarEventStore();
 
   const handleDateClick = (arg: DateClickArg) => {

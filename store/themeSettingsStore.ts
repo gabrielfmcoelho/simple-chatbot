@@ -15,14 +15,14 @@ const includeColors = [
   "rose"
 ];
 
-export const themeColors = Object.fromEntries(
+/*export const themeColors = Object.fromEntries(
   Object.entries(tailwindColors)
     .filter(
       ([color, values]) =>
         typeof values === "object" && values["700"] && includeColors.includes(color)
     )
     .map(([color, values]) => [color, getHSLValue(values["700"])])
-);
+);*/
 
 export const themeSettings = {
   fontFamily: {

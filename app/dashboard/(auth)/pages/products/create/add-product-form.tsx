@@ -157,7 +157,7 @@ export default function AddProductForm() {
               <CardHeader className="flex-row items-center justify-between">
                 <CardTitle>Images</CardTitle>
                 <AddMediaFromUrl>
-                  <Button variant="link" size="sm" className="!mt-0">
+                  <Button variant="link" size="sm" className="mt-0!">
                     Add media from URL
                   </Button>
                 </AddMediaFromUrl>
@@ -354,7 +354,7 @@ export default function AddProductForm() {
                       <FormItem>
                         <FormControl>
                           <div className="flex gap-2">
-                            <div className="flex-grow">
+                            <div className="grow">
                               <Select {...field}>
                                 <SelectTrigger>
                                   <SelectValue placeholder="Select a category" />
@@ -382,7 +382,7 @@ export default function AddProductForm() {
                       <FormItem>
                         <FormControl>
                           <div className="flex gap-2">
-                            <div className="flex-grow">
+                            <div className="grow">
                               <Select {...field}>
                                 <SelectTrigger>
                                   <SelectValue placeholder="Select a sub category" />

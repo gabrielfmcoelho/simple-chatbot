@@ -27,8 +27,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
 import { useState } from "react";
-import { toast } from "@/components/ui/use-toast";
 import { PlusCircledIcon } from "@radix-ui/react-icons";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -45,9 +45,7 @@ export default function CreateApiKeyDialog() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    toast({
-      title: "Success!"
-    });
+    toast.success("Success!");
     console.log(values);
     setDialogOpen(false);
   }
@@ -117,12 +115,7 @@ export default function CreateApiKeyDialog() {
                   </FormItem>
                 )}
               />
-              <div className="flex space-x-2">
-                <Button type="submit">Create API</Button>
-                <Button type="button" variant="ghost" onClick={() => setDialogOpen(false)}>
-                  Close
-                </Button>
-              </div>
+              <Button type="submit">Create API</Button>
             </form>
           </Form>
         </DialogContent>

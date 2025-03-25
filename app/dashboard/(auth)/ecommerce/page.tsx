@@ -1,60 +1,66 @@
 import { generateMeta } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
-import CalendarDateRangePicker from "@/components/date-range-picker";
 
-import { WelcomeCard } from "./welcome-card";
-import { EcommerceRevenueCard } from "./revenue-card";
-import { EcommerceSalesCard } from "./sales-card";
-import { EcommerceNewCustomerCard } from "./new-customer-card";
-import { EcommerceTotalRevenueCard } from "./total-revenue-card";
-import { EcommerceReturnRateCard } from "./return-rate-card";
-import { EcommerceBestSellingProductCard } from "./best-selling-products-card";
-import { EcommerceRecentOrdersCard } from "./recent-orders-card";
-import { EcommerceSalesByLocationCard } from "./sales-by-location";
-import { EcommerceVisitBySourceCard } from "./visit-by-source-card";
-import { EcommerceCustomerReviewsCard } from "./customer-reviews-card";
+import {
+  EcommerceBestSellingProductsCard,
+  EcommerceCustomerReviewsCard,
+  EcommerceNewCustomersCard,
+  EcommerceRecentOrdersCard,
+  EcommerceReturnRateCard,
+  EcommerceRevenueCard,
+  EcommerceSalesByLocationCard,
+  EcommerceSalesCard,
+  EcommerceTotalRevenueCard,
+  EcommerceVisitBySourceCard,
+  EcommerceWelcomeCard
+} from "@/app/dashboard/(auth)/ecommerce/components";
+import CustomDateRangePicker from "@/components/custom-date-range-picker";
+import { Download } from "lucide-react";
 
 export async function generateMetadata() {
   return generateMeta({
-    title: "Ecommerce Dashboard",
+    title: "Ecommerce Admin Dashboard",
     description:
-      "The e-commerce admin dashboard template is an admin template that you can use for your e-commerce website projects. Built with shadcn/ui.",
+      "The e-commerce admin dashboard template is an admin template that you can use for your e-commerce website projects. Built with shadcn/ui, Tailwind CSS, Next.js.",
     canonical: "/ecommerce"
   });
 }
 
 export default function Page() {
   return (
-    <>
-      <div className="mb-4 flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between lg:space-y-0">
-        <h1 className="text-2xl font-bold tracking-tight">E-commerce Dashboard</h1>
+    <div className="space-y-4">
+      <div className="flex flex-row items-center justify-between">
+        <h1 className="text-xl font-bold tracking-tight lg:text-2xl">E-Commerce Dashboard</h1>
         <div className="flex items-center space-x-2">
-          <CalendarDateRangePicker />
-          <Button>Download</Button>
+          <CustomDateRangePicker />
+          <Button>
+            <Download />
+            <span className="hidden lg:inline">Download</span>
+          </Button>
         </div>
       </div>
-      <div className="grid gap-4 lg:grid-cols-12">
-        <WelcomeCard />
-        <EcommerceRevenueCard />
-        <EcommerceSalesCard />
-        <EcommerceNewCustomerCard />
+      <div className="space-y-4">
+        <div className="grid gap-4 lg:grid-cols-12">
+          <EcommerceWelcomeCard />
+          <EcommerceRevenueCard />
+          <EcommerceSalesCard />
+          <EcommerceNewCustomersCard />
+        </div>
+        <div className="space-y-4 xl:grid xl:grid-cols-2 xl:gap-4 xl:space-y-0">
+          <EcommerceTotalRevenueCard />
+          <EcommerceReturnRateCard />
+        </div>
+        <div className="grid gap-4 lg:grid-cols-12">
+          <EcommerceSalesByLocationCard />
+          <EcommerceVisitBySourceCard />
+          <EcommerceCustomerReviewsCard />
+        </div>
+        <div className="space-y-4 xl:grid xl:grid-cols-12 xl:gap-4 xl:space-y-0">
+          <EcommerceRecentOrdersCard />
+          <EcommerceBestSellingProductsCard />
+        </div>
       </div>
-      <div className="mt-4 space-y-4 lg:grid lg:grid-cols-2 lg:gap-4 lg:space-y-0">
-        <EcommerceTotalRevenueCard />
-        <EcommerceReturnRateCard />
-      </div>
-
-      <div className="mt-4 space-y-4 lg:grid lg:grid-cols-12 lg:gap-4 lg:space-y-0">
-        <EcommerceRecentOrdersCard />
-        <EcommerceBestSellingProductCard />
-      </div>
-
-      <div className="mt-4 grid gap-4 lg:grid-cols-12">
-        <EcommerceSalesByLocationCard />
-        <EcommerceVisitBySourceCard />
-        <EcommerceCustomerReviewsCard />
-      </div>
-    </>
+    </div>
   );
 }

@@ -4,9 +4,10 @@ export const notifications = [
     title: "Your order is placed",
     role: "Frontend Developer",
     desc: "Amet minim mollit non deser unt ullamco est sit aliqua.",
-    avatar: "1.png",
+    avatar: "01.png",
     status: "online",
-    unreadmessage: false,
+    unread_message: false,
+    type: "text",
     date: "2 days ago"
   },
   {
@@ -14,19 +15,21 @@ export const notifications = [
     title: "Congratulations Darlene  🎉",
     role: "UI/UX Designer",
     desc: "Won the monthly best seller badge",
-    avatar: "2.png",
+    avatar: "02.png",
     status: "online",
-    unreadmessage: true,
+    unread_message: true,
+    type: "text",
     date: "11 am"
   },
   {
     id: 3,
     title: "Joaquina Weisenborn",
     role: "Town planner",
-    desc: "Soufflé soufflé caramels sweet roll. Jelly lollipop sesame snaps bear claw jelly beans sugar plum sugar plum.",
-    avatar: "3.png",
+    desc: "Requesting access permission",
+    avatar: "03.png",
     status: "busy",
-    unreadmessage: true,
+    unread_message: true,
+    type: "confirm",
     date: "12 pm"
   },
   {
@@ -34,9 +37,10 @@ export const notifications = [
     title: "Brooklyn Simmons",
     role: "Data scientist",
     desc: "Added you to Top Secret Project group...",
-    avatar: "4.png",
+    avatar: "04.png",
     status: "online",
-    unreadmessage: true,
+    unread_message: true,
+    type: "text",
     date: "1 pm"
   },
   {
@@ -44,9 +48,10 @@ export const notifications = [
     title: "Margot Henschke",
     role: "Dietitian",
     desc: "Cake pie jelly jelly beans. Marzipan lemon drops halvah cake. Pudding cookie lemon drops icing",
-    avatar: "5.png",
+    avatar: "05.png",
     status: "busy",
-    unreadmessage: false,
+    unread_message: false,
+    type: "text",
     date: "3 pm"
   },
   {
@@ -54,9 +59,10 @@ export const notifications = [
     title: "Sal Piggee",
     role: "Marketing executive",
     desc: "Toffee caramels jelly-o tart gummi bears cake I love ice cream lollipop. Sweet liquorice croissant candy danish dessert icing. Cake macaroon gingerbread toffee sweet.",
-    avatar: "6.png",
+    avatar: "06.png",
     status: "online",
-    unreadmessage: false,
+    unread_message: false,
+    type: "text",
     date: "4 pm"
   },
   {
@@ -64,9 +70,10 @@ export const notifications = [
     title: "Miguel Guelff",
     role: "Special educational needs teacher",
     desc: "Biscuit powder oat cake donut brownie ice cream I love soufflé. I love tootsie roll I love powder tootsie roll.",
-    avatar: "7.png",
+    avatar: "07.png",
     status: "online",
-    unreadmessage: true,
+    unread_message: true,
+    type: "text",
     date: "7 pm"
   },
   {
@@ -74,9 +81,10 @@ export const notifications = [
     title: "Mauro Elenbaas",
     role: "Advertising copywriter",
     desc: "Bear claw ice cream lollipop gingerbread carrot cake. Brownie gummi bears chocolate muffin croissant jelly I love marzipan wafer.",
-    avatar: "8.png",
+    avatar: "08.png",
     status: "away",
-    unreadmessage: true,
+    unread_message: true,
+    type: "text",
     date: "10 pm"
   },
   {
@@ -84,9 +92,10 @@ export const notifications = [
     title: "Bridgett Omohundro",
     role: "Designer, television/film set",
     desc: "Gummies gummi bears I love candy icing apple pie I love marzipan bear claw. I love tart biscuit I love candy canes pudding chupa chups liquorice croissant.",
-    avatar: "9.png",
+    avatar: "09.png",
     status: "offline",
-    unreadmessage: false,
+    unread_message: false,
+    type: "text",
     date: "10 pm"
   },
   {
@@ -96,7 +105,8 @@ export const notifications = [
     desc: "Cake pie jelly jelly beans. Marzipan lemon drops halvah cake. Pudding cookie lemon drops icing",
     avatar: "10.png",
     status: "away",
-    unreadmessage: false,
+    has_notification: false,
+    type: "text",
     date: "10 am"
   }
 ];
@@ -106,7 +116,7 @@ export const messages = [
     title: "Wade Warren",
     desc: "Hi! How are you doing?.....",
     active: true,
-    hasnotifaction: true,
+    has_notification: true,
     notification_count: 1,
     image: undefined,
     link: "#",
@@ -116,7 +126,7 @@ export const messages = [
     title: "Savannah Nguyen",
     desc: "Hi! How are you doing?.....",
     active: false,
-    hasnotifaction: false,
+    has_notification: false,
     image: undefined,
     link: "#",
     date: "05 am"
@@ -125,7 +135,7 @@ export const messages = [
     title: "Ralph Edwards",
     desc: "Hi! How are you doing?.....",
     active: false,
-    hasnotifaction: true,
+    has_notification: true,
     notification_count: 8,
     image: undefined,
     link: "#",
@@ -135,7 +145,7 @@ export const messages = [
     title: "Cody Fisher",
     desc: "Hi! How are you doing?.....",
     active: true,
-    hasnotifaction: false,
+    has_notification: false,
     image: undefined,
     link: "#",
     date: "12 am"
@@ -144,7 +154,7 @@ export const messages = [
     title: "Savannah Nguyen",
     desc: "Hi! How are you doing?.....",
     active: false,
-    hasnotifaction: false,
+    has_notification: false,
     image: undefined,
     link: "#",
     date: "10 am"
@@ -153,7 +163,7 @@ export const messages = [
     title: "Ralph Edwards",
     desc: "Hi! How are you doing?.....",
     active: false,
-    hasnotifaction: true,
+    has_notification: true,
     notification_count: 8,
     image: undefined,
     link: "#",
@@ -163,12 +173,11 @@ export const messages = [
     title: "Cody Fisher",
     desc: "Hi! How are you doing?.....",
     active: true,
-    hasnotifaction: false,
+    has_notification: false,
     image: undefined,
     link: "#",
     date: "09 pm"
   }
 ];
 
-export type Message = (typeof messages)[number];
 export type Notification = (typeof notifications)[number];

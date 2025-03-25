@@ -87,7 +87,7 @@ export default function Page() {
 
   return (
     <Card>
-      <CardContent className="pt-6">
+      <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField

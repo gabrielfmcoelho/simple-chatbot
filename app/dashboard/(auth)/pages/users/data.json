@@ -5,7 +5,7 @@
     "email": "sthireau0@prlog.org",
     "country": "Portugal",
     "role": "Construction Foreman",
-    "image": "/images/avatars/1.png",
+    "image": "https://bundui-images.netlify.app/avatars/01.png",
     "status": "active",
     "plan_name": "Basic"
   },
@@ -15,7 +15,7 @@
     "email": "fmckibbin1@slate.com",
     "country": "Mexico",
     "role": "Project Manager",
-    "image": "/images/avatars/2.png",
+    "image": "https://bundui-images.netlify.app/avatars/02.png",
     "status": "pending",
     "plan_name": "Team"
   },
@@ -25,7 +25,7 @@
     "email": "froglieri2@xing.com",
     "country": "Brazil",
     "role": "Construction Expeditor",
-    "image": "/images/avatars/3.png",
+    "image": "https://bundui-images.netlify.app/avatars/03.png",
     "status": "active",
     "plan_name": "Basic"
   },
@@ -35,7 +35,7 @@
     "email": "melgey3@blogger.com",
     "country": "Poland",
     "role": "Construction Manager",
-    "image": "/images/avatars/4.png",
+    "image": "https://bundui-images.netlify.app/avatars/04.png",
     "status": "active",
     "plan_name": "Enterprise"
   },

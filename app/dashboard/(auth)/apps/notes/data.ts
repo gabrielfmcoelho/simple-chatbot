@@ -7,8 +7,7 @@ export const notes: Note[] = [
     type: "image",
     labels: [1, 3],
     isArchived: false,
-    image:
-      "https://images.pexels.com/photos/28883354/pexels-photo-28883354/free-photo-of-vintage-red-volkswagen-beetle-in-cagliari-street.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    image: `${process.env.ASSETS_URL}/extra/image5.jpg`,
     content:
       "Captured this beautiful sunset during our hiking trip. The colors were absolutely stunning!"
   },
@@ -43,8 +42,7 @@ export const notes: Note[] = [
     type: "image",
     labels: [3],
     isArchived: false,
-    image:
-      "https://images.pexels.com/photos/30472980/pexels-photo-30472980/free-photo-of-vibrant-fresh-salad-with-edible-flowers-and-eggs.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    image: `${process.env.ASSETS_URL}/extra/image3.jpg`,
     content:
       "Potential routes for our upcoming desert adventure. Need to plan stops and accommodation."
   },

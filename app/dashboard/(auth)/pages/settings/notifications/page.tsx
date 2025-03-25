@@ -61,7 +61,7 @@ export default function Page() {
 
   return (
     <Card>
-      <CardContent className="pt-6">
+      <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
@@ -75,19 +75,19 @@ export default function Page() {
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                       className="flex flex-col space-y-1">
-                      <FormItem className="flex items-center space-x-3 space-y-0">
+                      <FormItem className="flex items-center">
                         <FormControl>
                           <RadioGroupItem value="all" />
                         </FormControl>
                         <FormLabel className="font-normal">All new messages</FormLabel>
                       </FormItem>
-                      <FormItem className="flex items-center space-x-3 space-y-0">
+                      <FormItem className="flex items-center">
                         <FormControl>
                           <RadioGroupItem value="mentions" />
                         </FormControl>
                         <FormLabel className="font-normal">Direct messages and mentions</FormLabel>
                       </FormItem>
-                      <FormItem className="flex items-center space-x-3 space-y-0">
+                      <FormItem className="flex items-center">
                         <FormControl>
                           <RadioGroupItem value="none" />
                         </FormControl>
@@ -181,7 +181,7 @@ export default function Page() {
               control={form.control}
               name="mobile"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                <FormItem className="flex flex-row items-start">
                   <FormControl>
                     <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                   </FormControl>

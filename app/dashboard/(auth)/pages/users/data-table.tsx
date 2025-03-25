@@ -13,7 +13,7 @@ import {
   getSortedRowModel,
   useReactTable
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, MoreHorizontal, PlusCircle } from "lucide-react";
+import { ArrowUpDown, Columns, MoreHorizontal, PlusCircle } from "lucide-react";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
@@ -30,8 +30,6 @@ import {
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
@@ -45,7 +43,7 @@ import {
 } from "@/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { cn, generateAvatarFallback } from "@/lib/utils";
+import { generateAvatarFallback } from "@/lib/utils";
 import { Checkbox } from "@/components/ui/checkbox";
 
 export type User = {
@@ -54,15 +52,31 @@ export type User = {
   lastName: string;
   image: string;
   country: string;
-  status: string;
+  status: "active" | "inactive" | "pending";
   plan_name: string;
 };
 
 export const columns: ColumnDef<User>[] = [
   {
-    accessorKey: "id",
-    header: "#",
-    cell: ({ row }) => row.getValue("id")
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={
+          table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")
+        }
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
+    enableSorting: false,
+    enableHiding: false
   },
   {
     accessorKey: "name",
@@ -70,7 +84,7 @@ export const columns: ColumnDef<User>[] = [
     cell: ({ row }) => (
       <div className="flex items-center gap-4">
         <Avatar>
-          <AvatarImage src={`${process.env.BASE_URL}/${row.original.image}`} alt="shadcn ui kit" />
+          <AvatarImage src={row.original.image} alt="shadcn ui kit" />
           <AvatarFallback>{generateAvatarFallback(row.getValue("name"))}</AvatarFallback>
         </Avatar>
         <div className="capitalize">{row.getValue("name")}</div>
@@ -86,7 +100,7 @@ export const columns: ColumnDef<User>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Role
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown />
         </Button>
       );
     },
@@ -101,7 +115,7 @@ export const columns: ColumnDef<User>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Plan
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown />
         </Button>
       );
     },
@@ -116,7 +130,7 @@ export const columns: ColumnDef<User>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Email
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown />
         </Button>
       );
     },
@@ -131,7 +145,7 @@ export const columns: ColumnDef<User>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Country
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown />
         </Button>
       );
     },
@@ -146,42 +160,26 @@ export const columns: ColumnDef<User>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Status
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown />
         </Button>
       );
     },
     cell: ({ row }) => {
       const status = row.original.status;
-      if (status === "active") {
-        return (
-          <Badge
-            className={cn("capitalize", {
-              "bg-green-100 text-green-700 hover:bg-green-100": status === "active"
-            })}>
-            {row.getValue("status")}
-          </Badge>
-        );
-      } else if (status === "pending") {
-        return (
-          <Badge
-            className={cn("capitalize", {
-              "bg-orange-100 text-orange-700 hover:bg-orange-100":
-                row.getValue("status") === "pending"
-            })}>
-            {row.getValue("status")}
-          </Badge>
-        );
-      } else if (status === "inactive") {
-        return (
-          <Badge
-            className={cn("capitalize", {
-              "bg-gray-100 text-gray-700 hover:bg-gray-100": status === "inactive"
-            })}>
-            {row.getValue("status")}
-          </Badge>
-        );
-      }
-      return <span className="capitalize">{status}</span>;
+
+      const statusMap = {
+        active: "success",
+        inactive: "destructive",
+        pending: "warning"
+      } as const;
+
+      const statusClass = statusMap[status] ?? "outline";
+
+      return (
+        <Badge variant={statusClass} className="capitalize">
+          {status.replace("-", " ")}
+        </Badge>
+      );
     }
   },
   {
@@ -191,14 +189,12 @@ export const columns: ColumnDef<User>[] = [
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
+            <Button variant="ghost" size="icon">
               <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
+              <MoreHorizontal />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuSeparator />
             <DropdownMenuItem>View user</DropdownMenuItem>
             <DropdownMenuItem>Delete</DropdownMenuItem>
           </DropdownMenuContent>
@@ -307,7 +303,7 @@ export default function UsersDataTable({ data }: { data: User[] }) {
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline">
-                <PlusCircle className="h-4 w-4" />
+                <PlusCircle />
                 Status
               </Button>
             </PopoverTrigger>
@@ -318,13 +314,7 @@ export default function UsersDataTable({ data }: { data: User[] }) {
                   <CommandEmpty>No status found.</CommandEmpty>
                   <CommandGroup>
                     {statuses.map((status) => (
-                      <CommandItem
-                        key={status.value}
-                        value={status.value}
-                        onSelect={(currentValue) => {
-                          // setValue(currentValue === value ? "" : currentValue);
-                          // setOpen(false);
-                        }}>
+                      <CommandItem key={status.value} value={status.value}>
                         <div className="flex items-center space-x-3 py-1">
                           <Checkbox id={status.value} />
                           <label
@@ -343,7 +333,7 @@ export default function UsersDataTable({ data }: { data: User[] }) {
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline">
-                <PlusCircle className="h-4 w-4" />
+                <PlusCircle />
                 Plan
               </Button>
             </PopoverTrigger>
@@ -354,13 +344,7 @@ export default function UsersDataTable({ data }: { data: User[] }) {
                   <CommandEmpty>No plan found.</CommandEmpty>
                   <CommandGroup>
                     {plans.map((plan) => (
-                      <CommandItem
-                        key={plan.value}
-                        value={plan.value}
-                        onSelect={(currentValue) => {
-                          // setValue(currentValue === value ? "" : currentValue);
-                          // setOpen(false);
-                        }}>
+                      <CommandItem key={plan.value} value={plan.value}>
                         <div className="flex items-center space-x-3 py-1">
                           <Checkbox id={plan.value} />
                           <label
@@ -415,8 +399,8 @@ export default function UsersDataTable({ data }: { data: User[] }) {
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns <ChevronDown className="ml-2 h-4 w-4" />
+            <Button size="icon" variant="outline" className="ml-auto">
+              <Columns />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -476,7 +460,7 @@ export default function UsersDataTable({ data }: { data: User[] }) {
         </Table>
       </div>
       <div className="flex items-center justify-end space-x-2 pt-4">
-        <div className="flex-1 text-sm text-muted-foreground">
+        <div className="text-muted-foreground flex-1 text-sm">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>

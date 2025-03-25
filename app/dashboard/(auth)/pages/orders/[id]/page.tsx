@@ -1,5 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
+import {
+  CheckCircle,
+  CheckCircle2,
+  ChevronLeft,
+  CreditCard,
+  EditIcon,
+  Package,
+  Pencil,
+  Printer,
+  Truck
+} from "lucide-react";
+import { generateMeta } from "@/lib/utils";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -12,18 +25,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import {
-  ArrowLeft,
-  CheckCircle,
-  CheckCircle2,
-  CreditCard,
-  Package,
-  Pencil,
-  Printer,
-  Truck
-} from "lucide-react";
 import { Progress } from "@/components/ui/progress";
-import { generateMeta } from "@/lib/utils";
 
 type OrderStatus = "processing" | "shipped" | "out-for-delivery" | "delivered";
 
@@ -52,7 +54,7 @@ export async function generateMetadata() {
   return generateMeta({
     title: "Order Detail Page",
     description:
-      "View and track your order details quickly on this page built with Shadcn UI, Tailwind CSS, and Next.js. Access comprehensive order information at a glance.",
+      "View and track your order details quickly on this page built with shadcn/ui, Tailwind CSS, and Next.js. Access comprehensive order information at a glance.",
     canonical: "/pages/orders/detail"
   });
 }
@@ -60,7 +62,7 @@ export async function generateMetadata() {
 export default function Page() {
   const order: Order = {
     id: "ORD-12345",
-    date: "2023-04-15",
+    date: "2025-04-15",
     status: "shipped",
     customer: {
       name: "Alice Johnson",
@@ -71,14 +73,14 @@ export default function Page() {
       {
         id: 1,
         name: "Wireless Headphones",
-        image: "/images/products/1.png",
+        image: "/products/01.jpeg",
         quantity: 2,
         price: 25.99
       },
       {
         id: 2,
         name: "Bluetooth Speaker",
-        image: "/images/products/2.png",
+        image: "/products/02.jpeg",
         quantity: 1,
         price: 49.99
       }
@@ -99,22 +101,21 @@ export default function Page() {
   const currentStepIndex = Object.keys(statusSteps).indexOf(order.status);
 
   return (
-    <div className="container mx-auto">
-      <div className="mb-4 flex items-center justify-between">
-        <Button asChild variant="link" className="h-auto p-0">
+    <div className="mx-auto max-w-screen-lg space-y-4 lg:mt-10">
+      <div className="flex items-center justify-between">
+        <Button asChild variant="outline">
           <Link href="/dashboard/pages/orders">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Orders
+            <ChevronLeft />
           </Link>
         </Button>
-        <div className="flex gap-4">
+        <div className="flex gap-2">
           <Button variant="outline">
-            <Printer className="mr-2 h-4 w-4" />
-            Print Order
+            <Printer />
+            Print
           </Button>
           <Button>
-            <Pencil className="mr-2 h-4 w-4" />
-            Manage Order
+            <Pencil />
+            Edit
           </Button>
         </div>
       </div>
@@ -123,7 +124,7 @@ export default function Page() {
         <Card>
           <CardHeader>
             <CardTitle className="text-2xl font-bold">Order {order.id}</CardTitle>
-            <p className="text-sm text-muted-foreground">Placed on {order.date}</p>
+            <p className="text-muted-foreground text-sm">Placed on {order.date}</p>
           </CardHeader>
           <CardContent>
             <Separator className="mb-4" />
@@ -132,13 +133,18 @@ export default function Page() {
                 <h3 className="font-semibold">Customer Information</h3>
                 <p>{order.customer.name}</p>
                 <p>{order.customer.email}</p>
-                <p className="text-sm text-muted-foreground">{order.customer.address}</p>
+                <p className="text-muted-foreground text-sm">{order.customer.address}</p>
               </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold">Payment Method</h3>
-                <div className="flex items-center gap-2">
-                  <CreditCard className="size-4 text-muted-foreground" /> Visa ending in **** 1234
+              <div className="bg-muted flex items-center justify-between space-y-2 rounded-md border p-4">
+                <div className="space-y-1">
+                  <h3 className="font-semibold">Payment Method</h3>
+                  <div className="text-muted-foreground flex items-center gap-2 text-sm">
+                    <CreditCard className="size-4" /> Visa ending in **** 1234
+                  </div>
                 </div>
+                <Button variant="outline">
+                  <EditIcon />
+                </Button>
               </div>
             </div>
           </CardContent>
@@ -166,7 +172,7 @@ export default function Page() {
         </Card>
       </div>
 
-      <Card className="mt-4">
+      <Card>
         <CardHeader>
           <CardTitle className="flex items-center">Delivery Status</CardTitle>
         </CardHeader>
@@ -176,7 +182,7 @@ export default function Page() {
               {Object.keys(statusSteps).map((step, index) => (
                 <div key={index} className="text-center">
                   <div
-                    className={`mx-auto flex size-12 items-center justify-center rounded-full text-lg ${index <= currentStepIndex ? "bg-green-500 text-white" : "bg-gray-200"} `}>
+                    className={`mx-auto flex size-12 items-center justify-center rounded-full text-lg ${index <= currentStepIndex ? "bg-green-600 text-white dark:bg-green-900" : "bg-muted border"} `}>
                     {index < currentStepIndex ? (
                       <CheckCircle className="size-5" />
                     ) : (
@@ -198,15 +204,18 @@ export default function Page() {
                 value={(currentStepIndex / (Object.keys(statusSteps).length - 1)) * 100}
                 color="bg-green-200 dark:bg-green-800"
               />
-              <div className="text-sm text-muted-foreground">
-                <Badge className="me-1">{currentStep}</Badge> on December 23, 2024
+              <div className="text-muted-foreground text-sm">
+                <Badge variant="info" className="me-1">
+                  {currentStep}
+                </Badge>{" "}
+                on December 23, 2024
               </div>
             </div>
           </div>
         </CardContent>
       </Card>
 
-      <Card className="mt-4">
+      <Card>
         <CardHeader>
           <CardTitle>Order Items</CardTitle>
         </CardHeader>
@@ -226,8 +235,7 @@ export default function Page() {
                   <TableCell>
                     <div className="flex items-center gap-4">
                       <Image
-                        src={`${process.env.DASHBOARD_BASE_URL}${item.image}`}
-                        className="rounded-lg border"
+                        src={`${process.env.ASSETS_URL}${item.image}`}
                         width={60}
                         height={60}
                         alt=""

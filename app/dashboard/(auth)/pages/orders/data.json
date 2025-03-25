@@ -9,7 +9,7 @@
     "type": "Sale",
     "status": "pending",
     "date": "Jun 23, 2023",
-    "image": "/images/products/1.png",
+    "image": "/products/01.jpeg",
     "product_name": "Wireless Headphones"
   },
   {
@@ -22,7 +22,7 @@
     "type": "Sale",
     "status": "completed",
     "date": "Jul 11, 2023",
-    "image": "/images/products/2.png",
+    "image": "/products/02.jpeg",
     "product_name": "Bluetooth Speaker"
   },
   {
@@ -35,7 +35,7 @@
     "type": "Return",
     "status": "pending",
     "date": "Aug 03, 2023",
-    "image": "/images/products/3.png",
+    "image": "/products/03.jpeg",
     "product_name": "Smartwatch"
   },
   {
@@ -48,7 +48,7 @@
     "type": "Sale",
     "status": "shipped",
     "date": "Sep 15, 2023",
-    "image": "/images/products/4.png",
+    "image": "/products/04.jpeg",
     "product_name": "Laptop Stand"
   },
   {
@@ -61,7 +61,7 @@
     "type": "Sale",
     "status": "delivered",
     "date": "Oct 09, 2023",
-    "image": "/images/products/5.png",
+    "image": "/products/05.jpeg",
     "product_name": "Portable Charger"
   },
   {
@@ -74,7 +74,7 @@
     "type": "Return",
     "status": "pending",
     "date": "Nov 21, 2023",
-    "image": "/images/products/6.png",
+    "image": "/products/06.jpeg",
     "product_name": "USB Hub"
   },
   {
@@ -87,7 +87,7 @@
     "type": "Sale",
     "status": "completed",
     "date": "Dec 02, 2023",
-    "image": "/images/products/7.png",
+    "image": "/products/07.jpeg",
     "product_name": "4K Monitor"
   },
   {
@@ -100,7 +100,7 @@
     "type": "Sale",
     "status": "shipped",
     "date": "Jan 18, 2024",
-    "image": "/images/products/8.png",
+    "image": "/products/01.jpeg",
     "product_name": "Mechanical Keyboard"
   },
   {
@@ -113,7 +113,7 @@
     "type": "Return",
     "status": "completed",
     "date": "Feb 27, 2024",
-    "image": "/images/products/9.png",
+    "image": "/products/02.jpeg",
     "product_name": "Wireless Mouse"
   },
   {
@@ -126,7 +126,7 @@
     "type": "Sale",
     "status": "delivered",
     "date": "Mar 10, 2024",
-    "image": "/images/products/10.png",
+    "image": "/products/03.jpeg",
     "product_name": "Tablet"
   },
   {
@@ -139,7 +139,7 @@
     "type": "Sale",
     "status": "pending",
     "date": "Apr 07, 2024",
-    "image": "/images/products/1.png",
+    "image": "/products/04.jpeg",
     "product_name": "Smart Lamp"
   },
   {
@@ -152,7 +152,7 @@
     "type": "Return",
     "status": "pending",
     "date": "May 05, 2024",
-    "image": "/images/products/2.png",
+    "image": "/products/05.jpeg",
     "product_name": "Earbuds"
   },
   {
@@ -165,7 +165,7 @@
     "type": "Sale",
     "status": "shipped",
     "date": "Jun 22, 2024",
-    "image": "/images/products/3.png",
+    "image": "/products/06.jpeg",
     "product_name": "Gaming Laptop"
   },
   {
@@ -178,7 +178,7 @@
     "type": "Sale",
     "status": "delivered",
     "date": "Jul 13, 2024",
-    "image": "/images/products/4.png",
+    "image": "/products/07.jpeg",
     "product_name": "Power Bank"
   },
   {
@@ -191,7 +191,7 @@
     "type": "Sale",
     "status": "completed",
     "date": "Aug 20, 2024",
-    "image": "/images/products/5.png",
+    "image": "/products/01.jpeg",
     "product_name": "VR Headset"
   }
 ]

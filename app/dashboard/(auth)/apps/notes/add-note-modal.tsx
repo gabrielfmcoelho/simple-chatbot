@@ -1,15 +1,17 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
 import { ImageIcon, Tag, PenSquare, Check, Trash2Icon, ArchiveIcon } from "lucide-react";
+import { MinimalTiptapEditor } from "@/components/ui/custom/minimal-tiptap";
+import { Content } from "@tiptap/react";
+
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { MinimalTiptapEditor } from "@/components/ui/custom/minimal-tiptap";
-import { Content } from "@tiptap/react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
   Command,
@@ -21,7 +23,6 @@ import {
 } from "@/components/ui/command";
 import { NoteLabel } from "@/app/dashboard/(auth)/apps/notes/types";
 import { Badge } from "@/components/ui/badge";
-import Image from "next/image";
 import { noteLabels } from "@/app/dashboard/(auth)/apps/notes/data";
 
 export function AddNoteModal() {
@@ -44,19 +45,20 @@ export function AddNoteModal() {
     <Dialog>
       <DialogTrigger asChild>
         <Button className="w-full">
-          <PenSquare className="mr-0 size-4 md:mr-1" />
+          <PenSquare />
           <span className="hidden md:block">Add Note</span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-h-screen max-w-screen-sm overflow-y-scroll p-0 lg:overflow-y-auto">
+      <DialogContent className="max-h-screen max-w-(--breakpoint-sm) overflow-y-scroll p-0 lg:overflow-y-auto">
         {imagePreview && (
           <figure>
             <Image
               src={imagePreview}
               width={200}
               height={200}
-              alt="..."
+              alt="shadcn/ui"
               className="aspect-video w-full rounded-tl-md rounded-tr-md object-cover"
+              unoptimized
             />
           </figure>
         )}
@@ -81,7 +83,7 @@ export function AddNoteModal() {
               placeholder="Enter note description..."
               autofocus={true}
               editable={true}
-              editorClassName="focus:outline-none"
+              editorClassName="focus:outline-hidden"
             />
           </div>
 
@@ -100,7 +102,7 @@ export function AddNoteModal() {
                       />
                       <Button type="button" variant="ghost" size="icon">
                         <label htmlFor="picture" className="cursor-pointer">
-                          <ImageIcon className="h-4 w-4" />
+                          <ImageIcon className="size-4" />
                         </label>
                       </Button>
                     </div>
@@ -149,7 +151,7 @@ export function AddNoteModal() {
                                           )}></span>
                                         <span className="text-sm leading-none">{label.title}</span>
                                         {selectedTags.includes(label) ? (
-                                          <Check className="ms-auto size-3 text-primary" />
+                                          <Check className="text-primary ms-auto size-3" />
                                         ) : null}
                                       </div>
                                     </CommandItem>

@@ -1,18 +1,12 @@
+import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { FileSearchIcon, LayoutGridIcon, ListIcon, MenuIcon, Search } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
-import {
-  FileSearchIcon,
-  LayoutGridIcon,
-  ListIcon,
-  MenuIcon,
-  NotebookPen,
-  Search
-} from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { AddNoteModal } from "@/app/dashboard/(auth)/apps/notes/add-note-modal";
-import { cn } from "@/lib/utils";
 import { Note } from "@/app/dashboard/(auth)/apps/notes/types";
 import NoteListItem from "@/app/dashboard/(auth)/apps/notes/note-list-item";
-import { useState } from "react";
 import { notes } from "@/app/dashboard/(auth)/apps/notes/data";
 import { NoteMobileSidebar } from "@/app/dashboard/(auth)/apps/notes/note-sidebar";
 
@@ -26,15 +20,15 @@ export default function NoteContent() {
 
   return (
     <div className="flex-1 overflow-auto">
-      <div className="mb-4 flex items-center justify-between">
-        <div className="relative flex max-w-md flex-1 space-x-4 xl:space-x-0">
+      <div className="mb-4 flex items-center justify-between gap-3">
+        <div className="relative flex max-w-md flex-1 space-x-3 xl:space-x-0">
           <NoteMobileSidebar>
-            <Button variant="outline" size="icon" className="flex flex-shrink-0 xl:hidden">
+            <Button variant="outline" size="icon" className="flex shrink-0 xl:hidden">
               <MenuIcon />
             </Button>
           </NoteMobileSidebar>
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400" />
+            <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 transform text-gray-400" />
             <Input
               className="w-full pl-10"
               placeholder="Search notes"
@@ -68,11 +62,11 @@ export default function NoteContent() {
 
       {searchQuery && filteredNotes.length === 0 && (
         <div className="flex h-[calc(100vh-10rem)] flex-col items-center justify-center p-4 text-center">
-          <div className="mb-4 rounded-full bg-muted/30 p-6">
-            <FileSearchIcon className="h-12 w-12 text-muted-foreground" />
+          <div className="bg-muted/30 mb-4 rounded-full p-6">
+            <FileSearchIcon className="text-muted-foreground h-12 w-12" />
           </div>
           <h3 className="mb-2 text-xl font-medium">No notes found</h3>
-          <p className="max-w-md text-muted-foreground">
+          <p className="text-muted-foreground max-w-md">
             {`We couldn't find any notes matching "${searchQuery}".`}
           </p>
           {searchQuery && (
@@ -86,7 +80,7 @@ export default function NoteContent() {
       <div
         data-view-mode={viewMode}
         className={cn("group", {
-          "box-border columns-1 gap-4 [column-fill:_balance] group-data-[content-layout=centered]:columns-3 group-data-[content-layout=full]:columns-1 group-data-[content-layout=full]:sm:columns-2 group-data-[content-layout=full]:md:columns-3 lg:columns-2 group-data-[content-layout=full]:xl:columns-4":
+          "box-border columns-1 gap-4 [column-fill:_balance] group-data-[content-layout=centered]:columns-3 group-data-[content-layout=full]:columns-1 sm:group-data-[content-layout=full]:columns-2 md:group-data-[content-layout=full]:columns-3 lg:columns-2 xl:group-data-[content-layout=full]:columns-4":
             viewMode === "masonry"
         })}>
         {filteredNotes.map((note: Note, key: number) => (

@@ -13,7 +13,7 @@ export async function generateMetadata() {
 export default function Page() {
   return (
     <div className="flex h-[90vh] items-center justify-center text-center">
-      <div className="max-w-screen-sm space-y-4 lg:space-y-8">
+      <div className="max-w-(--breakpoint-sm) space-y-4 lg:space-y-8">
         <h1 className="flex items-center justify-center text-3xl font-bold tracking-tight lg:text-4xl">
           <svg
             className="mr-5 h-9 w-9 animate-spin"

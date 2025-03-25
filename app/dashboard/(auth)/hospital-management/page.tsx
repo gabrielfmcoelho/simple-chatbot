@@ -1,19 +1,24 @@
 import { generateMeta } from "@/lib/utils";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import CalendarDateRangePicker from "@/components/date-range-picker";
 
-import { PatientVisitsChart } from "./patient-visits-chart";
-import { PatientsByDepartmentChart } from "./patients-by-department-chart";
-import { UpcomingAppointments } from "./upcoming-appointments";
-import { PatientsWithLastProcedure } from "./patients-with-last-procedure";
-import HospitalReports from "./reports";
-import { PlannedCalendar } from "./planned-calendar";
-import { Notes } from "./notes";
-import SummaryCards from "@/app/dashboard/(auth)/hospital-management/summary-cards";
+import CalendarDateRangePicker from "@/components/custom-date-range-picker";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  SummaryCards,
+  Notes,
+  PlannedCalendar,
+  HospitalReports,
+  PatientVisitsChart,
+  PatientsByDepartmentChart,
+  PatientsWithLastProcedure,
+  UpcomingAppointments
+} from "@/app/dashboard/(auth)/hospital-management/components";
+import CustomDateRangePicker from "@/components/custom-date-range-picker";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
 
 export async function generateMetadata() {
   return generateMeta({
-    title: "Hospital Management",
+    title: "Hospital Admin Management",
     description:
       "The hospital admin dashboard is a template for managing and analyzing hospital data and monitoring operational processes.",
     canonical: "/hospital-management"
@@ -22,17 +27,23 @@ export async function generateMetadata() {
 
 export default function Page() {
   return (
-    <>
-      <div className="mb-4 flex flex-col justify-between space-y-6 lg:flex-row lg:items-center lg:space-y-2">
-        <h2 className="text-2xl font-bold tracking-tight lg:text-3xl">Hospital Management</h2>
-        <CalendarDateRangePicker />
+    <div className="space-y-4">
+      <div className="flex flex-row items-center justify-between">
+        <h1 className="text-xl font-bold tracking-tight lg:text-2xl">Hospital Management</h1>
+        <div className="flex items-center space-x-2">
+          <CustomDateRangePicker />
+          <Button>
+            <Download />
+            <span className="hidden lg:inline">Download</span>
+          </Button>
+        </div>
       </div>
       <Tabs defaultValue="overview" className="space-y-4">
         <TabsList>
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="reports">Reports</TabsTrigger>
           <TabsTrigger value="notifications" disabled>
-            Notifications
+            Activities
           </TabsTrigger>
         </TabsList>
         <TabsContent value="overview" className="space-y-4">
@@ -54,6 +65,6 @@ export default function Page() {
           <HospitalReports />
         </TabsContent>
       </Tabs>
-    </>
+    </div>
   );
 }

@@ -1,3 +1,6 @@
+import { Ellipsis, FolderUp } from "lucide-react";
+import { cn } from "@/lib/utils";
+
 import {
   DropdownMenu,
   DropdownMenuItem,
@@ -5,7 +8,6 @@ import {
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Download, Ellipsis } from "lucide-react";
 
 export function CardOptionsMenu() {
   return (
@@ -26,16 +28,16 @@ export function CardOptionsMenu() {
   );
 }
 
-export function ExportButton() {
+export function ExportButton({ className }: { className?: string }) {
   return (
-    <div className="absolute end-4 top-4">
+    <div className={cn(className)}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" size="sm" className="!mt-0">
-            Export <Download className="ms-2 h-3 w-3" />
+          <Button variant="outline">
+            <FolderUp /> <span className="hidden lg:inline">Export</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent align="end">
           <DropdownMenuItem>Excel</DropdownMenuItem>
           <DropdownMenuItem>PDF</DropdownMenuItem>
         </DropdownMenuContent>

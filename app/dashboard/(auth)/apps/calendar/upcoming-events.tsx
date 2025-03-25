@@ -36,7 +36,7 @@ export function UpcomingEvents() {
         {events.map((event, key: number) => (
           <div
             key={key}
-            className={cn("cursor-pointer space-y-2 py-4 text-sm xl:px-4 hover:xl:bg-muted")}
+            className={cn("cursor-pointer space-y-2 py-4 text-sm xl:px-4 xl:hover:bg-muted")}
             onClick={() => handleSelectEvent(event)}>
             <div className="flex items-start gap-2 font-medium">
               <span
@@ -47,7 +47,7 @@ export function UpcomingEvents() {
               <div className="space-y-2">
                 <div>{event.title}</div>
                 <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                  <ClockIcon className="!size-3" />{" "}
+                  <ClockIcon className="size-3!" />{" "}
                   {format(event.start as Date, "MMM d, yyyy h:mm a")}
                 </div>
               </div>

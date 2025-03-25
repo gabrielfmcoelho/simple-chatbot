@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { Check, X } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import {
@@ -11,7 +13,6 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
-import { Check, X } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Accordion,
@@ -70,7 +71,7 @@ export default function Page() {
     {
       question: "What payment methods do you accept?",
       answer:
-        "We accept all major credit cards, including Visa, MasterCard, American Express, and Discover. We also support PayPal for your convenience."
+        "We accept all major credit components, including Visa, MasterCard, American Express, and Discover. We also support PayPal for your convenience."
     },
     {
       question: "Can I cancel my subscription at any time?",
@@ -104,7 +105,7 @@ export default function Page() {
   };
 
   return (
-    <div className="mx-auto max-w-screen-lg lg:py-16">
+    <div className="mx-auto max-w-(--breakpoint-lg) lg:py-16">
       <div className="mb-6 flex flex-col items-start justify-between space-y-2 lg:flex-row lg:items-center">
         <h1 className="text-2xl font-bold tracking-tight lg:text-3xl">Choose Your Plan</h1>
         <div className="flex items-start justify-center space-x-4 lg:items-center">
@@ -119,7 +120,7 @@ export default function Page() {
       </div>
 
       <Card>
-        <CardContent className="p-0 pb-4">
+        <CardContent>
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
@@ -185,48 +186,35 @@ export default function Page() {
         </CardContent>
       </Card>
 
-      <div className="mt-6 grid grid-cols-2 gap-4 lg:mt-12">
-        <div>
-          <h2 className="mb-4 text-xl font-semibold">Why Choose Our Platform?</h2>
-          <div className="space-y-4">
-            <Card>
-              <CardContent className="pt-6">
-                <h3 className="mb-2 text-xl font-medium">Comprehensive Library</h3>
-                <p className="text-muted-foreground">
-                  Access thousands of courses across various disciplines
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="pt-6">
-                <h3 className="mb-2 text-xl font-medium">Expert Instructors</h3>
-                <p className="text-muted-foreground">
-                  Learn from industry professionals and thought leaders
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="pt-6">
-                <h3 className="mb-2 text-xl font-medium">Flexible Learning</h3>
-                <p className="text-muted-foreground">
-                  Study at your own pace, anytime and anywhere
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-        <div>
-          <h2 className="mb-4 text-xl font-semibold">Frequently Asked Questions</h2>
-          <Card>
+      <div className="my-6 lg:my-12">
+        <h2 className="mb-4 text-xl font-semibold">Why Choose Our Platform?</h2>
+        <div className="grid gap-4 md:grid-cols-3">
+          <Card className="gap-2">
+            <CardHeader>
+              <CardTitle className="lg:text-xl">Comprehensive Library</CardTitle>
+            </CardHeader>
             <CardContent>
-              <Accordion type="single" collapsible className="w-full">
-                {faqs.map((faq, index) => (
-                  <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger>{faq.question}</AccordionTrigger>
-                    <AccordionContent>{faq.answer}</AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
+              <p className="text-muted-foreground">
+                Access thousands of courses across various disciplines
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="gap-2">
+            <CardHeader>
+              <CardTitle className="lg:text-xl">Expert Instructors</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">
+                Learn from industry professionals and thought leaders
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="gap-2">
+            <CardHeader>
+              <CardTitle className="lg:text-xl">Flexible Learning</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">Study at your own pace, anytime and anywhere</p>
             </CardContent>
           </Card>
         </div>

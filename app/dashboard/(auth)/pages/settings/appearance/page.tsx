@@ -56,7 +56,7 @@ export default function Page() {
 
   return (
     <Card>
-      <CardContent className="pt-6">
+      <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
@@ -78,7 +78,7 @@ export default function Page() {
                         <option value="system">System</option>
                       </select>
                     </FormControl>
-                    <ChevronDownIcon className="absolute right-3 top-2.5 h-4 w-4 opacity-50" />
+                    <ChevronDownIcon className="absolute top-2.5 right-3 h-4 w-4 opacity-50" />
                   </div>
                   <FormDescription>Set the font you want to use in the dashboard.</FormDescription>
                   <FormMessage />
@@ -96,23 +96,23 @@ export default function Page() {
                   <RadioGroup
                     onValueChange={field.onChange}
                     defaultValue={field.value}
-                    className="grid max-w-md grid-cols-2 gap-8 pt-2">
+                    className="flex max-w-md gap-6 pt-2">
                     <FormItem>
-                      <FormLabel className="[&:has([data-state=checked])>div]:border-primary">
+                      <FormLabel className="[&:has([data-state=checked])>div]:border-primary flex-col">
                         <FormControl>
                           <RadioGroupItem value="light" className="sr-only" />
                         </FormControl>
-                        <div className="items-center rounded-lg border-2 p-1 hover:border-accent">
+                        <div className="hover:border-accent items-center rounded-lg border-2 p-1">
                           <div className="space-y-2 rounded-lg bg-[#ecedef] p-2">
-                            <div className="space-y-2 rounded-md bg-white p-2 shadow-sm">
+                            <div className="space-y-2 rounded-md bg-white p-2 shadow-xs">
                               <div className="h-2 w-[80px] rounded-lg bg-[#ecedef]" />
                               <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
                             </div>
-                            <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm">
+                            <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-xs">
                               <div className="h-4 w-4 rounded-full bg-[#ecedef]" />
                               <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
                             </div>
-                            <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm">
+                            <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-xs">
                               <div className="h-4 w-4 rounded-full bg-[#ecedef]" />
                               <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
                             </div>
@@ -122,21 +122,21 @@ export default function Page() {
                       </FormLabel>
                     </FormItem>
                     <FormItem>
-                      <FormLabel className="[&:has([data-state=checked])>div]:border-primary">
+                      <FormLabel className="[&:has([data-state=checked])>div]:border-primary flex-col">
                         <FormControl>
                           <RadioGroupItem value="dark" className="sr-only" />
                         </FormControl>
-                        <div className="items-center rounded-lg border-2 bg-popover p-1 hover:bg-accent hover:text-accent-foreground">
+                        <div className="bg-popover hover:bg-accent hover:text-accent-foreground items-center rounded-lg border-2 p-1">
                           <div className="space-y-2 rounded-lg bg-slate-950 p-2">
-                            <div className="space-y-2 rounded-md bg-slate-800 p-2 shadow-sm">
+                            <div className="space-y-2 rounded-md bg-slate-800 p-2 shadow-xs">
                               <div className="h-2 w-[80px] rounded-lg bg-slate-400" />
                               <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
                             </div>
-                            <div className="flex items-center space-x-2 rounded-md bg-slate-800 p-2 shadow-sm">
+                            <div className="flex items-center space-x-2 rounded-md bg-slate-800 p-2 shadow-xs">
                               <div className="h-4 w-4 rounded-full bg-slate-400" />
                               <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
                             </div>
-                            <div className="flex items-center space-x-2 rounded-md bg-slate-800 p-2 shadow-sm">
+                            <div className="flex items-center space-x-2 rounded-md bg-slate-800 p-2 shadow-xs">
                               <div className="h-4 w-4 rounded-full bg-slate-400" />
                               <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
                             </div>

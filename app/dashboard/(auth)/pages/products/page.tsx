@@ -1,19 +1,19 @@
 import { promises as fs } from "fs";
 import path from "path";
-
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { PlusCircledIcon } from "@radix-ui/react-icons";
 import { generateMeta } from "@/lib/utils";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Award, Briefcase, DollarSign, FileClock } from "lucide-react";
-import ProductList from "./product-list";
+import Link from "next/link";
+import { PlusCircle } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { Card, CardAction, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import ProductList from "@/app/dashboard/(auth)/pages/products/product-list";
 
 export async function generateMetadata() {
   return generateMeta({
-    title: "Products Page",
+    title: "Product List",
     description:
-      "A list of products created using the Tanstack Table. Built with Tailwind CSS and Next.js.",
+      "Product list page created using Tanstack Table. List or filter products. Built with shadcn/ui, Tailwind CSS and Next.js.",
     canonical: "/pages/products"
   });
 }
@@ -22,7 +22,6 @@ async function getProducts() {
   const data = await fs.readFile(
     path.join(process.cwd(), "app/dashboard/(auth)/pages/products/data.json")
   );
-
   return JSON.parse(data.toString());
 }
 
@@ -35,61 +34,59 @@ export default async function Page() {
         <h1 className="text-2xl font-bold tracking-tight">Products</h1>
         <Button asChild>
           <Link href="/dashboard/pages/products/create">
-            <PlusCircledIcon /> Add New Product
+            <PlusCircle /> Add Product
           </Link>
         </Button>
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm">Total Sales</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
+          <CardHeader>
+            <CardDescription>Total Sales</CardDescription>
+            <CardTitle className="text-2xl font-semibold lg:text-3xl">$30,230</CardTitle>
+            <CardAction>
+              <Badge variant="outline">
+                <span className="text-green-600">+20.1%</span>
+              </Badge>
+            </CardAction>
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">$30,230</div>
-            <p className="text-xs text-muted-foreground">
-              <span className="text-green-500">+20.1%</span> from last month
-            </p>
-          </CardContent>
         </Card>
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm">Number of Sales</CardTitle>
-            <Briefcase className="h-4 w-4 text-muted-foreground" />
+          <CardHeader>
+            <CardDescription>Number of Sales</CardDescription>
+            <CardTitle className="text-2xl font-semibold lg:text-3xl">982</CardTitle>
+            <CardAction>
+              <Badge variant="outline">
+                <span className="text-green-600">+5.02</span>
+              </Badge>
+            </CardAction>
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">982</div>
-            <p className="text-xs text-muted-foreground">
-              <span className="text-green-500">+5.02</span> % from last month
-            </p>
-          </CardContent>
         </Card>
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm">Discount</CardTitle>
-            <Award className="h-4 w-4 text-muted-foreground" />
+          <CardHeader>
+            <CardDescription>Affiliate</CardDescription>
+            <CardTitle className="text-2xl font-semibold lg:text-3xl">$4,530</CardTitle>
+            <CardAction>
+              <Badge variant="outline">
+                <span className="text-green-600">+3.1%</span>
+              </Badge>
+            </CardAction>
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">$2,230</div>
-            <p className="text-xs text-muted-foreground">
-              <span className="text-red-600">-3.58</span> % from last month
-            </p>
-          </CardContent>
         </Card>
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm">Affiliate</CardTitle>
-            <FileClock className="h-4 w-4 text-muted-foreground" />
+          <CardHeader>
+            <CardDescription>Discounts</CardDescription>
+            <CardTitle className="text-2xl font-semibold lg:text-3xl">$2,230</CardTitle>
+            <CardAction>
+              <Badge variant="outline">
+                <span className="text-red-600">-3.58%</span>
+              </Badge>
+            </CardAction>
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">$4,530</div>
-            <p className="text-xs text-muted-foreground">
-              <span className="text-green-500">+10.35</span> % from last month
-            </p>
-          </CardContent>
         </Card>
       </div>
-      <ProductList data={products} />
+      <div className="pt-4">
+        <ProductList data={products} />
+      </div>
     </div>
   );
 }

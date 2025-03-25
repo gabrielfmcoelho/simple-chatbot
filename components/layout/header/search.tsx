@@ -53,7 +53,7 @@ export default function Search() {
           setOpen(false);
           router.push(item.href);
         }}>
-        {item.icon && <LucideIcon className="me-2 !h-4 !w-4" />}
+        {item.icon && <LucideIcon className="me-2 h-4! w-4!" />}
         <span>{item.title}</span>
       </CommandItem>
     );
@@ -62,21 +62,21 @@ export default function Search() {
   return (
     <div className="ms-auto lg:me-auto lg:flex-1">
       <div className="relative hidden max-w-sm flex-1 lg:block">
-        <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+        <SearchIcon className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
         <Input
-          className="h-9 w-full cursor-pointer rounded-md border pl-10 pr-4 text-sm shadow-sm"
+          className="h-9 w-full cursor-pointer rounded-md border pr-4 pl-10 text-sm shadow-xs"
           placeholder="Search..."
           type="search"
           onFocus={() => setOpen(true)}
         />
-        <div className="absolute right-2 top-1/2 hidden -translate-y-1/2 items-center gap-0.5 rounded-sm bg-zinc-200 p-1 font-mono text-xs font-medium dark:bg-neutral-700 sm:flex">
+        <div className="absolute top-1/2 right-2 hidden -translate-y-1/2 items-center gap-0.5 rounded-sm bg-zinc-200 p-1 font-mono text-xs font-medium sm:flex dark:bg-neutral-700">
           <CommandIcon className="size-3" />
           <span>k</span>
         </div>
       </div>
       <div className="block lg:hidden">
-        <Button size="sm" variant="link" onClick={() => setOpen(true)} className="text-foreground">
-          <SearchIcon className="!size-5" />
+        <Button size="icon" variant="outline" onClick={() => setOpen(true)}>
+          <SearchIcon />
         </Button>
       </div>
       <CommandDialog open={open} onOpenChange={setOpen}>

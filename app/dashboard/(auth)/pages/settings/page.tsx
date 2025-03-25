@@ -85,7 +85,7 @@ export default function Page() {
 
   return (
     <Card>
-      <CardContent className="pt-6">
+      <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
@@ -151,7 +151,7 @@ export default function Page() {
                 </FormItem>
               )}
             />
-            <div>
+            <div className="space-y-2">
               {fields.map((field, index) => (
                 <FormField
                   control={form.control}
@@ -175,7 +175,6 @@ export default function Page() {
                 type="button"
                 variant="outline"
                 size="sm"
-                className="mt-2"
                 onClick={() => append({ value: "" })}>
                 Add URL
               </Button>

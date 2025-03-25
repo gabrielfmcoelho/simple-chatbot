@@ -26,7 +26,7 @@ const faqs = [
   {
     question: "What payment methods do you accept?",
     answer:
-      "We accept all major credit cards, including Visa, MasterCard, American Express, and Discover. We also support PayPal for your convenience."
+      "We accept all major credit components, including Visa, MasterCard, American Express, and Discover. We also support PayPal for your convenience."
   },
   {
     question: "Can I cancel my subscription at any time?",
@@ -63,47 +63,34 @@ export default function Page() {
     <div className="lg:py-16">
       <div className="mx-auto max-w-4xl">
         <div className="mb-4 space-y-2 lg:mb-6">
-          <h1 className="text-2xl font-bold tracking-tight lg:text-3xl">
+          <h1 className="text-2xl font-semibold tracking-tight lg:text-3xl">
             Choose Your Learning Journey
           </h1>
-          <p className="muted-foreground">
+          <p className="text-muted-foreground">
             Unlock a world of knowledge with our comprehensive e-learning platform
           </p>
         </div>
         <Card>
-          <CardContent className="p-0">
-            <div className="flex flex-col md:flex-row">
+          <CardContent className="relative">
+            <div className="flex flex-col lg:flex-row">
               {/* Left side: Content */}
-              <div className="p-6 md:w-2/3">
+              <div className="lg:w-2/3">
                 <h2 className="mb-2 text-2xl font-bold">Pro Plan</h2>
-                <p className="mb-6 text-muted-foreground">
+                <p className="text-muted-foreground mb-6">
                   Everything you need to master new skills
                 </p>
-                <ul className="mb-6 space-y-3">
-                  {features.map((feature, index) => (
-                    <li key={index} className="flex items-center">
-                      <Check className="mr-2 h-5 w-5 flex-shrink-0 text-green-500" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="text-sm text-muted-foreground">
-                  All subscriptions come with a 30-day money-back guarantee. Cancel anytime.
-                </p>
-              </div>
 
-              <div className="relative flex flex-col justify-center space-y-6 border-s p-6 md:w-1/3">
-                <div className="space-y-4">
-                  <div className="text-center">
+                <div className="block space-y-4 lg:hidden">
+                  <div>
                     <span className="text-4xl font-bold">${currentPrice}</span>
-                    <span className="ml-2 text-muted-foreground">
+                    <span className="text-muted-foreground ml-2">
                       /{isAnnual ? "year" : "month"}
                     </span>
                   </div>
 
-                  <div className="mb-6 flex items-center justify-center space-x-4">
+                  <div className="mb-6 flex items-start justify-start space-x-4">
                     <span
-                      className={`text-sm font-medium ${!isAnnual ? "text-primary" : "text-muted-foreground"}`}>
+                      className={`text-sm font-medium ${!isAnnual ? "font-medium" : "text-muted-foreground"}`}>
                       Monthly
                     </span>
                     <Switch
@@ -112,13 +99,52 @@ export default function Page() {
                       aria-label="Toggle annual pricing"
                     />
                     <span
-                      className={`text-sm font-medium ${isAnnual ? "text-primary" : "text-muted-foreground"}`}>
+                      className={`text-sm font-medium ${isAnnual ? "font-medium" : "text-muted-foreground"}`}>
                       Annual
                     </span>
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <ul className="mb-6 space-y-3">
+                  {features.map((feature, index) => (
+                    <li key={index} className="flex items-center">
+                      <Check className="mr-2 size-5 shrink-0 text-green-600" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-muted-foreground text-sm">
+                  All subscriptions come with a 30-day money-back guarantee. Cancel anytime.
+                </p>
+              </div>
+
+              <div className="flex flex-col justify-center space-y-6 md:w-1/3 lg:relative lg:border-s lg:ps-6">
+                <div className="hidden space-y-4 lg:block">
+                  <div className="text-center">
+                    <span className="text-4xl font-bold">${currentPrice}</span>
+                    <span className="text-muted-foreground ml-2">
+                      /{isAnnual ? "year" : "month"}
+                    </span>
+                  </div>
+
+                  <div className="mb-6 flex items-center justify-center space-x-4">
+                    <span
+                      className={`text-sm font-medium ${!isAnnual ? "font-medium" : "text-muted-foreground"}`}>
+                      Monthly
+                    </span>
+                    <Switch
+                      checked={isAnnual}
+                      onCheckedChange={setIsAnnual}
+                      aria-label="Toggle annual pricing"
+                    />
+                    <span
+                      className={`text-sm font-medium ${isAnnual ? "font-medium" : "text-muted-foreground"}`}>
+                      Annual
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mt-4 space-y-2 lg:mt-0">
                   <Button className="w-full">Start Plan</Button>
 
                   {isAnnual && (
@@ -132,28 +158,34 @@ export default function Page() {
           </CardContent>
         </Card>
 
-        <div className="my-6 text-center lg:my-12">
+        <div className="my-6 lg:my-12">
           <h2 className="mb-4 text-xl font-semibold">Why Choose Our Platform?</h2>
-          <div className="mx-auto grid max-w-4xl gap-4 md:grid-cols-3">
-            <Card>
-              <CardContent className="pt-6">
-                <h3 className="mb-2 text-xl font-medium">Comprehensive Library</h3>
+          <div className="grid gap-4 md:grid-cols-3">
+            <Card className="gap-2">
+              <CardHeader>
+                <CardTitle className="lg:text-xl">Comprehensive Library</CardTitle>
+              </CardHeader>
+              <CardContent>
                 <p className="text-muted-foreground">
                   Access thousands of courses across various disciplines
                 </p>
               </CardContent>
             </Card>
-            <Card>
-              <CardContent className="pt-6">
-                <h3 className="mb-2 text-xl font-medium">Expert Instructors</h3>
+            <Card className="gap-2">
+              <CardHeader>
+                <CardTitle className="lg:text-xl">Expert Instructors</CardTitle>
+              </CardHeader>
+              <CardContent>
                 <p className="text-muted-foreground">
                   Learn from industry professionals and thought leaders
                 </p>
               </CardContent>
             </Card>
-            <Card>
-              <CardContent className="pt-6">
-                <h3 className="mb-2 text-xl font-medium">Flexible Learning</h3>
+            <Card className="gap-2">
+              <CardHeader>
+                <CardTitle className="lg:text-xl">Flexible Learning</CardTitle>
+              </CardHeader>
+              <CardContent>
                 <p className="text-muted-foreground">
                   Study at your own pace, anytime and anywhere
                 </p>

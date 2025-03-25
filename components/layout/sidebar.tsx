@@ -2,6 +2,11 @@
 
 import { Fragment, useEffect } from "react";
 import Link from "next/link";
+import { page_routes } from "@/lib/routes-config";
+import { ChevronRight, ChevronsUpDown } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { useIsTablet } from "@/hooks/use-mobile";
+
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
   DropdownMenu,
@@ -28,36 +33,34 @@ import {
   SidebarMenuSubItem,
   useSidebar
 } from "@/components/ui/sidebar";
-import { page_routes } from "@/lib/routes-config";
-import { ChevronRight, ChevronsUpDown, SparklesIcon } from "lucide-react";
-import Logo from "./logo";
-import { Button } from "../ui/button";
-import { usePathname } from "next/navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Icon from "@/components/icon";
-import { useIsTablet } from "@/hooks/use-mobile";
+import Logo from "@/components/layout/logo";
+import { Button } from "@/components/ui/button";
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const { toggleSidebar, setOpen, setOpenMobile, isMobile } = useSidebar();
+  const { setOpen, setOpenMobile, isMobile } = useSidebar();
   const isTablet = useIsTablet();
 
   useEffect(() => {
     if (isMobile) setOpenMobile(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   useEffect(() => {
     setOpen(!isTablet);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isTablet]);
 
   return (
-    <SidebarContainer collapsible="icon" variant="floating">
+    <SidebarContainer collapsible="icon" variant="floating" className="bg-background">
       <SidebarHeader className="h-16 items-center justify-center">
         <SidebarMenu>
           <SidebarMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <SidebarMenuButton className="rounded-none group-data-[collapsible=icon]:!px-0">
+                <SidebarMenuButton className="rounded-none group-data-[collapsible=icon]:px-0!">
                   <Logo />
                   <div className="truncate font-semibold group-data-[collapsible=icon]:hidden">
                     Shadcn UI Kit
@@ -65,7 +68,7 @@ export default function Sidebar() {
                   <ChevronsUpDown className="ml-auto group-data-[collapsible=icon]:hidden" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[--radix-popper-anchor-width]">
+              <DropdownMenuContent className="w-(--radix-popper-anchor-width)">
                 <DropdownMenuItem>
                   <span>Ecommerce</span>
                 </DropdownMenuItem>
@@ -78,10 +81,10 @@ export default function Sidebar() {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent className="overflow-hidden">
-        <ScrollArea>
+        <ScrollArea className="h-full">
           {page_routes.map((route, key) => (
             <SidebarGroup key={key}>
-              <SidebarGroupLabel className="text-xs uppercase tracking-wider">
+              <SidebarGroupLabel className="text-xs tracking-wider uppercase">
                 {route.title}
               </SidebarGroupLabel>
               <SidebarGroupContent>
@@ -97,7 +100,7 @@ export default function Sidebar() {
                                   {item.icon && (
                                     <Icon
                                       name={item.icon}
-                                      className="size-4 text-muted-foreground"
+                                      className="text-muted-foreground size-4"
                                     />
                                   )}
                                   <span>{item.title}</span>
@@ -123,7 +126,7 @@ export default function Sidebar() {
                             <CollapsibleTrigger asChild>
                               <SidebarMenuButton tooltip={item.title}>
                                 {item.icon && (
-                                  <Icon name={item.icon} className="size-4 text-muted-foreground" />
+                                  <Icon name={item.icon} className="text-muted-foreground size-4" />
                                 )}
                                 <span>{item.title}</span>
                                 <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
@@ -142,7 +145,7 @@ export default function Sidebar() {
                                         {subItem.icon && (
                                           <Icon
                                             name={subItem.icon}
-                                            className="size-4 text-muted-foreground"
+                                            className="text-muted-foreground size-4"
                                           />
                                         )}
                                         <span>{subItem.title}</span>
@@ -161,7 +164,7 @@ export default function Sidebar() {
                           isActive={pathname === item.href}>
                           <Link href={item.href} target={item.newTab ? "_blank" : ""}>
                             {item.icon && (
-                              <Icon name={item.icon} className="size-4 text-muted-foreground" />
+                              <Icon name={item.icon} className="text-muted-foreground size-4" />
                             )}
                             <span>{item.title}</span>
                           </Link>
@@ -184,17 +187,17 @@ export default function Sidebar() {
         </ScrollArea>
       </SidebarContent>
       <SidebarFooter>
-        <Card className="group-data-[collapsible=icon]:hidden">
-          <CardHeader className="p-4">
-            <CardTitle>Get this Dashboard</CardTitle>
+        <Card className="bg-muted gap-3 py-4 group-data-[collapsible=icon]:hidden">
+          <CardHeader className="px-3">
+            <CardTitle>Get Shadcn UI Kit</CardTitle>
             <CardDescription>
               Use the link to get this dashboard template and access other resources.
             </CardDescription>
           </CardHeader>
-          <CardContent className="p-4 pt-0">
+          <CardContent className="px-3">
             <Button className="w-full" asChild>
               <Link href="https://shadcnuikit.com/pricing" target="_blank">
-                Get Shadcn UI Kit
+                Download
               </Link>
             </Button>
           </CardContent>

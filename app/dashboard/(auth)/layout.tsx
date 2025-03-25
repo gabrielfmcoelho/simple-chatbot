@@ -4,7 +4,6 @@ import { cookies } from "next/headers";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import Sidebar from "@/components/layout/sidebar";
 import Header from "@/components/layout/header";
-import ThemeCustomizerPanel from "@/components/theme-customizer-panel";
 import { Toaster } from "@/components/ui/sonner";
 
 export default async function AuthLayout({
@@ -25,7 +24,7 @@ export default async function AuthLayout({
         <main className="p-4 xl:group-data-[content-layout=centered]:container xl:group-data-[content-layout=centered]:mt-8">
           {children}
         </main>
-        <ThemeCustomizerPanel />
+        {/*<ThemeCustomizerPanel />*/}
         <Toaster position="top-center" />
       </SidebarInset>
     </SidebarProvider>

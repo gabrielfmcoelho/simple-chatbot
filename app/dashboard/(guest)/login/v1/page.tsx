@@ -1,10 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
+import { GithubIcon } from "lucide-react";
+import { generateMeta } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { generateMeta } from "@/lib/utils";
-import { GithubIcon } from "lucide-react";
 
 export function generateMetadata() {
   return generateMeta({
@@ -19,18 +20,21 @@ export default function Page() {
   return (
     <div className="flex pb-8 lg:h-screen lg:pb-0">
       <div className="hidden w-1/2 bg-gray-100 lg:block">
-        <img
-          src={`${process.env.DASHBOARD_BASE_URL}/images/cover.png`}
-          alt="Login visual"
+        <Image
+          width={1000}
+          height={1000}
+          src={`${process.env.ASSETS_URL}/extra/image4.jpg`}
+          alt="shadcn/ui login page"
           className="h-full w-full object-cover"
+          unoptimized
         />
       </div>
 
       <div className="flex w-full items-center justify-center lg:w-1/2">
         <div className="w-full max-w-md space-y-8 px-4">
           <div className="text-center">
-            <h2 className="mt-6 text-3xl font-bold text-gray-900">Welcome back</h2>
-            <p className="mt-2 text-sm text-gray-600">Please sign in to your account</p>
+            <h2 className="mt-6 text-3xl font-bold">Welcome back</h2>
+            <p className="text-muted-foreground mt-2 text-sm">Please sign in to your account</p>
           </div>
 
           <form className="mt-8 space-y-6">
@@ -80,18 +84,15 @@ export default function Page() {
           </form>
 
           <div className="mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="bg-muted px-2 text-gray-500">or continue with</span>
-              </div>
+            <div className="flex items-center gap-3">
+              <div className="w-full border-t" />
+              <span className="text-muted-foreground shrink-0 text-sm">or continue with</span>
+              <div className="w-full border-t" />
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-3">
               <Button variant="outline" className="w-full">
-                <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
+                <svg viewBox="0 0 24 24">
                   <path
                     fill="currentColor"
                     d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -112,7 +113,7 @@ export default function Page() {
                 Google
               </Button>
               <Button variant="outline" className="w-full">
-                <GithubIcon className="mr-2 h-4 w-4" />
+                <GithubIcon />
                 GitHub
               </Button>
             </div>

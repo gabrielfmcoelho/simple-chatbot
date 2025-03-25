@@ -64,7 +64,7 @@ export default function Page() {
     {
       question: "What payment methods do you accept?",
       answer:
-        "We accept all major credit cards, including Visa, MasterCard, American Express, and Discover. We also support PayPal for your convenience."
+        "We accept all major credit components, including Visa, MasterCard, American Express, and Discover. We also support PayPal for your convenience."
     },
     {
       question: "Can I cancel my subscription at any time?",
@@ -98,7 +98,7 @@ export default function Page() {
   };
 
   return (
-    <div className="mx-auto max-w-screen-lg lg:py-16">
+    <div className="mx-auto max-w-(--breakpoint-lg) lg:py-16">
       <div className="mb-6 flex flex-col items-start justify-between space-y-2 lg:flex-row lg:items-center">
         <h1 className="text-2xl font-bold tracking-tight lg:text-3xl">Choose Your Plan</h1>
         <div className="flex items-start justify-center space-x-4 lg:items-center">
@@ -118,7 +118,7 @@ export default function Page() {
               <CardTitle className="text-2xl">{tier.name}</CardTitle>
               <CardDescription>{tier.description}</CardDescription>
             </CardHeader>
-            <CardContent className="flex-grow">
+            <CardContent className="grow">
               <div className="mb-4">
                 <p className="text-4xl font-bold">
                   {isYearly ? formatPrice(tier.yearlyPrice) : formatPrice(tier.monthlyPrice)}
@@ -146,35 +146,41 @@ export default function Page() {
         ))}
       </div>
 
-      <div className="mt-10">
+      <div className="my-6 lg:my-12">
         <h2 className="mb-4 text-xl font-semibold">Why Choose Our Platform?</h2>
         <div className="grid gap-4 md:grid-cols-3">
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="mb-2 text-xl font-medium">Comprehensive Library</h3>
+          <Card className="gap-2">
+            <CardHeader>
+              <CardTitle className="lg:text-xl">Comprehensive Library</CardTitle>
+            </CardHeader>
+            <CardContent>
               <p className="text-muted-foreground">
                 Access thousands of courses across various disciplines
               </p>
             </CardContent>
           </Card>
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="mb-2 text-xl font-medium">Expert Instructors</h3>
+          <Card className="gap-2">
+            <CardHeader>
+              <CardTitle className="lg:text-xl">Expert Instructors</CardTitle>
+            </CardHeader>
+            <CardContent>
               <p className="text-muted-foreground">
                 Learn from industry professionals and thought leaders
               </p>
             </CardContent>
           </Card>
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="mb-2 text-xl font-medium">Flexible Learning</h3>
+          <Card className="gap-2">
+            <CardHeader>
+              <CardTitle className="lg:text-xl">Flexible Learning</CardTitle>
+            </CardHeader>
+            <CardContent>
               <p className="text-muted-foreground">Study at your own pace, anytime and anywhere</p>
             </CardContent>
           </Card>
         </div>
       </div>
 
-      <div className="mt-10 max-w-screen-sm space-y-10">
+      <div className="mt-10 max-w-(--breakpoint-sm) space-y-10">
         <div>
           <h2 className="mb-4 text-xl font-semibold">Frequently Asked Questions</h2>
           <Card>

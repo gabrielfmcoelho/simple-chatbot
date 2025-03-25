@@ -13,7 +13,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { useSidebar } from "@/components/ui/sidebar";
 
 type Props = {
-  calendarRef: React.RefObject<FullCalendar>;
+  calendarRef: React.RefObject<FullCalendar | null>;
 };
 
 const viewTypes = [

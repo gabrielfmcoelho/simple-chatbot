@@ -21,7 +21,7 @@ export default function Page() {
     <div className="flex items-center justify-center py-4 lg:h-screen">
       <Card className="mx-auto w-96">
         <CardHeader>
-          <CardTitle className="text-2xl">Welcome back</CardTitle>
+          <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>Enter your email below to login to your account</CardDescription>
         </CardHeader>
         <CardContent>
@@ -45,18 +45,17 @@ export default function Page() {
               Login
             </Button>
 
-            <div className="relative my-4">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="bg-white px-2 text-gray-500">or continue with</span>
+            <div className="my-4">
+              <div className="flex items-center gap-3">
+                <div className="w-full border-t" />
+                <span className="text-muted-foreground shrink-0 text-sm">or continue with</span>
+                <div className="w-full border-t" />
               </div>
             </div>
 
             <div className="grid grid-cols-1 gap-3">
               <Button variant="outline" className="w-full">
-                <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
+                <svg viewBox="0 0 24 24">
                   <path
                     fill="currentColor"
                     d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -77,7 +76,7 @@ export default function Page() {
                 Google
               </Button>
               <Button variant="outline" className="w-full">
-                <GitHubLogoIcon className="mr-2 h-4 w-4" />
+                <GitHubLogoIcon />
                 GitHub
               </Button>
             </div>

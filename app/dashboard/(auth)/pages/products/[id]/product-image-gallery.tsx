@@ -2,32 +2,33 @@
 
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperClass } from "swiper/types";
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import Image from "next/image";
 
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
-import { Swiper as SwiperClass } from "swiper/types";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function ProductImageGallery() {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
 
   const images = [
-    "/images/products/1.png",
-    "/images/products/2.png",
-    "/images/products/3.png",
-    "/images/products/4.png",
-    "/images/products/5.png",
-    "/images/products/6.png"
+    `${process.env.ASSETS_URL}/products/01.jpeg`,
+    `${process.env.ASSETS_URL}/products/02.jpeg`,
+    `${process.env.ASSETS_URL}/products/03.jpeg`,
+    `${process.env.ASSETS_URL}/products/04.jpeg`,
+    `${process.env.ASSETS_URL}/products/05.jpeg`,
+    `${process.env.ASSETS_URL}/products/06.jpeg`
   ];
 
   return (
     <div className="sticky top-20 space-y-4">
       <Card>
-        <CardContent className="p-6">
+        <CardContent>
           <Swiper
             style={
               {
@@ -43,39 +44,43 @@ export default function ProductImageGallery() {
             className="mySwiper2">
             {images.map((image, key) => (
               <SwiperSlide key={key}>
-                <img
-                  className="aspect-[3/2] rounded-lg object-contain lg:aspect-square"
-                  src={`${process.env.DASHBOARD_BASE_URL}/${image}`}
+                <Image
+                  src={image}
+                  className="aspect-3/2 w-full rounded-lg object-contain lg:aspect-square"
+                  width={300}
+                  height={300}
+                  alt="shadcn/ui"
+                  unoptimized
                 />
               </SwiperSlide>
             ))}
           </Swiper>
         </CardContent>
       </Card>
-      <Card>
-        <CardContent className="p-6 py-4">
-          <Swiper
-            onSwiper={setThumbsSwiper}
-            loop={true}
-            spaceBetween={10}
-            slidesPerView={4}
-            freeMode={true}
-            watchSlidesProgress={true}
-            modules={[FreeMode, Navigation, Thumbs]}
-            className="mySwiper mt-2">
-            {images.map((image, key) => (
-              <SwiperSlide key={key} className="group">
-                <figure className="rounded-lg border opacity-70 group-[.swiper-slide-thumb-active]:border-primary group-[.swiper-slide-thumb-active]:!opacity-100">
-                  <img
-                    className="aspect-square object-contain"
-                    src={`${process.env.DASHBOARD_BASE_URL}/${image}`}
-                  />
-                </figure>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </CardContent>
-      </Card>
+      <Swiper
+        onSwiper={setThumbsSwiper}
+        loop={true}
+        spaceBetween={10}
+        slidesPerView={4}
+        freeMode={true}
+        watchSlidesProgress={true}
+        modules={[FreeMode, Navigation, Thumbs]}
+        className="mySwiper mt-2">
+        {images.map((image, key) => (
+          <SwiperSlide key={key} className="group">
+            <figure className="group-[.swiper-slide-thumb-active]:border-primary overflow-hidden rounded-lg border opacity-70 group-[.swiper-slide-thumb-active]:opacity-100!">
+              <Image
+                className="aspect-square w-full object-contain"
+                src={image}
+                width={300}
+                height={300}
+                alt="shadcn/ui"
+                unoptimized
+              />
+            </figure>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 }

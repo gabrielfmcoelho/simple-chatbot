@@ -13,7 +13,9 @@ import {
   getSortedRowModel,
   useReactTable
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, MoreHorizontal, PlusCircle } from "lucide-react";
+import { ArrowUpDown, Columns, FilterIcon, MoreHorizontal, PlusCircle, Star } from "lucide-react";
+import Image from "next/image";
+
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
   Command,
@@ -44,8 +46,13 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
-import { StarFilledIcon } from "@radix-ui/react-icons";
-import { Card, CardContent } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "@/components/ui/select";
 
 export type Product = {
   id: number;
@@ -57,7 +64,7 @@ export type Product = {
   stock?: string;
   price?: string;
   rating?: string;
-  status: "active" | "out-of-stock" | "closed-for-sale" | "completed" | "inactive";
+  status: "active" | "out-of-stock" | "closed-for-sale";
 };
 
 export const columns: ColumnDef<Product>[] = [
@@ -91,17 +98,18 @@ export const columns: ColumnDef<Product>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Product Name
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="size-3" />
         </Button>
       );
     },
     cell: ({ row }) => (
       <div className="flex items-center gap-4">
         <figure className="rounded-lg border">
-          <img
-            src={`${process.env.DASHBOARD_BASE_URL}${row.original.image}`}
+          <Image
+            src={`${process.env.ASSETS_URL}${row.original.image}`}
             width={48}
             height={48}
+            unoptimized
             alt="..."
           />
         </figure>
@@ -118,7 +126,7 @@ export const columns: ColumnDef<Product>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Price
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="size-3" />
         </Button>
       );
     },
@@ -133,7 +141,7 @@ export const columns: ColumnDef<Product>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Category
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="size-3" />
         </Button>
       );
     },
@@ -148,7 +156,7 @@ export const columns: ColumnDef<Product>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Stock
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="size-3" />
         </Button>
       );
     },
@@ -164,7 +172,7 @@ export const columns: ColumnDef<Product>[] = [
     header: "Rating",
     cell: ({ row }) => (
       <div className="flex items-center gap-1">
-        <StarFilledIcon className="text-orange-300" /> {row.getValue("rating")}
+        <Star className="size-4 fill-orange-400 text-orange-400" /> {row.getValue("rating")}
       </div>
     )
   },
@@ -177,25 +185,28 @@ export const columns: ColumnDef<Product>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Status
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="size-3" />
         </Button>
       );
     },
     cell: ({ row }) => {
+      const status = row.original.status;
+
       const statusMap = {
         active: "success",
-        "out-of-stock": "secondary",
-        "closed-for-sale": "warning",
-        completed: "success",
-        inactive: "destructive"
+        "out-of-stock": "warning",
+        "closed-for-sale": "destructive",
+        completed: "success"
       } as const;
 
-      const statusClass = statusMap[row.original.status] ?? "default";
+      const statusClass = statusMap[status] ?? "default";
 
       return (
-        <Badge variant={statusClass} className="capitalize">
-          {row.original.status.replaceAll("-", " ")}
-        </Badge>
+        <div>
+          <Badge variant={statusClass} className="capitalize">
+            {status.replaceAll("-", " ")}
+          </Badge>
+        </div>
       );
     }
   },
@@ -292,6 +303,91 @@ export default function ProductList({ data }: { data: Product[] }) {
     }
   ];
 
+  const Filters = () => {
+    return (
+      <>
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button variant="outline">
+              <PlusCircle />
+              Status
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-52 p-0">
+            <Command>
+              <CommandInput placeholder="Status" className="h-9" />
+              <CommandList>
+                <CommandEmpty>No status found.</CommandEmpty>
+                <CommandGroup>
+                  {statuses.map((status) => (
+                    <CommandItem
+                      key={status.value}
+                      value={status.value}
+                      onSelect={(currentValue) => {
+                        // setValue(currentValue === value ? "" : currentValue);
+                        // setOpen(false);
+                      }}>
+                      <div className="flex items-center space-x-3 py-1">
+                        <Checkbox id={status.value} />
+                        <label
+                          htmlFor={status.value}
+                          className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                          {status.label}
+                        </label>
+                      </div>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </CommandList>
+            </Command>
+          </PopoverContent>
+        </Popover>
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button variant="outline">
+              <PlusCircle />
+              Category
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-52 p-0">
+            <Command>
+              <CommandInput placeholder="Category" className="h-9" />
+              <CommandList>
+                <CommandEmpty>No category found.</CommandEmpty>
+                <CommandGroup>
+                  {categories.map((category) => (
+                    <CommandItem key={category.value} value={category.label}>
+                      <div className="flex items-center space-x-3 py-1">
+                        <Checkbox id={category.value} />
+                        <label
+                          htmlFor={category.value}
+                          className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                          {category.label}
+                        </label>
+                      </div>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </CommandList>
+            </Command>
+          </PopoverContent>
+        </Popover>
+        <Select defaultValue="all">
+          <SelectTrigger className="w-52 lg:w-auto">
+            <span className="text-muted-foreground text-sm">Price:</span>
+            <SelectValue placeholder="Select a product" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">$100-$200</SelectItem>
+            <SelectItem value="in-stock">$200-$300</SelectItem>
+            <SelectItem value="low-stock">$300-$400</SelectItem>
+            <SelectItem value="archived">$400-$500</SelectItem>
+          </SelectContent>
+        </Select>
+      </>
+    );
+  };
+
   return (
     <div className="w-full space-y-4">
       <div className="flex items-center gap-4">
@@ -302,102 +398,50 @@ export default function ProductList({ data }: { data: Product[] }) {
             onChange={(event) => table.getColumn("name")?.setFilterValue(event.target.value)}
             className="max-w-sm"
           />
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="outline">
-                <PlusCircle />
-                Status
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-52 p-0">
-              <Command>
-                <CommandInput placeholder="Status" className="h-9" />
-                <CommandList>
-                  <CommandEmpty>No status found.</CommandEmpty>
-                  <CommandGroup>
-                    {statuses.map((status) => (
-                      <CommandItem
-                        key={status.value}
-                        value={status.value}
-                        onSelect={(currentValue) => {
-                          // setValue(currentValue === value ? "" : currentValue);
-                          // setOpen(false);
-                        }}>
-                        <div className="flex items-center space-x-3 py-1">
-                          <Checkbox id={status.value} />
-                          <label
-                            htmlFor={status.value}
-                            className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                            {status.label}
-                          </label>
-                        </div>
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                </CommandList>
-              </Command>
-            </PopoverContent>
-          </Popover>
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="outline">
-                <PlusCircle />
-                Category
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-52 p-0">
-              <Command>
-                <CommandInput placeholder="Category" className="h-9" />
-                <CommandList>
-                  <CommandEmpty>No category found.</CommandEmpty>
-                  <CommandGroup>
-                    {categories.map((category) => (
-                      <CommandItem
-                        key={category.value}
-                        value={category.value}
-                        onSelect={(currentValue) => {
-                          // setValue(currentValue === value ? "" : currentValue);
-                          // setOpen(false);
-                        }}>
-                        <div className="flex items-center space-x-3 py-1">
-                          <Checkbox id={category.value} />
-                          <label
-                            htmlFor={category.value}
-                            className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                            {category.label}
-                          </label>
-                        </div>
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                </CommandList>
-              </Command>
-            </PopoverContent>
-          </Popover>
+          <div className="hidden gap-2 md:flex">
+            <Filters />
+          </div>
+          {/*filter for mobile*/}
+          <div className="inline md:hidden">
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <FilterIcon />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-60 p-4">
+                <div className="grid space-y-2">
+                  <Filters />
+                </div>
+              </PopoverContent>
+            </Popover>
+          </div>
         </div>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns <ChevronDown className="ml-2 h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) => column.toggleVisibility(!!value)}>
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                );
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="ms-auto flex gap-2">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline">
+                <span className="hidden lg:inline">Columns</span> <Columns />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => {
+                  return (
+                    <DropdownMenuCheckboxItem
+                      key={column.id}
+                      className="capitalize"
+                      checked={column.getIsVisible()}
+                      onCheckedChange={(value) => column.toggleVisibility(!!value)}>
+                      {column.id}
+                    </DropdownMenuCheckboxItem>
+                  );
+                })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
       <div className="rounded-md border">
         <Table>
@@ -438,7 +482,7 @@ export default function ProductList({ data }: { data: Product[] }) {
         </Table>
       </div>
       <div className="flex items-center justify-end space-x-2">
-        <div className="flex-1 text-sm text-muted-foreground">
+        <div className="text-muted-foreground flex-1 text-sm">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>

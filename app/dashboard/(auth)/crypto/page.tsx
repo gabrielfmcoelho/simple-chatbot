@@ -1,18 +1,17 @@
 import { generateMeta } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
-import CalendarDateRangePicker from "@/components/date-range-picker";
-
-import DigitalWallets from "./digital-wallets";
-import { RecentActivities } from "./recent-activities";
-import { BalanceSummeryChart } from "./balance-summary";
-import CoinBuySell from "./coin-buy-sell";
-import OverviewCard from "./overview-card";
-import CryptoCurrencyPriceCards from "./crypto-currency-price-cards";
+import {
+  OverviewCard,
+  RecentActivities,
+  DigitalWallets,
+  TradingCard,
+  BalanceSummeryChart
+} from "@/app/dashboard/(auth)/crypto/components";
 
 export async function generateMetadata() {
   return generateMeta({
-    title: "Crypto Dashboard",
+    title: "Crypto Admin Dashboard",
     description:
       "The crypto admin dashboard is a template for effectively tracking cryptocurrency prices, market trends and portfolio performance. Built with shadcn/ui.",
     canonical: "/crypto"
@@ -21,28 +20,34 @@ export async function generateMetadata() {
 
 export default function Page() {
   return (
-    <>
-      <div className="mb-4 flex flex-col space-y-2 lg:flex-row lg:items-center lg:justify-between">
-        <h1 className="text-2xl font-bold tracking-tight">Crypto Dashboard</h1>
+    <div className="space-y-4">
+      <div className="flex flex-row items-center justify-between">
+        <h1 className="text-xl font-bold tracking-tight lg:text-2xl">Crypto Dashboard</h1>
         <div className="flex items-center space-x-2">
-          <CalendarDateRangePicker />
           <Button>Download</Button>
         </div>
       </div>
-      {/*<div className="mb-4">
-        <CryptoCurrencyPriceCards />
-      </div>*/}
       <div className="space-y-4">
         <div className="gap-4 space-y-4 lg:grid lg:grid-cols-6 lg:space-y-0">
-          <OverviewCard />
-          <DigitalWallets />
-          <CoinBuySell />
+          <div className="lg:col-span-12 xl:col-span-2">
+            <OverviewCard />
+          </div>
+          <div className="lg:col-span-6 xl:col-span-2">
+            <DigitalWallets />
+          </div>
+          <div className="lg:col-span-6 xl:col-span-2">
+            <TradingCard />
+          </div>
         </div>
         <div className="grid gap-4 xl:grid-cols-3">
-          <RecentActivities />
-          <BalanceSummeryChart />
+          <div className="xl:col-span-1">
+            <RecentActivities />
+          </div>
+          <div className="xl:col-span-2">
+            <BalanceSummeryChart />
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

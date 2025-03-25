@@ -1,18 +1,21 @@
 import { generateMeta } from "@/lib/utils";
-import StudentSuccessCard from "./student-success-card";
-import LearningPathCard from "./learning-path-card";
-import { MostActivityCard } from "./most-activity";
-import ProgressStatisticsCard from "./progress-statistics-card";
-import LeaderboardCard from "./leader-board-card";
-import CoursesListTable from "./courses-list";
-import CourseProgressByMonth from "./course-progress-by-month";
-import WelcomeCard from "./welcome-card";
+
+import {
+  WelcomeCard,
+  LeaderboardCard,
+  LearningPathCard,
+  ChartMostActivity,
+  ProgressStatisticsCard,
+  StudentSuccessCard,
+  CourseProgressByMonth,
+  CoursesListTable
+} from "@/app/dashboard/(auth)/academy/components";
 
 export async function generateMetadata() {
   return generateMeta({
-    title: "Academy",
+    title: "Academy Admin Dashboard",
     description:
-      "The ecommerce dashboard template provides a detailed and user-friendly interface for monitoring sales, inventory, and customer data efficiently.",
+      "Admin dashboard template for schools and educational institutions. Built with shadcn/ui, Tailwind CSS, Next.js.",
     canonical: "/academy"
   });
 }
@@ -24,9 +27,15 @@ export default function Page() {
         <h1 className="text-2xl font-bold tracking-tight">Academy</h1>
       </div>
       <div className="grid gap-4 lg:grid-cols-12">
-        <WelcomeCard />
-        <LearningPathCard />
-        <LeaderboardCard />
+        <div className="lg:col-span-12 xl:col-span-6">
+          <WelcomeCard />
+        </div>
+        <div className="lg:col-span-6 xl:col-span-3">
+          <LearningPathCard />
+        </div>
+        <div className="lg:col-span-6 xl:col-span-3">
+          <LeaderboardCard />
+        </div>
       </div>
       <div className="grid gap-4 xl:grid-cols-3">
         <StudentSuccessCard
@@ -36,7 +45,7 @@ export default function Page() {
           passingStudents={1320}
         />
         <ProgressStatisticsCard />
-        <MostActivityCard />
+        <ChartMostActivity />
       </div>
       <div className="mt-4 gap-4 space-y-4 xl:grid xl:grid-cols-2 xl:space-y-0">
         <CourseProgressByMonth />

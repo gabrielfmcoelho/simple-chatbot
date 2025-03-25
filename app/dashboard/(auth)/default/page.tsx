@@ -1,17 +1,22 @@
-import CalendarDateRangePicker from "@/components/date-range-picker";
-import TeamMembersCard from "./cards/theme-members";
-import SubscriptionsCard from "./cards/subscriptions";
-import TotalRevenueCard from "./cards/total-revenue";
-import { Button } from "@/components/ui/button";
-import MetricCard from "./cards/metric";
-import { PaymentsCard } from "./cards/payment";
-import { PaymentMethodCard } from "./cards/payment-method";
 import { generateMeta } from "@/lib/utils";
-import { ChatCard } from "@/app/dashboard/(auth)/default/cards/chat";
+
+import CustomDateRangePicker from "@/components/custom-date-range-picker";
+import { Button } from "@/components/ui/button";
+
+import {
+  ChatWidget,
+  ExerciseMinutes,
+  LatestPayments,
+  PaymentMethodCard,
+  SubscriptionsCard,
+  TeamMembersCard,
+  TotalRevenueCard
+} from "@/app/dashboard/(auth)/default/components";
+import { Download } from "lucide-react";
 
 export async function generateMetadata() {
   return generateMeta({
-    title: "Dashboard",
+    title: "Admin Dashboard",
     description:
       "The admin dashboard template offers a sleek and efficient interface for monitoring important data and user interactions. Built with shadcn/ui.",
     canonical: "/default"
@@ -20,27 +25,30 @@ export async function generateMetadata() {
 
 export default function Page() {
   return (
-    <>
-      <div className="mb-4 flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between lg:space-y-0">
-        <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
+    <div className="space-y-4">
+      <div className="flex flex-row items-center justify-between">
+        <h1 className="text-xl font-bold tracking-tight lg:text-2xl">Dashboard</h1>
         <div className="flex items-center space-x-2">
-          <CalendarDateRangePicker />
-          <Button>Download</Button>
+          <CustomDateRangePicker />
+          <Button>
+            <Download />
+            <span className="hidden lg:inline">Download</span>
+          </Button>
         </div>
       </div>
       <div className="gap-4 space-y-4 lg:grid lg:grid-cols-3 lg:space-y-0">
         <TeamMembersCard />
         <SubscriptionsCard />
         <TotalRevenueCard />
-        <ChatCard />
+        <ChatWidget />
         <div className="lg:col-span-2">
-          <MetricCard className="h-full" />
+          <ExerciseMinutes />
         </div>
         <div className="lg:col-span-2">
-          <PaymentsCard className="h-full" />
+          <LatestPayments />
         </div>
         <PaymentMethodCard />
       </div>
-    </>
+    </div>
   );
 }

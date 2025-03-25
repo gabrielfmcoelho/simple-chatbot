@@ -1,20 +1,22 @@
 import { generateMeta } from "@/lib/utils";
 
-import CalendarDateRangePicker from "@/components/date-range-picker";
 import { Button } from "@/components/ui/button";
+import CalendarDateRangePicker from "@/components/custom-date-range-picker";
 
-import AverageDailySalesCard from "./cards/average-daily-sales";
-import WebsiteAnalyticsCard from "./cards/website-analytics-card";
-import SaleOverviewCard from "./cards/sales-overflow-card";
-import EarningReportsCard from "./cards/earning-reports-card";
-import TicketsCard from "./cards/tickets-card";
-import SalesByCountriesCard from "./cards/sales-by-countries-card";
-import TotalEarningCard from "./cards/total-earning-card";
-import MonthlyCampaignStateCard from "./cards/monthly-campaign-state";
+import {
+  AverageDailySalesCard,
+  WebsiteAnalyticsCard,
+  SaleOverviewCard,
+  EarningReportsCard,
+  TicketsCard,
+  SalesByCountriesCard,
+  TotalEarningCard,
+  MonthlyCampaignStateCard
+} from "@/app/dashboard/(auth)/website-analytics/components";
 
 export async function generateMetadata() {
   return generateMeta({
-    title: "Website Analytics Dashboard",
+    title: "Website Analytics Admin Dashboard",
     description:
       "Website analytics admin dashboard template offers an efficient and flexible tool that allows to track websites traffic data, user interactions and performance analytics in detail with a modern, user-friendly and responsive interface.",
     canonical: "/website-analytics"
@@ -23,9 +25,9 @@ export async function generateMetadata() {
 
 export default function Page() {
   return (
-    <>
-      <div className="mb-4 flex flex-col space-y-2 lg:flex-row lg:items-center lg:justify-between lg:space-y-0">
-        <h1 className="mb-4 text-2xl font-bold tracking-tight lg:mb-0">Website Analytics</h1>
+    <div className="space-y-4">
+      <div className="flex flex-row items-center justify-between">
+        <h1 className="text-xl font-bold tracking-tight lg:text-2xl">Website Analytics</h1>
         <div className="flex items-center space-x-2">
           <div className="grow">
             <CalendarDateRangePicker />
@@ -43,10 +45,10 @@ export default function Page() {
         <div className="lg:col-span-4">
           <SaleOverviewCard />
         </div>
-        <div className="lg:col-span-8">
+        <div className="lg:col-span-12 xl:col-span-8">
           <EarningReportsCard />
         </div>
-        <div className="lg:col-span-4">
+        <div className="lg:col-span-12 xl:col-span-4">
           <TicketsCard />
         </div>
         <div className="lg:col-span-4">
@@ -59,6 +61,6 @@ export default function Page() {
           <MonthlyCampaignStateCard />
         </div>
       </div>
-    </>
+    </div>
   );
 }

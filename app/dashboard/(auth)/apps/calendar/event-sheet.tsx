@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { toast } from "sonner";
 import {
   Form,
   FormControl,
@@ -16,7 +17,6 @@ import {
   FormLabel,
   FormMessage
 } from "@/components/ui/form";
-import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import useCalendarEventStore from "@/store/useCalendarEventStore";
@@ -86,11 +86,11 @@ export default function EventSheet() {
       setStartDate(undefined);
       setEndDate(undefined);
     }
-  }, [event, openSheet]);
+  }, [form, event, openSheet]);
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log("Form data -->", data);
-    toast.success("yes");
+    toast.success("Success!");
   }
 
   return (
@@ -99,99 +99,100 @@ export default function EventSheet() {
         <SheetHeader className="mb-6">
           <SheetTitle>{event ? "Edit" : "Add"} Event</SheetTitle>
         </SheetHeader>
-
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <FormField
-              control={form.control}
-              name="title"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Title</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Description</FormLabel>
-                  <FormControl>
-                    <Textarea {...field} rows={3} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="start"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Start date</FormLabel>
-                  <FormControl>
-                    <DateTimePicker date={parseDate(startDate)} setDate={setStartDate} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="end"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>End date</FormLabel>
-                  <FormControl>
-                    <DateTimePicker date={parseDate(endDate)} setDate={setEndDate} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="color"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Color</FormLabel>
-                  <FormControl>
-                    <Select
-                      defaultValue={field.value}
-                      onValueChange={(value) => form.setValue("color", value)}>
-                      <SelectTrigger className="col-span-3">
-                        <SelectValue placeholder="Select color" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {Object.keys(eventColors).map((color, key) => {
-                          return (
-                            <SelectItem key={key} value={color}>
-                              <div className="flex items-center gap-3 capitalize">
-                                <span
-                                  className={cn(
-                                    "inline-block size-4 rounded-full",
-                                    eventColors[color]
-                                  )}></span>
-                                {color}
-                              </div>
-                            </SelectItem>
-                          );
-                        })}
-                      </SelectContent>
-                    </Select>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button type="submit">Save</Button>
-          </form>
-        </Form>
+        <div className="px-4">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <FormField
+                control={form.control}
+                name="title"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Title</FormLabel>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="description"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Description</FormLabel>
+                    <FormControl>
+                      <Textarea {...field} rows={3} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="start"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Start date</FormLabel>
+                    <FormControl>
+                      <DateTimePicker date={parseDate(startDate)} setDate={setStartDate} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="end"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>End date</FormLabel>
+                    <FormControl>
+                      <DateTimePicker date={parseDate(endDate)} setDate={setEndDate} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="color"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Color</FormLabel>
+                    <FormControl>
+                      <Select
+                        defaultValue={field.value}
+                        onValueChange={(value) => form.setValue("color", value)}>
+                        <SelectTrigger className="w-full">
+                          <SelectValue placeholder="Select color" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {Object.keys(eventColors).map((color, key) => {
+                            return (
+                              <SelectItem key={key} value={color}>
+                                <div className="flex items-center gap-3 capitalize">
+                                  <span
+                                    className={cn(
+                                      "inline-block size-4 rounded-full",
+                                      eventColors[color]
+                                    )}></span>
+                                  {color}
+                                </div>
+                              </SelectItem>
+                            );
+                          })}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit">Save</Button>
+            </form>
+          </Form>
+        </div>
       </SheetContent>
     </Sheet>
   );

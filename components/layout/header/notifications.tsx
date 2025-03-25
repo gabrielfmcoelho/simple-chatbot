@@ -1,4 +1,7 @@
-import { Badge } from "@/components/ui/badge";
+import { BellIcon, ClockIcon } from "lucide-react";
+import Link from "next/link";
+import { useIsMobile } from "@/hooks/use-mobile";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,70 +11,75 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { notifications, type Notification } from "./data";
-import { BellIcon, ClockIcon } from "lucide-react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
+import { notifications, type Notification } from "./data";
+
 const Notifications = () => {
+  const isMobile = useIsMobile();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button size="sm" variant="link" className="relative text-foreground">
-          <BellIcon className="animate-tada !size-5" />
-          <Badge className="absolute bottom-[calc(100%-10px)] left-[calc(100%-12px)] h-4 w-4 items-center justify-center rounded-full p-0 text-[8px] font-semibold">
-            2
-          </Badge>
+        <Button size="icon" variant="outline" className="relative">
+          <>
+            <BellIcon className="animate-tada" />
+            <span className="bg-destructive absolute -end-0.5 -top-0.5 block size-2 shrink-0 rounded-full"></span>
+          </>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="z-50 p-0 lg:w-80">
-        <DropdownMenuLabel className="p-0">
+      <DropdownMenuContent align={isMobile ? "center" : "end"} className="z-10 ms-4 me-4 w-80 p-0">
+        <DropdownMenuLabel className="bg-background dark:bg-muted sticky top-0 z-10 p-0">
           <div className="flex justify-between border-b px-6 py-4">
             <div className="font-medium">Notifications</div>
-            <div className="text-default-800 text-xs md:text-right">
-              <Button variant="link" className="h-auto p-0" asChild>
-                <Link href="#">View all</Link>
-              </Button>
-            </div>
+            <Button variant="link" className="h-auto p-0 text-xs" size="sm" asChild>
+              <Link href="#">View all</Link>
+            </Button>
           </div>
         </DropdownMenuLabel>
-        <div className="h-[300px] xl:h-[350px]">
-          <ScrollArea className="h-full">
-            {notifications.map((item: Notification, index: number) => (
-              <DropdownMenuItem
-                key={`inbox-${index}`}
-                className="group flex cursor-pointer gap-9 px-4 py-2">
-                <div className="flex flex-1 items-start gap-2">
-                  <div className="flex-none">
-                    <Avatar className="h-8 w-8">
-                      <AvatarImage
-                        src={`${process.env.DASHBOARD_BASE_URL}/images/avatars/${item.avatar}`}
-                      />
-                      <AvatarFallback> {item.title.charAt(0)}</AvatarFallback>
-                    </Avatar>
+        <ScrollArea className="max-h-[300px] xl:max-h-[350px]">
+          {notifications.map((item: Notification, key) => (
+            <DropdownMenuItem
+              key={key}
+              className="group flex cursor-pointer items-start gap-9 px-4 py-2">
+              <div className="flex flex-1 items-start gap-2">
+                <div className="flex-none">
+                  <Avatar className="size-8">
+                    <AvatarImage src={`${process.env.ASSETS_URL}/avatars/${item.avatar}`} />
+                    <AvatarFallback> {item.title.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                </div>
+                <div className="flex flex-1 flex-col gap-1">
+                  <div className="dark:group-hover:text-default-800 truncate text-sm font-medium">
+                    {item.title}
                   </div>
-                  <div className="flex flex-1 flex-col gap-1">
-                    <div className="text-default-600 dark:group-hover:text-default-800 truncate text-sm font-normal">
-                      {item.title}
+                  <div className="dark:group-hover:text-default-700 text-muted-foreground line-clamp-1 text-xs">
+                    {item.desc}
+                  </div>
+                  {item.type === "confirm" && (
+                    <div className="flex items-center gap-2">
+                      <Button size="sm" variant="outline">
+                        Accept
+                      </Button>
+                      <Button size="sm" variant="destructive">
+                        Decline
+                      </Button>
                     </div>
-                    <div className="dark:group-hover:text-default-700 line-clamp-1 text-xs font-light text-muted-foreground">
-                      {item.desc}
-                    </div>
-                    <div className="dark:group-hover:text-default-500 flex items-center gap-1 text-xs text-muted-foreground">
-                      <ClockIcon className="!size-3" />
-                      {item.date}
-                    </div>
+                  )}
+                  <div className="dark:group-hover:text-default-500 text-muted-foreground flex items-center gap-1 text-xs">
+                    <ClockIcon className="size-3!" />
+                    {item.date}
                   </div>
                 </div>
-                {item.unreadmessage && (
-                  <div className="flex-0">
-                    <span className="dark:border-default-400 inline-block h-[10px] w-[10px] rounded-full border border-destructive-foreground bg-destructive" />
-                  </div>
-                )}
-              </DropdownMenuItem>
-            ))}
-          </ScrollArea>
-        </div>
+              </div>
+              {item.unread_message && (
+                <div className="flex-0">
+                  <span className="bg-destructive block size-2 rounded-full border" />
+                </div>
+              )}
+            </DropdownMenuItem>
+          ))}
+        </ScrollArea>
       </DropdownMenuContent>
     </DropdownMenu>
   );
