@@ -201,9 +201,6 @@ export default function CalendarDateRangePicker({
                 if (newDate?.from) {
                   setCurrentMonth(newDate.from);
                 }
-                if (newDate?.from && newDate?.to) {
-                  setOpen(false);
-                }
               }}
               onMonthChange={setCurrentMonth}
             />
