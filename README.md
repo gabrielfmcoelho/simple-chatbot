@@ -8,40 +8,49 @@ Follow these steps to get your project up and running locally:
 
 1. Clone the repository:
 
+    ```sh
+    git clone https://github.com/bundui/shadcn-ui-kit-dashboard.git
+    cd shadcn-ui-kit-dashboard
+    ```
 
-    git clone shadcn-ui-kit.git
-    cd shadcn-ui-kit
-   
 2. Install dependencies:
 
-
+    ```sh
     npm install
     # or
     yarn install
     # or
     pnpm install
-    # or
-    bun install
+    ```
 
-If you encounter any problems installing packages, try adding the `--legacy-peer-deps` or `--force` flag:
+   If you encounter any problems installing packages, try adding the `--legacy-peer-deps` or `--force` flag:
 
-    
-3. Set up your environment variables:
+    ```sh
+    npm install --legacy-peer-deps
+    ```
 
-If your project includes an `.env.example` file, make sure to rename it to `.env` and fill in any necessary details.
+    Our recommendation is to use --legacy-peer-deps. [Examine this in more detail](https://ui.shadcn.com/docs/react-19).
 
+
+1. Set up your environment variables:
+
+   If your project includes an `.env.example` file, make sure to rename it to `.env` and fill in any necessary details.
+
+    ```sh
     cp .env.example .env
+    ```
 
-4. Run the development server: 
+2. Run the development server:
 
-    
+    ```sh
     npm run dev
     # or
     yarn dev
     # or
     pnpm dev
-    # or
-    bun dev
-   
-5. Open http://localhost:3000 in your browser to view the result.
-6. You can start editing the page by modifying `app/page.tsx`. The page will automatically update as you make changes.
+    ```
+
+3. Open [http://localhost:3000](http://localhost:3000) in your browser to view the result.
+
+4. You can start editing the page by modifying `app/page.tsx`. The page will automatically update as you make changes.
+
