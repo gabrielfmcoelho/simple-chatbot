@@ -192,7 +192,6 @@ export default function CalendarDateRangePicker({
             </div>
             <Calendar
               className="border-s-0 py-0! ps-0! pe-0! lg:border-s lg:ps-4!"
-              initialFocus
               mode="range"
               month={currentMonth}
               selected={date}
