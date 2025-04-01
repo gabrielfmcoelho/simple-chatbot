@@ -20,7 +20,7 @@ export const page_routes: PageRoutesType[] = [
       {
         title: "Default",
         href: "/dashboard/default",
-        icon: "PieChart"
+        icon: "ChartPie"
       },
       {
         title: "E-commerce",
@@ -62,7 +62,12 @@ export const page_routes: PageRoutesType[] = [
   {
     title: "Apps",
     items: [
-      { title: "Kanban", href: "/dashboard/apps/kanban", icon: "SquareKanban", isComing: true },
+      {
+        title: "Kanban",
+        href: "/dashboard/apps/kanban-board",
+        icon: "SquareKanban",
+        isComing: true
+      },
       { title: "AI Chat", href: "/dashboard/apps/ai-chat", icon: "Brain", isComing: true },
       { title: "Notes", href: "/dashboard/apps/notes", icon: "StickyNote" },
       { title: "Chats", href: "/dashboard/apps/chat", icon: "MessageSquare" },
