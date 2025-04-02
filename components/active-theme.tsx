@@ -54,10 +54,8 @@ export function ActiveThemeProvider({
       body.removeAttribute("data-theme-preset");
     }
 
-    if (previousTheme.current.contentLayout != theme.contentLayout) {
-      setThemeCookie("theme_content_layout", theme.contentLayout);
-      body.setAttribute("data-theme-content-layout", theme.contentLayout);
-    }
+    setThemeCookie("theme_content_layout", theme.contentLayout);
+    body.setAttribute("data-theme-content-layout", theme.contentLayout);
 
     if (theme.scale != "none") {
       setThemeCookie("theme_scale", theme.scale);
