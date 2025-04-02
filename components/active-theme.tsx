@@ -1,19 +1,21 @@
 "use client";
 
-import { ReactNode, createContext, useContext, useEffect, useState } from "react";
+import { ReactNode, createContext, useContext, useEffect, useState, useRef } from "react";
+import { DEFAULT_THEME, ThemeType } from "@/lib/themes";
 
-const COOKIE_NAME = "active_theme";
-const DEFAULT_THEME = "default";
-
-function setThemeCookie(theme: string) {
+function setThemeCookie(key: string, value: string | null) {
   if (typeof window === "undefined") return;
 
-  document.cookie = `${COOKIE_NAME}=${theme}; path=/; max-age=31536000; SameSite=Lax; ${window.location.protocol === "https:" ? "Secure;" : ""}`;
+  if (!value) {
+    document.cookie = `${key}=; path=/; max-age=0; SameSite=Lax; ${window.location.protocol === "https:" ? "Secure;" : ""}`;
+  } else {
+    document.cookie = `${key}=${value}; path=/; max-age=31536000; SameSite=Lax; ${window.location.protocol === "https:" ? "Secure;" : ""}`;
+  }
 }
 
 type ThemeContextType = {
-  activeTheme: string;
-  setActiveTheme: (theme: string) => void;
+  theme: ThemeType;
+  setTheme: (theme: ThemeType) => void;
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -23,26 +25,66 @@ export function ActiveThemeProvider({
   initialTheme
 }: {
   children: ReactNode;
-  initialTheme?: string;
+  initialTheme?: ThemeType;
 }) {
-  const [activeTheme, setActiveTheme] = useState<string>(() => initialTheme || DEFAULT_THEME);
+  const previousTheme = useRef<ThemeType>(initialTheme ? initialTheme : DEFAULT_THEME);
+  const [theme, setTheme] = useState<ThemeType>(() =>
+    initialTheme ? initialTheme : DEFAULT_THEME
+  );
 
   useEffect(() => {
-    setThemeCookie(activeTheme);
+    const body = document.body;
 
-    document.body.classList.forEach((className) => {
-      if (className.startsWith("theme-")) {
-        document.body.classList.remove(className);
-      }
-    });
-    document.body.classList.add(`theme-${activeTheme}`);
-  }, [activeTheme]);
+    setThemeCookie("theme_radius", theme.radius);
+    body.setAttribute("data-theme-radius", theme.radius);
 
-  return (
-    <ThemeContext.Provider value={{ activeTheme, setActiveTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+    if (theme.radius != "default") {
+      setThemeCookie("theme_preset", theme.radius);
+      body.setAttribute("data-theme-radius", theme.radius);
+    } else {
+      setThemeCookie("theme_preset", null);
+      body.removeAttribute("data-theme-radius");
+    }
+
+    if (theme.preset != "default") {
+      setThemeCookie("theme_preset", theme.preset);
+      body.setAttribute("data-theme-preset", theme.preset);
+    } else {
+      setThemeCookie("theme_preset", null);
+      body.removeAttribute("data-theme-preset");
+    }
+
+    if (previousTheme.current.contentLayout != theme.contentLayout) {
+      setThemeCookie("theme_content_layout", theme.contentLayout);
+      body.setAttribute("data-theme-content-layout", theme.contentLayout);
+    }
+
+    if (theme.scale != "none") {
+      setThemeCookie("theme_scale", theme.scale);
+      body.setAttribute("data-theme-scale", theme.scale);
+    } else {
+      setThemeCookie("theme_scale", null);
+      body.removeAttribute("data-theme-scale");
+    }
+
+    if (theme.chartPreset != "default") {
+      setThemeCookie("theme_chart_preset", theme.chartPreset);
+      body.setAttribute("data-theme-chart-preset", theme.chartPreset);
+    } else {
+      setThemeCookie("theme_chart_preset", null);
+      body.removeAttribute("data-theme-chart-preset");
+    }
+
+    if (theme.font != "default") {
+      setThemeCookie("theme_font", theme.font);
+      body.setAttribute("data-theme-font", theme.font);
+    } else {
+      setThemeCookie("theme_font", null);
+      body.removeAttribute("data-theme-font");
+    }
+  }, [theme.preset, theme.radius, theme.scale, theme.chartPreset, theme.contentLayout, theme.font]);
+
+  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 }
 
 export function useThemeConfig() {

@@ -187,17 +187,17 @@ export default function Sidebar() {
         </ScrollArea>
       </SidebarContent>
       <SidebarFooter>
-        <Card className="bg-muted gap-3 py-4 group-data-[collapsible=icon]:hidden">
+        <Card className="bg-muted gap-4 py-4 group-data-[collapsible=icon]:hidden">
           <CardHeader className="px-3">
-            <CardTitle>Get Shadcn UI Kit</CardTitle>
+            <CardTitle>Upgrade to Pro</CardTitle>
             <CardDescription>
-              Use the link to get this dashboard template and access other resources.
+              Get pro now to own all dashboards, templates, components and pages for life.
             </CardDescription>
           </CardHeader>
           <CardContent className="px-3">
             <Button className="w-full" asChild>
               <Link href="https://shadcnuikit.com/pricing" target="_blank">
-                Download
+                Get Shadcn UI Kit
               </Link>
             </Button>
           </CardContent>

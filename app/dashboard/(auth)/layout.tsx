@@ -5,6 +5,7 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import Sidebar from "@/components/layout/sidebar";
 import Header from "@/components/layout/header";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeCustomizerPanel } from "@/components/theme-customizer";
 
 export default async function AuthLayout({
   children
@@ -21,10 +22,10 @@ export default async function AuthLayout({
       <Sidebar />
       <SidebarInset>
         <Header />
-        <main className="p-4 xl:group-data-[content-layout=centered]:container xl:group-data-[content-layout=centered]:mt-8">
+        <main className="mx-auto p-4 xl:group-data-[theme-content-layout=centered]:container xl:group-data-[theme-content-layout=centered]:mt-8">
           {children}
         </main>
-        {/*<ThemeCustomizerPanel />*/}
+        <ThemeCustomizerPanel />
         <Toaster position="top-center" />
       </SidebarInset>
     </SidebarProvider>
