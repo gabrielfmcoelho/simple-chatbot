@@ -80,7 +80,7 @@ export default function NoteContent() {
       <div
         data-view-mode={viewMode}
         className={cn("group", {
-          "box-border columns-1 gap-4 [column-fill:_balance] group-data-[theme-content-layout=centered]:columns-3 group-data-[theme-content-layout=full]:columns-1 sm:group-data-[theme-content-layout=full]:columns-2 md:group-data-[theme-content-layout=full]:columns-3 lg:columns-2 xl:group-data-[theme-content-layout=full]:columns-4":
+          "box-border columns-1 gap-4 [column-fill:_balance] group-data-[theme-content-layout=centered]/layout:columns-3 group-data-[theme-content-layout=full]/layout:columns-1 sm:group-data-[theme-content-layout=full]:columns-2 md:group-data-[theme-content-layout=full]/layout:columns-3 lg:columns-2 xl:group-data-[theme-content-layout=full]/layout:columns-4":
             viewMode === "masonry"
         })}>
         {filteredNotes.map((note: Note, key: number) => (
