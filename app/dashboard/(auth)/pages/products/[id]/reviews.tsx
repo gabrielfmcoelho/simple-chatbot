@@ -1,7 +1,6 @@
 import { StarIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import UserAvatar from "@/components/user-avatar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { generateAvatarFallback } from "@/lib/utils";
 

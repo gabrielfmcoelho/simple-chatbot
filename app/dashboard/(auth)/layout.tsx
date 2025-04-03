@@ -22,7 +22,7 @@ export default async function AuthLayout({
       <Sidebar />
       <SidebarInset>
         <Header />
-        <main className="p-4 xl:mx-auto xl:group-data-[theme-content-layout=centered]:container xl:group-data-[theme-content-layout=centered]:mt-8">
+        <main className="p-4 pb-0 xl:group-data-[theme-content-layout=centered]:container xl:group-data-[theme-content-layout=centered]:mx-auto xl:group-data-[theme-content-layout=centered]:mt-8">
           {children}
         </main>
         <ThemeCustomizerPanel />

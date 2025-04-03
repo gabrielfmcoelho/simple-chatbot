@@ -37,7 +37,7 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={cn("bg-background group font-sans", fontVariables)}
+        className={cn("bg-background group/layout font-sans", fontVariables)}
         {...bodyAttributes}>
         <ThemeProvider
           attribute="class"

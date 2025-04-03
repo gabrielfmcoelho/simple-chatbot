@@ -1,4 +1,4 @@
-import { Mic, Paperclip, PlusCircleIcon, SmileIcon } from "lucide-react";
+import { Mic, Paperclip, PlusCircleIcon, SendIcon, SmileIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,7 +12,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 
 export function ChatFooter() {
   return (
-    <div className="px-4">
+    <div className="lg:px-4">
       <div className="bg-muted relative flex items-center rounded-md border">
         <Input
           type="text"
@@ -28,7 +28,6 @@ export function ChatFooter() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuSeparator />
                 <DropdownMenuItem>Emoji</DropdownMenuItem>
                 <DropdownMenuItem>Add File</DropdownMenuItem>
                 <DropdownMenuItem>Send Voice</DropdownMenuItem>
@@ -39,24 +38,24 @@ export function ChatFooter() {
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button variant="ghost" className="h-11 w-11 rounded-full p-0">
-                    <SmileIcon className="h-4 w-4" />
+                  <Button variant="ghost" size="icon" className="rounded-full">
+                    <SmileIcon />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent side="top">Emoji</TooltipContent>
               </Tooltip>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button variant="ghost" className="h-11 w-11 rounded-full p-0">
-                    <Paperclip className="h-4 w-4" />
+                  <Button variant="ghost" size="icon" className="rounded-full">
+                    <Paperclip />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent side="top">Select File</TooltipContent>
               </Tooltip>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button variant="ghost" className="h-11 w-11 rounded-full p-0">
-                    <Mic className="h-4 w-4" />
+                  <Button variant="ghost" size="icon" className="rounded-full">
+                    <Mic />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent side="top">Send Voice</TooltipContent>
@@ -64,7 +63,7 @@ export function ChatFooter() {
             </TooltipProvider>
           </div>
           <Button variant="outline" className="ms-3">
-            Send
+            <span className="hidden lg:inline">Send</span> <SendIcon className="inline lg:hidden" />
           </Button>
         </div>
       </div>

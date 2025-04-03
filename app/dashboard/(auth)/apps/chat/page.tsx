@@ -3,8 +3,7 @@ import path from "path";
 import { promises as fs } from "fs";
 import { ChatItemProps, UserPropsTypes } from "./types";
 
-import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ActionDropdown, ChatList, ChatContent } from "@/app/dashboard/(auth)/apps/chat/components";
+import { ChatSidebar, ChatContent } from "@/app/dashboard/(auth)/apps/chat/components";
 
 export async function generateMetadata() {
   return generateMeta({
@@ -39,20 +38,10 @@ export default async function Page() {
       return item;
     })
   );
-  // h-[calc(100vh-6rem)]
+
   return (
-    <div className="lg:flex">
-      <Card className="w-full pb-0 lg:w-96">
-        <CardHeader>
-          <CardTitle className="text-xl">Chats</CardTitle>
-          <CardAction>
-            <ActionDropdown />
-          </CardAction>
-        </CardHeader>
-        <CardContent className="p-0">
-          <ChatList chats={chats_with_user} />
-        </CardContent>
-      </Card>
+    <div className="flex h-[calc(100vh-5.3rem)] w-full">
+      <ChatSidebar chats={chats_with_user} />
       <div className="grow">
         <ChatContent />
       </div>

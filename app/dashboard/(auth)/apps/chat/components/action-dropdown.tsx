@@ -17,7 +17,7 @@ export function ActionDropdown() {
           <PlusIcon />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-48">
+      <DropdownMenuContent align="end">
         <DropdownMenuGroup>
           <DropdownMenuItem>New chat</DropdownMenuItem>
           <DropdownMenuItem>Create group</DropdownMenuItem>

@@ -1,7 +1,7 @@
 export * from "./chat-header";
 export * from "./chat-content";
 export * from "./chat-footer";
-export * from "./chat-list";
+export * from "./chat-sidebar";
 export * from "./chat-list-item";
 export * from "./chat-list-item-dropdown";
 export * from "./action-dropdown";
@@ -9,3 +9,5 @@ export * from "./chat-bubbles";
 export * from "./media-list-item";
 export * from "./message-status-icon";
 export * from "./user-detail-sheet";
+export * from "./call-dialog";
+export * from "./video-call-dialog";

@@ -30,11 +30,11 @@ function TextChatBubble({ message }: { message: ChatMessageProps }) {
         <div className={cn({ "order-2": !message.own_message })}>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost">
-                <Ellipsis className="h-4 w-4" />
+              <Button size="icon" variant="ghost">
+                <Ellipsis />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-40">
+            <DropdownMenuContent align={message.own_message ? "start" : "end"}>
               <DropdownMenuGroup>
                 <DropdownMenuItem>Forward</DropdownMenuItem>
                 <DropdownMenuItem>Star</DropdownMenuItem>
@@ -69,12 +69,12 @@ function FileChatBubble({ message }: { message: ChatMessageProps }) {
       })}>
       <div className="flex items-center gap-2">
         <div
-          className={cn("bg-muted inline-flex items-center rounded-md border p-4", {
+          className={cn("bg-muted inline-flex items-start rounded-md border p-4", {
             "order-1": message.own_message
           })}>
-          <FileIcon className="me-4 size-8 opacity-50" strokeWidth={1.5} />
+          <FileIcon className="me-4 mt-1 size-8 opacity-50" strokeWidth={1.5} />
           <div className="flex flex-col gap-2">
-            <div>
+            <div className="text-sm">
               {message.data?.file_name}
               <span className="text-muted-foreground ms-2 text-sm">({message.data?.size})</span>
             </div>
@@ -95,7 +95,7 @@ function FileChatBubble({ message }: { message: ChatMessageProps }) {
                 <Ellipsis className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-40">
+            <DropdownMenuContent align={message.own_message ? "start" : "end"}>
               <DropdownMenuGroup>
                 <DropdownMenuItem>Forward</DropdownMenuItem>
                 <DropdownMenuItem>Star</DropdownMenuItem>
@@ -148,7 +148,7 @@ function VideoChatBubble({ message }: { message: ChatMessageProps }) {
                 <Ellipsis />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-40">
+            <DropdownMenuContent align={message.own_message ? "start" : "end"}>
               <DropdownMenuGroup>
                 <DropdownMenuItem>Forward</DropdownMenuItem>
                 <DropdownMenuItem>Star</DropdownMenuItem>
@@ -198,7 +198,7 @@ function SoundChatBubble({ message }: { message: ChatMessageProps }) {
                 <Ellipsis className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-40">
+            <DropdownMenuContent align={message.own_message ? "start" : "end"}>
               <DropdownMenuGroup>
                 <DropdownMenuItem>Forward</DropdownMenuItem>
                 <DropdownMenuItem>Star</DropdownMenuItem>
@@ -276,7 +276,7 @@ function ImageChatBubble({ message }: { message: ChatMessageProps }) {
                 <Ellipsis />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-40">
+            <DropdownMenuContent align={message.own_message ? "start" : "end"}>
               <DropdownMenuGroup>
                 <DropdownMenuItem>Forward</DropdownMenuItem>
                 <DropdownMenuItem>Star</DropdownMenuItem>

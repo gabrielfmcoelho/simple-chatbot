@@ -63,7 +63,7 @@ export const page_routes: PageRoutesType[] = [
     items: [
       {
         title: "Kanban",
-        href: "/dashboard/apps/kanban-board",
+        href: "/dashboard/apps/kanban",
         icon: "SquareKanban",
         isComing: true
       },

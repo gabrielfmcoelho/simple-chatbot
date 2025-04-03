@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import useChatStore from "@/store/useChatStore";
 import { ChatMessageProps } from "../types";
 
-import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   ChatHeader,
   ChatBubble,
@@ -46,19 +45,17 @@ export function ChatContent() {
   }
 
   return (
-    <div className="bg-background fixed inset-0 z-50 flex flex-col p-4 lg:relative lg:bg-transparent lg:p-0">
+    <div className="bg-background fixed inset-0 z-50 flex h-full flex-col p-4 lg:relative lg:z-10 lg:bg-transparent lg:p-0">
       <ChatHeader user={selectedChat.user} />
-      <div className="px-4">
-        <ScrollArea className="relative h-screen w-full lg:h-[calc(100vh-11.5rem)]">
-          <div ref={messagesContainerRef}>
-            <div className="flex flex-col items-start space-y-10 py-8">
-              {selectedChat?.messages?.length &&
-                selectedChat.messages.map((item: ChatMessageProps, key) => (
-                  <ChatBubble message={item} type={item.type} key={key} />
-                ))}
-            </div>
+      <div className="flex-1 overflow-y-auto lg:px-4">
+        <div ref={messagesContainerRef}>
+          <div className="flex flex-col items-start space-y-10 py-8">
+            {selectedChat?.messages?.length &&
+              selectedChat.messages.map((item: ChatMessageProps, key) => (
+                <ChatBubble message={item} type={item.type} key={key} />
+              ))}
           </div>
-        </ScrollArea>
+        </div>
       </div>
       <ChatFooter />
       <UserDetailSheet user={selectedChat.user} />

@@ -1,6 +1,3 @@
-import { AvatarIndicatorProps } from "@/components/ui/avatar";
-import { Dispatch, SetStateAction } from "react";
-
 export type ChatItemProps = {
   id: number;
   name?: string;
@@ -52,41 +49,6 @@ export type UserPropsTypes = {
     type?: string;
     path?: string;
   }[];
-};
-
-export interface UserProfileContextType {
-  show: boolean;
-  setShow: Dispatch<SetStateAction<boolean>>;
-}
-
-export interface SelectedChatContextType {
-  selectedChat: ChatItemProps | null;
-  setSelectedChat: Dispatch<SetStateAction<ChatItemProps | null>>;
-}
-
-export interface SelectedContactContextType {
-  selectedContact: UserPropsTypes | null;
-  setSelectedContact: Dispatch<SetStateAction<UserPropsTypes | null>>;
-}
-
-export interface SelectedStatusContextType {
-  selectedStatus: StatusItemProps | null;
-  setSelectedStatus: Dispatch<SetStateAction<StatusItemProps | null>>;
-}
-
-export type UserAvatarProps = {
-  image?: string;
-  indicator?: AvatarIndicatorProps["variant"];
-  fallback?: string;
-  className?: string;
-};
-
-export type StatusItemProps = {
-  id: number;
-  images: [];
-  date: string;
-  user_id: number;
-  user: UserPropsTypes;
 };
 
 export type MediaListItemType = {

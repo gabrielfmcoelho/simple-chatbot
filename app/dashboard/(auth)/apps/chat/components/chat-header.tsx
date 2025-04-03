@@ -1,13 +1,17 @@
 "use client";
 
-import { ArrowLeft, Ellipsis, Phone, PhoneCall, Video, X } from "lucide-react";
+import React from "react";
+import { ArrowLeft, Ellipsis } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { generateAvatarFallback } from "@/lib/utils";
 import useChatStore from "@/store/useChatStore";
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Dialog, DialogClose, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { ChatUserDropdown } from "@/app/dashboard/(auth)/apps/chat/components";
+import {
+  CallDialog,
+  ChatUserDropdown,
+  VideoCallDialog
+} from "@/app/dashboard/(auth)/apps/chat/components";
 import { Avatar, AvatarFallback, AvatarImage, AvatarIndicator } from "@/components/ui/avatar";
 import { UserPropsTypes } from "@/app/dashboard/(auth)/apps/chat/types";
 
@@ -15,7 +19,7 @@ export function ChatHeader({ user }: { user: UserPropsTypes }) {
   const { setSelectedChat } = useChatStore();
 
   return (
-    <div className="flex justify-between gap-4 px-4">
+    <div className="flex justify-between gap-4 lg:px-4">
       <div className="flex gap-4">
         <Button
           size="sm"
@@ -24,8 +28,8 @@ export function ChatHeader({ user }: { user: UserPropsTypes }) {
           onClick={() => setSelectedChat(null)}>
           <ArrowLeft />
         </Button>
-        <Avatar className="size-12 overflow-visible">
-          <AvatarImage src={`${process.env.ASSETS_URL}/${user?.avatar}`} alt="avatar image" />
+        <Avatar className="size-10 overflow-visible lg:size-12">
+          <AvatarImage src={`${user?.avatar}`} alt="avatar image" />
           <AvatarIndicator variant={user?.online_status} />
           <AvatarFallback>{generateAvatarFallback(user?.name)}</AvatarFallback>
         </Avatar>
@@ -44,34 +48,7 @@ export function ChatHeader({ user }: { user: UserPropsTypes }) {
             <Tooltip>
               <TooltipTrigger asChild>
                 <div>
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button variant="outline">
-                        <Video className="h-4 w-4" />
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="top-8 flex translate-y-0 items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <Avatar className="size-20">
-                          <AvatarImage
-                            src={`${process.env.ASSETS_URL}/avatars/04.png`}
-                            alt="avatar image"
-                          />
-                        </Avatar>
-                        <div className="text-lg">Jennica calling ...</div>
-                      </div>
-                      <div className="flex gap-4">
-                        <DialogClose asChild>
-                          <Button className="h-12 w-12 rounded-full bg-red-600 p-0 hover:bg-red-700">
-                            <X />
-                          </Button>
-                        </DialogClose>
-                        <Button className="h-12 w-12 rounded-full bg-green-600 p-0 hover:bg-green-700">
-                          <Phone />
-                        </Button>
-                      </div>
-                    </DialogContent>
-                  </Dialog>
+                  <VideoCallDialog />
                 </div>
               </TooltipTrigger>
               <TooltipContent side="bottom">Start Video Chat</TooltipContent>
@@ -79,34 +56,7 @@ export function ChatHeader({ user }: { user: UserPropsTypes }) {
             <Tooltip>
               <TooltipTrigger asChild>
                 <div>
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button variant="outline">
-                        <PhoneCall className="h-4 w-4" />
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="top-8 flex translate-y-0 items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <Avatar className="size-20">
-                          <AvatarImage
-                            src={`${process.env.ASSETS_URL}/avatars/04.png`}
-                            alt="avatar image"
-                          />
-                        </Avatar>
-                        <div className="text-lg">Jennica calling ...</div>
-                      </div>
-                      <div className="flex gap-4">
-                        <DialogClose asChild>
-                          <Button className="h-12 w-12 rounded-full bg-red-600 p-0 hover:bg-red-700">
-                            <X />
-                          </Button>
-                        </DialogClose>
-                        <Button className="h-12 w-12 rounded-full bg-green-600 p-0 hover:bg-green-700">
-                          <Phone />
-                        </Button>
-                      </div>
-                    </DialogContent>
-                  </Dialog>
+                  <CallDialog />
                 </div>
               </TooltipTrigger>
               <TooltipContent side="bottom">Start Call</TooltipContent>
@@ -114,8 +64,8 @@ export function ChatHeader({ user }: { user: UserPropsTypes }) {
           </TooltipProvider>
         </div>
         <ChatUserDropdown>
-          <Button size="sm" variant="ghost" className="h-10 w-10 p-0">
-            <Ellipsis className="h-4 w-4" />
+          <Button size="icon" variant="ghost">
+            <Ellipsis />
           </Button>
         </ChatUserDropdown>
       </div>
