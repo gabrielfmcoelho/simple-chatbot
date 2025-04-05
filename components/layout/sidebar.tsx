@@ -55,7 +55,7 @@ export default function Sidebar() {
 
   return (
     <SidebarContainer collapsible="icon" variant="floating" className="bg-background">
-      <SidebarHeader className="h-16 items-center justify-center">
+      <SidebarHeader className="items-center justify-center pt-3 transition-all group-data-[collapsible=icon]:pt-2">
         <SidebarMenu>
           <SidebarMenuItem>
             <DropdownMenu>
@@ -191,7 +191,7 @@ export default function Sidebar() {
           <CardHeader className="px-3">
             <CardTitle>Upgrade to Pro</CardTitle>
             <CardDescription>
-              Get pro now to own all dashboards, templates, components and pages for life.
+              Get pro now to own all dashboards, templates and components for life.
             </CardDescription>
           </CardHeader>
           <CardContent className="px-3">
