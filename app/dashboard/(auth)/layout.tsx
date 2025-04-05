@@ -22,9 +22,9 @@ export default async function AuthLayout({
       <Sidebar />
       <SidebarInset>
         <Header />
-        <main className="p-4 pb-0 xl:group-data-[theme-content-layout=centered]:container xl:group-data-[theme-content-layout=centered]:mx-auto xl:group-data-[theme-content-layout=centered]:mt-8">
+        <div className="p-4 pb-0 xl:group-data-[theme-content-layout=centered]/layout:container xl:group-data-[theme-content-layout=centered]/layout:mx-auto xl:group-data-[theme-content-layout=centered]/layout:mt-8">
           {children}
-        </main>
+        </div>
         <ThemeCustomizerPanel />
         <Toaster position="top-center" />
       </SidebarInset>
