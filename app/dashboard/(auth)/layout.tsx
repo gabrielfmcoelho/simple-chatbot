@@ -20,7 +20,7 @@ export default async function AuthLayout({
   return (
     <SidebarProvider defaultOpen={defaultOpen}>
       <Sidebar />
-      <SidebarInset>
+      <SidebarInset className="overflow-x-hidden">
         <Header />
         <div className="p-4 pb-0 xl:group-data-[theme-content-layout=centered]/layout:container xl:group-data-[theme-content-layout=centered]/layout:mx-auto xl:group-data-[theme-content-layout=centered]/layout:mt-8">
           {children}
