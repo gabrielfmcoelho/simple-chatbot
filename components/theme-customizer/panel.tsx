@@ -1,3 +1,5 @@
+"use client";
+
 import { Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,19 +18,21 @@ import {
   ResetThemeButton,
   ChartPresetSelector
 } from "@/components/theme-customizer/index";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export function ThemeCustomizerPanel() {
+  const isMobile = useIsMobile();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div className="fixed right-6 bottom-6/12 z-50 lg:right-10 lg:bottom-10">
-          <Button size="icon" className="animate-spin rounded-full lg:size-14">
-            <Settings className="size-4! md:size-6!" />
-            <span className="sr-only">Open theme customizer</span>
-          </Button>
-        </div>
+        <Button size="icon" variant="outline">
+          <Settings className="animate-tada" />
+        </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-72 p-4 shadow-xl" align="end">
+      <DropdownMenuContent
+        className="me-4 w-72 p-4 shadow-xl lg:me-0"
+        align={isMobile ? "center" : "end"}>
         <div className="grid space-y-4">
           <PresetSelector />
           <ChartPresetSelector />
