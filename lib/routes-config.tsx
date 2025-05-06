@@ -67,7 +67,7 @@ export const page_routes: PageRoutesType[] = [
         icon: "SquareKanban",
         isComing: true
       },
-      { title: "AI Chat", href: "/dashboard/apps/ai-chat", icon: "Brain", isComing: true },
+      { title: "AI Chat", href: "/dashboard/apps/ai-chat", icon: "Brain" },
       { title: "Notes", href: "/dashboard/apps/notes", icon: "StickyNote" },
       { title: "Chats", href: "/dashboard/apps/chat", icon: "MessageSquare" },
       { title: "Mail", href: "/dashboard/apps/mail", icon: "Mail", isComing: true },

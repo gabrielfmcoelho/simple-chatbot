@@ -5,7 +5,6 @@ import Link from "next/link";
 import { page_routes } from "@/lib/routes-config";
 import { ChevronRight, ChevronsUpDown } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { useIsTablet } from "@/hooks/use-mobile";
 
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
@@ -37,6 +36,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import Icon from "@/components/icon";
 import Logo from "@/components/layout/logo";
 import { Button } from "@/components/ui/button";
+import { useIsTablet } from "@/hooks/use-mobile";
 
 export default function Sidebar() {
   const pathname = usePathname();
