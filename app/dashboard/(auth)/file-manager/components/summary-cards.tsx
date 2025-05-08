@@ -65,7 +65,7 @@ export function SummaryCards() {
             </CardAction>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="text-2xl font-semibold lg:text-3xl">
+            <div className="font-display text-2xl lg:text-3xl">
               <CountAnimation number={item.count} />
             </div>
             <div className="space-y-2">

@@ -11,8 +11,8 @@ import {
 
 export function SummaryCards() {
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <Card className="border-orange-600/20 bg-orange-50 dark:bg-orange-950/50">
+    <div className="*:data-[slot=card]:from-primary/10 grid gap-4 *:data-[slot=card]:bg-gradient-to-t md:grid-cols-2 lg:grid-cols-4">
+      <Card>
         <CardHeader>
           <CardTitle>Total Revenue</CardTitle>
           <CardDescription>
@@ -23,10 +23,10 @@ export function SummaryCards() {
           </CardAction>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-semibold lg:text-3xl">$45,231.89</div>
+          <div className="font-display text-2xl lg:text-3xl">$45,231.89</div>
         </CardContent>
       </Card>
-      <Card className="border-green-600/20 bg-green-50 dark:bg-green-950/50">
+      <Card>
         <CardHeader>
           <CardTitle>Active Projects</CardTitle>
           <CardDescription>
@@ -37,10 +37,10 @@ export function SummaryCards() {
           </CardAction>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-semibold lg:text-3xl">1.423</div>
+          <div className="font-display text-2xl lg:text-3xl">1.423</div>
         </CardContent>
       </Card>
-      <Card className="border-blue-600/20 bg-blue-50 dark:bg-blue-950/50">
+      <Card>
         <CardHeader>
           <CardTitle>New Leads</CardTitle>
           <CardDescription>
@@ -51,10 +51,10 @@ export function SummaryCards() {
           </CardAction>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-semibold lg:text-3xl">3.500</div>
+          <div className="font-display text-2xl lg:text-3xl">3.500</div>
         </CardContent>
       </Card>
-      <Card className="border-purple-600/20 bg-purple-50 dark:bg-purple-950/50">
+      <Card>
         <CardHeader>
           <CardTitle>Time Spent</CardTitle>
           <CardDescription>
@@ -65,7 +65,7 @@ export function SummaryCards() {
           </CardAction>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-semibold lg:text-3xl">168h 40m</div>
+          <div className="font-display text-2xl lg:text-3xl">168h 40m</div>
         </CardContent>
       </Card>
     </div>

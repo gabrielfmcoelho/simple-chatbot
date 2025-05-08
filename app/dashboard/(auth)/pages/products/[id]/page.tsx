@@ -35,7 +35,7 @@ export default function Page() {
     <div className="space-y-4">
       <div className="flex flex-row items-start justify-between">
         <div className="space-y-2">
-          <h1 className="text-xl font-bold tracking-tight lg:text-2xl">Acme Prism T-Shirt</h1>
+          <h1 className="font-display text-xl tracking-tight lg:text-2xl">Acme Prism T-Shirt</h1>
           <div className="text-muted-foreground inline-flex flex-col gap-2 text-sm lg:flex-row lg:gap-4">
             <div>
               <span className="text-foreground font-semibold">Seller :</span> Poetic Fashion
@@ -257,7 +257,7 @@ export default function Page() {
                         <StarIcon className="size-4 stroke-orange-400" />
                         <StarIcon className="size-4 stroke-orange-400" />
                       </div>
-                      <span className="text-muted-foreground">4.3 (12 reviews)</span>
+                      <span className="text-muted-foreground text-sm">4.3 (12 reviews)</span>
                     </div>
                     <div className="space-y-4 p-4">
                       <div className="flex items-center gap-4 text-sm">

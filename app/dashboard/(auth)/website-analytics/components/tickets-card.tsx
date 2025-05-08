@@ -54,7 +54,7 @@ export function TicketsCard() {
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground text-3xl font-bold">
+                          className="fill-foreground font-display text-3xl">
                           88%
                         </tspan>
                         <tspan

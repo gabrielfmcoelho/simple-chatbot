@@ -24,7 +24,7 @@ export function OverviewCard() {
           </div>
 
           <div className="space-y-1">
-            <h3 className="text-3xl font-bold lg:text-5xl">$46,200</h3>
+            <h3 className="font-display text-3xl lg:text-4xl">$46,200</h3>
             <p className="text-muted-foreground">Current balance</p>
           </div>
 

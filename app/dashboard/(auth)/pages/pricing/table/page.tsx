@@ -14,12 +14,6 @@ import {
   TableRow
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger
-} from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 
 export default function Page() {
@@ -64,34 +58,6 @@ export default function Page() {
         analytics: true,
         api: true
       }
-    }
-  ];
-
-  const faqs = [
-    {
-      question: "What payment methods do you accept?",
-      answer:
-        "We accept all major credit components, including Visa, MasterCard, American Express, and Discover. We also support PayPal for your convenience."
-    },
-    {
-      question: "Can I cancel my subscription at any time?",
-      answer:
-        "Yes, you can cancel your subscription at any time. If you cancel, you'll continue to have access to the platform until the end of your current billing period."
-    },
-    {
-      question: "Is there a limit to how many courses I can take?",
-      answer:
-        "No, there's no limit. With our Premium Plan, you have unlimited access to all courses on our platform. You can take as many courses as you like, at your own pace."
-    },
-    {
-      question: "Do you offer a free trial?",
-      answer:
-        "We offer a 7-day free trial for new users. This allows you to explore our platform and content before committing to a subscription. No credit card is required for the trial."
-    },
-    {
-      question: "Are the courses downloadable for offline viewing?",
-      answer:
-        "Yes, our mobile app allows you to download courses for offline viewing. This feature is available for both iOS and Android devices."
     }
   ];
 
@@ -143,7 +109,7 @@ export default function Page() {
                   <TableCell className="font-medium">Price</TableCell>
                   {pricingTiers.map((tier, index) => (
                     <TableCell key={index} className="text-center">
-                      <div className="text-xl font-bold">
+                      <div className="font-display text-2xl">
                         {isYearly ? formatPrice(tier.yearlyPrice) : formatPrice(tier.monthlyPrice)}
                         <span className="text-sm font-normal">/{isYearly ? "year" : "month"}</span>
                       </div>

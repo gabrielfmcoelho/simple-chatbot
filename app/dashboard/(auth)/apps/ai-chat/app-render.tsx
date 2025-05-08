@@ -160,7 +160,7 @@ export default function AppRender() {
                   "justify-end text-end": !isAssistant
                 })}>
                 {isAssistant ? (
-                  <div className="bg-secondary text-foreground prose rounded-lg px-3 py-2">
+                  <div className="bg-muted text-foreground prose rounded-lg border px-3 py-2">
                     <Markdown className={"space-y-4"}>{message.content}</Markdown>
                   </div>
                 ) : message?.files && message.files.length > 0 ? (

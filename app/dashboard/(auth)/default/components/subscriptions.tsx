@@ -58,7 +58,7 @@ export function SubscriptionsCard() {
         <CardTitle>Subscriptions</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="text-2xl leading-6 font-bold">+4850</div>
+        <div className="font-display text-3xl leading-6">+4850</div>
         <p className="text-muted-foreground mt-1.5 text-xs">
           <span className="text-green-500">+180.1%</span> from last month
         </p>

@@ -13,7 +13,7 @@ export function EcommerceWelcomeCard() {
       <CardContent>
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-3xl font-semibold">$15,231.89</div>
+            <div className="font-display text-3xl">$15,231.89</div>
             <div className="text-muted-foreground text-xs">
               <span className="text-green-500">+65%</span> from last month
             </div>

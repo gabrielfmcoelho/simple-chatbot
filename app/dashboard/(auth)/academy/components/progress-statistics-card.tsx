@@ -14,7 +14,7 @@ export function ProgressStatisticsCard() {
       <CardContent className="flex flex-col space-y-6">
         <div className="space-y-4 text-center">
           <div>Total Activity</div>
-          <div className="text-3xl font-semibold lg:text-4xl">72.5%</div>
+          <div className="font-display text-3xl lg:text-4xl">72.5%</div>
         </div>
         <div className="grid w-full gap-8 lg:grid-cols-2">
           <div className="flex items-center gap-2">

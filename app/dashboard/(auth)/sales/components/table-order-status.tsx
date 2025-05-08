@@ -275,7 +275,7 @@ export function TableOrderStatus() {
       <CardContent>
         <div className="mb-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-2">
-            <div className="text-2xl font-semibold lg:text-3xl">43</div>
+            <div className="font-display text-2xl lg:text-3xl">43</div>
             <div className="flex gap-2">
               <div className="text-muted-foreground text-sm">New Order</div>
               <div className="flex items-center gap-0.5 text-xs text-green-500">
@@ -290,7 +290,7 @@ export function TableOrderStatus() {
             />
           </div>
           <div className="space-y-2">
-            <div className="text-2xl font-semibold lg:text-3xl">12</div>
+            <div className="font-display text-2xl lg:text-3xl">12</div>
             <div className="flex gap-2">
               <div className="text-muted-foreground text-sm">On Progress</div>
               <div className="flex items-center gap-0.5 text-xs text-red-500">
@@ -305,7 +305,7 @@ export function TableOrderStatus() {
             />
           </div>
           <div className="space-y-2">
-            <div className="text-2xl font-semibold lg:text-3xl">40</div>
+            <div className="font-display text-2xl lg:text-3xl">40</div>
             <div className="flex gap-2">
               <div className="text-muted-foreground text-sm">Completed</div>
               <div className="flex items-center gap-0.5 text-xs text-green-500">
@@ -320,7 +320,7 @@ export function TableOrderStatus() {
             />
           </div>
           <div className="space-y-2">
-            <div className="text-2xl font-semibold lg:text-3xl">02</div>
+            <div className="font-display text-2xl lg:text-3xl">2</div>
             <div className="flex gap-2">
               <div className="text-muted-foreground text-sm">Return</div>
               <div className="flex items-center gap-0.5 text-xs text-red-500">

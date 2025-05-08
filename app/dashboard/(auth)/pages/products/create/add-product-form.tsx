@@ -191,15 +191,15 @@ export default function AddProductForm() {
                         <FormItem>
                           <FormLabel>Options</FormLabel>
                           <Select {...field}>
-                            <SelectTrigger>
+                            <SelectTrigger className="w-full">
                               <SelectValue placeholder="Select a status" />
                             </SelectTrigger>
                             <SelectContent>
                               <SelectGroup>
-                                <SelectItem value="apple">Size</SelectItem>
-                                <SelectItem value="blueberry">Color</SelectItem>
-                                <SelectItem value="banana">Weight</SelectItem>
-                                <SelectItem value="banana">Smell</SelectItem>
+                                <SelectItem value="size">Size</SelectItem>
+                                <SelectItem value="color">Color</SelectItem>
+                                <SelectItem value="weight">Weight</SelectItem>
+                                <SelectItem value="smell">Smell</SelectItem>
                               </SelectGroup>
                             </SelectContent>
                           </Select>
@@ -223,15 +223,15 @@ export default function AddProductForm() {
                       <div className="grid gap-4 lg:grid-flow-col">
                         <FormItem>
                           <Select {...field}>
-                            <SelectTrigger>
+                            <SelectTrigger className="w-full">
                               <SelectValue placeholder="Select a status" />
                             </SelectTrigger>
                             <SelectContent>
                               <SelectGroup>
-                                <SelectItem value="apple">Size</SelectItem>
-                                <SelectItem value="blueberry">Color</SelectItem>
-                                <SelectItem value="banana">Weight</SelectItem>
-                                <SelectItem value="banana">Smell</SelectItem>
+                                <SelectItem value="size">Size</SelectItem>
+                                <SelectItem value="color">Color</SelectItem>
+                                <SelectItem value="weight">Weight</SelectItem>
+                                <SelectItem value="smell">Smell</SelectItem>
                               </SelectGroup>
                             </SelectContent>
                           </Select>
@@ -298,7 +298,7 @@ export default function AddProductForm() {
                     <Checkbox id="terms" />
                     <label
                       htmlFor="terms"
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                      className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                       Charge tax on this product
                     </label>
                   </div>
@@ -322,7 +322,7 @@ export default function AddProductForm() {
                     <FormItem>
                       <FormControl>
                         <Select {...field}>
-                          <SelectTrigger>
+                          <SelectTrigger className="w-full">
                             <SelectValue placeholder="Select a status" />
                           </SelectTrigger>
                           <SelectContent>
@@ -356,7 +356,7 @@ export default function AddProductForm() {
                           <div className="flex gap-2">
                             <div className="grow">
                               <Select {...field}>
-                                <SelectTrigger>
+                                <SelectTrigger className="w-full">
                                   <SelectValue placeholder="Select a category" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -384,7 +384,7 @@ export default function AddProductForm() {
                           <div className="flex gap-2">
                             <div className="grow">
                               <Select {...field}>
-                                <SelectTrigger>
+                                <SelectTrigger className="w-full">
                                   <SelectValue placeholder="Select a sub category" />
                                 </SelectTrigger>
                                 <SelectContent>

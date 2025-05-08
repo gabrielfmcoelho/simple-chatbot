@@ -10,7 +10,7 @@ export default function SuccessfulConversionsCard() {
         <CardAction>
           <Badge variant="success">+10.3%</Badge>
         </CardAction>
-        <div className="text-3xl font-semibold">
+        <div className="font-display text-3xl">
           <CountAnimation number={1204} />
         </div>
         <div className="text-muted-foreground text-sm">Less than last month</div>

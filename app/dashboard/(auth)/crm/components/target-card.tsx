@@ -20,7 +20,7 @@ export function TargetCard() {
   return (
     <Card className="gap-2">
       <CardHeader>
-        <CardTitle className="text-xl">Your target is incomplete</CardTitle>
+        <CardTitle className="font-display text-xl">Your target is incomplete</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="flex items-center gap-2">

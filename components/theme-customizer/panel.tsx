@@ -14,9 +14,7 @@ import {
   ColorModeSelector,
   ContentLayoutSelector,
   ThemeRadiusSelector,
-  FontSelector,
-  ResetThemeButton,
-  ChartPresetSelector
+  ResetThemeButton
 } from "@/components/theme-customizer/index";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -35,10 +33,8 @@ export function ThemeCustomizerPanel() {
         align={isMobile ? "center" : "end"}>
         <div className="grid space-y-4">
           <PresetSelector />
-          <ChartPresetSelector />
           <ThemeScaleSelector />
           <ThemeRadiusSelector />
-          <FontSelector />
           <ColorModeSelector />
           <ContentLayoutSelector />
           <SidebarModeSelector />

@@ -19,7 +19,7 @@ export function SuccessMetrics() {
     <Card>
       <CardHeader>
         <CardDescription>Professionals</CardDescription>
-        <CardTitle className="text-2xl font-semibold lg:text-3xl">357</CardTitle>
+        <CardTitle className="font-display text-2xl lg:text-3xl">357</CardTitle>
       </CardHeader>
       <CardContent>
         <p className="mb-2 text-sm font-bold">Today’s Heroes</p>
@@ -28,7 +28,7 @@ export function SuccessMetrics() {
             {users.map((user, key) => (
               <Tooltip key={key}>
                 <TooltipTrigger>
-                  <Avatar className="border-background size-12 border-4 hover:z-10">
+                  <Avatar className="border-card size-12 border-4 hover:z-10">
                     <AvatarImage src={user.avatar} alt="shadcn ui kit" />
                     <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
                   </Avatar>

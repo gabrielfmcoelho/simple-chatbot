@@ -113,7 +113,7 @@ export function RevenueChart() {
                   className="data-[active=true]:bg-muted relative flex flex-1 flex-col justify-center gap-1 px-6 py-4 text-left"
                   onClick={() => setActiveChart(chart)}>
                   <span className="text-muted-foreground text-xs">{chartConfig[chart].label}</span>
-                  <span className="text-lg leading-none font-semibold sm:text-2xl">
+                  <span className="font-display text-lg leading-none sm:text-2xl">
                     {total[key as keyof typeof total].toLocaleString()}
                   </span>
                 </button>

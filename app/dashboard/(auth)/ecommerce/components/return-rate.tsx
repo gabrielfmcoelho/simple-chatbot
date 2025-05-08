@@ -53,7 +53,7 @@ export function EcommerceReturnRateCard() {
           <ExportButton className="absolute end-0 top-0" />
         </CardAction>
         <div className="flex items-center gap-2">
-          <div className="text-2xl font-semibold">$42,379</div>
+          <div className="font-display text-2xl">$42,379</div>
           <Badge className="text-green-600" variant="outline">
             +2.5%
           </Badge>

@@ -47,7 +47,7 @@ export function TotalEarningCard() {
           </Badge>
         </CardAction>
         <div className="flex items-center gap-4">
-          <div className="text-2xl font-semibold lg:text-3xl">83%</div>
+          <div className="font-display text-2xl lg:text-3xl">83%</div>
         </div>
       </CardHeader>
       <CardContent>

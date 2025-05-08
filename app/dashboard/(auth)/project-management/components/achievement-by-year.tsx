@@ -49,7 +49,7 @@ export function AchievementByYear() {
                   dataKey="date"
                   offset={8}
                   fontSize={12}
-                  fill="white"
+                  fill="var(--primary-foreground)"
                 />
               </Bar>
               <YAxis dataKey="date" type="category" tickCount={1} hide />
@@ -91,7 +91,7 @@ export function AchievementByYear() {
                   dataKey="date"
                   offset={8}
                   fontSize={12}
-                  fill="white"
+                  fill="var(--primary-foreground)"
                 />
               </Bar>
               <YAxis dataKey="date" type="category" tickCount={1} hide />
@@ -133,7 +133,7 @@ export function AchievementByYear() {
                   dataKey="date"
                   offset={8}
                   fontSize={12}
-                  fill="white"
+                  fill="var(--primary-foreground)"
                 />
               </Bar>
               <YAxis dataKey="date" type="category" tickCount={1} hide />

@@ -1,7 +1,5 @@
-export * from "./chart-preset-selector";
 export * from "./color-mode-selector";
 export * from "./content-layout-selector";
-export * from "./font-selector";
 export * from "./preset-selector";
 export * from "./radius-selector";
 export * from "./reset-theme";

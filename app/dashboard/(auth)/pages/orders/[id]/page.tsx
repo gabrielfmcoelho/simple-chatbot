@@ -123,7 +123,7 @@ export default function Page() {
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl font-bold">Order {order.id}</CardTitle>
+            <CardTitle className="font-display text-2xl">Order {order.id}</CardTitle>
             <p className="text-muted-foreground text-sm">Placed on {order.date}</p>
           </CardHeader>
           <CardContent>

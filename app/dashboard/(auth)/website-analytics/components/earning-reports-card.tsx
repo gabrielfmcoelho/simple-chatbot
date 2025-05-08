@@ -57,7 +57,7 @@ export function EarningReportsCard() {
           <div>
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <div className="text-2xl font-semibold lg:text-3xl">$1.468</div>
+                <div className="font-display text-2xl lg:text-3xl">$1.468</div>
                 <Badge className="bg-green-600">+4.2%</Badge>
               </div>
               <ChartContainer className="max-h-[245px] w-full" config={chartConfig}>

@@ -32,7 +32,7 @@ export function TotalRevenueCard() {
         <CardTitle>Total Revenue</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="text-2xl leading-6 font-bold">$15,231.89</div>
+        <div className="font-display text-3xl leading-6">$15,231.89</div>
         <p className="text-muted-foreground mt-1.5 text-xs">
           <span className="text-green-600">+20.1%</span> from last month
         </p>

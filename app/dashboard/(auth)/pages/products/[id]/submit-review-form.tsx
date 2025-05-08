@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dialog,
   DialogTrigger,
@@ -9,10 +11,14 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { CirclePlusIcon, StarIcon } from "lucide-react";
+import { CirclePlusIcon } from "lucide-react";
 import { DialogDescription } from "@radix-ui/react-dialog";
+import { StarRating } from "@/app/dashboard/(auth)/pages/products/[id]/star-rating";
+import React from "react";
 
 export default function SubmitReviewForm() {
+  const [rating, setRating] = React.useState(0);
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -23,7 +29,9 @@ export default function SubmitReviewForm() {
       <DialogContent className="w-full max-w-md">
         <DialogHeader>
           <DialogTitle>Leave a Review</DialogTitle>
-          <DialogDescription>Share your thoughts about this product.</DialogDescription>
+          <DialogDescription className="text-muted-foreground text-sm">
+            Share your thoughts about this product.
+          </DialogDescription>
         </DialogHeader>
         <form className="mt-4 grid gap-6">
           <div className="grid grid-cols-2 gap-4">
@@ -41,14 +49,7 @@ export default function SubmitReviewForm() {
             <Textarea id="comment" placeholder="Share your thoughts..." rows={4} />
           </div>
           <div className="flex gap-2">
-            <Label htmlFor="rating">Rating</Label>
-            <div className="flex items-center gap-1">
-              <StarIcon className="size-6 fill-orange-400 text-orange-400" />
-              <StarIcon className="size-6 fill-orange-400 text-orange-400" />
-              <StarIcon className="size-6 fill-orange-400 text-orange-400" />
-              <StarIcon className="fill-muted stroke-muted-foreground size-6" />
-              <StarIcon className="fill-muted stroke-muted-foreground size-6" />
-            </div>
+            <StarRating rating={rating} onRatingChangeAction={setRating} />
           </div>
           <Button className="w-full">Submit Review</Button>
         </form>

@@ -8,7 +8,7 @@ export function SaleOverviewCard() {
     <Card className="h-full">
       <CardHeader>
         <CardDescription>Sales Overview</CardDescription>
-        <div className="mb-6 text-2xl font-semibold lg:text-3xl">$42.5K</div>
+        <div className="font-display mb-6 text-2xl lg:text-3xl">$42.5K</div>
         <CardAction>
           <TrendingUp className="size-4 text-green-600" />
         </CardAction>

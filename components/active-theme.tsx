@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, createContext, useContext, useEffect, useState, useRef } from "react";
+import { ReactNode, createContext, useContext, useEffect, useState } from "react";
 import { DEFAULT_THEME, ThemeType } from "@/lib/themes";
 
 function setThemeCookie(key: string, value: string | null) {
@@ -27,7 +27,6 @@ export function ActiveThemeProvider({
   children: ReactNode;
   initialTheme?: ThemeType;
 }) {
-  const previousTheme = useRef<ThemeType>(initialTheme ? initialTheme : DEFAULT_THEME);
   const [theme, setTheme] = useState<ThemeType>(() =>
     initialTheme ? initialTheme : DEFAULT_THEME
   );
@@ -64,23 +63,7 @@ export function ActiveThemeProvider({
       setThemeCookie("theme_scale", null);
       body.removeAttribute("data-theme-scale");
     }
-
-    if (theme.chartPreset != "default") {
-      setThemeCookie("theme_chart_preset", theme.chartPreset);
-      body.setAttribute("data-theme-chart-preset", theme.chartPreset);
-    } else {
-      setThemeCookie("theme_chart_preset", null);
-      body.removeAttribute("data-theme-chart-preset");
-    }
-
-    if (theme.font != "default") {
-      setThemeCookie("theme_font", theme.font);
-      body.setAttribute("data-theme-font", theme.font);
-    } else {
-      setThemeCookie("theme_font", null);
-      body.removeAttribute("data-theme-font");
-    }
-  }, [theme.preset, theme.radius, theme.scale, theme.chartPreset, theme.contentLayout, theme.font]);
+  }, [theme.preset, theme.radius, theme.scale, theme.contentLayout]);
 
   return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 }

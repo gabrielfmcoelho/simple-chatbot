@@ -121,7 +121,7 @@ export default function Page() {
               <div className="flex flex-col justify-center space-y-6 md:w-1/3 lg:relative lg:border-s lg:ps-6">
                 <div className="hidden space-y-4 lg:block">
                   <div className="text-center">
-                    <span className="text-4xl font-bold">${currentPrice}</span>
+                    <span className="font-display text-4xl">${currentPrice}</span>
                     <span className="text-muted-foreground ml-2">
                       /{isAnnual ? "year" : "month"}
                     </span>

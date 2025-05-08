@@ -15,7 +15,7 @@ export function SummaryCards() {
             </div>
           </CardHeader>
           <CardContent className="space-y-1">
-            <div className="text-3xl font-semibold">
+            <div className="font-display text-3xl">
               <CountAnimation number={2350} />
             </div>
             <p className="text-muted-foreground text-xs">
@@ -31,7 +31,7 @@ export function SummaryCards() {
             </div>
           </CardHeader>
           <CardContent className="space-y-1">
-            <div className="text-3xl font-semibold">
+            <div className="font-display text-3xl">
               <CountAnimation number={145} />
             </div>
             <p className="text-muted-foreground text-xs">
@@ -47,7 +47,7 @@ export function SummaryCards() {
             </div>
           </CardHeader>
           <CardContent className="space-y-1">
-            <div className="text-3xl font-semibold">
+            <div className="font-display text-3xl">
               <CountAnimation number={89} />
             </div>
             <p className="text-muted-foreground text-xs">
@@ -63,7 +63,7 @@ export function SummaryCards() {
             </div>
           </CardHeader>
           <CardContent className="space-y-1">
-            <div className="text-3xl font-semibold">
+            <div className="font-display text-3xl">
               $<CountAnimation number={9583} />
             </div>
             <p className="text-muted-foreground text-xs">

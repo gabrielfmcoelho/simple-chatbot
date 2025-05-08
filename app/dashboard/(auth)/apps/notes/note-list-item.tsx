@@ -24,7 +24,7 @@ export default function NoteListItem({ note }: { note: Note }) {
       )}
       <CardContent className="pt-6 group-data-[view-mode=list]:pb-6">
         <div className="space-y-4">
-          <h3 className="text-xl font-medium lg:text-2xl">{note.title}</h3>
+          <h3 className="font-display text-xl lg:text-2xl">{note.title}</h3>
           <p className="text-muted-foreground text-sm">{note.content}</p>
           {note.type === "checklist" && note.items && (
             <ul className="peer space-y-4">

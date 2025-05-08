@@ -8,6 +8,7 @@ type PageRoutesItemType = {
   href: string;
   icon?: string;
   isComing?: boolean;
+  isDataBadge?: string;
   isNew?: boolean;
   newTab?: boolean;
   items?: PageRoutesItemType;
@@ -67,9 +68,9 @@ export const page_routes: PageRoutesType[] = [
         icon: "SquareKanban",
         isComing: true
       },
-      { title: "AI Chat", href: "/dashboard/apps/ai-chat", icon: "Brain" },
+      { title: "AI Chat", href: "/dashboard/apps/ai-chat", icon: "Brain", isNew: true },
       { title: "Notes", href: "/dashboard/apps/notes", icon: "StickyNote" },
-      { title: "Chats", href: "/dashboard/apps/chat", icon: "MessageSquare" },
+      { title: "Chats", href: "/dashboard/apps/chat", icon: "MessageSquare", isDataBadge: "4" },
       { title: "Mail", href: "/dashboard/apps/mail", icon: "Mail", isComing: true },
       {
         title: "Todo List App",

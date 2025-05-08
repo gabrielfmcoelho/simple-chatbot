@@ -41,7 +41,7 @@ export function AverageDailySalesCard() {
     <Card className="h-full overflow-hidden pb-0">
       <CardHeader>
         <CardDescription>Average Daily Sales</CardDescription>
-        <div className="mb-4 text-2xl font-semibold lg:text-3xl">$28,450</div>
+        <div className="font-display mb-4 text-2xl lg:text-3xl">$28,450</div>
         <CardAction>
           <TrendingDown className="size-4 text-red-600" />
         </CardAction>

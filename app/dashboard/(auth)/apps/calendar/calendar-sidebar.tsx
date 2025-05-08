@@ -20,7 +20,7 @@ export default function CalendarSidebar() {
       <Button onClick={() => setOpenSheet(true)} className="w-full">
         <CalendarPlus /> Add Event
       </Button>
-      <ScrollArea className="h-[calc(100vh-10.5rem)]">
+      <ScrollArea className="h-[calc(100vh-9.8rem)]">
         <UpcomingEvents />
       </ScrollArea>
     </div>

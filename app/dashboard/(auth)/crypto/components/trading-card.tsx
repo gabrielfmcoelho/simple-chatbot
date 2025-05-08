@@ -72,7 +72,7 @@ export function TradingCard() {
       <Card className="h-full">
         <CardHeader>
           <CardDescription>Trading</CardDescription>
-          <CardTitle className="text-3xl">$46,200</CardTitle>
+          <CardTitle className="font-display text-3xl">$46,200</CardTitle>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="buy" onValueChange={setTransactionType}>

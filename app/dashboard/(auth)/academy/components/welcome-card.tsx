@@ -9,7 +9,7 @@ export function WelcomeCard() {
       <CardContent className="relative">
         <div className="grid items-center pt-6 lg:grid-cols-3">
           <div className="space-y-4 lg:col-span-2">
-            <div className="text-3xl font-semibold">
+            <div className="font-display text-3xl">
               Hi, Andrew <span className="text-4xl">👋</span>
             </div>
             <div className="text-2xl">What do you want to learn today with your partner?</div>

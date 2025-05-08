@@ -61,7 +61,7 @@ export default function CalendarApp() {
             classNames: eventColors[event.color ?? "blue"]
           }))
         ]}
-        height="calc(100vh - 10.6rem)"
+        height="calc(100vh - 10rem)"
       />
     </>
   );

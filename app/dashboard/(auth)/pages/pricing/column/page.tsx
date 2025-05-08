@@ -115,12 +115,12 @@ export default function Page() {
         {pricingTiers.map((tier, index) => (
           <Card key={index} className="relative flex flex-col">
             <CardHeader>
-              <CardTitle className="text-2xl">{tier.name}</CardTitle>
+              <CardTitle>{tier.name}</CardTitle>
               <CardDescription>{tier.description}</CardDescription>
             </CardHeader>
             <CardContent className="grow">
               <div className="mb-4">
-                <p className="text-4xl font-bold">
+                <p className="font-display text-4xl">
                   {isYearly ? formatPrice(tier.yearlyPrice) : formatPrice(tier.monthlyPrice)}
                   <span className="text-sm font-normal">/{isYearly ? "year" : "month"}</span>
                 </p>

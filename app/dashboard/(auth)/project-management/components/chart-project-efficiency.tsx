@@ -82,7 +82,7 @@ export function ChartProjectEfficiency() {
       <ChartStyle id={id} config={chartConfig} />
       <CardHeader>
         <CardDescription>January - June 2026</CardDescription>
-        <CardTitle className="text-xl font-semibold">Project Efficiency</CardTitle>
+        <CardTitle className="font-display text-xl">Project Efficiency</CardTitle>
         <CardAction>
           <Select value={activeMonth} onValueChange={setActiveMonth}>
             <SelectTrigger className="ml-auto" aria-label="Select a value">

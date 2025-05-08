@@ -42,7 +42,7 @@ export default async function Page() {
         <Card>
           <CardHeader>
             <CardDescription>Total Sales</CardDescription>
-            <CardTitle className="text-2xl font-semibold lg:text-3xl">$30,230</CardTitle>
+            <CardTitle className="font-display text-2xl lg:text-3xl">$30,230</CardTitle>
             <CardAction>
               <Badge variant="outline">
                 <span className="text-green-600">+20.1%</span>
@@ -53,7 +53,7 @@ export default async function Page() {
         <Card>
           <CardHeader>
             <CardDescription>Number of Sales</CardDescription>
-            <CardTitle className="text-2xl font-semibold lg:text-3xl">982</CardTitle>
+            <CardTitle className="font-display text-2xl lg:text-3xl">982</CardTitle>
             <CardAction>
               <Badge variant="outline">
                 <span className="text-green-600">+5.02</span>
@@ -64,7 +64,7 @@ export default async function Page() {
         <Card>
           <CardHeader>
             <CardDescription>Affiliate</CardDescription>
-            <CardTitle className="text-2xl font-semibold lg:text-3xl">$4,530</CardTitle>
+            <CardTitle className="font-display text-2xl lg:text-3xl">$4,530</CardTitle>
             <CardAction>
               <Badge variant="outline">
                 <span className="text-green-600">+3.1%</span>
@@ -75,7 +75,7 @@ export default async function Page() {
         <Card>
           <CardHeader>
             <CardDescription>Discounts</CardDescription>
-            <CardTitle className="text-2xl font-semibold lg:text-3xl">$2,230</CardTitle>
+            <CardTitle className="font-display text-2xl lg:text-3xl">$2,230</CardTitle>
             <CardAction>
               <Badge variant="outline">
                 <span className="text-red-600">-3.58%</span>

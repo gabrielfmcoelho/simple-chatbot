@@ -7,7 +7,7 @@ export function TotalRevenueCard() {
       <CardHeader>
         <CardDescription>Total Revenue</CardDescription>
         <div className="flex flex-col gap-2">
-          <h4 className="text-2xl font-semibold lg:text-3xl">$435,578</h4>
+          <h4 className="font-display text-2xl lg:text-3xl">$435,578</h4>
           <div className="text-muted-foreground text-sm">
             <span className="text-green-600">+20.1%</span> from last month
           </div>

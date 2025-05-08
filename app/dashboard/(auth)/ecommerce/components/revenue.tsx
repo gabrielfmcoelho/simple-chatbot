@@ -39,7 +39,7 @@ export function EcommerceRevenueCard() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="text-3xl font-semibold">$15,231.89</div>
+        <div className="font-display text-3xl">$125,231</div>
         <div className="pt-4">
           <ChartContainer className="h-[60px] w-full" config={chartConfig}>
             <LineChart

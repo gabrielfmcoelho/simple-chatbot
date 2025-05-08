@@ -33,7 +33,7 @@ export function ChatSidebar({ chats }: { chats: ChatItemProps[] }) {
   return (
     <Card className="w-full pb-0 lg:w-96">
       <CardHeader>
-        <CardTitle className="text-xl">Chats</CardTitle>
+        <CardTitle className="font-display text-xl lg:text-2xl">Chats</CardTitle>
         <CardAction>
           <ActionDropdown />
         </CardAction>
