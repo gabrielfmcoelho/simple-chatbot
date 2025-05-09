@@ -590,7 +590,7 @@ body {
     --primary: var(--primary-600);
     --primary-foreground: var(--color-white);
     --secondary: var(--secondary-500);
-    --secondary-foreground: var(--color-black);
+    --secondary-foreground: var(--color-white);
     --muted: var(--base-50);
     --muted-foreground: var(--base-600);
     --accent: var(--base-100);
