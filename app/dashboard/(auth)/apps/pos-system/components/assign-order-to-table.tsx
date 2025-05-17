@@ -53,7 +53,7 @@ export default function AssignOrderToTable({
         </DialogHeader>
         <div className="py-4">
           <Select onValueChange={(value) => setSelectedCategory(value)}>
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="flex w-full lg:hidden">
               <SelectValue placeholder="Select a table" />
             </SelectTrigger>
             <SelectContent>
