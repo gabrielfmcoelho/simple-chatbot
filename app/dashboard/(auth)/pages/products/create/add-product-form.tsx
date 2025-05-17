@@ -1,5 +1,7 @@
 "use client";
 
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -11,11 +13,16 @@ import {
   FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { toast } from "@/components/ui/use-toast";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle
+} from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
@@ -28,13 +35,22 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import { CirclePlusIcon, UploadIcon } from "lucide-react";
-import { AddMediaFromUrl } from "./add-media-from-url";
-import AddNewCategory from "./add-category";
+import {
+  AlertCircleIcon,
+  ChevronLeft,
+  CirclePlusIcon,
+  ImageIcon,
+  UploadIcon,
+  XIcon
+} from "lucide-react";
+import { useFileUpload } from "@/hooks/use-file-upload";
+import { AddMediaFromUrl } from "@/app/dashboard/(auth)/pages/products/create/add-media-from-url";
+import AddNewCategory from "@/app/dashboard/(auth)/pages/products/create/add-category";
+import Link from "next/link";
 
 const FormSchema = z.object({
   name: z.string().min(2, {
-    message: "Username must be at least 2 characters."
+    message: "Product name must be at least 2 characters."
   }),
   sku: z.string(),
   barcode: z.string(),
@@ -58,6 +74,24 @@ export default function AddProductForm() {
     }
   });
 
+  const [
+    { files, isDragging, errors },
+    {
+      handleDragEnter,
+      handleDragLeave,
+      handleDragOver,
+      handleDrop,
+      openFileDialog,
+      removeFile,
+      getInputProps
+    }
+  ] = useFileUpload({
+    accept: "image/png,image/jpeg,image/jpg",
+    maxSize: 5 * 1024 * 1024, // 5MB
+    multiple: true,
+    maxFiles: 5
+  });
+
   function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
       title: "You submitted the following values:",
@@ -73,7 +107,14 @@ export default function AddProductForm() {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="mb-4 flex items-center justify-between space-y-2">
-          <h1 className="text-2xl font-bold tracking-tight">Add Products</h1>
+          <div className="flex items-center gap-4">
+            <Button variant="outline" asChild>
+              <Link href="/dashboard/pages/products">
+                <ChevronLeft />
+              </Link>
+            </Button>
+            <h1 className="text-2xl font-bold tracking-tight">Add Products</h1>
+          </div>
           <div className="flex gap-2">
             <Button type="button" variant="secondary">
               Discard
@@ -154,30 +195,112 @@ export default function AddProductForm() {
             </Card>
             {/* -- Product images -- */}
             <Card>
-              <CardHeader className="flex-row items-center justify-between">
-                <CardTitle>Images</CardTitle>
-                <AddMediaFromUrl>
-                  <Button variant="link" size="sm" className="mt-0!">
-                    Add media from URL
-                  </Button>
-                </AddMediaFromUrl>
+              <CardHeader>
+                <CardTitle>Product Images</CardTitle>
+                <CardAction>
+                  <AddMediaFromUrl>
+                    <Button variant="link" size="sm" className="mt-0! h-auto p-0">
+                      Add media from URL
+                    </Button>
+                  </AddMediaFromUrl>
+                </CardAction>
               </CardHeader>
               <CardContent>
                 <FormField
                   name="file"
                   control={form.control}
                   render={({ field }) => (
-                    <div className="flex h-40 items-center justify-center rounded-lg border-2 border-dashed">
-                      <Button type="button" variant="outline">
-                        <UploadIcon className="me-2 h-3 w-3" /> Browse image
-                      </Button>
+                    <div className="flex flex-col gap-2">
+                      <div
+                        onDragEnter={handleDragEnter}
+                        onDragLeave={handleDragLeave}
+                        onDragOver={handleDragOver}
+                        onDrop={handleDrop}
+                        data-dragging={isDragging || undefined}
+                        data-files={files.length > 0 || undefined}
+                        className="border-input data-[dragging=true]:bg-accent/50 has-[input:focus]:border-ring has-[input:focus]:ring-ring/50 relative flex min-h-52 flex-col items-center overflow-hidden rounded-xl border border-dashed p-4 transition-colors not-data-[files]:justify-center has-[input:focus]:ring-[3px]">
+                        <input
+                          {...getInputProps()}
+                          className="sr-only"
+                          aria-label="Upload image file"
+                        />
+                        {files.length > 0 ? (
+                          <div className="flex w-full flex-col gap-3">
+                            <div className="flex items-center justify-between gap-2">
+                              <h3 className="truncate text-sm font-medium">
+                                Uploaded Files ({files.length})
+                              </h3>
+                              <Button
+                                type="button"
+                                variant="outline"
+                                size="sm"
+                                onClick={openFileDialog}
+                                disabled={files.length >= 5}>
+                                <UploadIcon
+                                  className="-ms-0.5 size-3.5 opacity-60"
+                                  aria-hidden="true"
+                                />
+                                Add more
+                              </Button>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+                              {files.map((file) => (
+                                <div
+                                  key={file.id}
+                                  className="bg-accent relative aspect-square rounded-md border">
+                                  <img
+                                    src={file.preview}
+                                    alt={file.file.name}
+                                    className="size-full rounded-[inherit] object-cover"
+                                  />
+                                  <Button
+                                    type="button"
+                                    onClick={() => removeFile(file.id)}
+                                    size="icon"
+                                    className="border-background focus-visible:border-background absolute -top-2 -right-2 size-6 rounded-full border-2 shadow-none">
+                                    <XIcon className="size-3.5" />
+                                  </Button>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="flex flex-col items-center justify-center px-4 py-3 text-center">
+                            <div
+                              className="bg-background mb-2 flex size-11 shrink-0 items-center justify-center rounded-full border"
+                              aria-hidden="true">
+                              <ImageIcon className="size-4 opacity-60" />
+                            </div>
+                            <p className="mb-1.5 text-sm font-medium">Drop your images here</p>
+                            <p className="text-muted-foreground text-xs">PNG or JPG (max. 5MB)</p>
+                            <Button
+                              type="button"
+                              variant="outline"
+                              className="mt-4"
+                              onClick={openFileDialog}>
+                              <UploadIcon className="-ms-1 opacity-60" aria-hidden="true" />
+                              Select images
+                            </Button>
+                          </div>
+                        )}
+                      </div>
+
+                      {errors.length > 0 && (
+                        <div
+                          className="text-destructive flex items-center gap-1 text-xs"
+                          role="alert">
+                          <AlertCircleIcon className="size-3 shrink-0" />
+                          <span>{errors[0]}</span>
+                        </div>
+                      )}
                     </div>
                   )}
                 />
               </CardContent>
             </Card>
             {/* -- Variants -- */}
-            <Card>
+            <Card className="pb-0">
               <CardHeader>
                 <CardTitle>Variants</CardTitle>
               </CardHeader>
@@ -254,9 +377,9 @@ export default function AddProductForm() {
                   )}
                 />
               </CardContent>
-              <CardFooter className="justify-center border-t p-0">
+              <CardFooter className="justify-center border-t p-0!">
                 <Button type="button" variant="ghost" className="w-full rounded-none">
-                  <CirclePlusIcon className="me-2 h-4 w-4" /> Add Variant
+                  <CirclePlusIcon /> Add Variant
                 </Button>
               </CardFooter>
             </Card>
@@ -321,15 +444,22 @@ export default function AddProductForm() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Select {...field}>
+                        <Select {...field} defaultValue="draft">
                           <SelectTrigger className="w-full">
                             <SelectValue placeholder="Select a status" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectGroup>
-                              <SelectItem value="apple">Draft</SelectItem>
-                              <SelectItem value="blueberry">Active</SelectItem>
-                              <SelectItem value="banana">Archived</SelectItem>
+                              <SelectItem value="draft">
+                                <span className="size-2 rounded-full bg-orange-400"></span> Draft
+                              </SelectItem>
+                              <SelectItem value="active">
+                                {" "}
+                                <span className="size-2 rounded-full bg-green-400"></span> Active
+                              </SelectItem>
+                              <SelectItem value="archived">
+                                <span className="size-2 rounded-full bg-indigo-400"></span> Archived
+                              </SelectItem>
                             </SelectGroup>
                           </SelectContent>
                         </Select>

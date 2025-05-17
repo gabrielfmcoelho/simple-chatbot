@@ -85,8 +85,8 @@ export const page_routes: PageRoutesType[] = [
         icon: "ArchiveRestore",
         isComing: true
       },
-      { title: "Api Keys", href: "/dashboard/apps/api-keys", icon: "Key", isComing: false },
-      { title: "POS App", href: "/dashboard/apps/pos", icon: "Cookie", isComing: true }
+      { title: "Api Keys", href: "/dashboard/apps/api-keys", icon: "Key" },
+      { title: "POS App", href: "/dashboard/apps/pos-system", icon: "Cookie", isNew: true }
     ]
   },
   {

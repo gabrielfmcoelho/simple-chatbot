@@ -12,7 +12,7 @@ export async function generateMetadata() {
 
 export default function Page() {
   return (
-    <div className="container max-w-(--breakpoint-lg)">
+    <div className="mx-auto max-w-(--breakpoint-lg)">
       <div className="space-y-4">
         <AddProductForm />
       </div>
