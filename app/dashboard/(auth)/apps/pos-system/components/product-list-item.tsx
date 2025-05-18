@@ -42,6 +42,7 @@ export default function ProductListItem({ product }: { product: Product }) {
           alt={product.name}
           fill
           className="object-cover"
+          unoptimized
         />
       </div>
       <div className="p-4">
