@@ -52,23 +52,10 @@ export default function AssignOrderToTable({
           <DialogDescription>Please select a table to assign this order</DialogDescription>
         </DialogHeader>
         <div className="py-4">
-          <Select onValueChange={(value) => setSelectedCategory(value)}>
-            <SelectTrigger className="flex w-full lg:hidden">
-              <SelectValue placeholder="Select a table" />
-            </SelectTrigger>
-            <SelectContent>
+          <Tabs defaultValue={selectedCategory} className="w-full">
+            <TabsList className="h-auto w-full flex-col lg:h-9 lg:flex-row">
               {tableCategories.map((category) => (
-                <SelectItem key={category.id} value={category.id}>
-                  {category.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-
-          <Tabs value={selectedCategory} className="w-full">
-            <TabsList className="hidden w-full lg:flex">
-              {tableCategories.map((category) => (
-                <TabsTrigger key={category.id} value={category.id}>
+                <TabsTrigger className="w-full lg:w-auto" key={category.id} value={category.id}>
                   {category.name}
                 </TabsTrigger>
               ))}
