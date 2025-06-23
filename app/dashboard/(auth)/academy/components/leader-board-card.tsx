@@ -6,19 +6,29 @@ import { ChevronRight } from "lucide-react";
 
 export function LeaderboardCard() {
   const topStudents = [
-    { id: 1, name: "Liam Smith", points: 5000, avatar: `${process.env.ASSETS_URL}/avatars/01.png` },
-    { id: 2, name: "Emma Brown", points: 4800, avatar: `${process.env.ASSETS_URL}/avatars/02.png` },
+    {
+      id: 1,
+      name: "Liam Smith",
+      points: 5000,
+      avatar: `https://bundui-images.netlify.app/avatars/01.png`
+    },
+    {
+      id: 2,
+      name: "Emma Brown",
+      points: 4800,
+      avatar: `https://bundui-images.netlify.app/avatars/02.png`
+    },
     {
       id: 3,
       name: "Noah Johnson",
       points: 4600,
-      avatar: `${process.env.ASSETS_URL}/avatars/03.png`
+      avatar: `https://bundui-images.netlify.app/avatars/03.png`
     },
     {
       id: 4,
       name: "Olivia Davis",
       points: 4400,
-      avatar: `${process.env.ASSETS_URL}/avatars/04.png`
+      avatar: `https://bundui-images.netlify.app/avatars/04.png`
     }
   ];
 

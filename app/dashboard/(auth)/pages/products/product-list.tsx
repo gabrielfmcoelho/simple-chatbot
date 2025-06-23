@@ -114,7 +114,7 @@ export const columns: ColumnDef<Product>[] = [
       <div className="flex items-center gap-4">
         <figure className="rounded-lg border">
           <Image
-            src={`${process.env.ASSETS_URL}${row.original.image}`}
+            src={`https://bundui-images.netlify.app${row.original.image}`}
             width={48}
             height={48}
             unoptimized

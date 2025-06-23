@@ -24,7 +24,7 @@ export function WelcomeCard() {
             <Image
               width={100}
               height={50}
-              src={`${process.env.DASHBOARD_BASE_URL}/academy-dashboard-light.svg`}
+              src={`/academy-dashboard-light.svg`}
               className="block w-full dark:hidden"
               unoptimized
               alt="shadcn/ui"
@@ -32,7 +32,7 @@ export function WelcomeCard() {
             <Image
               width={100}
               height={50}
-              src={`${process.env.DASHBOARD_BASE_URL}/academy-dashboard-dark.svg`}
+              src={`/academy-dashboard-dark.svg`}
               className="hidden w-full dark:block"
               unoptimized
               alt="shadcn/ui"
@@ -41,7 +41,7 @@ export function WelcomeCard() {
           <Image
             width={800}
             height={300}
-            src={`${process.env.DASHBOARD_BASE_URL}/star-shape.png`}
+            src={`/star-shape.png`}
             className="pointer-events-none absolute inset-0 aspect-auto"
             unoptimized
             alt="shadcn/ui"

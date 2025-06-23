@@ -55,7 +55,6 @@ export function FileUploadDialog() {
   };
 
   const handleUpload = () => {
-    console.log("Files:", files);
     setOpen(false);
     setFiles([]);
   };

@@ -17,12 +17,12 @@ export default function ProductImageGallery() {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
 
   const images = [
-    `${process.env.ASSETS_URL}/products/01.jpeg`,
-    `${process.env.ASSETS_URL}/products/02.jpeg`,
-    `${process.env.ASSETS_URL}/products/03.jpeg`,
-    `${process.env.ASSETS_URL}/products/04.jpeg`,
-    `${process.env.ASSETS_URL}/products/05.jpeg`,
-    `${process.env.ASSETS_URL}/products/06.jpeg`
+    `https://bundui-images.netlify.app/products/01.jpeg`,
+    `https://bundui-images.netlify.app/products/02.jpeg`,
+    `https://bundui-images.netlify.app/products/03.jpeg`,
+    `https://bundui-images.netlify.app/products/04.jpeg`,
+    `https://bundui-images.netlify.app/products/05.jpeg`,
+    `https://bundui-images.netlify.app/products/06.jpeg`
   ];
 
   return (

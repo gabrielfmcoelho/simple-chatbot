@@ -26,7 +26,7 @@ export default function NotFound() {
       </div>
       <div className="hidden lg:block">
         <Image
-          src={`${process.env.DASHBOARD_BASE_URL}/images/404.svg`}
+          src={`/images/404.svg`}
           width={300}
           height={400}
           className="w-full object-contain lg:max-w-2xl"

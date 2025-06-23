@@ -99,7 +99,7 @@ export const columns: ColumnDef<Order>[] = [
     header: "#",
     cell: ({ row }) => (
       <Link
-        href={`${process.env.BASE_URL}/dashboard/pages/orders/${row.getValue("id")}`}
+        href={`/dashboard/pages/orders/${row.getValue("id")}`}
         className="text-muted-foreground hover:text-primary hover:underline">
         #{row.getValue("id")}
       </Link>
@@ -111,7 +111,7 @@ export const columns: ColumnDef<Order>[] = [
     cell: ({ row }) => (
       <div className="flex items-center gap-4">
         <Image
-          src={`${process.env.ASSETS_URL}${row.original.image}`}
+          src={`https://bundui-images.netlify.app${row.original.image}`}
           width={60}
           height={60}
           unoptimized

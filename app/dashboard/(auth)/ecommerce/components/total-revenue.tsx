@@ -14,7 +14,6 @@ import {
   ChartTooltip,
   ChartTooltipContent
 } from "@/components/ui/chart";
-import { ExportButton } from "@/components/CardActionMenus";
 import { Bar, BarChart, XAxis } from "recharts";
 
 export function EcommerceTotalRevenueCard() {
@@ -73,7 +72,7 @@ export function EcommerceTotalRevenueCard() {
                 tickLine={false}
                 tickMargin={10}
                 axisLine={false}
-                tickFormatter={(value) => value.slice(0, 3)}
+                tickFormatter={(value) => value}
               />
               <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="dashed" />} />
               <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8} />

@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import * as d3 from "d3-color";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -26,18 +25,14 @@ export function generateMeta({
   return {
     title: `${title} - Shadcn UI Kit`,
     description: description,
-    metadataBase: new URL(`${process.env.BASE_URL}`),
+    metadataBase: new URL(`https://shadcnuikit.com`),
     alternates: {
       canonical: `/dashboard${canonical}`
     },
     openGraph: {
-      images: [`${process.env.ASSETS_URL}/seo.jpg`]
+      images: [`https://bundui-images.netlify.app/seo.jpg`]
     }
   };
-}
-
-export function getHSLValue(hex: string): string {
-  return d3.color(hex)!.formatHsl().slice(4, -1).replaceAll(",", "");
 }
 
 // a function to get the first letter of the first and last name of names

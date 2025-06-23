@@ -3,8 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { CalendarCheck2Icon, CalendarClockIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { CardOptionsMenu } from "@/components/CardActionMenus";
-
 export function ProgressStatisticsCard() {
   return (
     <Card>

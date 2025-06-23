@@ -31,12 +31,10 @@ export default function CalendarApp() {
   };
 
   const handleEventResizeStop = (e: EventResizeStopArg) => {
-    console.log("EventResizeStopArg -->", e);
     toast.success("Event resize...");
   };
 
   const handleEventDragStop = (e: EventDragStopArg) => {
-    console.log("EventDragStopArg -->", e);
     toast.success("Event drag-drop...");
   };
 

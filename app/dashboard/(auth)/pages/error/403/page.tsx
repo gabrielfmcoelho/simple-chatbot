@@ -19,7 +19,7 @@ export default function Page() {
           <Image
             width={300}
             height={200}
-            src={`${process.env.BASE_URL}/403.svg`}
+            src={`/403.svg`}
             className="w-full"
             alt="..."
             unoptimized

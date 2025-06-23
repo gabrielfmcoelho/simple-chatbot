@@ -46,21 +46,21 @@ const members = [
     id: 1,
     name: "Toby Belhome",
     email: "contact@bundui.io",
-    avatar: `${process.env.ASSETS_URL}/avatars/01.png`,
+    avatar: `https://bundui-images.netlify.app/avatars/01.png`,
     role_id: 1
   },
   {
     id: 2,
     name: "Jackson Lee",
     email: "pre@example.com",
-    avatar: `${process.env.ASSETS_URL}/avatars/02.png`,
+    avatar: `https://bundui-images.netlify.app/avatars/02.png`,
     role_id: 2
   },
   {
     id: 3,
     name: "Hally Gray",
     email: "hally@site.com",
-    avatar: `${process.env.ASSETS_URL}/avatars/03.png`,
+    avatar: `https://bundui-images.netlify.app/avatars/03.png`,
     role_id: 1
   }
 ];
@@ -68,10 +68,6 @@ const members = [
 export function TeamMembersCard() {
   const [data, setData] = React.useState(members);
   const [openIndex, setOpenIndex] = React.useState<number | null>(null);
-
-  React.useEffect(() => {
-    console.log("data --> ", data);
-  }, [data]);
 
   return (
     <Card>

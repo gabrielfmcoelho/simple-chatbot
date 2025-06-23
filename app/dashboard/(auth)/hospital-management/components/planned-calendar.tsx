@@ -34,7 +34,7 @@ export function PlannedCalendar() {
         <div className="w-full">
           <div className="flex items-start p-4">
             <Avatar>
-              <AvatarImage src={`${process.env.ASSETS_URL}/avatars/01.png`} />
+              <AvatarImage src={`https://bundui-images.netlify.app/avatars/01.png`} />
               <AvatarFallback>AC</AvatarFallback>
             </Avatar>
             <div className="ms-4 space-y-1">
@@ -49,7 +49,7 @@ export function PlannedCalendar() {
         <div className="w-full">
           <div className="flex items-start p-4">
             <Avatar>
-              <AvatarImage src={`${process.env.ASSETS_URL}/avatars/08.png`} />
+              <AvatarImage src={`https://bundui-images.netlify.app/avatars/08.png`} />
               <AvatarFallback>DE</AvatarFallback>
             </Avatar>
             <div className="ms-4 space-y-1">

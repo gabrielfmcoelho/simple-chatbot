@@ -16,7 +16,10 @@ export default function UserMenu() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar>
-          <AvatarImage src={`${process.env.ASSETS_URL}/avatars/01.png`} alt="shadcn ui kit" />
+          <AvatarImage
+            src={`https://bundui-images.netlify.app/avatars/01.png`}
+            alt="shadcn ui kit"
+          />
           <AvatarFallback className="rounded-lg">TB</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
@@ -24,7 +27,10 @@ export default function UserMenu() {
         <DropdownMenuLabel className="p-0">
           <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
             <Avatar>
-              <AvatarImage src={`${process.env.ASSETS_URL}/avatars/01.png`} alt="shadcn ui kit" />
+              <AvatarImage
+                src={`https://bundui-images.netlify.app/avatars/01.png`}
+                alt="shadcn ui kit"
+              />
               <AvatarFallback className="rounded-lg">CN</AvatarFallback>
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">

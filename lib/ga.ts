@@ -1,12 +1,11 @@
 "use client";
 
-import ReactGA from "react-ga4";
-
 import { useEffect } from "react";
+import ReactGA from "react-ga4";
 
 export default function GoogleAnalyticsInit() {
   useEffect(() => {
-    ReactGA.initialize(`${process.env.GA_KEY}`);
+    ReactGA.initialize(`${process.env.GA_KEY ?? ""}`);
     ReactGA.send("pageview");
   });
 

@@ -56,7 +56,7 @@ const orders: Order[] = [
     id: 1023,
     customer: {
       name: "Theodore Bell",
-      image: `${process.env.ASSETS_URL}/avatars/01.png`
+      image: `https://bundui-images.netlify.app/avatars/01.png`
     },
     product: {
       name: "Tire Doodad"
@@ -68,7 +68,7 @@ const orders: Order[] = [
     id: 2045,
     customer: {
       name: "Amelia Grant",
-      image: `${process.env.ASSETS_URL}/avatars/02.png`
+      image: `https://bundui-images.netlify.app/avatars/02.png`
     },
     product: {
       name: "Engine Kit"
@@ -80,7 +80,7 @@ const orders: Order[] = [
     id: 3067,
     customer: {
       name: "Eleanor Ward",
-      image: `${process.env.ASSETS_URL}/avatars/03.png`
+      image: `https://bundui-images.netlify.app/avatars/03.png`
     },
     product: {
       name: "Brake Pad"
@@ -92,7 +92,7 @@ const orders: Order[] = [
     id: 4089,
     customer: {
       name: "Henry Carter",
-      image: `${process.env.ASSETS_URL}/avatars/04.png`
+      image: `https://bundui-images.netlify.app/avatars/04.png`
     },
     product: {
       name: "Fuel Pump"
@@ -104,7 +104,7 @@ const orders: Order[] = [
     id: 5102,
     customer: {
       name: "Olivia Harris",
-      image: `${process.env.ASSETS_URL}/avatars/05.png`
+      image: `https://bundui-images.netlify.app/avatars/05.png`
     },
     product: {
       name: "Steering Wheel"
@@ -116,7 +116,7 @@ const orders: Order[] = [
     id: 6123,
     customer: {
       name: "James Robinson",
-      image: `${process.env.ASSETS_URL}/avatars/06.png`
+      image: `https://bundui-images.netlify.app/avatars/06.png`
     },
     product: {
       name: "Air Filter"
@@ -128,7 +128,7 @@ const orders: Order[] = [
     id: 7145,
     customer: {
       name: "Sophia Martinez",
-      image: `${process.env.ASSETS_URL}/avatars/07.png`
+      image: `https://bundui-images.netlify.app/avatars/07.png`
     },
     product: {
       name: "Oil Filter"
@@ -140,7 +140,7 @@ const orders: Order[] = [
     id: 8167,
     customer: {
       name: "Liam Thompson",
-      image: `${process.env.ASSETS_URL}/avatars/08.png`
+      image: `https://bundui-images.netlify.app/avatars/08.png`
     },
     product: {
       name: "Radiator Cap"
@@ -152,7 +152,7 @@ const orders: Order[] = [
     id: 9189,
     customer: {
       name: "Emma Wilson",
-      image: `${process.env.ASSETS_URL}/avatars/09.png`
+      image: `https://bundui-images.netlify.app/avatars/09.png`
     },
     product: {
       name: "Spark Plug"
@@ -164,7 +164,7 @@ const orders: Order[] = [
     id: 10211,
     customer: {
       name: "Noah Davis",
-      image: `${process.env.ASSETS_URL}/avatars/10.png`
+      image: `https://bundui-images.netlify.app/avatars/10.png`
     },
     product: {
       name: "Transmission Fluid"
@@ -176,7 +176,7 @@ const orders: Order[] = [
     id: 11233,
     customer: {
       name: "Ava Johnson",
-      image: `${process.env.ASSETS_URL}/avatars/01.png`
+      image: `https://bundui-images.netlify.app/avatars/01.png`
     },
     product: {
       name: "Battery Terminal"
@@ -188,7 +188,7 @@ const orders: Order[] = [
     id: 12255,
     customer: {
       name: "William Brown",
-      image: `${process.env.ASSETS_URL}/avatars/02.png`
+      image: `https://bundui-images.netlify.app/avatars/02.png`
     },
     product: {
       name: "Alternator"
@@ -200,7 +200,7 @@ const orders: Order[] = [
     id: 13277,
     customer: {
       name: "Charlotte Miller",
-      image: `${process.env.ASSETS_URL}/avatars/03.png`
+      image: `https://bundui-images.netlify.app/avatars/03.png`
     },
     product: {
       name: "Timing Belt"
@@ -212,7 +212,7 @@ const orders: Order[] = [
     id: 14299,
     customer: {
       name: "Benjamin Taylor",
-      image: `${process.env.ASSETS_URL}/avatars/04.png`
+      image: `https://bundui-images.netlify.app/avatars/04.png`
     },
     product: {
       name: "Shock Absorber"
@@ -224,7 +224,7 @@ const orders: Order[] = [
     id: 15321,
     customer: {
       name: "Mia Anderson",
-      image: `${process.env.ASSETS_URL}/avatars/05.png`
+      image: `https://bundui-images.netlify.app/avatars/05.png`
     },
     product: {
       name: "Windshield Wiper"
@@ -236,7 +236,7 @@ const orders: Order[] = [
     id: 16343,
     customer: {
       name: "Elijah Thomas",
-      image: `${process.env.ASSETS_URL}/avatars/06.png`
+      image: `https://bundui-images.netlify.app/avatars/06.png`
     },
     product: {
       name: "Headlight Assembly"

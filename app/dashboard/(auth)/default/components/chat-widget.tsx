@@ -30,27 +30,27 @@ const users = [
   {
     name: "Olivia Martin",
     email: "m@example.com",
-    avatar: `${process.env.ASSETS_URL}/avatars/01.png`
+    avatar: `https://bundui-images.netlify.app/avatars/01.png`
   },
   {
     name: "Isabella Nguyen",
     email: "isabella.nguyen@email.com",
-    avatar: `${process.env.ASSETS_URL}/avatars/07.png`
+    avatar: `https://bundui-images.netlify.app/avatars/07.png`
   },
   {
     name: "Emma Wilson",
     email: "emma@example.com",
-    avatar: `${process.env.ASSETS_URL}/avatars/02.png`
+    avatar: `https://bundui-images.netlify.app/avatars/02.png`
   },
   {
     name: "Jackson Lee",
     email: "lee@example.com",
-    avatar: `${process.env.ASSETS_URL}/avatars/09.png`
+    avatar: `https://bundui-images.netlify.app/avatars/09.png`
   },
   {
     name: "William Kim",
     email: "will@email.com",
-    avatar: `${process.env.ASSETS_URL}/avatars/06.png`
+    avatar: `https://bundui-images.netlify.app/avatars/06.png`
   }
 ] as const;
 
@@ -87,7 +87,7 @@ export function ChatWidget() {
         <CardHeader className="flex flex-row items-center">
           <div className="flex items-center space-x-4">
             <Avatar>
-              <AvatarImage src={`${process.env.ASSETS_URL}/avatars/04.png`} />
+              <AvatarImage src={`https://bundui-images.netlify.app/avatars/04.png`} />
               <AvatarFallback>OM</AvatarFallback>
             </Avatar>
             <div>

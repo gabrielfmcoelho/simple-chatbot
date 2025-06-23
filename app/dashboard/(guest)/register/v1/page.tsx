@@ -23,7 +23,7 @@ export default function Page() {
         <Image
           width={1000}
           height={1000}
-          src={`${process.env.ASSETS_URL}/extra/image4.jpg`}
+          src={`https://bundui-images.netlify.app/extra/image4.jpg`}
           alt="shadcn/ui login page"
           className="h-full w-full object-cover"
           unoptimized

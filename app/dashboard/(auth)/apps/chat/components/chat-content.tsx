@@ -29,7 +29,7 @@ export function ChatContent() {
           width={200}
           height={200}
           className="block max-w-sm dark:hidden"
-          src={`${process.env.DASHBOARD_BASE_URL}/not-selected-chat.svg`}
+          src={`/not-selected-chat.svg`}
           alt="shadcn/ui"
           unoptimized
         />
@@ -37,7 +37,7 @@ export function ChatContent() {
           width={200}
           height={200}
           className="hidden max-w-sm dark:block"
-          src={`${process.env.DASHBOARD_BASE_URL}/not-selected-chat-light.svg`}
+          src={`/not-selected-chat-light.svg`}
           alt="shadcn/ui"
         />
       </figure>

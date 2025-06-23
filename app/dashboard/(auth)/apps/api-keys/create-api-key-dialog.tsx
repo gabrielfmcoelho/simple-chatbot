@@ -46,7 +46,6 @@ export default function CreateApiKeyDialog() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     toast.success("Success!");
-    console.log(values);
     setDialogOpen(false);
   }
 

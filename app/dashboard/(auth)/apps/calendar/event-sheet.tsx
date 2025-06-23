@@ -89,7 +89,6 @@ export default function EventSheet() {
   }, [form, event, openSheet]);
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log("Form data -->", data);
     toast.success("Success!");
   }
 

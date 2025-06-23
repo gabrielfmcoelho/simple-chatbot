@@ -41,7 +41,6 @@ export default function Page() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsSubmitting(false);
     setIsSubmitted(true);
-    console.log("Form submitted with:", data);
     toast.success("Request submitted!");
 
     return false;

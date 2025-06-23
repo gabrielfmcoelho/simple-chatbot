@@ -24,7 +24,7 @@ export function EcommerceWelcomeCard() {
       <Image
         width={800}
         height={300}
-        src={`${process.env.DASHBOARD_BASE_URL}/star-shape.png`}
+        src={`/star-shape.png`}
         className="pointer-events-none absolute inset-0 aspect-auto"
         unoptimized
         alt="..."

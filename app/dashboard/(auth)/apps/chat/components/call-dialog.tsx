@@ -22,7 +22,10 @@ export function CallDialog() {
         </VisuallyHidden>
         <div className="flex items-center gap-4">
           <Avatar className="size-16">
-            <AvatarImage src={`${process.env.ASSETS_URL}/avatars/04.png`} alt="shadcn/ui avatar" />
+            <AvatarImage
+              src={`https://bundui-images.netlify.app/avatars/04.png`}
+              alt="shadcn/ui avatar"
+            />
           </Avatar>
           <div className="text-lg">Jennica calling ...</div>
         </div>
