@@ -18,7 +18,6 @@ export default function QueryProvider({children }: { children: React.ReactNode }
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <Header />
         <div className="@container/main p-4 xl:group-data-[theme-content-layout=centered]/layout:container xl:group-data-[theme-content-layout=centered]/layout:mx-auto xl:group-data-[theme-content-layout=centered]/layout:mt-8">
           {children}
         </div>

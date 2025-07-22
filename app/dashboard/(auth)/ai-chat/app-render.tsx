@@ -9,7 +9,7 @@ import {
   PromptInputTextarea
 } from "@/components/ui/custom/prompt/input";
 import { Button } from "@/components/ui/button";
-import { ArrowUpIcon, Paperclip, SquareIcon, X } from "lucide-react";
+import { ArrowUpIcon, Paperclip, SquareIcon, Trash2, X } from "lucide-react";
 import { Suggestion } from "@/components/ui/custom/prompt/suggestion";
 import { ChatContainer } from "@/components/ui/custom/prompt/chat-container";
 import { Message, MessageContent } from "@/components/ui/custom/prompt/message";
@@ -43,7 +43,8 @@ export default function AppRender() {
     isLoading, 
     error, 
     sendMessage, 
-    stopStreaming 
+    stopStreaming,
+    clearChat
   } = useChat(AGENT_ID);
 
   const isFirstResponse = messages.length > 0;
@@ -206,6 +207,19 @@ export default function AppRender() {
         />
 
         <PromptInputActions className="flex items-center justify-end gap-2 pt-2">
+          {isFirstResponse && (
+            <PromptInputAction tooltip="Limpar conversa">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8 rounded-full"
+                onClick={clearChat}
+                disabled={isLoading || isStreaming}
+              >
+                <Trash2 className="size-4" />
+              </Button>
+            </PromptInputAction>
+          )}
           <PromptInputAction tooltip={isStreaming ? "Parar geração" : "Enviar mensagem"}>
             <Button
               variant="default"
