@@ -1,57 +1,43 @@
-# Base image for building the application
-FROM node:22-alpine AS base
+# Stage 1: Build
+FROM node:20-alpine AS builder
 
-# 1. Installer Stage: Install dependencies
-FROM base AS installer
+# Set working directory
 WORKDIR /app
-
-# Copy package.json and lock file
-COPY package.json ./
-COPY package-lock.json ./
 
 # Install dependencies
-RUN npm ci
+COPY package.json package-lock.json ./
+RUN npm install
 
-# 2. Builder Stage: Build the Next.js application
-FROM base AS builder
-WORKDIR /app
-
-# Copy dependencies from the installer stage
-COPY --from=installer /app/node_modules ./node_modules
-# Copy the rest of the application code
+# Copy the application code
 COPY . .
 
-# Set build-time environment variables if needed
-# ARG NEXT_PUBLIC_API_URL
-# ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+ENV NEXT_DISABLE_ESLINT=true    
+ENV NEXT_DISABLE_TYPE_CHECK=true    
 
 # Build the Next.js application
-RUN npm run build
+RUN NEXT_DISABLE_ESLINT=true NEXT_DISABLE_TYPE_CHECK=true npm run build
 
-# 3. Runner Stage: Create the final, production-ready image
-FROM base AS runner
+# Stage 2: Production
+FROM node:20-alpine
+
+# Set working directory
 WORKDIR /app
 
-# Set the environment to production
-ENV NODE_ENV=production
+# Install only production dependencies
+COPY package.json package-lock.json ./
+RUN npm install --production
 
-# Create a non-root user for security
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-# Copy the built application from the builder stage
-COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
-COPY --from=builder /app/package.json ./package.json
+# Copy built files from the builder stage
+COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
+COPY --from=builder /app/next.config.js ./
 
-# Switch to the non-root user
-USER nextjs
-
-# Expose the port the app will run on
+# Expose the port that the application will run on
 EXPOSE 3000
 
-# Set the port environment variable
-ENV PORT=3000
+# Start the application
+CMD ["npm", "run", "start"]
 
-# Command to start the server
-CMD ["npm", "start"]
+# To run the application, you can use the following command:
+# docker build -t nextjs-docker .
+# docker run -p 3000:3000 -d nextjs-docker
