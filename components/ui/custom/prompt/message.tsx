@@ -10,6 +10,7 @@ export type MessageProps = {
 
 const Message = ({ children, className, ...props }: MessageProps) => (
   <div className={cn("flex gap-3", className)} {...props}>
+    <> </>
     {children}
   </div>
 );

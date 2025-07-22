@@ -59,9 +59,9 @@ export default function Sidebar() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton className="hover:text-foreground rounded-none group-data-[collapsible=icon]:px-0! hover:bg-[var(--primary)]/10">
-                  <Logo />
+                  {/*<Logo />*/}
                   <div className="truncate font-semibold group-data-[collapsible=icon]:hidden">
-                    Shadcn UI Kit
+                    Chat Gestor
                   </div>
                   <ChevronsUpDown className="ml-auto group-data-[collapsible=icon]:hidden" />
                 </SidebarMenuButton>
