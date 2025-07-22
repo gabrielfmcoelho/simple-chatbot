@@ -1,5 +1,5 @@
 # Base image for building the application
-FROM node:20-alpine AS base
+FROM node:22-alpine AS base
 
 # 1. Installer Stage: Install dependencies
 FROM base AS installer
@@ -40,10 +40,9 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 # Copy the built application from the builder stage
-# This assumes you have `output: 'standalone'` in your next.config.js
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/public ./public
 
 # Switch to the non-root user
 USER nextjs
@@ -52,7 +51,7 @@ USER nextjs
 EXPOSE 3000
 
 # Set the port environment variable
-ENV PORT 3000
+ENV PORT=3000
 
 # Command to start the server
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
